@@ -190,8 +190,32 @@
   "block.wildnature.ebony_log_button": "Ebony Logged Button",
   "block.wildnature.ebony_sign": "Ebony Sign",
 
+  "block.wildnature.eucalyptus_log": "Eucalyptus Log",
+  "block.wildnature.eucalyptus_wood": "Eucalyptus Wood",
+  "block.wildnature.eucalyptus_stripped_log": "Stripped Eucalyptus Log",
+  "block.wildnature.eucalyptus_stripped_wood": "Stripped Eucalyptus Wood",
+  "block.wildnature.eucalyptus_planks": "Eucalyptus Planks",
+  "block.wildnature.eucalyptus_stairs": "Eucalyptus Stairs",
+  "block.wildnature.eucalyptus_stairs_parquet": "Eucalyptus Parquet Stairs",
+  "block.wildnature.eucalyptus_parquet": "Eucalyptus Parquet",
   "block.wildnature.eucalyptus_leaves": "Eucalyptus Leaves",
-  "block.wildnature.eucalyptus_sapling": "Eucalyptus Seeds",
+  "block.wildnature.eucalyptus_sapling": "Eucalyptus Seed",
+  "block.wildnature.eucalyptus_slab": "Eucalyptus Slab",
+  "block.wildnature.eucalyptus_slab_parquet": "Eucalyptus Parquet Slab",
+  "block.wildnature.eucalyptus_branch": "Eucalyptus Branch",
+  "block.wildnature.eucalyptus_branch_small": "Eucalyptus Small Branch",
+  "block.wildnature.eucalyptus_fence": "Eucalyptus Fence",
+  "block.wildnature.eucalyptus_fence_gate": "Eucalyptus Fence Gate",
+  "block.wildnature.eucalyptus_log_fence": "Eucalyptus Logged Fence",
+  "block.wildnature.eucalyptus_log_fence_gate": "Eucalyptus Logged Fence Gate",
+  "block.wildnature.eucalyptus_door": "Eucalyptus Door",
+  "block.wildnature.eucalyptus_trapdoor": "Eucalyptus Trapdoor",
+  "block.wildnature.eucalyptus_pressure_plate": "Eucalyptus Pressure Plate",
+  "block.wildnature.eucalyptus_log_pressure_plate": "Eucalyptus Logged Pressure Plate",
+  "block.wildnature.eucalyptus_button": "Eucalyptus Button",
+  "block.wildnature.eucalyptus_log_button": "Eucalyptus Logged Button",
+  "block.wildnature.eucalyptus_sign": "Eucalyptus Sign",
+  
 
   "block.wildnature.fir_leaves": "Fir Leaves",
   "block.wildnature.fir_sapling": "Fir Seeds",
@@ -461,6 +485,10 @@
   "block.wildnature.rotten_log": "Rotten Log",
   "block.wildnature.dead_log": "Dead Log",
 
+  "block.wildnature.nuytsia_leaves": "Nuytsia Leaves",
+  "block.wildnature.nuytsia_sapling": "Nuytsia Seeds",
+
+
   "block.wildnature.jacaranda_flower": "Jacaranda Flower",
   "block.wildnature.cherry_flower": "Cherry Flower",
   "block.wildnature.plum_flower": "Plum Flower",
@@ -526,7 +554,11 @@
   "block.wildnature.orchis_white": "Orchis White",
   "block.wildnature.peace_lily": "Peace Lily",
   "block.wildnature.wild_rose": "Wild Rose",
-  
+
+  "block.wildnature.grape_vine_purple": "Purple Grape Vine",
+  "block.wildnature.grape_vine_yellow": "Yellow Grape Vine",
+
+
   "block.wildnature.poison_ivy": "Poison Ivy",
   "block.wildnature.lampgrass": "Lampgrass",
   "block.wildnature.spidergrass": "Spidergrass",
@@ -537,6 +569,10 @@
   "block.wildnature.daisy": "Daisy",
   "block.wildnature.small_cacti": "Small Cacti",
   "block.wildnature.river_cane": "River Cane",
+
+  "block.wildnature.lichen": "Lichen",
+  "block.wildnature.moss": "Moss",
+
 
 
   "block.wildnature.bush_raspberry": "Raspberry Bush",
@@ -568,6 +604,7 @@
   "item.wildnature.pot_water": "Pot with Water",
   "item.wildnature.cake_pan": "Cake Tray",
 
+  "item.wildnature.chisel": "Chisel",
 
 
   "block.wildnature.brown_grass_block": "Brown Grass Block",
@@ -874,7 +911,7 @@
   "item.wildnature.graham_cracker": "Graham Cracker",
   "item.wildnature.grilled_cauliflower": "Grilled Cauliflower",
   "item.wildnature.sauerkraut": "Sauerkraut",
-  "item.wildnature.smore": "Smore",
+  "item.wildnature.smore": "S'more",
   "item.wildnature.sushi": "Sushi",
 
   "item.wildnature.cheese_pizza": "Cheese Pizza",
@@ -960,6 +997,11 @@
   "item.wildnature.maple_syrup": "Maple Syrup",
   "item.wildnature.peanut_butter": "Peanut Butter",
 
+  "block.wildnature.cockleshell": "Cockleshell",
+  "block.wildnature.horn_shell": "Horn Shell",
+  "block.wildnature.lions_paw": "Lion's Paw",
+  "block.wildnature.sand_dollar": "Sand Dollar",
+  "block.wildnature.star_fish": "Starfish",
 
 
 
@@ -1019,6 +1061,11 @@
   "block.wildnature.dungeon_torch": "Dungeon Torch",
   "block.wildnature.crystal_torch": "Crystal Torch",
   "block.wildnature.dungeon_redstone_torch": "Dungeon Redstone Torch",
+
+  "block.wildnature.beams": "Beams Block",
+  "block.wildnature.slab_corner": "Corner Slab",
+  "block.wildnature.slab_vertical": "Vertical Slab",
+
 
   "item.wildnature.pouch": "Pouch",
   "gui.wildnature.pouch": "Pouch",
@@ -1482,6 +1529,170 @@
   "entity.wisent_female": "Wisent Female",
   "entity.wisent_baby": "Wisent Baby",
 
-  "block.wildnature.steel_ladder": "Steel ladder"
+  "block.wildnature.steel_ladder": "Steel ladder",
+
+  "biome.wildnature.river": "River",
+  "biome.wildnature.frozen_river": "Frozen River",
+  "biome.wildnature.nile_river": "Nile River",
+  "biome.wildnature.amazon_river": "Amazon River",
+
+  "biome.wildnature.poplar_forest": "Poplar Forest",
+  "biome.wildnature.poplar_forest_valley": "Poplar Valley",
+  "biome.wildnature.poplar_forest_hills": "Poplar Hills",
+
+  "biome.wildnature.aspen_grove": "Aspen Grove",
+  "biome.wildnature.snowy_aspen_grove": "Snowy Aspen Grove",
+
+  "biome.wildnature.orchard": "Orchard",
+  "biome.wildnature.orchard_plum": "Orchard Plum",
+  "biome.wildnature.cherry_paradise": "Cherry Paradise",
+  "biome.wildnature.citrus_orchard": "Citrus Orchard",
+
+  "biome.wildnature.maple_forest": "Maple Forest",
+  "biome.wildnature.autumnal_maple_forest": "Autumnal Maple Forest",
+
+  "biome.wildnature.grasslands": "Grasslands",
+  "biome.wildnature.grasslands_hills": "Grassland Hills",
+  "biome.wildnature.forested_grasslands": "Wooded Grasslands",
+  "biome.wildnature.forested_grasslands_hills": "Wooded Grassland Hills",
+
+  "biome.wildnature.polders": "Polders",
+  "biome.wildnature.shrublands": "Shrublands",
+  "biome.wildnature.hilly_shrublands": "Hilly Shrublands",
+  "biome.wildnature.prehistoric_valley": "Prehistoric Valley",
+
+  "biome.wildnature.prairie": "Prairie",
+  "biome.wildnature.prairie_hills": "Prairie Hills",
+  "biome.wildnature.rapeseed_field": "Rapeseed Field",
+  "biome.wildnature.corn_field": "Corn Fields",
+
+  "biome.wildnature.outback": "Outback",
+  "biome.wildnature.wooded_outback": "Wooded Outback",
+
+  "biome.wildnature.tatra_mountains": "Tatras",
+  "biome.wildnature.tatra_foothills": "Tatra Foothills",
+  "biome.wildnature.snowy_tatra_mountains": "Sowy Tatras",
+  "biome.wildnature.snowy_tatra_foothills": "Snowy Tatra Foothills",
+  "biome.wildnature.morskie_oko": "Morskie Oko",
+  "biome.wildnature.rysy": "Rysy",
+
+  "biome.wildnature.bialowieza_forest": "Bialowieza Forest",
+  "biome.wildnature.bialowieza_marsh": "Bialowieza Marsh",
+  "biome.wildnature.snowy_bialowieza_forest": "Snowy Bialowieza Forest",
+  "biome.wildnature.bialowieza_frozen_marsh": "Bialowieza Frozen Marsh",
+
+  "biome.wildnature.snowy_mountains": "Snowy Mountains",
+  "biome.wildnature.glacier": "Glacier",
+  "biome.wildnature.himalayas": "Himalayas",
+  "biome.wildnature.overgrown_cliffs": "Overgrown Cliffs",
+
+  "biome.wildnature.bog": "Bog",
+
+  "biome.wildnature.boreal_forest": "Boreal  Forest",
+  "biome.wildnature.boreal_forest_hills": "Boreal Hills",
+  "biome.wildnature.boreal_valley": "Boreal Valley",
+  "biome.wildnature.snowy_boreal_forest": "Snowy Boreal Forest",
+  "biome.wildnature.snowy_boreal_forest_hills": "Snowy Boreal Hills",
+  "biome.wildnature.snowy_boreal_valley": "Snowy Boreal Valley",
+
+  "biome.wildnature.rocky_taiga": "Rocky Taiga",
+  "biome.wildnature.seasonal_taiga": "Seasonal Taiga",
+
+  "biome.wildnature.tuchola_forest": "Tuchola Forest",
+  "biome.wildnature.dense_tuchola_forest": "Dense Tuchola Forest",
+  "biome.wildnature.tuchola_forest_hill": "Tuchola Hills",
+  "biome.wildnature.tuchola_valley": "Tuchola Valley",
+  "biome.wildnature.snowy_tuchola_forest": "Snowy Tuchola Forest",
+  "biome.wildnature.snowy_dense_tuchola_forest": "Dense Snowy Tuchola Forest",
+  "biome.wildnature.snowy_tuchola_forest_hill": "Snowy Tuchola Hills",
+  "biome.wildnature.snowy_tuchola_valley": "Snowy Tuchola Valley",
+
+  "biome.wildnature.highlands": "Highlands",
+
+  "biome.wildnature.rainforest": "Rainforest",
+  "biome.wildnature.rainforest_hills": "Rainforest Hills",
+  "biome.wildnature.rainforest_moor": "Rainforest Moor",
+
+  "biome.wildnature.safari": "Safari",
+  "biome.wildnature.safari_hills": "Safari Hills",
+  "biome.wildnature.baobab_savanna": "Baobab Savanna",
+
+  "biome.wildnature.redwood_forest": "Redwood Forest",
+  "biome.wildnature.old_redwood_forest": "Old Redwood Forest",
+  "biome.wildnature.cedar_fields": "Cedar Fields",
+  "biome.wildnature.snowy_cedar_fields": "Snowy Cedar Fields",
+
+  "biome.wildnature.christmas_dream": "Christmas Dream",
+
+  "biome.wildnature.giant_coniferous_forest": "Giant Coniferous Forest",
+  "biome.wildnature.snowy_giant_coniferous_forest": "Snowy Giant Coniferous Forest",
+
+  "biome.wildnature.autumnal_spruce": "Autumnal Spruces",
+
+  "biome.wildnature.birch_grove": "Birch Grove",
+  "biome.wildnature.snowy_birch_grove": "Snowy Birch Grove",
+  "biome.wildnature.weeping_birch_forest": "Weeping Birch Forest",
+
+  "biome.wildnature.flower_field": "Flower Field",
+
+  "biome.wildnature.sahara": "Sahara",
+  "biome.wildnature.oasis": "Oasis",
+  "biome.wildnature.lush_desert": "Lush Desert",
+  "biome.wildnature.cracked_desert": "Cracked Desert",
+  "biome.wildnature.tinted_desert": "Tinted Desert",
+  "biome.wildnature.tinted_desert_hills": "Tinted Desert Hills",
+  "biome.wildnature.badlands": "Badlands",
+  "biome.wildnature.dead_desolation": "Dead Desolation",
+
+  "biome.wildnature.deciduous_forest": "Deciduous Forest",
+  "biome.wildnature.forest": "Forest",
+  "biome.wildnature.forest_valley": "Wooded Valley",
+  "biome.wildnature.snowy_forest": "Snowy Forest",
+
+  "biome.wildnature.golden_woods": "Golden Woods",
+
+  "biome.wildnature.lavender_garden": "Lavender Garden",
+
+  "biome.wildnature.salt_flats": "Salt Flats",
+
+  "biome.wildnature.farmlands": "Farmlands",
+
+  "biome.wildnature.mahogany_rainforest": "Mahogany Rainforest",
+
+  "biome.wildnature.tropical_badlands": "Tropical Badlands",
+
+  "biome.wildnature.steppe": "Steppe",
+
+  "biome.wildnature.masuria": "Masuria",
+
+  "biome.wildnature.land_of_rivers": "Land Of Rivers",
+
+  "biome.wildnature.wetlands": "Wetlands",
+  "biome.wildnature.mangrove_bayou": "Mangrove Bayou",
+
+  "biome.wildnature.eucalyptus_forest": "Eucalyptus Forest",
+  "biome.wildnature.daintree_forest": "Daintree Forest",
+  "biome.wildnature.daintree_plateau": "Daintree Plateau",
+  "biome.wildnature.banana_thicket": "Banana Thicket",
+
+  "biome.wildnature.olive_grove": "Olive Grove",
+  "biome.wildnature.olive_hills": "Olive Hills",
+
+  "biome.wildnature.mirkwood": "Mirkwood",
+  "biome.wildnature.dark_mirkwood": "Dark Mirkwood",
+
+  "biome.wildnature.warm_lake": "Warm Lake",
+  "biome.wildnature.cold_lake": "Cold Lake",
+  "biome.wildnature.tropical_lake": "Tropical Lake",
+  "biome.wildnature.frozen_lake": "Frozen Lake",
+  "biome.wildnature.dried_lake": "Dried Lake",
+
+  "biome.wildnature.easter_island": "Easter Island",
+  "biome.wildnature.tropical_island": "Tropical Island",
+  "biome.wildnature.tropical_cliffs": "Tropical Cliffs",
+  "biome.wildnature.christmas_island": "Christmas Island",
+  "biome.wildnature.madagascar": "Madagascar",
+  "biome.wildnature.madagascar_valley": "Madagascar Valley",
+  "biome.wildnature.white_beach": "White Beach"
 
 }
