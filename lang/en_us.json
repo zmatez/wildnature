@@ -215,7 +215,7 @@
   "block.wildnature.eucalyptus_button": "Eucalyptus Button",
   "block.wildnature.eucalyptus_log_button": "Eucalyptus Logged Button",
   "block.wildnature.eucalyptus_sign": "Eucalyptus Sign",
-  
+
 
   "block.wildnature.fir_leaves": "Fir Leaves",
   "block.wildnature.fir_sapling": "Fir Seeds",
@@ -681,6 +681,8 @@
   "item.wildnature.pomegranate": "Pomegranate",
   "item.wildnature.mango": "Mango",
 
+  "item.wildnature.lemon_wedge": "Lemon Wedge",
+
   "block.wildnature.banana_leaves": "Banana Leaves",
   "block.wildnature.grape_fruit_leaves": "Grapefruit Leaves",
   "block.wildnature.lemon_leaves": "Lemon Leaves",
@@ -738,7 +740,7 @@
   "item.wildnature.garlic_cloves": "Garlic Cloves",
   "item.wildnature.turmeric": "Turmeric",
   "item.wildnature.salt": "Salt",
-  "item.wildnature.pepper": "Pepper",
+  "item.wildnature.pepper": "Black Pepper",
 
   "item.wildnature.butter": "Butter",
   "item.wildnature.dough_ball": "Dough Ball",
@@ -749,6 +751,8 @@
   "item.wildnature.mint": "Mint",
   "item.wildnature.white_tea_leaves": "White Tea Leaves",
 
+  "item.wildnature.mushroom_mix": "Mushroom Mix",
+  "item.wildnature.dried_mushroom_mix": "Dried Mushroom Mix",
 
   "item.wildnature.raw_boar": "Raw Boar",
   "item.wildnature.cooked_boar": "Cooked Boar",
@@ -1047,6 +1051,8 @@
   "block.wildnature.lightning_bug": "Lightning Bug",
   "block.wildnature.geyser": "Geyser",
   "item.wildnature.geyser_essence": "Geyser Essence",
+  "block.wildnature.eco_lantern": "Eco Lantern",
+
 
 
   "block.wildnature.andirons": "Andirons",
@@ -1062,6 +1068,7 @@
   "block.wildnature.crystal_torch": "Crystal Torch",
   "block.wildnature.dungeon_redstone_torch": "Dungeon Redstone Torch",
 
+  "block.wildnature.stick_frame": "Stick Frame",
   "block.wildnature.beams": "Beams Block",
   "block.wildnature.slab_corner": "Corner Slab",
   "block.wildnature.slab_vertical": "Vertical Slab",
@@ -1167,6 +1174,7 @@
   "block.wildnature.ruby_ore": "Ruby Ore",
   "block.wildnature.ruby_block": "Ruby Block",
 
+  "block.wildnature.salt_ore": "Salt Ore",
 
 
   "block.wildnature.basalt": "Basalt",
@@ -1565,6 +1573,8 @@
   "biome.wildnature.prairie_hills": "Prairie Hills",
   "biome.wildnature.rapeseed_field": "Rapeseed Field",
   "biome.wildnature.corn_field": "Corn Fields",
+  "biome.wildnature.cotton_fields": "Cotton Fields",
+
 
   "biome.wildnature.outback": "Outback",
   "biome.wildnature.wooded_outback": "Wooded Outback",
