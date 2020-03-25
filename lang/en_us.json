@@ -2,6 +2,12 @@
   "lang.credits": "matez_",
   "_comment": "#NOTE FOR YOU - DONT CHANGE THIS, ITS NEVER USED# this is the translator nick, so replace the current one with yours. WARNING: Text cannot be longer than 15 characters!",
 
+  "block.wildnature.oak_branch": "Oak Branch",
+  "block.wildnature.spruce_branch": "Spruce Branch",
+  "block.wildnature.birch_branch": "Birch Branch",
+  "block.wildnature.acacia_branch": "Acacia Branch",
+  "block.wildnature.dark_oak_branch": "Dark Oak Branch",
+
   "block.wildnature.rosaceae_log": "Rosaceae Log",
   "block.wildnature.rosaceae_wood": "Rosaceae Wood",
   "block.wildnature.rosaceae_stripped_log": "Stripped Rosaceae Log",
@@ -339,6 +345,7 @@
   "block.wildnature.maple_stairs_parquet": "Maple Parquet Stairs",
   "block.wildnature.maple_parquet": "Maple Parquet",
   "block.wildnature.maple_leaves": "Maple Leaves",
+  "block.wildnature.maple_red_leaves": "Red Maple Leaves",
   "block.wildnature.maple_yellow_leaves": "Yellow Maple Leaves",
   "block.wildnature.maple_brown_leaves": "Brown Maple Leaves",
   "block.wildnature.maple_orange_leaves": "Orange Maple Leaves",
@@ -1703,6 +1710,17 @@
   "biome.wildnature.christmas_island": "Christmas Island",
   "biome.wildnature.madagascar": "Madagascar",
   "biome.wildnature.madagascar_valley": "Madagascar Valley",
-  "biome.wildnature.white_beach": "White Beach"
+  "biome.wildnature.white_beach": "White Beach",
+
+  "biome.wildnature.beech_forest": "Beech Forest",
+  "biome.wildnature.beech_hills": "Beech Hills",
+  "biome.wildnature.beech_valley": "Beech Valley",
+
+  "biome.wildnature.oaklands": "Oaklands",
+  "biome.wildnature.dense_oaklands": "Dense Oaklands"
+
+
+
+
 
 }
