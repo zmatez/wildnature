@@ -1717,10 +1717,15 @@
   "biome.wildnature.beech_valley": "Beech Valley",
 
   "biome.wildnature.oaklands": "Oaklands",
-  "biome.wildnature.dense_oaklands": "Dense Oaklands"
+  "biome.wildnature.dense_oaklands": "Dense Oaklands",
+  "biome.wildnature.oakland_hills": "Oakland Hills",
+  "biome.wildnature.oak_valley": "Oak Valley",
 
 
+  "biome.wildnature.high_forest": "High Forest",
+  "biome.wildnature.high_forest_hills": "High Forest Hills",
+  "biome.wildnature.high_forest_valley": "High Forest Valley",
 
-
-
+  "biome.wildnature.mahogany_cliffs": "Mahogany Cliffs",
+  "biome.wildnature.forested_cliffs": "Forested Cliffs"
 }
