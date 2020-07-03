@@ -230,6 +230,7 @@
   "block.wildnature.beech_parquet": "Beech Parquet",
   "block.wildnature.beech_leaves": "Beech Leaves",
   "block.wildnature.purple_beech_leaves": "Purple Beech Leaves",
+  "block.wildnature.purple_beech_sapling": "Purple Beech Sapling",
   "block.wildnature.beech_sapling": "Beech Seed",
   "block.wildnature.beech_slab": "Beech Slab",
   "block.wildnature.beech_slab_parquet": "Beech Parquet Slab",
@@ -789,7 +790,9 @@
   "block.wildnature.glowing_cave_oak_parquet_vertical_slab": "Glowing Cave Oak Parquet Vertical Slab",
   
   "block.wildnature.magnolia_leaves": "Magnolia Leaves",
+  "block.wildnature.magnolia_sapling": "Magnolia Sapling",
   "block.wildnature.forsythia_leaves": "Forsythia Leaves",
+  "block.wildnature.forsythia_sapling": "Forsythia Sapling",
   "block.wildnature.large_bush_leaves": "Large Bush Leaves",
   "block.wildnature.dense_bush_leaves": "Dense Bush Leaves",
   "block.wildnature.small_bush_leaves": "Small Bush Leaves",
@@ -1082,7 +1085,10 @@
   "block.wildnature.mud": "Mud",
   "block.wildnature.forest_sand": "Forest Sand",
   "block.wildnature.quicksand": "Quicksand",
-  "block.wildnature.hydrothermal_vent": "Hydrothermal_vent",
+  "block.wildnature.hydrothermal_vent": "Hydrothermal Vent",
+  "block.wildnature.sandstone_bricks": "Sandstone Bricks",
+  "block.wildnature.sandstone_ancient_bricks": "Sandstone Ancient Bricks",
+
 
   "block.wildnature.jelly_blue_block": "Blue Jelly Block",
   "block.wildnature.jelly_orange_block": "Orange Jelly Block",
@@ -2402,6 +2408,7 @@
   "biome.wildnature.tatra_lower_forest": "Tatra Lower Forest",
   "biome.wildnature.tatra_upper_forest": "Tatra Upper Forest",
   "biome.wildnature.tatra_greened_peak": "Tatra Greened Peak",
+  "biome.wildnature.tatra_red_peak": "Tatra Red Peak",
   "biome.wildnature.tatra_kasprowy_peak": "Tatra Kasprowy Peak",
   "biome.wildnature.tatra_chocholowska_glade": "Chocholowska Glade",
   "biome.wildnature.tatra_fireweed_valley": "Fireweed Valley",
@@ -2412,6 +2419,14 @@
 
   "biome.wildnature.snowy_tatra_mountains": "Snowy Tatras",
   "biome.wildnature.snowy_tatra_foothills": "Snowy Tatra Foothills",
+  "biome.wildnature.snowy_tatra_lower_forest": "Snowy Tatra Lower Forest",
+  "biome.wildnature.snowy_tatra_upper_forest": "Snowy Tatra Upper Forest",
+  "biome.wildnature.snowy_tatra_kasprowy_peak": "Snowy Tatra Kasprowy Peak",
+  "biome.wildnature.snowy_tatra_chocholowska_glade": "Snowy Chocholowska Glade",
+  "biome.wildnature.snowy_tatra_fireweed_valley": "Snowy Fireweed Valley",
+  "biome.wildnature.snowy_cracow_gorge": "Snowy Cracow Gorge",
+  "biome.wildnature.frozen_morskie_oko": "Frozen Morskie Oko",
+  "biome.wildnature.snowy_giewont": "Snowy Giewont",
 
 
   "biome.wildnature.bialowieza_forest": "Bialowieza Forest",
@@ -2477,11 +2492,16 @@
   "biome.wildnature.giant_savanna": "Giant Savanna",
 
   "biome.wildnature.redwood_forest": "Redwood Forest",
+  "biome.wildnature.redwood_hills": "Redwood Hills",
   "biome.wildnature.old_redwood_forest": "Old Redwood Forest",
   "biome.wildnature.cedar_fields": "Cedar Fields",
   "biome.wildnature.snowy_cedar_fields": "Snowy Cedar Fields",
   "biome.wildnature.temperate_cedar_scrubs": "Temperate Cedar Scrubs",
   "biome.wildnature.temperate_redwood_scrubs": "Temperate Redwood Scrubs",
+  "biome.wildnature.sequoia_forest": "Sequoia Forest",
+  "biome.wildnature.sequoia_hills": "Sequoia Hills",
+  "biome.wildnature.sequoia_valley": "Sequoia Valley",
+
 
   "biome.wildnature.cypress_fields": "Cypress Fields",
   "biome.wildnature.cypress_hills": "Cypress Hills",
