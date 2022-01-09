@@ -1,0 +1,108 @@
+{
+  "variants": {
+    "facing=south": [
+      {
+        "model": "wildnature:block/lichen_1"
+      },
+      {
+        "model": "wildnature:block/lichen_2"
+      },
+      {
+        "model": "wildnature:block/lichen_3"
+      },
+      {
+        "model": "wildnature:block/lichen_4"
+      }
+    ],
+    "facing=west": [
+      {
+        "model": "wildnature:block/lichen_1",
+        "y": 90
+      },
+      {
+        "model": "wildnature:block/lichen_2",
+        "y": 90
+      },
+      {
+        "model": "wildnature:block/lichen_3",
+        "y": 90
+      },
+      {
+        "model": "wildnature:block/lichen_4",
+        "y": 90
+      }
+    ],
+    "facing=north": [
+      {
+        "model": "wildnature:block/lichen_1",
+        "y": 180
+      },
+      {
+        "model": "wildnature:block/lichen_2",
+        "y": 180
+      },
+      {
+        "model": "wildnature:block/lichen_3",
+        "y": 180
+      },
+      {
+        "model": "wildnature:block/lichen_4",
+        "y": 180
+      }
+    ],
+    "facing=east": [
+      {
+        "model": "wildnature:block/lichen_1",
+        "y": 270
+      },
+      {
+        "model": "wildnature:block/lichen_2",
+        "y": 270
+      },
+      {
+        "model": "wildnature:block/lichen_3",
+        "y": 270
+      },
+      {
+        "model": "wildnature:block/lichen_4",
+        "y": 270
+      }
+    ],
+    "facing=up": [
+      {
+        "model": "wildnature:block/lichen_1",
+        "x": 90
+      },
+      {
+        "model": "wildnature:block/lichen_2",
+        "x": 90
+      },
+      {
+        "model": "wildnature:block/lichen_3",
+        "x": 90
+      },
+      {
+        "model": "wildnature:block/lichen_4",
+        "x": 90
+      }
+    ],
+    "facing=down": [
+      {
+        "model": "wildnature:block/lichen_1",
+        "x": 270
+      },
+      {
+        "model": "wildnature:block/lichen_2",
+        "x": 270
+      },
+      {
+        "model": "wildnature:block/lichen_3",
+        "x": 270
+      },
+      {
+        "model": "wildnature:block/lichen_4",
+        "x": 270
+      }
+    ]
+  }
+}

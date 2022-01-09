@@ -1,0 +1,10 @@
+{
+    "variants": {
+      "flowering=false": {
+          "model": "wildnature:block/primrose_blue"
+      },
+      "flowering=true": {
+          "model": "wildnature:block/primrose_blue_flowering"
+      }
+  }
+}

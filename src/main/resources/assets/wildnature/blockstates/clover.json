@@ -1,0 +1,235 @@
+{
+  "variants": {
+    "stage=0": [
+      {
+        "model": "wildnature:block/clover_short_purple"
+      },
+      {
+        "model": "wildnature:block/clover_short_purple",
+        "y": 90
+      },
+      {
+        "model": "wildnature:block/clover_short_purple",
+        "y": 180
+      },
+      {
+        "model": "wildnature:block/clover_short_purple",
+        "y": 270
+      },
+      {
+        "model": "wildnature:block/clover_short_pink"
+      },
+      {
+        "model": "wildnature:block/clover_short_pink",
+        "y": 90
+      },
+      {
+        "model": "wildnature:block/clover_short_pink",
+        "y": 180
+      },
+      {
+        "model": "wildnature:block/clover_short_pink",
+        "y": 270
+      },
+      {
+        "model": "wildnature:block/clover_short_white"
+      },
+      {
+        "model": "wildnature:block/clover_short_white",
+        "y": 90
+      },
+      {
+        "model": "wildnature:block/clover_short_white",
+        "y": 180
+      },
+      {
+        "model": "wildnature:block/clover_short_white",
+        "y": 270
+      },
+      {
+        "model": "wildnature:block/clover_short_empty"
+      },
+      {
+        "model": "wildnature:block/clover_short_empty",
+        "y": 90
+      },
+      {
+        "model": "wildnature:block/clover_short_empty",
+        "y": 180
+      },
+      {
+        "model": "wildnature:block/clover_short_empty",
+        "y": 270
+      },
+      {
+        "model": "wildnature:block/clover_short_empty"
+      },
+      {
+        "model": "wildnature:block/clover_short_empty",
+        "y": 90
+      },
+      {
+        "model": "wildnature:block/clover_short_empty",
+        "y": 180
+      },
+      {
+        "model": "wildnature:block/clover_short_empty",
+        "y": 270
+      }
+    ],
+    "stage=1": [
+      {
+        "model": "wildnature:block/clover_medium_purple"
+      },
+      {
+        "model": "wildnature:block/clover_medium_purple",
+        "y": 90
+      },
+      {
+        "model": "wildnature:block/clover_medium_purple",
+        "y": 180
+      },
+      {
+        "model": "wildnature:block/clover_medium_purple",
+        "y": 270
+      },
+      {
+        "model": "wildnature:block/clover_medium_pink"
+      },
+      {
+        "model": "wildnature:block/clover_medium_pink",
+        "y": 90
+      },
+      {
+        "model": "wildnature:block/clover_medium_pink",
+        "y": 180
+      },
+      {
+        "model": "wildnature:block/clover_medium_pink",
+        "y": 270
+      },
+      {
+        "model": "wildnature:block/clover_medium_white"
+      },
+      {
+        "model": "wildnature:block/clover_medium_white",
+        "y": 90
+      },
+      {
+        "model": "wildnature:block/clover_medium_white",
+        "y": 180
+      },
+      {
+        "model": "wildnature:block/clover_medium_white",
+        "y": 270
+      },
+      {
+        "model": "wildnature:block/clover_medium_empty"
+      },
+      {
+        "model": "wildnature:block/clover_medium_empty",
+        "y": 90
+      },
+      {
+        "model": "wildnature:block/clover_medium_empty",
+        "y": 180
+      },
+      {
+        "model": "wildnature:block/clover_medium_empty",
+        "y": 270
+      },
+      {
+        "model": "wildnature:block/clover_medium_empty"
+      },
+      {
+        "model": "wildnature:block/clover_medium_empty",
+        "y": 90
+      },
+      {
+        "model": "wildnature:block/clover_medium_empty",
+        "y": 180
+      },
+      {
+        "model": "wildnature:block/clover_medium_empty",
+        "y": 270
+      }
+    ],
+    "stage=2": [
+      {
+        "model": "wildnature:block/clover_tall_purple"
+      },
+      {
+        "model": "wildnature:block/clover_tall_purple",
+        "y": 90
+      },
+      {
+        "model": "wildnature:block/clover_tall_purple",
+        "y": 180
+      },
+      {
+        "model": "wildnature:block/clover_tall_purple",
+        "y": 270
+      },
+      {
+        "model": "wildnature:block/clover_tall_pink"
+      },
+      {
+        "model": "wildnature:block/clover_tall_pink",
+        "y": 90
+      },
+      {
+        "model": "wildnature:block/clover_tall_pink",
+        "y": 180
+      },
+      {
+        "model": "wildnature:block/clover_tall_pink",
+        "y": 270
+      },
+      {
+        "model": "wildnature:block/clover_tall_white"
+      },
+      {
+        "model": "wildnature:block/clover_tall_white",
+        "y": 90
+      },
+      {
+        "model": "wildnature:block/clover_tall_white",
+        "y": 180
+      },
+      {
+        "model": "wildnature:block/clover_tall_white",
+        "y": 270
+      },
+      {
+        "model": "wildnature:block/clover_tall_empty"
+      },
+      {
+        "model": "wildnature:block/clover_tall_empty",
+        "y": 90
+      },
+      {
+        "model": "wildnature:block/clover_tall_empty",
+        "y": 180
+      },
+      {
+        "model": "wildnature:block/clover_tall_empty",
+        "y": 270
+      },
+      {
+        "model": "wildnature:block/clover_tall_empty"
+      },
+      {
+        "model": "wildnature:block/clover_tall_empty",
+        "y": 90
+      },
+      {
+        "model": "wildnature:block/clover_tall_empty",
+        "y": 180
+      },
+      {
+        "model": "wildnature:block/clover_tall_empty",
+        "y": 270
+      }
+    ]
+  }
+}

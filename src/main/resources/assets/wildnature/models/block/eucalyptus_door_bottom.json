@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_bottom",
+  "textures": {
+    "top": "wildnature:blocks/trees/eucalyptus/eucalyptus_door_top",
+    "bottom": "wildnature:blocks/trees/eucalyptus/eucalyptus_door_bottom"
+  }
+}

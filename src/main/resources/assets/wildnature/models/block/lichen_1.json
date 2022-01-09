@@ -1,0 +1,7 @@
+{
+   "parent": "wildnature:block/vertical_bush",
+   "textures": {
+     "bush": "wildnature:blocks/plants/surface/lichen/lichen_1"
+   }
+ }
+

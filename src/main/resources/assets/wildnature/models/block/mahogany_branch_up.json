@@ -1,0 +1,7 @@
+{
+    "parent": "wildnature:block/branch_up",
+    "textures": {
+        "log": "wildnature:blocks/trees/mahogany/mahogany_log",
+        "inside": "wildnature:blocks/trees/mahogany/mahogany_log_top"
+    }
+}

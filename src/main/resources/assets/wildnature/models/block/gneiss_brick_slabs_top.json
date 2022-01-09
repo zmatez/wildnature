@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "bottom": "wildnature:blocks/rocks/gneiss/gneiss_bricks",
+    "top": "wildnature:blocks/rocks/gneiss/gneiss_bricks",
+    "side": "wildnature:blocks/rocks/gneiss/gneiss_bricks"
+  }
+}

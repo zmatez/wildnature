@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "wildnature:block/crimson_sand"
+      },
+      {
+        "model": "wildnature:block/crimson_sand",
+        "y": 90
+      },
+      {
+        "model": "wildnature:block/crimson_sand",
+        "y": 180
+      },
+      {
+        "model": "wildnature:block/crimson_sand",
+        "y": 270
+      }
+    ]
+  }
+}

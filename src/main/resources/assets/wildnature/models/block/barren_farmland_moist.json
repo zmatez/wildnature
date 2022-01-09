@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/template_farmland",
+  "textures": {
+    "dirt": "wildnature:blocks/grass/barren_dirt",
+    "top": "wildnature:blocks/grass/barren_farmland_moist"
+  }
+}

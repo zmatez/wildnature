@@ -1,0 +1,8 @@
+{
+    "parent": "wildnature:block/flowering_cross",
+    "textures": {
+        "colored": "wildnature:blocks/plants/surface/gladiolus/gladiolus_purple_bottom",
+        "greyscale": "wildnature:blocks/plants/surface/gladiolus/gladiolus_stalk_bottom",
+        "particle": "wildnature:blocks/plants/surface/gladiolus/gladiolus_stalk_bottom"
+    }
+}

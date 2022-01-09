@@ -1,0 +1,10 @@
+{
+    "variants": {
+      "flowering=false": {
+          "model": "wildnature:block/poison_ivy"
+      },
+      "flowering=true": {
+          "model": "wildnature:block/poison_ivy_flowering"
+      }
+  }
+}

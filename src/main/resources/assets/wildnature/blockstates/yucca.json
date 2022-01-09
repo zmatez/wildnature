@@ -1,0 +1,72 @@
+{
+     "variants": {
+       "flowering=false,half=lower": [
+         {
+           "model": "wildnature:block/yucca_bush_bottom"
+         },
+         {
+           "model": "wildnature:block/yucca_bush_bottom",
+           "y": 90
+         },
+         {
+           "model": "wildnature:block/yucca_bush_bottom",
+           "y": 180
+         },
+         {
+           "model": "wildnature:block/yucca_bush_bottom",
+           "y": 270
+         }
+       ],
+       "flowering=false,half=upper": [
+         {
+           "model": "wildnature:block/yucca_bush_bottom"
+         },
+         {
+           "model": "wildnature:block/yucca_bush_bottom",
+           "y": 90
+         },
+         {
+           "model": "wildnature:block/yucca_bush_bottom",
+           "y": 180
+         },
+         {
+           "model": "wildnature:block/yucca_bush_bottom",
+           "y": 270
+         }
+       ],
+       "flowering=true,half=lower": [
+         {
+           "model": "wildnature:block/yucca_bottom"
+         },
+         {
+           "model": "wildnature:block/yucca_bottom",
+           "y": 90
+         },
+         {
+           "model": "wildnature:block/yucca_bottom",
+           "y": 180
+         },
+         {
+           "model": "wildnature:block/yucca_bottom",
+           "y": 270
+         }
+       ],
+       "flowering=true,half=upper": [
+         {
+           "model": "wildnature:block/yucca_top"
+         },
+         {
+           "model": "wildnature:block/yucca_top",
+           "y": 90
+         },
+         {
+           "model": "wildnature:block/yucca_top",
+           "y": 180
+         },
+         {
+           "model": "wildnature:block/yucca_top",
+           "y": 270
+         }
+       ]
+   }
+ }

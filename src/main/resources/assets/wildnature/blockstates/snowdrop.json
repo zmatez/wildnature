@@ -1,0 +1,10 @@
+{
+    "variants": {
+      "flowering=false": {
+          "model": "wildnature:block/snowdrop"
+      },
+      "flowering=true": {
+          "model": "wildnature:block/snowdrop_flowering"
+      }
+  }
+}

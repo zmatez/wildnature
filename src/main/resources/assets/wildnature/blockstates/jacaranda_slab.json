@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "wildnature:block/jacaranda_slab"
+    },
+    "type=double": {
+      "model": "wildnature:block/jacaranda_planks"
+    },
+    "type=top": {
+      "model": "wildnature:block/jacaranda_slab_top"
+    }
+  }
+}

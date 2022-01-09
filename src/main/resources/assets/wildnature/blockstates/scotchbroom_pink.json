@@ -1,0 +1,16 @@
+{
+    "variants": {
+      "flowering=false,half=lower": {
+          "model": "wildnature:block/scotchbroom_pink_bottom"
+      },
+      "flowering=false,half=upper": {
+          "model": "wildnature:block/scotchbroom_pink_top"
+      },
+      "flowering=true,half=lower": {
+          "model": "wildnature:block/scotchbroom_pink_bottom_flowering"
+      },
+      "flowering=true,half=upper": {
+          "model": "wildnature:block/scotchbroom_pink_top_flowering"
+      }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "package": "net.matez.wildnature.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "wildnature.refmap.json",
+  "mixins": [
+
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "minVersion": "0.8"
+}

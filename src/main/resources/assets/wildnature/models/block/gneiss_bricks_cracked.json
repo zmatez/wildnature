@@ -1,0 +1,6 @@
+{
+    "parent": "block/cube_all",
+    "textures": {
+        "all": "wildnature:blocks/rocks/gneiss/gneiss_bricks_cracked"
+    }
+}

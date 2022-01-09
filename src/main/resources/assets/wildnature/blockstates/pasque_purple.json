@@ -1,0 +1,10 @@
+{
+    "variants": {
+      "flowering=false": {
+          "model": "wildnature:block/pasque_purple"
+      },
+      "flowering=true": {
+          "model": "wildnature:block/pasque_purple_flowering"
+      }
+  }
+}

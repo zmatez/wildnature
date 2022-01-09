@@ -1,0 +1,28 @@
+{
+  "variants": {
+    "moisture=0": {
+      "model": "wildnature:block/barren_farmland"
+    },
+    "moisture=1": {
+      "model": "wildnature:block/barren_farmland"
+    },
+    "moisture=2": {
+      "model": "wildnature:block/barren_farmland"
+    },
+    "moisture=3": {
+      "model": "wildnature:block/barren_farmland"
+    },
+    "moisture=4": {
+      "model": "wildnature:block/barren_farmland"
+    },
+    "moisture=5": {
+      "model": "wildnature:block/barren_farmland"
+    },
+    "moisture=6": {
+      "model": "wildnature:block/barren_farmland"
+    },
+    "moisture=7": {
+      "model": "wildnature:block/barren_farmland_moist"
+    }
+  }
+}

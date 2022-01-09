@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "bottom": "wildnature:blocks/trees/cherry/cherry_planks",
+    "top": "wildnature:blocks/trees/cherry/cherry_planks",
+    "side": "wildnature:blocks/trees/cherry/cherry_planks"
+  }
+}

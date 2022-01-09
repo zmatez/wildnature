@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "stage=0": {
+      "model": "wildnature:block/blueberry_bush"
+    },
+    "stage=1": {
+      "model": "wildnature:block/blueberry_bush_fruit_1"
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "bottom": "wildnature:blocks/rocks/slate_blue/slate_blue_polished",
+    "top": "wildnature:blocks/rocks/slate_blue/slate_blue_polished",
+    "side": "wildnature:blocks/rocks/slate_blue/slate_blue_polished"
+  }
+}

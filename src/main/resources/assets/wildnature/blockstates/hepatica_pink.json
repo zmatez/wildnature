@@ -1,0 +1,10 @@
+{
+    "variants": {
+      "flowering=false": {
+          "model": "wildnature:block/hepatica_pink"
+      },
+      "flowering=true": {
+          "model": "wildnature:block/hepatica_pink_flowering"
+      }
+  }
+}

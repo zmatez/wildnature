@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "wildnature:block/fly_trap"
+      },
+      {
+        "model": "wildnature:block/fly_trap",
+        "y": 90
+      },
+      {
+        "model": "wildnature:block/fly_trap",
+        "y": 180
+      },
+      {
+        "model": "wildnature:block/fly_trap",
+        "y": 270
+      }
+    ]
+  }
+}

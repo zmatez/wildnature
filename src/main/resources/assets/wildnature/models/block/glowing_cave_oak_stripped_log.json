@@ -1,0 +1,7 @@
+{
+    "parent": "block/cube_column",
+    "textures": {
+        "end": "wildnature:blocks/trees/glowing_cave_oak/glowing_cave_oak_stripped_log_top",
+        "side": "wildnature:blocks/trees/glowing_cave_oak/glowing_cave_oak_stripped_log"
+    }
+}

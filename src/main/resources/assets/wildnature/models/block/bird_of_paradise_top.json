@@ -1,0 +1,6 @@
+{
+    "parent": "block/tinted_cross",
+    "textures": {
+        "cross": "wildnature:blocks/plants/surface/bird_of_paradise/bird_of_paradise_stalk_top"
+    }
+}

@@ -1,0 +1,10 @@
+{
+    "variants": {
+      "flowering=false": {
+          "model": "wildnature:block/catnip_purple"
+      },
+      "flowering=true": {
+          "model": "wildnature:block/catnip_purple_flowering"
+      }
+  }
+}

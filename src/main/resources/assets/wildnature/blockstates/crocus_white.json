@@ -1,0 +1,10 @@
+{
+    "variants": {
+      "flowering=false": {
+          "model": "wildnature:block/crocus_white"
+      },
+      "flowering=true": {
+          "model": "wildnature:block/crocus_white_flowering"
+      }
+  }
+}

@@ -1,0 +1,6 @@
+{
+    "parent": "block/tinted_cross",
+    "textures": {
+        "cross": "wildnature:blocks/plants/surface/giant_hogweed/giant_hogweed_stalk_top"
+    }
+}

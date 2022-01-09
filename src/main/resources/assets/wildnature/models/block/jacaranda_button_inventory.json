@@ -1,0 +1,6 @@
+{
+   "parent": "minecraft:block/button_inventory",
+   "textures": {
+     "texture": "wildnature:blocks/trees/jacaranda/jacaranda_planks"
+   }
+ }

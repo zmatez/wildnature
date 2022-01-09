@@ -1,0 +1,10 @@
+{
+    "variants": {
+      "flowering=false": {
+          "model": "wildnature:block/radissium_red"
+      },
+      "flowering=true": {
+          "model": "wildnature:block/radissium_red_flowering"
+      }
+  }
+}

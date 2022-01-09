@@ -1,0 +1,10 @@
+{
+    "variants": {
+      "flowering=false": {
+          "model": "wildnature:block/geranium_white"
+      },
+      "flowering=true": {
+          "model": "wildnature:block/geranium_white_flowering"
+      }
+  }
+}

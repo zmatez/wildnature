@@ -1,0 +1,7 @@
+{
+    "parent": "wildnature:block/branch_inventory",
+    "textures": {
+        "log": "wildnature:blocks/trees/willow/willow_log",
+        "inside": "wildnature:blocks/trees/willow/willow_log_top"
+    }
+}

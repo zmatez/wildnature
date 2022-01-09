@@ -1,0 +1,10 @@
+{
+    "variants": {
+      "flowering=false": {
+          "model": "wildnature:block/anthurium_white"
+      },
+      "flowering=true": {
+          "model": "wildnature:block/anthurium_white_flowering"
+      }
+  }
+}

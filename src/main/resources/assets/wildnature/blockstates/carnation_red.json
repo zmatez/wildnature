@@ -1,0 +1,10 @@
+{
+    "variants": {
+      "flowering=false": {
+          "model": "wildnature:block/carnation_red"
+      },
+      "flowering=true": {
+          "model": "wildnature:block/carnation_red_flowering"
+      }
+  }
+}

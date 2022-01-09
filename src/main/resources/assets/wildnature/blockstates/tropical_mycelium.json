@@ -1,0 +1,24 @@
+{
+  "variants": {
+    "snowy=false": [
+      {
+        "model": "wildnature:block/tropical_mycelium"
+      },
+      {
+        "model": "wildnature:block/tropical_mycelium",
+        "y": 90
+      },
+      {
+        "model": "wildnature:block/tropical_mycelium",
+        "y": 180
+      },
+      {
+        "model": "wildnature:block/tropical_mycelium",
+        "y": 270
+      }
+    ],
+    "snowy=true": {
+      "model": "wildnature:block/tropical_mycelium_snow"
+    }
+  }
+}

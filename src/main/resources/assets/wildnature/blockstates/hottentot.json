@@ -1,0 +1,10 @@
+{
+    "variants": {
+      "flowering=false": {
+          "model": "wildnature:block/hottentot"
+      },
+      "flowering=true": {
+          "model": "wildnature:block/hottentot_flowering"
+      }
+  }
+}

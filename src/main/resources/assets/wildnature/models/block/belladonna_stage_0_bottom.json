@@ -1,0 +1,8 @@
+{
+    "parent": "wildnature:block/flowering_cross",
+    "textures": {
+        "colored": "wildnature:blocks/fruit_bushes/belladonna/belladonna_stalk_bottom",
+        "greyscale": "wildnature:blocks/fruit_bushes/belladonna/belladonna_leaves_bottom",
+        "particle": "wildnature:blocks/fruit_bushes/belladonna/belladonna_leaves_bottom"
+    }
+}

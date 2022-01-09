@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "bottom": "wildnature:blocks/trees/ebony/ebony_planks",
+    "top": "wildnature:blocks/trees/ebony/ebony_planks",
+    "side": "wildnature:blocks/trees/ebony/ebony_planks"
+  }
+}

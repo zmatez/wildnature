@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/wall_inventory",
+  "textures": {
+    "wall": "wildnature:blocks/rocks/marble/marble_bricks_mossy"
+  }
+}

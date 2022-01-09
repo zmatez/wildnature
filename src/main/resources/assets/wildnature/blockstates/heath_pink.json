@@ -1,0 +1,10 @@
+{
+    "variants": {
+      "flowering=false": {
+          "model": "wildnature:block/heath_pink"
+      },
+      "flowering=true": {
+          "model": "wildnature:block/heath_pink_flowering"
+      }
+  }
+}

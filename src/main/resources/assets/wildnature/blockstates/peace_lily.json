@@ -1,0 +1,10 @@
+{
+    "variants": {
+      "flowering=false": {
+          "model": "wildnature:block/peace_lily"
+      },
+      "flowering=true": {
+          "model": "wildnature:block/peace_lily_flowering"
+      }
+  }
+}

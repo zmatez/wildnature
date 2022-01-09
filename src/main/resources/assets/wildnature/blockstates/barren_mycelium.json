@@ -1,0 +1,24 @@
+{
+  "variants": {
+    "snowy=false": [
+      {
+        "model": "wildnature:block/barren_mycelium"
+      },
+      {
+        "model": "wildnature:block/barren_mycelium",
+        "y": 90
+      },
+      {
+        "model": "wildnature:block/barren_mycelium",
+        "y": 180
+      },
+      {
+        "model": "wildnature:block/barren_mycelium",
+        "y": 270
+      }
+    ],
+    "snowy=true": {
+      "model": "wildnature:block/barren_mycelium_snow"
+    }
+  }
+}

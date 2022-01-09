@@ -1,0 +1,6 @@
+{
+   "parent": "minecraft:block/button_pressed",
+   "textures": {
+     "texture": "wildnature:blocks/trees/maple/maple_planks"
+   }
+ }

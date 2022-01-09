@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_top_rh",
+  "textures": {
+    "top": "wildnature:blocks/trees/maple/maple_door_top",
+    "bottom": "wildnature:blocks/trees/maple/maple_door_bottom"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/wall_inventory",
+  "textures": {
+    "wall": "wildnature:blocks/rocks/quartzite/quartzite_polished"
+  }
+}

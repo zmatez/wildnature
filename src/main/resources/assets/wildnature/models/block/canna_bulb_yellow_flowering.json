@@ -1,0 +1,8 @@
+{
+    "parent": "wildnature:block/flowering_cross",
+    "textures": {
+        "colored": "wildnature:blocks/plants/surface/canna_bulb/canna_bulb_yellow",
+        "greyscale": "wildnature:blocks/plants/surface/canna_bulb/canna_bulb_stalk",
+        "particle": "wildnature:blocks/plants/surface/canna_bulb/canna_bulb_stalk"
+    }
+}

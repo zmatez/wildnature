@@ -1,0 +1,24 @@
+{
+  "variants": {
+    "snowy=false": [
+      {
+        "model": "wildnature:block/tropical_podzol"
+      },
+      {
+        "model": "wildnature:block/tropical_podzol",
+        "y": 90
+      },
+      {
+        "model": "wildnature:block/tropical_podzol",
+        "y": 180
+      },
+      {
+        "model": "wildnature:block/tropical_podzol",
+        "y": 270
+      }
+    ],
+    "snowy=true": {
+      "model": "wildnature:block/tropical_podzol_snow"
+    }
+  }
+}

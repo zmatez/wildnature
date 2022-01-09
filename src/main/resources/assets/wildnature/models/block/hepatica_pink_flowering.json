@@ -1,0 +1,8 @@
+{
+    "parent": "wildnature:block/flowering_cross",
+    "textures": {
+        "colored": "wildnature:blocks/plants/surface/hepatica/hepatica_pink",
+        "greyscale": "wildnature:blocks/plants/surface/hepatica/hepatica_stalk",
+        "particle": "wildnature:blocks/plants/surface/hepatica/hepatica_stalk"
+    }
+}

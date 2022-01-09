@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "stage=0": {
+      "model": "wildnature:block/raspberry_leaves"
+    },
+    "stage=1": {
+      "model": "wildnature:block/raspberry_leaves_fruit_1"
+    }
+  }
+}

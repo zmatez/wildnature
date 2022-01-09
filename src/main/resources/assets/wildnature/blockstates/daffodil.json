@@ -1,0 +1,10 @@
+{
+    "variants": {
+      "flowering=false": {
+          "model": "wildnature:block/daffodil"
+      },
+      "flowering=true": {
+          "model": "wildnature:block/daffodil_flowering"
+      }
+  }
+}

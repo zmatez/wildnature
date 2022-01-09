@@ -1,0 +1,8 @@
+{
+    "parent": "wildnature:block/flowering_cross",
+    "textures": {
+        "colored": "wildnature:blocks/plants/surface/poison_ivy/poison_ivy",
+        "greyscale": "wildnature:blocks/plants/surface/poison_ivy/poison_ivy_stalk",
+        "particle": "wildnature:blocks/plants/surface/poison_ivy/poison_ivy_stalk"
+    }
+}

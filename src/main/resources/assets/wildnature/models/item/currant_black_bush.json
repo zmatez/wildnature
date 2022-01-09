@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "wildnature:blocks/fruit_bushes/currant/currant_black_bush_item"
+  }
+}

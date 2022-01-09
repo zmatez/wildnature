@@ -1,0 +1,6 @@
+{
+    "parent": "block/tinted_cross",
+    "textures": {
+        "cross": "wildnature:blocks/plants/surface/hollyhock/hollyhock_stalk_top"
+    }
+}

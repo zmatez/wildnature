@@ -1,0 +1,12 @@
+{
+    "parent": "wildnature:block/wisteria_side",
+    "textures": {
+        "0": "wildnature:blocks/plants/surface/wisteria/wisteria_pink_attached_left_top",
+        "1": "wildnature:blocks/plants/surface/wisteria/wisteria_pink_attached_right_top",
+        "2": "wildnature:blocks/plants/surface/wisteria/wisteria_pink_left_bottom",
+        "3": "wildnature:blocks/plants/surface/wisteria/wisteria_pink_right_bottom",
+        "4": "wildnature:blocks/plants/surface/wisteria/wisteria_pink_side_bottom",
+        "5": "wildnature:blocks/plants/surface/wisteria/wisteria_pink_side_top",
+        "particle": "wildnature:blocks/plants/surface/wisteria/wisteria_pink_attached_left_top"
+    }
+}

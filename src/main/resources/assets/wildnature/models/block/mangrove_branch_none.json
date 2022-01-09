@@ -1,0 +1,7 @@
+{
+    "parent": "wildnature:block/branch_none",
+    "textures": {
+        "log": "wildnature:blocks/trees/mangrove/mangrove_log",
+        "inside": "wildnature:blocks/trees/mangrove/mangrove_log_top"
+    }
+}

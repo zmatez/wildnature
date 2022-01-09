@@ -1,0 +1,10 @@
+{
+    "variants": {
+      "flowering=false": {
+          "model": "wildnature:block/spidergrass_white"
+      },
+      "flowering=true": {
+          "model": "wildnature:block/spidergrass_white_flowering"
+      }
+  }
+}

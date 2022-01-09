@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "wildnature:blocks/plants/surface/poison_ivy/poison_ivy_item"
+  }
+}

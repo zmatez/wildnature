@@ -1,0 +1,10 @@
+{
+    "variants": {
+      "flowering=false": {
+          "model": "wildnature:block/marigold_orange"
+      },
+      "flowering=true": {
+          "model": "wildnature:block/marigold_orange_flowering"
+      }
+  }
+}

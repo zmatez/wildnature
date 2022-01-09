@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "wildnature:blocks/plants/surface/bird_of_paradise/bird_of_paradise_item"
+  }
+}

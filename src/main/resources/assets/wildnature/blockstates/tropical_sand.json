@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "wildnature:block/tropical_sand"
+      },
+      {
+        "model": "wildnature:block/tropical_sand",
+        "y": 90
+      },
+      {
+        "model": "wildnature:block/tropical_sand",
+        "y": 180
+      },
+      {
+        "model": "wildnature:block/tropical_sand",
+        "y": 270
+      }
+    ]
+  }
+}

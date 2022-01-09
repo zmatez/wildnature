@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "wildnature:block/mud"
+      },
+      {
+        "model": "wildnature:block/mud",
+        "y": 90
+      },
+      {
+        "model": "wildnature:block/mud",
+        "y": 180
+      },
+      {
+        "model": "wildnature:block/mud",
+        "y": 270
+      }
+    ]
+  }
+}

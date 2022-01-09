@@ -1,0 +1,10 @@
+{
+    "variants": {
+      "flowering=false": {
+          "model": "wildnature:block/chamomile"
+      },
+      "flowering=true": {
+          "model": "wildnature:block/chamomile_flowering"
+      }
+  }
+}

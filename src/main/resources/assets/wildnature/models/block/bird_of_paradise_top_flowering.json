@@ -1,0 +1,8 @@
+{
+    "parent": "wildnature:block/flowering_cross",
+    "textures": {
+        "colored": "wildnature:blocks/plants/surface/bird_of_paradise/bird_of_paradise_top",
+        "greyscale": "wildnature:blocks/plants/surface/bird_of_paradise/bird_of_paradise_stalk_top",
+        "particle": "wildnature:blocks/plants/surface/bird_of_paradise/bird_of_paradise_stalk_top"
+    }
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/leaves",
+  "textures": {
+    "all": "wildnature:blocks/hawthornhawthorn/hawthorn_leaves_fruit_3"
+  }
+}

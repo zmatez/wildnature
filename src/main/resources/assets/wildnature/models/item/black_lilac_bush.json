@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "wildnature:blocks/fruit_bushes/black_lilac/black_lilac_bush_item"
+  }
+}

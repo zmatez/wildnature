@@ -1,0 +1,13 @@
+{
+    "variants": {
+      "half=lower": {
+          "model": "wildnature:block/reed_bottom"
+      },
+      "half=middle": {
+          "model": "wildnature:block/reed_middle"
+      },
+      "half=upper": {
+          "model": "wildnature:block/reed_top"
+      }
+  }
+}

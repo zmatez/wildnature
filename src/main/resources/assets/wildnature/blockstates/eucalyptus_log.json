@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "axis=y":  { "model": "wildnature:block/eucalyptus_log" },
+        "axis=z":   { "model": "wildnature:block/eucalyptus_log", "x": 90 },
+        "axis=x":   { "model": "wildnature:block/eucalyptus_log", "x": 90, "y": 90 }
+    }
+}

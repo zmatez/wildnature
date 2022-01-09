@@ -1,0 +1,14 @@
+{
+    "parent": "wildnature:block/big_bush",
+    "textures": {
+        "stemBL": "wildnature:blocks/plants/surface/tamarisk/tamarisk_stalk_left_bottom",
+		"stemTL": "wildnature:blocks/plants/surface/tamarisk/tamarisk_stalk_left_top",
+		"stemBR": "wildnature:blocks/plants/surface/tamarisk/tamarisk_stalk_right_bottom",
+		"stemTR": "wildnature:blocks/plants/surface/tamarisk/tamarisk_stalk_right_top",
+		"greyscaledBL": "wildnature:blocks/plants/surface/tamarisk/tamarisk_leaves_left_bottom",
+		"greyscaledTL": "wildnature:blocks/plants/surface/tamarisk/tamarisk_leaves_left_top",
+		"greyscaledBR": "wildnature:blocks/plants/surface/tamarisk/tamarisk_leaves_right_bottom",
+		"greyscaledTR": "wildnature:blocks/plants/surface/tamarisk/tamarisk_leaves_right_top",
+		"particle":"wildnature:blocks/plants/surface/tamarisk/tamarisk_leaves_right_top"
+	}
+}

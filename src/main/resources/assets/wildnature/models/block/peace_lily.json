@@ -1,0 +1,6 @@
+{
+    "parent": "block/tinted_cross",
+    "textures": {
+        "cross": "wildnature:blocks/plants/surface/peace_lily/peace_lily_stalk"
+    }
+}

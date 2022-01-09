@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "wildnature:blocks/rocks/limestone/limestone_bricks_mossy",
+    "top": "wildnature:blocks/rocks/limestone/limestone_bricks_mossy",
+    "side": "wildnature:blocks/rocks/limestone/limestone_bricks_mossy"
+  }
+}

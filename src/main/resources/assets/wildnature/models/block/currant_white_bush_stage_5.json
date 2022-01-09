@@ -1,0 +1,8 @@
+{
+    "parent": "wildnature:block/flowering_cross",
+    "textures": {
+        "colored": "wildnature:blocks/fruit_bushes/currant/currant_bush_stalk_stage_5_white",
+        "greyscale": "wildnature:blocks/fruit_bushes/currant/currant_bush_stage_4",
+        "particle": "wildnature:blocks/fruit_bushes/currant/currant_bush_stage_4"
+    }
+}

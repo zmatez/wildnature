@@ -1,0 +1,10 @@
+{
+    "variants": {
+      "flowering=false": {
+          "model": "wildnature:block/hyacinth_light_blue"
+      },
+      "flowering=true": {
+          "model": "wildnature:block/hyacinth_light_blue_flowering"
+      }
+  }
+}

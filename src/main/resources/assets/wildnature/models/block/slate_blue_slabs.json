@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "wildnature:blocks/rocks/slate_blue/slate_blue",
+    "top": "wildnature:blocks/rocks/slate_blue/slate_blue",
+    "side": "wildnature:blocks/rocks/slate_blue/slate_blue"
+  }
+}

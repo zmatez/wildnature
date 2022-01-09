@@ -1,0 +1,8 @@
+{
+    "parent": "wildnature:block/flowering_cross",
+    "textures": {
+        "colored": "wildnature:blocks/plants/surface/marigold/marigold_red",
+        "greyscale": "wildnature:blocks/plants/surface/marigold/marigold_stalk",
+        "particle": "wildnature:blocks/plants/surface/marigold/marigold_stalk"
+    }
+}

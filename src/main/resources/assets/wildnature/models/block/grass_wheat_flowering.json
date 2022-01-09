@@ -1,0 +1,8 @@
+{
+    "parent": "wildnature:block/flowering_cross",
+    "textures": {
+        "colored": "wildnature:blocks/plants/surface/grass/grass_wheat",
+        "greyscale": "wildnature:blocks/plants/surface/grass/grass_wheat_stalk",
+        "particle": "wildnature:blocks/plants/surface/grass/grass_wheat_stalk"
+    }
+}

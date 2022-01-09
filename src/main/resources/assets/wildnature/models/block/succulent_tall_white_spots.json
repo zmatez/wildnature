@@ -1,0 +1,6 @@
+{
+    "parent": "wildnature:block/succulent_tall",
+    "textures": {
+        "texture": "wildnature:blocks/plants/surface/succulent/succulent_white_spots"
+	}
+}

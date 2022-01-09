@@ -1,0 +1,7 @@
+{
+    "parent": "block/cube_column",
+    "textures": {
+        "end": "wildnature:blocks/trees/beech/beech_log",
+        "side": "wildnature:blocks/trees/beech/beech_log"
+    }
+}

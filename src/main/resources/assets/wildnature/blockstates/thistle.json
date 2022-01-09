@@ -1,0 +1,10 @@
+{
+    "variants": {
+      "flowering=false": {
+          "model": "wildnature:block/thistle"
+      },
+      "flowering=true": {
+          "model": "wildnature:block/thistle_flowering"
+      }
+  }
+}

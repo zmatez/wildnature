@@ -1,0 +1,7 @@
+{
+    "parent": "wildnature:block/branch_side",
+    "textures": {
+        "log": "wildnature:blocks/trees/glowing_cave_oak/glowing_cave_oak_log",
+        "inside": "wildnature:blocks/trees/glowing_cave_oak/glowing_cave_oak_log_top"
+    }
+}

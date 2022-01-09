@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "wildnature:block/gneiss_slabs"
+    },
+    "type=double": {
+      "model": "wildnature:block/gneiss"
+    },
+    "type=top": {
+      "model": "wildnature:block/gneiss_slabs_top"
+    }
+  }
+}

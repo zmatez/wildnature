@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "wildnature:blocks/plants/surface/canna_bulb/canna_bulb_pink_item"
+  }
+}

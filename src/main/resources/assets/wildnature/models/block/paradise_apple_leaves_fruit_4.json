@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/leaves",
+  "textures": {
+    "all": "wildnature:blocks/trees/apple/paradise_apple_leaves_fruit_4"
+  }
+}

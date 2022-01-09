@@ -1,0 +1,6 @@
+{
+    "parent": "block/tinted_cross",
+    "textures": {
+        "cross": "wildnature:blocks/plants/surface/red_sand_verbena/red_sand_verbena_stalk"
+    }
+}

@@ -1,0 +1,10 @@
+{
+    "variants": {
+      "flowering=false": {
+          "model": "wildnature:block/red_sand_verbena"
+      },
+      "flowering=true": {
+          "model": "wildnature:block/red_sand_verbena_flowering"
+      }
+  }
+}

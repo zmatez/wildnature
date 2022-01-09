@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/fence_post",
+  "textures": {
+    "texture": "wildnature:blocks/trees/glowing_cave_oak/glowing_cave_oak_planks"
+  }
+}

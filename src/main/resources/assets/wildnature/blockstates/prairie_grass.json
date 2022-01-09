@@ -1,0 +1,10 @@
+{
+    "variants": {
+      "flowering=false": {
+          "model": "wildnature:block/prairie_grass"
+      },
+      "flowering=true": {
+          "model": "wildnature:block/prairie_grass_flowering"
+      }
+  }
+}

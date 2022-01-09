@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "stage=0": {
+      "model": "wildnature:block/jacaranda_leaves"
+    },
+    "stage=1": {
+      "model": "wildnature:block/jacaranda_leaves_fruit_1"
+    },
+    "stage=2": {
+      "model": "wildnature:block/jacaranda_leaves_fruit_2"
+    },
+    "stage=3": {
+      "model": "wildnature:block/jacaranda_leaves_fruit_3"
+    }
+  }
+}

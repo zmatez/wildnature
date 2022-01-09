@@ -1,0 +1,6 @@
+{
+    "parent": "block/tinted_cross",
+    "textures": {
+        "cross": "wildnature:blocks/fruit_bushes/wild_strawberry/wild_strawberry_bush_stage_1"
+    }
+}

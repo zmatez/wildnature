@@ -1,0 +1,256 @@
+{
+    "multipart": [
+      {
+        "when": {
+          "up": "true",
+          "flowering": "false"
+        },
+        "apply": {
+          "model": "wildnature:block/rosevine_yellow",
+          "x": 270,
+          "uvlock": true
+        }
+      },
+      {
+        "when": {
+          "up": "true",
+          "flowering": "true"
+        },
+        "apply": {
+          "model": "wildnature:block/rosevine_yellow_flowering",
+          "x": 270,
+          "uvlock": true
+        }
+      },
+      {
+        "when": {
+          "up": "false",
+          "north": "false",
+          "west": "false",
+          "south": "false",
+          "east": "false",
+          "flowering": "false"
+        },
+        "apply": {
+          "model": "wildnature:block/rosevine_yellow",
+          "x": 270,
+          "uvlock": true
+        }
+      },
+      {
+        "when": {
+          "up": "false",
+          "north": "false",
+          "west": "false",
+          "south": "false",
+          "east": "false",
+          "flowering": "true"
+        },
+        "apply": {
+          "model": "wildnature:block/rosevine_yellow_flowering",
+          "x": 270,
+          "uvlock": true
+        }
+      },
+      {
+        "when": {
+          "north": "true",
+          "flowering": "false"
+        },
+        "apply": {
+          "model": "wildnature:block/rosevine_yellow"
+        }
+      },
+      {
+        "when": {
+          "north": "true",
+          "flowering": "true"
+        },
+        "apply": {
+          "model": "wildnature:block/rosevine_yellow_flowering"
+        }
+      },
+      {
+        "when": {
+          "up": "false",
+          "north": "false",
+          "west": "false",
+          "south": "false",
+          "east": "false",
+          "flowering": "false"
+        },
+        "apply": {
+          "model": "wildnature:block/rosevine_yellow"
+        }
+      },
+      {
+        "when": {
+          "up": "false",
+          "north": "false",
+          "west": "false",
+          "south": "false",
+          "east": "false",
+          "flowering": "true"
+        },
+        "apply": {
+          "model": "wildnature:block/rosevine_yellow_flowering"
+        }
+      },
+      {
+        "when": {
+          "west": "true",
+          "flowering": "false"
+        },
+        "apply": {
+          "model": "wildnature:block/rosevine_yellow",
+          "y": 270,
+          "uvlock": true
+        }
+      },
+      {
+        "when": {
+          "west": "true",
+          "flowering": "true"
+        },
+        "apply": {
+          "model": "wildnature:block/rosevine_yellow_flowering",
+          "y": 270,
+          "uvlock": true
+        }
+      },
+      {
+        "when": {
+          "up": "false",
+          "north": "false",
+          "west": "false",
+          "south": "false",
+          "east": "false",
+          "flowering": "false"
+        },
+        "apply": {
+          "model": "wildnature:block/rosevine_yellow",
+          "y": 270,
+          "uvlock": true
+        }
+      },
+      {
+        "when": {
+          "up": "false",
+          "north": "false",
+          "west": "false",
+          "south": "false",
+          "east": "false",
+          "flowering": "true"
+        },
+        "apply": {
+          "model": "wildnature:block/rosevine_yellow_flowering",
+          "y": 270,
+          "uvlock": true
+        }
+      },
+      {
+        "when": {
+          "south": "true",
+          "flowering": "false"
+        },
+        "apply": {
+          "model": "wildnature:block/rosevine_yellow",
+          "y": 180,
+          "uvlock": true
+        }
+      },
+      {
+        "when": {
+          "south": "true",
+          "flowering": "true"
+        },
+        "apply": {
+          "model": "wildnature:block/rosevine_yellow_flowering",
+          "y": 180,
+          "uvlock": true
+        }
+      },
+      {
+        "when": {
+          "up": "false",
+          "north": "false",
+          "west": "false",
+          "south": "false",
+          "east": "false",
+          "flowering": "false"
+        },
+        "apply": {
+          "model": "wildnature:block/rosevine_yellow",
+          "y": 180,
+          "uvlock": true
+        }
+      },
+      {
+        "when": {
+          "up": "false",
+          "north": "false",
+          "west": "false",
+          "south": "false",
+          "east": "false",
+          "flowering": "true"
+        },
+        "apply": {
+          "model": "wildnature:block/rosevine_yellow_flowering",
+          "y": 180,
+          "uvlock": true
+        }
+      },
+      {
+        "when": {
+          "east": "true",
+          "flowering": "false"
+        },
+        "apply": {
+          "model": "wildnature:block/rosevine_yellow",
+          "y": 90,
+          "uvlock": true
+        }
+      },
+      {
+        "when": {
+          "east": "true",
+          "flowering": "true"
+        },
+        "apply": {
+          "model": "wildnature:block/rosevine_yellow_flowering",
+          "y": 90,
+          "uvlock": true
+        }
+      },
+      {
+        "when": {
+          "up": "false",
+          "north": "false",
+          "west": "false",
+          "south": "false",
+          "east": "false",
+          "flowering": "false"
+        },
+        "apply": {
+          "model": "wildnature:block/rosevine_yellow",
+          "y": 90,
+          "uvlock": true
+        }
+      },
+      {
+        "when": {
+          "up": "false",
+          "north": "false",
+          "west": "false",
+          "south": "false",
+          "east": "false",
+          "flowering": "true"
+        },
+        "apply": {
+          "model": "wildnature:block/rosevine_yellow_flowering",
+          "y": 90,
+          "uvlock": true
+        }
+      }
+    ]
+  }

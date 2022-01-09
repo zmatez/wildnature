@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/leaves",
+  "textures": {
+    "all": "wildnature:blocks/trees/citrus/grapefruit_leaves_fruit_6"
+  }
+}

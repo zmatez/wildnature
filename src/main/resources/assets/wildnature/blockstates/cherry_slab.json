@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "wildnature:block/cherry_slab"
+    },
+    "type=double": {
+      "model": "wildnature:block/cherry_planks"
+    },
+    "type=top": {
+      "model": "wildnature:block/cherry_slab_top"
+    }
+  }
+}

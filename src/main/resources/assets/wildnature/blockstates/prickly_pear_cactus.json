@@ -1,0 +1,22 @@
+{
+    "variants": {
+      "stage=0": [
+          { "model": "wildnature:block/prickly_pear_cactus_stage_1" },
+          { "model": "wildnature:block/prickly_pear_cactus_stage_1","y": 90},
+          { "model": "wildnature:block/prickly_pear_cactus_stage_1","y": 180 },
+          { "model": "wildnature:block/prickly_pear_cactus_stage_1","y": 270 }
+      ],
+      "stage=1": [
+          { "model": "wildnature:block/prickly_pear_cactus_stage_2" },
+          { "model": "wildnature:block/prickly_pear_cactus_stage_2","y": 90},
+          { "model": "wildnature:block/prickly_pear_cactus_stage_2","y": 180 },
+          { "model": "wildnature:block/prickly_pear_cactus_stage_2","y": 270 }
+      ],
+      "stage=2": [
+          { "model": "wildnature:block/prickly_pear_cactus_stage_3" },
+          { "model": "wildnature:block/prickly_pear_cactus_stage_3","y": 90},
+          { "model": "wildnature:block/prickly_pear_cactus_stage_3","y": 180 },
+          { "model": "wildnature:block/prickly_pear_cactus_stage_3","y": 270 }
+      ]
+  }
+}

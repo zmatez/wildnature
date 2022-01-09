@@ -1,0 +1,10 @@
+{
+    "variants": {
+      "flowering=false": {
+          "model": "wildnature:block/grass_wheat"
+      },
+      "flowering=true": {
+          "model": "wildnature:block/grass_wheat_flowering"
+      }
+  }
+}

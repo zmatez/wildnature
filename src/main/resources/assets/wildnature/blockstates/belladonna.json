@@ -1,0 +1,28 @@
+{
+    "variants": {
+      "stage=0,half=lower": {
+          "model": "wildnature:block/belladonna_stage_0_bottom"
+      },
+      "stage=0,half=upper": {
+          "model": "wildnature:block/belladonna_stage_0_top"
+      },
+      "stage=1,half=lower": {
+          "model": "wildnature:block/belladonna_stage_1_bottom"
+      },
+      "stage=1,half=upper": {
+          "model": "wildnature:block/belladonna_stage_1_top"
+      },
+      "stage=2,half=lower": {
+          "model": "wildnature:block/belladonna_stage_2_bottom"
+      },
+      "stage=2,half=upper": {
+          "model": "wildnature:block/belladonna_stage_2_top"
+      },
+      "stage=3,half=lower": {
+          "model": "wildnature:block/belladonna_stage_3_bottom"
+      },
+      "stage=3,half=upper": {
+          "model": "wildnature:block/belladonna_stage_3_top"
+      }
+  }
+}

@@ -1,0 +1,8 @@
+{
+    "parent": "wildnature:block/flowering_cross",
+    "textures": {
+        "colored": "wildnature:blocks/plants/surface/tansy/tansy_stalk",
+        "greyscale": "wildnature:blocks/plants/surface/tansy/tansy_leaves",
+        "particle": "wildnature:blocks/plants/surface/tansy/tansy_leaves"
+    }
+}

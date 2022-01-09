@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "wildnature:blocks/plants/surface/prairie_grass/prairie_grass_yellow_item"
+  }
+}

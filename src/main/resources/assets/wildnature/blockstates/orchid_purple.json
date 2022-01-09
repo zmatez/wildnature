@@ -1,0 +1,10 @@
+{
+    "variants": {
+      "flowering=false": {
+          "model": "wildnature:block/orchid_purple"
+      },
+      "flowering=true": {
+          "model": "wildnature:block/orchid_purple_flowering"
+      }
+  }
+}

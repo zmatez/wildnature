@@ -1,0 +1,8 @@
+{
+    "parent": "wildnature:block/flowering_cross",
+    "textures": {
+        "colored": "wildnature:blocks/plants/surface/chinese_lantern_flower/chinese_lantern_flower_stage_2_top",
+        "greyscale": "wildnature:blocks/plants/surface/chinese_lantern_flower/chinese_lantern_flower_stalk_top",
+        "particle": "wildnature:blocks/plants/surface/chinese_lantern_flower/chinese_lantern_flower_stalk_top"
+    }
+}

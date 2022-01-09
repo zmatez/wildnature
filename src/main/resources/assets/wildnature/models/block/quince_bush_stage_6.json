@@ -1,0 +1,8 @@
+{
+    "parent": "wildnature:block/flowering_cross",
+    "textures": {
+        "colored": "wildnature:blocks/fruit_bushes/quince/quince_bush_stage_6_overlay",
+        "greyscale": "wildnature:blocks/fruit_bushes/quince/quince_bush_stage_4",
+        "particle": "wildnature:blocks/fruit_bushes/quince/quince_bush_stage_4"
+    }
+}

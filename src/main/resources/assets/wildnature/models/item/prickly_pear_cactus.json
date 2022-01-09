@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "wildnature:blocks/plants/surface/prickly_pear_cactus/prickly_pear_cactus_item"
+  }
+}

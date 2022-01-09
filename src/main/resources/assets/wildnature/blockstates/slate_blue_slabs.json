@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "wildnature:block/slate_blue_slabs"
+    },
+    "type=double": {
+      "model": "wildnature:block/slate_blue"
+    },
+    "type=top": {
+      "model": "wildnature:block/slate_blue_slabs_top"
+    }
+  }
+}

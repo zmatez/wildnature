@@ -1,0 +1,10 @@
+{
+    "variants": {
+      "flowering=false": {
+          "model": "wildnature:block/violet_purple"
+      },
+      "flowering=true": {
+          "model": "wildnature:block/violet_purple_flowering"
+      }
+  }
+}

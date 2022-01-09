@@ -1,0 +1,8 @@
+{
+    "parent": "wildnature:block/flowering_cross",
+    "textures": {
+        "colored": "wildnature:blocks/plants/surface/honeysuckle/honeysuckle_stalk_bottom",
+        "greyscale": "wildnature:blocks/plants/surface/honeysuckle/honeysuckle_leaves_bottom",
+        "particle": "wildnature:blocks/plants/surface/honeysuckle/honeysuckle_leaves_bottom"
+    }
+}

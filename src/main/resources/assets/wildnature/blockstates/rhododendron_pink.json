@@ -1,0 +1,10 @@
+{
+    "variants": {
+      "flowering=false": {
+          "model": "wildnature:block/rhododendron_pink"
+      },
+      "flowering=true": {
+          "model": "wildnature:block/rhododendron_pink_flowering"
+      }
+  }
+}

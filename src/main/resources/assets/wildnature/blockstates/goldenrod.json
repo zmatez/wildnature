@@ -1,0 +1,16 @@
+{
+    "variants": {
+      "flowering=false,half=lower": {
+          "model": "wildnature:block/goldenrod_bottom"
+      },
+      "flowering=false,half=upper": {
+          "model": "wildnature:block/goldenrod_top"
+      },
+      "flowering=true,half=lower": {
+          "model": "wildnature:block/goldenrod_bottom_flowering"
+      },
+      "flowering=true,half=upper": {
+          "model": "wildnature:block/goldenrod_top_flowering"
+      }
+  }
+}

@@ -1,0 +1,8 @@
+{
+    "parent": "wildnature:block/flowering_cross",
+    "textures": {
+        "colored": "wildnature:blocks/plants/surface/azalea/azalea_orange",
+        "greyscale": "wildnature:blocks/plants/surface/azalea/azalea_stalk",
+        "particle": "wildnature:blocks/plants/surface/azalea/azalea_stalk"
+    }
+}

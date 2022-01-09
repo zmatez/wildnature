@@ -1,0 +1,8 @@
+{
+    "parent": "wildnature:block/flowering_cross",
+    "textures": {
+        "colored": "wildnature:blocks/plants/surface/snowdrop/snowdrop",
+        "greyscale": "wildnature:blocks/plants/surface/snowdrop/snowdrop_stalk",
+        "particle": "wildnature:blocks/plants/surface/snowdrop/snowdrop_stalk"
+    }
+}

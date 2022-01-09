@@ -1,0 +1,19 @@
+{
+ 	"textures": {
+ 		"particle": "#log"
+ 	},
+ 	"elements": [
+ 		{
+ 			"name": "Cube",
+ 			"from": [4, 4, 0],
+ 			"to": [12, 12, 4],
+ 			"faces": {
+ 				"north": {"uv": [4, 4, 12, 12], "texture": "#inside"},
+ 				"east": {"uv": [4, 4, 8, 12], "texture": "#log"},
+ 				"west": {"uv": [4, 4, 8, 12], "texture": "#log"},
+ 				"up": {"uv": [4, 4, 12, 8], "texture": "#log"},
+ 				"down": {"uv": [4, 4, 12, 8], "texture": "#log"}
+ 			}
+ 		}
+ 	]
+ }

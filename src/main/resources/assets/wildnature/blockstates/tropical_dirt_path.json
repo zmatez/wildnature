@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "wildnature:block/tropical_dirt_path"
+      },
+      {
+        "model": "wildnature:block/tropical_dirt_path",
+        "y": 90
+      },
+      {
+        "model": "wildnature:block/tropical_dirt_path",
+        "y": 180
+      },
+      {
+        "model": "wildnature:block/tropical_dirt_path",
+        "y": 270
+      }
+    ]
+  }
+}

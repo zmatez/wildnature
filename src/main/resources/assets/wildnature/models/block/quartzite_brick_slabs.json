@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "wildnature:blocks/rocks/quartzite/quartzite_bricks",
+    "top": "wildnature:blocks/rocks/quartzite/quartzite_bricks",
+    "side": "wildnature:blocks/rocks/quartzite/quartzite_bricks"
+  }
+}

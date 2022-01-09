@@ -1,0 +1,7 @@
+{
+    "parent": "wildnature:block/branch_inventory",
+    "textures": {
+        "log": "wildnature:blocks/trees/ebony/ebony_log",
+        "inside": "wildnature:blocks/trees/ebony/ebony_log_top"
+    }
+}

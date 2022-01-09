@@ -1,0 +1,8 @@
+{
+    "parent": "wildnature:block/flowering_cross_retinted",
+    "textures": {
+        "colored": "wildnature:blocks/plants/surface/shrub/shrub_stalk",
+        "grayscale": "wildnature:blocks/plants/surface/shrub/shrub_0",
+        "particle": "wildnature:blocks/plants/surface/shrub/shrub_0"
+    }
+}

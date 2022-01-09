@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "wildnature:block/redwood_slab"
+    },
+    "type=double": {
+      "model": "wildnature:block/redwood_planks"
+    },
+    "type=top": {
+      "model": "wildnature:block/redwood_slab_top"
+    }
+  }
+}

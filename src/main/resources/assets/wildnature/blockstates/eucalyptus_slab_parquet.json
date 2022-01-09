@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "wildnature:block/eucalyptus_slab_parquet"
+    },
+    "type=double": {
+      "model": "wildnature:block/eucalyptus_parquet"
+    },
+    "type=top": {
+      "model": "wildnature:block/eucalyptus_slab_parquet_top"
+    }
+  }
+}

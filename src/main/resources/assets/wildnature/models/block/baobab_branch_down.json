@@ -1,0 +1,7 @@
+{
+    "parent": "wildnature:block/branch_down",
+    "textures": {
+        "log": "wildnature:blocks/trees/baobab/baobab_log",
+        "inside": "wildnature:blocks/trees/baobab/baobab_log_top"
+    }
+}

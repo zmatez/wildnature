@@ -1,0 +1,9 @@
+{
+    "parent": "wildnature:block/flowering_cross_leaf",
+    "textures": {
+        "colored": "wildnature:blocks/plants/surface/crocus/crocus_purple_bottom",
+        "stalk": "wildnature:blocks/plants/surface/crocus/crocus_stalk_bottom",
+        "particle": "wildnature:blocks/plants/surface/crocus/crocus_stalk_bottom",
+        "leaves": "wildnature:blocks/plants/surface/crocus/crocus_leaves_bottom"
+    }
+}

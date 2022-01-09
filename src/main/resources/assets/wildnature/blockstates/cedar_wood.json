@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "axis=y":  { "model": "wildnature:block/cedar_wood" },
+        "axis=z":   { "model": "wildnature:block/cedar_wood", "x": 90 },
+        "axis=x":   { "model": "wildnature:block/cedar_wood", "x": 90, "y": 90 }
+    }
+}

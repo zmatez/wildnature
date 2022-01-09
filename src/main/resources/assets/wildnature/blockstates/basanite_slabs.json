@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "wildnature:block/basanite_slabs"
+    },
+    "type=double": {
+      "model": "wildnature:block/basanite"
+    },
+    "type=top": {
+      "model": "wildnature:block/basanite_slabs_top"
+    }
+  }
+}

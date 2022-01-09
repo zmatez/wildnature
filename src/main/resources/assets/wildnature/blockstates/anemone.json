@@ -1,0 +1,16 @@
+{
+    "variants": {
+      "stage=0": {
+          "model": "wildnature:block/anemone"
+      },
+      "stage=1": {
+          "model": "wildnature:block/anemone_stage_1"
+      },
+      "stage=2": {
+          "model": "wildnature:block/anemone_stage_2"
+      },
+      "stage=3": {
+          "model": "wildnature:block/anemone_stage_3"
+      }
+  }
+}

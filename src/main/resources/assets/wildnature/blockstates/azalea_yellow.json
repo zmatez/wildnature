@@ -1,0 +1,10 @@
+{
+    "variants": {
+      "flowering=false": {
+          "model": "wildnature:block/azalea_yellow"
+      },
+      "flowering=true": {
+          "model": "wildnature:block/azalea_yellow_flowering"
+      }
+  }
+}

@@ -1,0 +1,7 @@
+{
+    "parent": "wildnature:block/branch_side",
+    "textures": {
+        "log": "wildnature:blocks/trees/palm/palm_log",
+        "inside": "wildnature:blocks/trees/palm/palm_log_top"
+    }
+}

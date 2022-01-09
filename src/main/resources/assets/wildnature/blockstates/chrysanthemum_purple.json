@@ -1,0 +1,10 @@
+{
+    "variants": {
+      "flowering=false": {
+          "model": "wildnature:block/chrysanthemum_purple"
+      },
+      "flowering=true": {
+          "model": "wildnature:block/chrysanthemum_purple_flowering"
+      }
+  }
+}

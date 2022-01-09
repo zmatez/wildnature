@@ -1,0 +1,10 @@
+{
+    "variants": {
+      "flowering=false": {
+          "model": "wildnature:block/canna_bulb"
+      },
+      "flowering=true": {
+          "model": "wildnature:block/canna_bulb_flowering"
+      }
+  }
+}

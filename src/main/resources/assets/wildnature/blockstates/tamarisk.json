@@ -1,0 +1,10 @@
+{
+    "variants": {
+      "flowering=false": {
+          "model": "wildnature:block/tamarisk"
+      },
+      "flowering=true": {
+          "model": "wildnature:block/tamarisk_flowering"
+      }
+  }
+}

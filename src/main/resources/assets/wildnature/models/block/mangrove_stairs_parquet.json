@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "bottom": "wildnature:blocks/trees/mangrove/mangrove_parquet",
+    "top": "wildnature:blocks/trees/mangrove/mangrove_parquet",
+    "side": "wildnature:blocks/trees/mangrove/mangrove_parquet"
+  }
+}

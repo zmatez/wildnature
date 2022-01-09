@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "stage=0": {
+      "model": "wildnature:block/hawthorn_bush"
+    },
+    "stage=1": {
+      "model": "wildnature:block/hawthorn_bush_fruit_1"
+    },
+    "stage=2": {
+      "model": "wildnature:block/hawthorn_bush_fruit_2"
+    }
+  }
+}

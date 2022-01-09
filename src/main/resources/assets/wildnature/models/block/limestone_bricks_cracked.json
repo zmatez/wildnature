@@ -1,0 +1,6 @@
+{
+    "parent": "block/cube_all",
+    "textures": {
+        "all": "wildnature:blocks/rocks/limestone/limestone_bricks_cracked"
+    }
+}

@@ -1,0 +1,7 @@
+{
+    "parent": "wildnature:block/branch_up",
+    "textures": {
+        "log": "wildnature:blocks/trees/redwood/redwood_log",
+        "inside": "wildnature:blocks/trees/redwood/redwood_log_top"
+    }
+}

@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "wildnature:block/rosaceae_slab"
+    },
+    "type=double": {
+      "model": "wildnature:block/rosaceae_planks"
+    },
+    "type=top": {
+      "model": "wildnature:block/rosaceae_slab_top"
+    }
+  }
+}

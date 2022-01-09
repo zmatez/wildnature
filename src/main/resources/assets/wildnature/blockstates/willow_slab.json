@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "wildnature:block/willow_slab"
+    },
+    "type=double": {
+      "model": "wildnature:block/willow_planks"
+    },
+    "type=top": {
+      "model": "wildnature:block/willow_slab_top"
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "wildnature:block/desert_sand"
+      },
+      {
+        "model": "wildnature:block/desert_sand",
+        "y": 90
+      },
+      {
+        "model": "wildnature:block/desert_sand",
+        "y": 180
+      },
+      {
+        "model": "wildnature:block/desert_sand",
+        "y": 270
+      }
+    ]
+  }
+}

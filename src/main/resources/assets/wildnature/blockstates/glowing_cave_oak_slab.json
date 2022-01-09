@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "wildnature:block/glowing_cave_oak_slab"
+    },
+    "type=double": {
+      "model": "wildnature:block/glowing_cave_oak_planks"
+    },
+    "type=top": {
+      "model": "wildnature:block/glowing_cave_oak_slab_top"
+    }
+  }
+}

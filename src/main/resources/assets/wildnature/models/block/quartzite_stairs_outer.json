@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "bottom": "wildnature:blocks/rocks/quartzite/quartzite",
+    "top": "wildnature:blocks/rocks/quartzite/quartzite",
+    "side": "wildnature:blocks/rocks/quartzite/quartzite"
+  }
+}

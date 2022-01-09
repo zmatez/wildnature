@@ -1,0 +1,7 @@
+{
+    "parent": "wildnature:block/branch_leaves",
+    "textures": {
+        "branch": "wildnature:blocks/trees/other/dense_bush_bush",
+        "leaves": "wildnature:blocks/trees/other/dense_bush_bush"
+    }
+}

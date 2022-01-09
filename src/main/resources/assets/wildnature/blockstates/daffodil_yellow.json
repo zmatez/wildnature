@@ -1,0 +1,10 @@
+{
+    "variants": {
+      "flowering=false": {
+          "model": "wildnature:block/daffodil_yellow"
+      },
+      "flowering=true": {
+          "model": "wildnature:block/daffodil_yellow_flowering"
+      }
+  }
+}

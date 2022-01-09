@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "wildnature:block/quicksand"
+      },
+      {
+        "model": "wildnature:block/quicksand",
+        "y": 90
+      },
+      {
+        "model": "wildnature:block/quicksand",
+        "y": 180
+      },
+      {
+        "model": "wildnature:block/quicksand",
+        "y": 270
+      }
+    ]
+  }
+}

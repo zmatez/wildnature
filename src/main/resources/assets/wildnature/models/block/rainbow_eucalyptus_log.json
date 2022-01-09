@@ -1,0 +1,7 @@
+{
+    "parent": "block/cube_column",
+    "textures": {
+        "end": "wildnature:blocks/trees/eucalyptus/rainbow_eucalyptus_log_top",
+        "side": "wildnature:blocks/trees/eucalyptus/rainbow_eucalyptus_log"
+    }
+}

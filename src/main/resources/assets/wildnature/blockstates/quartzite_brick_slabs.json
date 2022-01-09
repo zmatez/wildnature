@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "wildnature:block/quartzite_brick_slabs"
+    },
+    "type=double": {
+      "model": "wildnature:block/quartzite_bricks"
+    },
+    "type=top": {
+      "model": "wildnature:block/quartzite_brick_slabs_top"
+    }
+  }
+}

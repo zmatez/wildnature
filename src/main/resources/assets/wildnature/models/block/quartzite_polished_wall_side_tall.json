@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/template_wall_side_tall",
+  "textures": {
+    "wall": "wildnature:blocks/rocks/quartzite/quartzite_polished"
+  }
+}

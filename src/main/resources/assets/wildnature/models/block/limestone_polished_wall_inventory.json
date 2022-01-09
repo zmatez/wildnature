@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/wall_inventory",
+  "textures": {
+    "wall": "wildnature:blocks/rocks/limestone/limestone_polished"
+  }
+}

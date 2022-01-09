@@ -1,0 +1,9 @@
+{
+    "parent": "wildnature:block/flowering_cross_leaf",
+    "textures": {
+        "colored": "wildnature:blocks/plants/surface/clematis/clematis_purple",
+        "stalk": "wildnature:blocks/plants/surface/clematis/clematis_stalk",
+        "particle": "wildnature:blocks/plants/surface/clematis/clematis_stalk",
+        "leaves": "wildnature:blocks/plants/surface/clematis/clematis_leaves"
+    }
+}

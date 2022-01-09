@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "wildnature:blocks/rocks/basanite/basanite",
+    "top": "wildnature:blocks/rocks/basanite/basanite",
+    "side": "wildnature:blocks/rocks/basanite/basanite"
+  }
+}

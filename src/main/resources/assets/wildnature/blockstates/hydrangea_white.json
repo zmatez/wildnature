@@ -1,0 +1,10 @@
+{
+    "variants": {
+      "flowering=false": {
+          "model": "wildnature:block/hydrangea_white"
+      },
+      "flowering=true": {
+          "model": "wildnature:block/hydrangea_white_flowering"
+      }
+  }
+}

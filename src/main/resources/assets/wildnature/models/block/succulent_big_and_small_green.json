@@ -1,0 +1,6 @@
+{
+    "parent": "wildnature:block/succulent_big_and_small",
+    "textures": {
+        "texture": "wildnature:blocks/plants/surface/succulent/succulent_green"
+	}
+}

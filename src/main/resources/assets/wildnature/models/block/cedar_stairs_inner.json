@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "wildnature:blocks/trees/cedar/cedar_planks",
+    "top": "wildnature:blocks/trees/cedar/cedar_planks",
+    "side": "wildnature:blocks/trees/cedar/cedar_planks"
+  }
+}

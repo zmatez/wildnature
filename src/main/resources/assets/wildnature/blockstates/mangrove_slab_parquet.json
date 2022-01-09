@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "wildnature:block/mangrove_slab_parquet"
+    },
+    "type=double": {
+      "model": "wildnature:block/mangrove_parquet"
+    },
+    "type=top": {
+      "model": "wildnature:block/mangrove_slab_parquet_top"
+    }
+  }
+}

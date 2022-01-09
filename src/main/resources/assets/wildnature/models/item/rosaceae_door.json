@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "wildnature:blocks/trees/rosaceae/rosaceae_door_item"
+  }
+}

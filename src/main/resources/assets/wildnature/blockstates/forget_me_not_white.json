@@ -1,0 +1,10 @@
+{
+    "variants": {
+      "flowering=false": {
+          "model": "wildnature:block/forget_me_not_white"
+      },
+      "flowering=true": {
+          "model": "wildnature:block/forget_me_not_white_flowering"
+      }
+  }
+}

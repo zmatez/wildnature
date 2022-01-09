@@ -1,0 +1,16 @@
+{
+    "variants": {
+      "flowering=false,half=lower": {
+          "model": "wildnature:block/bird_of_paradise_bottom"
+      },
+      "flowering=false,half=upper": {
+          "model": "wildnature:block/bird_of_paradise_top"
+      },
+      "flowering=true,half=lower": {
+          "model": "wildnature:block/bird_of_paradise_bottom_flowering"
+      },
+      "flowering=true,half=upper": {
+          "model": "wildnature:block/bird_of_paradise_top_flowering"
+      }
+  }
+}

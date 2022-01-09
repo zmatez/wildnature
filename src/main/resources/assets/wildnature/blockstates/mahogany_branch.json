@@ -1,0 +1,28 @@
+{
+    "multipart": [
+        {   "when": { "up": "true" },
+            "apply": { "model": "wildnature:block/mahogany_branch_up" }
+        },
+        {   "when": { "down": "true" },
+            "apply": { "model": "wildnature:block/mahogany_branch_down" }
+        },
+        {   "when": { "north": "true" },
+            "apply": { "model": "wildnature:block/mahogany_branch_side", "uvlock": true }
+        },
+        {   "when": { "east": "true" },
+            "apply": { "model": "wildnature:block/mahogany_branch_side", "y": 90, "uvlock": true }
+        },
+        {   "when": { "south": "true" },
+            "apply": { "model": "wildnature:block/mahogany_branch_side", "y": 180, "uvlock": true }
+        },
+        {   "when": { "west": "true" },
+            "apply": { "model": "wildnature:block/mahogany_branch_side", "y": 270, "uvlock": true }
+        },
+        {   "when": { "waterlogged": "true"},
+            "apply": { "model": "wildnature:block/mahogany_branch_none"}
+        },
+        {   "when": { "waterlogged": "false"},
+            "apply": { "model": "wildnature:block/mahogany_branch_none"}
+        }
+    ]
+}

@@ -1,0 +1,8 @@
+{
+    "parent": "wildnature:block/flowering_cross",
+    "textures": {
+        "colored": "wildnature:blocks/plants/surface/miscanthus/miscanthus_top",
+        "greyscale": "wildnature:blocks/plants/surface/miscanthus/miscanthus_stalk_top",
+        "particle": "wildnature:blocks/plants/surface/miscanthus/miscanthus_stalk_top"
+    }
+}

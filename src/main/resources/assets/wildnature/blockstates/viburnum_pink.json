@@ -1,0 +1,10 @@
+{
+    "variants": {
+      "flowering=false": {
+          "model": "wildnature:block/viburnum_pink"
+      },
+      "flowering=true": {
+          "model": "wildnature:block/viburnum_pink_flowering"
+      }
+  }
+}

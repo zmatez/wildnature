@@ -1,0 +1,24 @@
+{
+  "variants": {
+    "snowy=false": [
+      {
+        "model": "wildnature:block/algae_block"
+      },
+      {
+        "model": "wildnature:block/algae_block",
+        "y": 90
+      },
+      {
+        "model": "wildnature:block/algae_block",
+        "y": 180
+      },
+      {
+        "model": "wildnature:block/algae_block",
+        "y": 270
+      }
+    ],
+    "snowy=true": {
+      "model": "wildnature:block/algae_block_snow"
+    }
+  }
+}

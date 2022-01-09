@@ -1,0 +1,25 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "wildnature:block/wisteria_pink_side"
+    },
+    "facing=east": {
+      "model": "wildnature:block/wisteria_pink_side",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "wildnature:block/wisteria_pink_side",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "wildnature:block/wisteria_pink_side",
+      "y": 270
+    },
+    "facing=down": {
+      "model": "wildnature:block/wisteria_pink_bottom"
+    },
+    "facing=up": {
+      "model": "wildnature:block/wisteria_pink_bottom"
+    }
+  }
+}

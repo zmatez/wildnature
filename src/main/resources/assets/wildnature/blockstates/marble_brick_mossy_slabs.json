@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "wildnature:block/marble_brick_mossy_slabs"
+    },
+    "type=double": {
+      "model": "wildnature:block/marble_bricks_mossy"
+    },
+    "type=top": {
+      "model": "wildnature:block/marble_brick_mossy_slabs_top"
+    }
+  }
+}

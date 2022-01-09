@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "wildnature:blocks/rocks/marble/marble",
+    "top": "wildnature:blocks/rocks/marble/marble",
+    "side": "wildnature:blocks/rocks/marble/marble"
+  }
+}

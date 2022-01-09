@@ -1,0 +1,7 @@
+{
+    "parent": "wildnature:block/branch_none",
+    "textures": {
+        "log": "wildnature:blocks/trees/eucalyptus/rainbow_eucalyptus_log",
+        "inside": "wildnature:blocks/trees/eucalyptus/rainbow_eucalyptus_log_top"
+    }
+}

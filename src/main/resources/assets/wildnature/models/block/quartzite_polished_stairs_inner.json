@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "wildnature:blocks/rocks/quartzite/quartzite_polished",
+    "top": "wildnature:blocks/rocks/quartzite/quartzite_polished",
+    "side": "wildnature:blocks/rocks/quartzite/quartzite_polished"
+  }
+}

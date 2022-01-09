@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "wildnature:block/plum_slab"
+    },
+    "type=double": {
+      "model": "wildnature:block/plum_planks"
+    },
+    "type=top": {
+      "model": "wildnature:block/plum_slab_top"
+    }
+  }
+}

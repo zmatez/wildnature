@@ -1,0 +1,10 @@
+{
+    "variants": {
+      "half=lower": {
+          "model": "wildnature:block/thuja_large_bottom"
+      },
+      "half=upper": {
+          "model": "wildnature:block/thuja_large_top"
+      }
+  }
+}

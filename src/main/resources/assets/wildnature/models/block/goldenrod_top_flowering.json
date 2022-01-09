@@ -1,0 +1,9 @@
+{
+    "parent": "wildnature:block/flowering_cross_leaf",
+    "textures": {
+        "colored": "wildnature:blocks/plants/surface/goldenrod/goldenrod_top",
+        "stalk": "wildnature:blocks/plants/surface/goldenrod/goldenrod_stalk_top",
+        "particle": "wildnature:blocks/plants/surface/goldenrod/goldenrod_stalk_top",
+        "leaves": "wildnature:blocks/plants/surface/goldenrod/goldenrod_leaves_top"
+    }
+}

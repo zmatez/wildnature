@@ -1,0 +1,10 @@
+{
+    "variants": {
+      "flowering=false": {
+          "model": "wildnature:block/buttercup_orange"
+      },
+      "flowering=true": {
+          "model": "wildnature:block/buttercup_orange_flowering"
+      }
+  }
+}

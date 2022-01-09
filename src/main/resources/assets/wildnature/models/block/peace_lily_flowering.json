@@ -1,0 +1,8 @@
+{
+    "parent": "wildnature:block/flowering_cross",
+    "textures": {
+        "colored": "wildnature:blocks/plants/surface/peace_lily/peace_lily",
+        "greyscale": "wildnature:blocks/plants/surface/peace_lily/peace_lily_stalk",
+        "particle": "wildnature:blocks/plants/surface/peace_lily/peace_lily_stalk"
+    }
+}

@@ -1,0 +1,8 @@
+{
+    "parent": "wildnature:block/flowering_cross",
+    "textures": {
+        "colored": "wildnature:blocks/plants/surface/forget_me_not/forget_me_not",
+        "greyscale": "wildnature:blocks/plants/surface/forget_me_not/forget_me_not_stalk",
+        "particle": "wildnature:blocks/plants/surface/forget_me_not/forget_me_not_stalk"
+    }
+}

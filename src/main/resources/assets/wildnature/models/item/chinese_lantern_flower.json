@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "wildnature:blocks/plants/surface/chinese_lantern_flower/chinese_lantern_flower_item"
+  }
+}

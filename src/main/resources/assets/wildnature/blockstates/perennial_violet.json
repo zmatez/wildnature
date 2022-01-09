@@ -1,0 +1,10 @@
+{
+    "variants": {
+      "flowering=false": {
+          "model": "wildnature:block/perennial_violet"
+      },
+      "flowering=true": {
+          "model": "wildnature:block/perennial_violet_flowering"
+      }
+  }
+}

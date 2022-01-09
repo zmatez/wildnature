@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/leaves",
+  "textures": {
+    "all": "wildnature:blocks/fruit_bushes/bilberry/bilberry_bush"
+  }
+}

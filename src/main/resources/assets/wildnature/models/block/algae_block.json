@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "top": "wildnature:blocks/grass/algae_block_top",
+    "bottom": "minecraft:block/dirt",
+    "side": "wildnature:blocks/grass/algae_block_side",
+    "particle": "minecraft:block/dirt"
+  }
+}

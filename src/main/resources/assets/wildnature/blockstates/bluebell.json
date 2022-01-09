@@ -1,0 +1,10 @@
+{
+    "variants": {
+      "flowering=false": {
+          "model": "wildnature:block/bluebell"
+      },
+      "flowering=true": {
+          "model": "wildnature:block/bluebell_flowering"
+      }
+  }
+}

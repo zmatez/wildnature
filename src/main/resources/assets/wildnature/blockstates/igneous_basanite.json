@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "wildnature:block/igneous_basanite"
+      },
+      {
+        "model": "wildnature:block/igneous_basanite",
+        "y": 90
+      },
+      {
+        "model": "wildnature:block/igneous_basanite",
+        "y": 180
+      },
+      {
+        "model": "wildnature:block/igneous_basanite",
+        "y": 270
+      }
+    ]
+  }
+}
