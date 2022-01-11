@@ -48,6 +48,8 @@ public class WNTags {
     public static final Tag FLOWERS = register("minecraft", "flowers", TagCategory.BLOCKS_AND_ITEMS);
     public static final Tag SMALL_FLOWERS = register("minecraft", "small_flowers", TagCategory.BLOCKS_AND_ITEMS);
     public static final Tag TALL_FLOWERS = register("minecraft", "tall_flowers", TagCategory.BLOCKS_AND_ITEMS);
+    public static final Tag CROPS = register("minecraft", "crops", TagCategory.BLOCKS_AND_ITEMS);
+    public static final Tag CROPS_BLOCKS = register("minecraft", "crops", TagCategory.BLOCKS);
 
     public static final Tag LUSH_GROUND_REPLACEABLE = register("minecraft", "lush_ground_replaceable", TagCategory.BLOCKS);
     public static final Tag ENDERMAN_HOLDABLE = register("minecraft", "enderman_holdable", TagCategory.BLOCKS);

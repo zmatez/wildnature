@@ -1,0 +1,8 @@
+{
+    "parent": "wildnature:block/flowering_cross",
+    "textures": {
+        "colored": "wildnature:blocks/crops/tea/green_tea_plant",
+        "greyscale": "wildnature:blocks/crops/tea/tea_stalk",
+        "particle": "wildnature:blocks/crops/tea/tea_stalk"
+    }
+}

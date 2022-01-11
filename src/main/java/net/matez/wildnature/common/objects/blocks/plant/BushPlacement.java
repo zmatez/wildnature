@@ -10,6 +10,9 @@ public enum BushPlacement {
     DIRT_OR_SAND((state, stateOn, getter, pos) -> {
         return stateOn.is(BlockTags.DIRT) || stateOn.is(BlockTags.SAND);
     }),
+    FARMLAND((state, stateOn, getter, pos) -> {
+        return stateOn.is(Blocks.FARMLAND);
+    }),
     SAND((state, stateOn, getter, pos) -> {
         return stateOn.is(BlockTags.SAND);
     }),

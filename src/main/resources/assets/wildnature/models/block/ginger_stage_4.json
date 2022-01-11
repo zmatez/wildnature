@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/crop",
+  "textures": {
+    "crop": "wildnature:blocks/crops/ginger/ginger_plant_stage_4"
+  }
+}

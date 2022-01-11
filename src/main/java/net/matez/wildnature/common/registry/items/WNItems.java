@@ -1,8 +1,6 @@
 package net.matez.wildnature.common.registry.items;
 
-import net.matez.wildnature.common.objects.blocks.rocks.RockType;
-import net.matez.wildnature.common.objects.blocks.rocks.WNRockBlock;
-import net.matez.wildnature.common.objects.blocks.setup.WNBlock;
+import net.matez.wildnature.common.objects.blocks.crops.CropType;
 import net.matez.wildnature.common.objects.initializer.InitStage;
 import net.matez.wildnature.common.objects.initializer.Initialize;
 import net.matez.wildnature.common.objects.items.fruits.Fruit;
@@ -10,13 +8,13 @@ import net.matez.wildnature.common.objects.items.fruits.WNFruitItem;
 import net.matez.wildnature.common.objects.items.setup.IWNItem;
 import net.matez.wildnature.common.objects.items.setup.WNBlockItem;
 import net.matez.wildnature.common.objects.items.setup.WNItem;
+import net.matez.wildnature.common.objects.items.vegetables.Veggie;
+import net.matez.wildnature.common.objects.items.vegetables.WNVeggieBlockItem;
+import net.matez.wildnature.common.objects.items.vegetables.WNVeggieItem;
 import net.matez.wildnature.common.registry.tabs.WNTabs;
 import net.matez.wildnature.setup.WildNature;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.SoundType;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.material.Material;
 
 import java.util.LinkedHashMap;
 
@@ -27,6 +25,7 @@ public class WNItems {
     public static final LinkedHashMap<ResourceLocation, WNBlockItem> BLOCK_ITEMS = new LinkedHashMap<>();
     //#------------------
 
+    //# FRUITS
     public static final LinkedHashMap<Fruit, WNItem> FRUITS = register(Fruit.values(), (value) -> {
         var prop = new Item.Properties()
                         .tab(WNTabs.TAB_FOOD);
@@ -39,6 +38,27 @@ public class WNItems {
                 value
         );
     });
+    //# VEGGIES
+    public static final LinkedHashMap<Veggie, IWNItem> VEGGIES = register(Veggie.values(), (value) -> {
+        var prop = new Item.Properties()
+                .tab(WNTabs.TAB_FOOD);
+        if(value.getFood() != null){
+            prop.food(value.getFood());
+        }
+
+        for (CropType cropType : CropType.values()) {
+            if(cropType.getVeggie() == value){
+                return null;
+            }
+        }
+
+        return new WNVeggieItem(
+                location(value.getId()),
+                prop,
+                value
+        );
+    });
+
 
     public static ResourceLocation location(String name) {
         return new ResourceLocation(WildNature.modid, name);

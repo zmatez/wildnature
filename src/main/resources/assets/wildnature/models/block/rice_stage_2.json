@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/crop",
+  "textures": {
+    "crop": "wildnature:blocks/crops/rice/rice_plant_stage_2"
+  }
+}

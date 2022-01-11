@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "wildnature:items/vegetables/melissa_tea_leaf"
+  }
+}

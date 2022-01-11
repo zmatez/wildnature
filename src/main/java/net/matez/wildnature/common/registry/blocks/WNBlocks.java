@@ -1,6 +1,8 @@
 package net.matez.wildnature.common.registry.blocks;
 
 import net.matez.wildnature.common.log.WNLogger;
+import net.matez.wildnature.common.objects.blocks.crops.CropType;
+import net.matez.wildnature.common.objects.blocks.crops.WNCropTypedBlock;
 import net.matez.wildnature.common.objects.blocks.fruit_bush.leaves.FruitBushType;
 import net.matez.wildnature.common.objects.blocks.fruit_bush.leaves.WNFruitBushTypedBlock;
 import net.matez.wildnature.common.objects.blocks.fruit_bush.plants.FruitPlantType;
@@ -24,6 +26,7 @@ import net.matez.wildnature.common.objects.blocks.wood.*;
 import net.matez.wildnature.common.objects.initializer.ExcludeInit;
 import net.matez.wildnature.common.objects.initializer.InitStage;
 import net.matez.wildnature.common.objects.initializer.Initialize;
+import net.matez.wildnature.common.objects.items.vegetables.Veggie;
 import net.matez.wildnature.common.registry.tabs.WNTabs;
 import net.matez.wildnature.setup.WildNature;
 import net.minecraft.core.BlockPos;
@@ -476,6 +479,36 @@ public class WNBlocks {
 
         return WNFruitBushPlantTypedBlock.create(
                 location(value.getIdBase() + "_bush"),
+                blockProp,
+                itemProp,
+                value
+        );
+    });
+
+    public static final LinkedHashMap<CropType, WNBlock> CROPS = register(CropType.values(), (value) -> {
+        BlockBehaviour.Properties blockProp = BlockBehaviour.Properties.of(Material.PLANT, MaterialColor.PLANT)
+                .instabreak()
+                .sound(SoundType.CROP)
+                .noOcclusion()
+                .noCollission()
+                .dynamicShape()
+                .randomTicks();
+
+        Veggie veggie = value.getVeggie();
+
+        Item.Properties itemProp = new Item.Properties()
+                        .tab(WNTabs.TAB_FOOD);
+
+        if(veggie.getFood() != null){
+            itemProp.food(veggie.getFood());
+        }
+
+        if(value.getBlockConstructor() != null){
+            return value.getBlockConstructor().get(value,blockProp,itemProp);
+        }
+
+        return WNCropTypedBlock.create(
+                location(value.getId()),
                 blockProp,
                 itemProp,
                 value

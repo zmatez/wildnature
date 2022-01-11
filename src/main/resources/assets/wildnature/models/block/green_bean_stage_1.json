@@ -1,0 +1,6 @@
+{
+    "parent": "block/tinted_cross",
+    "textures": {
+        "cross": "wildnature:blocks/crops/green_bean/green_bean_plant_stage_1"
+    }
+}

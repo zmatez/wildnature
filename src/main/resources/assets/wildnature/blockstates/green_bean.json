@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "stage=0": {
+      "model": "wildnature:block/green_bean_stage_1"
+    },
+    "stage=1": {
+      "model": "wildnature:block/green_bean_stage_2"
+    },
+    "stage=2": {
+      "model": "wildnature:block/green_bean_stage_3"
+    }
+  }
+}

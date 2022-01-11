@@ -8,6 +8,7 @@ import javax.annotation.Nullable;
 public enum Fruit {
     PARADISE_APPLE("paradise_apple", Foods.APPLE),
     CHERRY("cherry", Foods.APPLE),
+    GREEN_APPLE("green_apple", Foods.APPLE),
     MIRABELLE_PLUM("mirabelle_plum", Foods.APPLE),
     PEAR("pear", Foods.APPLE),
     PLUM("plum", Foods.APPLE),
@@ -39,6 +40,7 @@ public enum Fruit {
     KAMCHATKA_BERRIES("kamchatka_berries", Foods.APPLE),
     LINGONBERRIES("lingonberries", Foods.APPLE),
     QUINCE_FRUIT("quince_fruit", Foods.APPLE),
+    RASPBERRY("raspberry", Foods.APPLE),
     RED_CURRANT("red_currant", Foods.APPLE),
     WHITE_CURRANT("white_currant", Foods.APPLE),
     WILD_STRAWBERRY("wild_strawberry", Foods.APPLE),

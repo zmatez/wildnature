@@ -5,12 +5,17 @@ import net.matez.wildnature.data.item_models.WNItemModel_BlockParent;
 import net.matez.wildnature.data.setup.base.WNResource;
 import net.minecraft.world.item.BlockItem;
 
-public class WNBlockItem extends BlockItem {
+public class WNBlockItem extends BlockItem implements IWNItem {
     private final WNBlock block;
 
     public WNBlockItem(WNBlock block, Properties properties){
         super(block,properties);
         this.block = block;
+    }
+
+    @Override
+    public void construct() {
+
     }
 
     public WNResource getItemModel(){
@@ -31,13 +36,13 @@ public class WNBlockItem extends BlockItem {
      * @return e.g "minecraft:blocks/stone"
      */
     public String getTextureName(){
-        return this.getRegistryName() == null ? "UNKNOWN" : (this.getRegistryName().getNamespace() + ":blocks/" + this.getRegistryName().getPath());
+        return this.getRegistryName() == null ? "UNKNOWN" : (this.getRegistryName().getNamespace() + ":items/" + this.getRegistryName().getPath());
     }
     /**
      * @param folders e.g rocks/stones
      * @return e.g "minecraft:blocks/rocks/stones/stone"
      */
     public String getTextureName(String folders){
-        return this.getRegistryName() == null ? "UNKNOWN" : (this.getRegistryName().getNamespace() + ":blocks/" + folders + "/" + this.getRegistryName().getPath());
+        return this.getRegistryName() == null ? "UNKNOWN" : (this.getRegistryName().getNamespace() + ":items/" + folders + "/" + this.getRegistryName().getPath());
     }
 }

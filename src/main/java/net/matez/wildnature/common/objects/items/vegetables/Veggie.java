@@ -5,7 +5,7 @@ import net.minecraft.world.food.Foods;
 
 import javax.annotation.Nullable;
 
-public enum Veggies {
+public enum Veggie {
     CABBAGE("cabbage",Foods.CARROT),
     CAULIFLOWER("cauliflower",Foods.CARROT),
     CORN("corn",Foods.CARROT),
@@ -35,7 +35,7 @@ public enum Veggies {
     @Nullable
     private final FoodProperties food;
 
-    Veggies(String id, @Nullable FoodProperties food) {
+    Veggie(String id, @Nullable FoodProperties food) {
         this.id = id;
         this.food = food;
     }

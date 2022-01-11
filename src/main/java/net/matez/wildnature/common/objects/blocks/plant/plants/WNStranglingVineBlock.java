@@ -3,6 +3,7 @@ package net.matez.wildnature.common.objects.blocks.plant.plants;
 import net.matez.wildnature.common.objects.blocks.plant.BushType;
 import net.matez.wildnature.common.objects.blocks.plant.WNBushConfiguredBlock;
 import net.matez.wildnature.common.objects.tags.WNTags;
+import net.matez.wildnature.common.util.WNUtil;
 import net.matez.wildnature.data.block_models.plants.WNBlockModel_FloweringBushRetinted;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -81,7 +82,6 @@ public class WNStranglingVineBlock extends WNBushConfiguredBlock {
         if (!state.canSurvive(level, pos)) {
             level.destroyBlock(pos, true);
         }
-
     }
 
     public void randomTick(BlockState state, ServerLevel level, BlockPos pos, Random random) {
@@ -122,7 +122,9 @@ public class WNStranglingVineBlock extends WNBushConfiguredBlock {
     @Override
     public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
         super.entityInside(state, level, pos, entity);
-        entity.setDeltaMovement(entity.getDeltaMovement().x,0.25F,entity.getDeltaMovement().z);
+        if(WNUtil.rint(0,2) == 0 && !level.isClientSide()) {
+            entity.setDeltaMovement(entity.getDeltaMovement().x, 6F, entity.getDeltaMovement().z);
+        }
     }
 
     @Nullable

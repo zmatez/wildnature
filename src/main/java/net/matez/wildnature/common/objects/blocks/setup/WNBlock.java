@@ -28,7 +28,7 @@ import java.util.List;
 
 public class WNBlock extends Block {
     @Nullable
-    protected final WNBlockItem item;
+    protected WNBlockItem item;
 
     public WNBlock(ResourceLocation location, Properties properties) {
         super(properties);

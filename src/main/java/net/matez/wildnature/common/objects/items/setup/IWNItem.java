@@ -3,10 +3,11 @@ package net.matez.wildnature.common.objects.items.setup;
 import net.matez.wildnature.data.item_models.WNItemModel_BlockParent;
 import net.matez.wildnature.data.setup.base.WNResource;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.ItemLike;
 
 import javax.annotation.Nullable;
 
-public interface IWNItem {
+public interface IWNItem extends ItemLike {
     public void construct();
 
     @Nullable

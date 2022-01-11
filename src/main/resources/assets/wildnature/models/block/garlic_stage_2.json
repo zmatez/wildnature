@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/crop",
+  "textures": {
+    "crop": "wildnature:blocks/crops/garlic/garlic_plant_stage_2"
+  }
+}

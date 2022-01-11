@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "stage=0": {
+      "model": "wildnature:block/melissa_tea_plant_stage_1"
+    },
+    "stage=1": {
+      "model": "wildnature:block/melissa_tea_plant_stage_2"
+    }
+  }
+}

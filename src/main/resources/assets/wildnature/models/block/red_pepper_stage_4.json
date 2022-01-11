@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/crop",
+  "textures": {
+    "crop": "wildnature:blocks/crops/red_pepper/red_pepper_plant_stage_4"
+  }
+}
