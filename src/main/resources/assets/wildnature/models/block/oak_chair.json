@@ -1,0 +1,7 @@
+{
+    "parent": "wildnature:block/chair",
+    "textures": {
+        "log": "minecraft:block/stripped_oak_log",
+        "planks": "minecraft:block/oak_planks"
+    }
+}

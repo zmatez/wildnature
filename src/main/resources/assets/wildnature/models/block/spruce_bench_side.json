@@ -1,0 +1,7 @@
+{
+    "parent": "wildnature:block/bench_side",
+    "textures": {
+        "material": "minecraft:block/spruce_planks",
+        "material2": "minecraft:block/stripped_spruce_log"
+    }
+}

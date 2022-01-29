@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "wildnature:items/tools/bronze/bronze_shovel"
+  }
+}

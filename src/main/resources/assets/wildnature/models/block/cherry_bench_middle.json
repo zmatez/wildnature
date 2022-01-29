@@ -1,0 +1,7 @@
+{
+    "parent": "wildnature:block/bench_middle",
+    "textures": {
+        "material": "wildnature:blocks/trees/cherry/cherry_planks",
+        "material2": "wildnature:blocks/trees/cherry/cherry_stripped_log"
+    }
+}

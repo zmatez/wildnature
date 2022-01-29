@@ -1,0 +1,22 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "wildnature:block/citrus_chair"
+    },
+    "facing=east": {
+      "model": "wildnature:block/citrus_chair",
+      "y": 90,
+      "uvlock": true
+    },
+    "facing=south": {
+      "model": "wildnature:block/citrus_chair",
+      "y": 180,
+      "uvlock": true
+    },
+    "facing=west": {
+      "model": "wildnature:block/citrus_chair",
+      "y": 270,
+      "uvlock": true
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+    "parent": "wildnature:block/bench_middle",
+    "textures": {
+        "material": "wildnature:blocks/trees/ebony/ebony_planks",
+        "material2": "wildnature:blocks/trees/ebony/ebony_stripped_log"
+    }
+}

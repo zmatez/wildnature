@@ -1,18 +1,25 @@
+/*
+ * Copyright (c) matez.net 2022.
+ * All rights reserved.
+ * Consider supporting this project on Patreon: https://patreon.com/wildnaturemod
+ */
+
 package net.matez.wildnature.common.registry.tabs;
 
 import net.matez.wildnature.common.objects.blocks.grass.GrassType;
 import net.matez.wildnature.common.objects.blocks.plant.BushType;
 import net.matez.wildnature.common.objects.blocks.rocks.RockType;
+import net.matez.wildnature.common.objects.blocks.underwater_plants.UnderwaterPlant;
 import net.matez.wildnature.common.objects.blocks.wood.LogType;
 import net.matez.wildnature.common.objects.initializer.InitStage;
 import net.matez.wildnature.common.objects.initializer.Initialize;
 import net.matez.wildnature.common.objects.items.fruits.Fruit;
+import net.matez.wildnature.common.objects.items.ores.OreItem;
 import net.matez.wildnature.common.registry.blocks.WNBlocks;
 import net.matez.wildnature.common.registry.items.WNItems;
 import net.matez.wildnature.setup.WildNature;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 
 import java.util.LinkedHashMap;
 
@@ -36,7 +43,7 @@ public class WNTabs {
     };
     public static final CreativeModeTab TAB_UNDERWATER = new CreativeModeTab( WildNature.modid + ".underwater") {
         public ItemStack makeIcon() {
-            return new ItemStack(Items.APPLE);
+            return new ItemStack(WNBlocks.UNDERWATER_BUSHES.get(UnderwaterPlant.OAR_WEED).getItem());
         }
     };
     public static final CreativeModeTab TAB_FOOD = new CreativeModeTab( WildNature.modid + ".food") {
@@ -46,7 +53,7 @@ public class WNTabs {
     };
     public static final CreativeModeTab TAB_EQUIPMENT = new CreativeModeTab( WildNature.modid + ".equipment") {
         public ItemStack makeIcon() {
-            return new ItemStack(Items.APPLE);
+            return new ItemStack(WNItems.ORE_ITEMS.get(OreItem.AMBER));
         }
     };
     public static final CreativeModeTab TAB_WOOD_BUILDING = new CreativeModeTab( WildNature.modid + ".wood_building") {

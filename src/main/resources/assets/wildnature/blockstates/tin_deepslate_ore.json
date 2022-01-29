@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "wildnature:block/tin_deepslate_ore"
+      },
+      {
+        "model": "wildnature:block/tin_deepslate_ore",
+        "y": 90
+      },
+      {
+        "model": "wildnature:block/tin_deepslate_ore",
+        "y": 180
+      },
+      {
+        "model": "wildnature:block/tin_deepslate_ore",
+        "y": 270
+      }
+    ]
+  }
+}

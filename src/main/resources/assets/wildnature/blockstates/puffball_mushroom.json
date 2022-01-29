@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "broken=false": {
+      "model": "wildnature:block/puffball_mushroom"
+    },
+    "broken=true": {
+      "model": "wildnature:block/puffball_mushroom_broken"
+    }
+  }
+}

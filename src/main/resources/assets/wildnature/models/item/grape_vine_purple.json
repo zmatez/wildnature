@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "wildnature:blocks/fruit_bushes/grape_vine/grape_vine_purple_1"
+  }
+}

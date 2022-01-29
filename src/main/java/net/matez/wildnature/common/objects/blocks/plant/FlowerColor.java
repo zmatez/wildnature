@@ -1,3 +1,9 @@
+/*
+ * Copyright (c) matez.net 2022.
+ * All rights reserved.
+ * Consider supporting this project on Patreon: https://patreon.com/wildnaturemod
+ */
+
 package net.matez.wildnature.common.objects.blocks.plant;
 
 import net.minecraft.world.item.Item;
@@ -8,6 +14,7 @@ public enum FlowerColor {
     PINK_BUT_MAGENTA("pink", Items.MAGENTA_DYE),
     RED("red", Items.RED_DYE),
     WHITE("white", Items.WHITE_DYE),
+    MIXED_WHITE("mixed", Items.WHITE_DYE),
     YELLOW("yellow", Items.YELLOW_DYE),
     GREEN("green", Items.GREEN_DYE),
     LIGHT_YELLOW("light_yellow", Items.YELLOW_DYE),

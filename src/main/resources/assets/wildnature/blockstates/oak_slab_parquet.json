@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "wildnature:block/oak_slab_parquet"
+    },
+    "type=double": {
+      "model": "wildnature:block/oak_parquet"
+    },
+    "type=top": {
+      "model": "wildnature:block/oak_slab_parquet_top"
+    }
+  }
+}

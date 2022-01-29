@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "wildnature:block/spruce_slab_parquet"
+    },
+    "type=double": {
+      "model": "wildnature:block/spruce_parquet"
+    },
+    "type=top": {
+      "model": "wildnature:block/spruce_slab_parquet_top"
+    }
+  }
+}

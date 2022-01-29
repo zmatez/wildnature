@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "wildnature:block/tree_fungus"
+    },
+    "facing=east": {
+      "model": "wildnature:block/tree_fungus",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "wildnature:block/tree_fungus",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "wildnature:block/tree_fungus",
+      "y": 270
+    }
+  }
+}

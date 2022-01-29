@@ -1,0 +1,38 @@
+{
+  "variants": {
+    "flowering=false": [
+      {
+        "model": "wildnature:block/lotus_white"
+      },
+      {
+        "model": "wildnature:block/lotus_white",
+        "y": 90
+      },
+      {
+        "model": "wildnature:block/lotus_white",
+        "y": 180
+      },
+      {
+        "model": "wildnature:block/lotus_white",
+        "y": 270
+      }
+    ],
+    "flowering=true": [
+      {
+        "model": "wildnature:block/lotus_white_flowering"
+      },
+      {
+        "model": "wildnature:block/lotus_white_flowering",
+        "y": 90
+      },
+      {
+        "model": "wildnature:block/lotus_white_flowering",
+        "y": 180
+      },
+      {
+        "model": "wildnature:block/lotus_white_flowering",
+        "y": 270
+      }
+    ]
+  }
+}

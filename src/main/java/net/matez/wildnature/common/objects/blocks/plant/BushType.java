@@ -1,7 +1,12 @@
+/*
+ * Copyright (c) matez.net 2022.
+ * All rights reserved.
+ * Consider supporting this project on Patreon: https://patreon.com/wildnaturemod
+ */
+
 package net.matez.wildnature.common.objects.blocks.plant;
 
 import net.matez.wildnature.common.objects.blocks.plant.config.BushConfig;
-import net.matez.wildnature.common.objects.blocks.plant.config.FloweringBushConfig;
 import org.jetbrains.annotations.Nullable;
 
 public enum BushType {
@@ -44,14 +49,18 @@ public enum BushType {
     COLUMBINE_PURPLE(FlowerColor.PURPLE,0x7E40D5,BushVariant.COLUMBINE),
     COLUMBINE_RED(FlowerColor.RED,0xE51433,BushVariant.COLUMBINE),
     CORDYLINE_AUSTRALIS("",0x0,BushVariant.CORDYLINE_AUSTRALIS),
+    COTTON("",0xffffff,BushVariant.COTTON),
     CROCUS_PURPLE(FlowerColor.PURPLE_BUT_MAGENTA,0xBD88F7,BushVariant.CROCUS),
     CROCUS_WHITE(FlowerColor.WHITE,0xFFFFFF,BushVariant.CROCUS),
     DAFFODIL_YELLOW(FlowerColor.YELLOW,0xFFF95B, BushVariant.DAFFODIL),
+    DOGWOOD_SHRUB("",0xCE1433, BushVariant.DOGWOOD),
+    DOGWOOD_LARGE_SHRUB("",0xCE1433, BushVariant.DOGWOOD_LARGE),
     FESTUCA("",0x3C8C77, BushVariant.FESTUCA_LARGE),
     FESTUCA_ELIJAHBLUE("",0x3C8C77, BushVariant.FESTUCA_ELIJAHBLUE),
     FIREWEED(FlowerColor.PINK_BUT_MAGENTA,0xE97FFF, BushVariant.FIREWEED),
     FLY_TRAP(FlowerColor.LIME,0x0, BushVariant.FLY_TRAP),
     FOREST_MOSS("",0x4E8746, BushVariant.FOREST_MOSS),
+    REINDEER_MOSS("",0x4E8746, BushVariant.REINDEER_MOSS),
     FORGET_ME_NOT_BLUE(FlowerColor.BLUE_BUT_LIGHT,0x7C9DFF, BushVariant.FORGET_ME_NOT),
     FORGET_ME_NOT_PINK(FlowerColor.PINK,0xE082CA, BushVariant.FORGET_ME_NOT),
     FORGET_ME_NOT_WHITE(FlowerColor.WHITE,0xE1D0D0, BushVariant.FORGET_ME_NOT),
@@ -77,10 +86,11 @@ public enum BushType {
     HEATH_PINK(FlowerColor.PINK,0xFFC4E9, BushVariant.HEATH),
     HEATH_PURPLE(FlowerColor.PURPLE,0xE056CB, BushVariant.HEATH),
     HEATH_WHITE(FlowerColor.WHITE,0xFCF3EF, BushVariant.HEATH),
-    HEATHER_PINK(FlowerColor.PINK, 0xA81087, BushVariant.HEATHER),
-    HEATHER_PURPLE(FlowerColor.PURPLE, 0x941DF2, BushVariant.HEATHER),
-    HEATHER_WHITE(FlowerColor.WHITE, 0xFFEDEF, BushVariant.HEATHER),
-    HEATHER_YELLOW(FlowerColor.YELLOW, 0xE3EC8E, BushVariant.HEATHER),
+    HEATHER_MIXED(FlowerColor.MIXED_WHITE, 0xFFFAA8, BushVariant.HEATHER),
+    HEATHER_PINK(FlowerColor.PINK, 0xC87DAA, BushVariant.HEATHER),
+    HEATHER_RED(FlowerColor.RED, 0xDA244A, BushVariant.HEATHER),
+    HEATHER_WHITE(FlowerColor.WHITE, 0xFFFFFF, BushVariant.HEATHER),
+    HEATHER_YELLOW(FlowerColor.YELLOW, 0xFFF549, BushVariant.HEATHER),
     HEPATICA_BLUE(FlowerColor.BLUE_BUT_LIGHT, 0x80BDFF, BushVariant.HEPATICA),
     HEPATICA_PINK(FlowerColor.PINK, 0xFFA3DE, BushVariant.HEPATICA),
     HEPATICA_PURPLE(FlowerColor.PURPLE, 0x452D82, BushVariant.HEPATICA),

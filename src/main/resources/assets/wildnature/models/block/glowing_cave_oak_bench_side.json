@@ -1,0 +1,7 @@
+{
+    "parent": "wildnature:block/bench_side",
+    "textures": {
+        "material": "wildnature:blocks/trees/glowing_cave_oak/glowing_cave_oak_planks",
+        "material2": "wildnature:blocks/trees/glowing_cave_oak/glowing_cave_oak_stripped_log"
+    }
+}

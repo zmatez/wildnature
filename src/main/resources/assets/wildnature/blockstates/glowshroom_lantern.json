@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "hanging=true": { "model": "wildnature:block/glowshroom_lantern_hanging"},
+        "hanging=false": { "model": "wildnature:block/glowshroom_lantern"}
+  }
+}

@@ -1,8 +1,13 @@
+/*
+ * Copyright (c) matez.net 2022.
+ * All rights reserved.
+ * Consider supporting this project on Patreon: https://patreon.com/wildnaturemod
+ */
+
 package net.matez.wildnature.common.objects.blocks.plant;
 
 import net.matez.wildnature.common.objects.blocks.plant.config.BushConfig;
 import net.matez.wildnature.common.objects.blocks.plant.config.FloweringBushConfig;
-import net.minecraft.world.level.block.BushBlock;
 
 public enum BushVariant {
     ANEMONE("anemone",BushSetup.ANEMONE, FloweringBushConfig.NO_COLORS.get()),
@@ -24,13 +29,17 @@ public enum BushVariant {
     CLOVER("clover",BushSetup.CLOVER),
     COLUMBINE("columbine",BushSetup.DOUBLE_FLOWERING_BUSH),
     CORDYLINE_AUSTRALIS("cordyline_australis",BushSetup.BUSH,BushConfig.NOT_TINTED.get()),
+    COTTON("cotton_plant",BushSetup.COTTON,"plants/surface/cotton",BushConfig.NOT_TINTED.get()),
     CROCUS("crocus",BushSetup.FLOWERING_LEAFED_BUSH),
     DAFFODIL("daffodil",BushSetup.FLOWERING_BUSH),
+    DOGWOOD("dogwood_shrub",BushSetup.BUSH,"plants/surface/dogwood",BushConfig.NOT_TINTED.get()),
+    DOGWOOD_LARGE("dogwood_large_shrub",BushSetup.DOUBLE_BUSH,"plants/surface/dogwood",BushConfig.NOT_TINTED.get()),
     FESTUCA_ELIJAHBLUE("festuca_elijahblue",BushSetup.BUSH,"plants/surface/festuca", BushConfig.NOT_TINTED.get().withPlacement(BushPlacement.DIRT_OR_SAND)),
     FESTUCA_LARGE("festuca",BushSetup.DOUBLE_BUSH,"plants/surface/festuca", BushConfig.NOT_TINTED.get().withPlacement(BushPlacement.DIRT_OR_SAND)),
     FIREWEED("fireweed",BushSetup.DOUBLE_FLOWERING_BUSH,FloweringBushConfig.NO_COLORS.get()),
     FLY_TRAP("fly_trap",BushSetup.FLY_TRAP,BushConfig.NOT_TINTED.get()),
     FOREST_MOSS("forest_moss",BushSetup.MOSS,BushConfig.NOT_TINTED.get().withPlacement(BushPlacement.ALL_NATURAL)),
+    REINDEER_MOSS("reindeer_moss",BushSetup.MOSS,BushConfig.NOT_TINTED.get().withPlacement(BushPlacement.ALL_NATURAL)),
     FORGET_ME_NOT("forget_me_not",BushSetup.FLOWERING_BUSH),
     GERANIUM("geranium",BushSetup.FLOWERING_BUSH),
     GIANT_HOGWEED("giant_hogweed",BushSetup.DOUBLE_FLOWERING_BUSH,FloweringBushConfig.NO_COLORS.get()),

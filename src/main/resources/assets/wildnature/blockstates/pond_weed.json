@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "wildnature:block/pond_weed"
+      },
+      {
+        "model": "wildnature:block/pond_weed",
+        "y": 90
+      },
+      {
+        "model": "wildnature:block/pond_weed",
+        "y": 180
+      },
+      {
+        "model": "wildnature:block/pond_weed",
+        "y": 270
+      }
+    ]
+  }
+}

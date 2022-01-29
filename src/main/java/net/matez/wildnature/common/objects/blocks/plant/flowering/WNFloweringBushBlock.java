@@ -1,3 +1,9 @@
+/*
+ * Copyright (c) matez.net 2022.
+ * All rights reserved.
+ * Consider supporting this project on Patreon: https://patreon.com/wildnaturemod
+ */
+
 package net.matez.wildnature.common.objects.blocks.plant.flowering;
 
 import net.matez.wildnature.common.objects.blocks.plant.BushType;
@@ -10,6 +16,7 @@ import net.matez.wildnature.data.block_models.plants.WNBlockModel_FloweringBush;
 import net.matez.wildnature.data.block_models.plants.WNBlockModel_TintedCross;
 import net.matez.wildnature.data.blockstates.plants.WNBlockstate_FloweringBush;
 import net.matez.wildnature.data.setup.base.WNResource;
+import net.minecraft.client.color.block.BlockColor;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
@@ -89,5 +96,15 @@ public class WNFloweringBushBlock extends WNBushConfiguredBlock {
         return new WNTags.TagList(
                 WNTags.FLOWERS, WNTags.SMALL_FLOWERS, WNTags.ENDERMAN_HOLDABLE, WNTags.WN_FLOWERING_PLANTS
         );
+    }
+
+    @Override
+    public @Nullable BlockColor getBlockColor() {
+        if(this.getType() == BushType.HEATHER_MIXED || this.getType() == BushType.HEATHER_YELLOW){
+            return (state, getter, pos, num) -> {
+                return 0xB8F10C;
+            };
+        }
+        return super.getBlockColor();
     }
 }

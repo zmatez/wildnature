@@ -1,3 +1,9 @@
+/*
+ * Copyright (c) matez.net 2022.
+ * All rights reserved.
+ * Consider supporting this project on Patreon: https://patreon.com/wildnaturemod
+ */
+
 package net.matez.wildnature.common.objects.tags;
 
 import net.matez.wildnature.common.objects.initializer.InitStage;
@@ -41,6 +47,7 @@ public class WNTags {
     public static final Tag WOODEN_PRESSURE_PLATES = register("minecraft", "wooden_pressure_plates", TagCategory.BLOCKS_AND_ITEMS);
     public static final Tag WALL_POST_OVERRIDE = register("minecraft", "wall_post_override", TagCategory.BLOCKS);
     public static final Tag WALLS = register("minecraft","walls",TagCategory.BLOCKS_AND_ITEMS);
+    public static final Tag BASE_STONE_OVERWORLD = register("minecraft","base_stone_overworld",TagCategory.BLOCKS_AND_ITEMS);
 
     public static final Tag SAND = register("minecraft", "sand", TagCategory.BLOCKS_AND_ITEMS);
     public static final Tag LEAVES = register("minecraft", "leaves", TagCategory.BLOCKS_AND_ITEMS);
@@ -70,6 +77,10 @@ public class WNTags {
     public static final Tag LAVA_POOL_STONE_CANNOT_REPLACE = register("minecraft", "lava_pool_stone_cannot_replace", TagCategory.BLOCKS);
     public static final Tag REPLACEABLE_PLANTS = register("minecraft", "replaceable_plants", TagCategory.BLOCKS);
     public static final Tag CLIMBABLE = register("minecraft", "climbable", TagCategory.BLOCKS);
+    public static final Tag NEEDS_IRON_TOOL = register("minecraft", "needs_iron_tool", TagCategory.BLOCKS);
+    public static final Tag NEEDS_DIAMOND_TOOL = register("minecraft", "needs_diamond_tool", TagCategory.BLOCKS);
+    public static final Tag RED_MUSHROOM = register("minecraft", "red_mushroom", TagCategory.BLOCKS_AND_ITEMS);
+    public static final Tag BROWN_MUSHROOM = register("minecraft", "brown_mushroom", TagCategory.BLOCKS_AND_ITEMS);
 
     //? FORGE
     public static final Tag FORGE_FENCES = register("forge","fences",TagCategory.BLOCKS_AND_ITEMS);
@@ -77,12 +88,17 @@ public class WNTags {
     public static final Tag FORGE_FENCE_GATES = register("forge","fence_gates",TagCategory.BLOCKS_AND_ITEMS);
     public static final Tag FORGE_WOODEN_FENCE_GATES = register("forge","fence_gates/wooden",TagCategory.BLOCKS_AND_ITEMS);
     public static final Tag FORGE_SAND = register("forge","sand",TagCategory.BLOCKS_AND_ITEMS);
+    public static final Tag FORGE_STONE = register("forge","stone",TagCategory.BLOCKS_AND_ITEMS);
     public static final Tag FORGE_SAND_COLORLESS = register("forge","sand/colorless",TagCategory.BLOCKS_AND_ITEMS);
     public static final Tag FORGE_DIRT = register("forge","dirt",TagCategory.BLOCKS_AND_ITEMS);
+    public static final Tag FORGE_ORES = register("forge","ores",TagCategory.BLOCKS_AND_ITEMS);
 
     //? WILDNATURE
     public static final Tag WN_BRANCHES = register("wildnature","branches",TagCategory.BLOCKS_AND_ITEMS);
+    public static final Tag WN_TABLES = register("wildnature","tables",TagCategory.BLOCKS_AND_ITEMS);
     public static final Tag WN_FLOWERING_PLANTS = register("wildnature","flowering_plants",TagCategory.BLOCKS_AND_ITEMS);
+    public static final Tag WN_SHELLS = register("wildnature","shells",TagCategory.BLOCKS_AND_ITEMS);
+    public static final Tag WN_ORES = register("wildnature","ores",TagCategory.BLOCKS_AND_ITEMS);
 
     //# ---------------
 

@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/lily_pad",
+  "textures": {
+    "texture": "wildnature:blocks/plants/cave/magma_pad/magma_pad_4",
+    "particle": "wildnature:blocks/plants/cave/magma_pad/magma_pad_4"
+  }
+}

@@ -1,0 +1,10 @@
+{
+    "variants": {
+      "flowering=false": {
+          "model": "wildnature:block/cave_lily"
+      },
+      "flowering=true": {
+          "model": "wildnature:block/cave_lily_flowering"
+      }
+  }
+}

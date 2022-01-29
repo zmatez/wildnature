@@ -1,0 +1,7 @@
+{
+    "parent": "wildnature:block/branch_none",
+    "textures": {
+        "log": "minecraft:block/oak_log",
+        "inside": "minecraft:block/oak_log_top"
+    }
+}

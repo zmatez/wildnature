@@ -1,14 +1,21 @@
+/*
+ * Copyright (c) matez.net 2022.
+ * All rights reserved.
+ * Consider supporting this project on Patreon: https://patreon.com/wildnaturemod
+ */
+
 package net.matez.wildnature.common.objects.blocks.rocks;
 
 import net.matez.wildnature.common.objects.blocks.basic.WNAbstractWallBlock;
-import net.matez.wildnature.common.objects.blocks.basic.WNSlabBlock;
 import net.matez.wildnature.common.objects.blocks.setup.WNBlock;
 import net.matez.wildnature.common.objects.tags.WNTags;
-import net.matez.wildnature.data.block_models.*;
-import net.matez.wildnature.data.blockstates.WNBlockstate_Slab;
+import net.matez.wildnature.data.block_models.WNBlockModel_WallInventory;
+import net.matez.wildnature.data.block_models.WNBlockModel_WallPost;
+import net.matez.wildnature.data.block_models.WNBlockModel_WallSide;
+import net.matez.wildnature.data.block_models.WNBlockModel_WallSideTall;
 import net.matez.wildnature.data.blockstates.WNBlockstate_Wall;
 import net.matez.wildnature.data.item_models.WNItemModel_BlockParent;
-import net.matez.wildnature.data.recipes.WNCraftingShaped;
+import net.matez.wildnature.data.recipes.WNICraftingShaped;
 import net.matez.wildnature.data.setup.base.WNResource;
 import net.matez.wildnature.data.setup.recipes.WNRecipeList;
 import net.minecraft.resources.ResourceLocation;
@@ -64,12 +71,12 @@ public class WNRockWallBlock extends WNAbstractWallBlock {
     @Override
     public WNRecipeList getRecipes() {
         return new WNRecipeList(
-                new WNCraftingShaped(this.getRegName(), "walls", """
+                new WNICraftingShaped(this.getRegName(), "walls", """
                         ###
                         ###
                         """,
                         new ItemStack(this.item),
-                        new WNCraftingShaped.ShapedItems()
+                        new WNICraftingShaped.ShapedItems()
                                 .with('#',this.getFullBlock().getItem())
                 )
         );

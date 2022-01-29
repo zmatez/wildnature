@@ -1,0 +1,10 @@
+{
+    "variants": {
+      "flowering=false": {
+          "model": "wildnature:block/cotton"
+      },
+      "flowering=true": {
+          "model": "wildnature:block/cotton_flowering"
+      }
+  }
+}

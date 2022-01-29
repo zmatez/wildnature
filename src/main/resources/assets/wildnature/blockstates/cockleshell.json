@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "wildnature:block/cockleshell"
+      },
+      {
+        "model": "wildnature:block/cockleshell",
+        "y": 90
+      },
+      {
+        "model": "wildnature:block/cockleshell",
+        "y": 180
+      },
+      {
+        "model": "wildnature:block/cockleshell",
+        "y": 270
+      }
+    ]
+  }
+}

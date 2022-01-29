@@ -1,0 +1,23 @@
+{
+   "variants": {
+     "facing=north,part=single": { "model": "wildnature:block/glowing_cave_oak_bench_single" },
+     "facing=east,part=single": { "model": "wildnature:block/glowing_cave_oak_bench_single", "y": 90, "uvlock": true},
+     "facing=south,part=single": { "model": "wildnature:block/glowing_cave_oak_bench_single", "y": 180, "uvlock": true},
+     "facing=west,part=single": { "model": "wildnature:block/glowing_cave_oak_bench_single", "y": 270, "uvlock": true},
+
+     "facing=north,part=right": { "model": "wildnature:block/glowing_cave_oak_bench_side" },
+     "facing=east,part=right": { "model": "wildnature:block/glowing_cave_oak_bench_side", "y": 90, "uvlock": true},
+     "facing=south,part=right": { "model": "wildnature:block/glowing_cave_oak_bench_side", "y": 180, "uvlock": true},
+     "facing=west,part=right": { "model": "wildnature:block/glowing_cave_oak_bench_side", "y": 270, "uvlock": true},
+
+     "facing=north,part=middle": { "model": "wildnature:block/glowing_cave_oak_bench_middle" },
+     "facing=east,part=middle": { "model": "wildnature:block/glowing_cave_oak_bench_middle", "y": 90, "uvlock": true},
+     "facing=south,part=middle": { "model": "wildnature:block/glowing_cave_oak_bench_middle", "y": 180, "uvlock": true},
+     "facing=west,part=middle": { "model": "wildnature:block/glowing_cave_oak_bench_middle", "y": 270, "uvlock": true},
+
+     "facing=north,part=left": { "model": "wildnature:block/glowing_cave_oak_bench_side", "y": 180, "uvlock": true},
+     "facing=east,part=left": { "model": "wildnature:block/glowing_cave_oak_bench_side", "y": 270, "uvlock": true},
+     "facing=south,part=left": { "model": "wildnature:block/glowing_cave_oak_bench_side"},
+     "facing=west,part=left": { "model": "wildnature:block/glowing_cave_oak_bench_side", "y": 90, "uvlock": true}
+   }
+ }

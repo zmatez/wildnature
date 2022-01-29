@@ -1,6 +1,12 @@
+/*
+ * Copyright (c) matez.net 2022.
+ * All rights reserved.
+ * Consider supporting this project on Patreon: https://patreon.com/wildnaturemod
+ */
+
 package net.matez.wildnature.common.objects.blocks.crops;
 
-import net.matez.wildnature.common.objects.blocks.crops.stages.WNCropBlock_Stage3;
+import net.matez.wildnature.common.objects.blocks.crops.stages.WNCropBlock_Stage2;
 import net.matez.wildnature.common.objects.blocks.setup.WNBlockProperties;
 import net.matez.wildnature.common.objects.items.vegetables.WNVeggieBlockItem;
 import net.matez.wildnature.common.objects.tags.WNTags;
@@ -27,7 +33,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.Random;
 
-public class WNGiantCropBlock extends WNCropBlock_Stage3 {
+public class WNGiantCropBlock extends WNCropBlock_Stage2 {
     public static BooleanProperty GROWING = WNBlockProperties.GROWING;
     public static VoxelShape[] SHAPE_CORN = new VoxelShape[]{
             Block.box(7D, 0.0D, 7D, 16.0D, 5.0D, 16.0D),

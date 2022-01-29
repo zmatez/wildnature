@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "wildnature:block/horn_shell"
+      },
+      {
+        "model": "wildnature:block/horn_shell",
+        "y": 90
+      },
+      {
+        "model": "wildnature:block/horn_shell",
+        "y": 180
+      },
+      {
+        "model": "wildnature:block/horn_shell",
+        "y": 270
+      }
+    ]
+  }
+}

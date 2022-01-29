@@ -1,3 +1,9 @@
+/*
+ * Copyright (c) matez.net 2022.
+ * All rights reserved.
+ * Consider supporting this project on Patreon: https://patreon.com/wildnaturemod
+ */
+
 package net.matez.wildnature.common.log;
 
 import java.text.DateFormat;
@@ -26,15 +32,12 @@ public class WNLogger {
     }
     public void log(String message){
         System.out.println(ConsoleColors.BLACK_BRIGHT + "["+currentTime()+"] " + ConsoleColors.YELLOW_BRIGHT + "[INFO]: " + ConsoleColors.YELLOW + message + ConsoleColors.RESET);
-        
     }
     public void progress(String message){
         System.out.println(ConsoleColors.BLACK_BRIGHT + "["+currentTime()+"] " + ConsoleColors.PURPLE_BRIGHT + "[PROGRESS]: " + ConsoleColors.PURPLE + message + ConsoleColors.RESET);
-        
     }
     public void success(String message){
         System.out.println(ConsoleColors.BLACK_BRIGHT + "["+currentTime()+"] " + ConsoleColors.GREEN_BRIGHT + "[SUCCESS]: " + ConsoleColors.GREEN + message + ConsoleColors.RESET);
-        
     }
     public void warn(String message){
         System.out.println(ConsoleColors.BLACK_BRIGHT + "["+currentTime()+"] " + ConsoleColors.YELLOW_BRIGHT + "[WARN]: " + ConsoleColors.YELLOW + message + ConsoleColors.RESET);
@@ -44,7 +47,36 @@ public class WNLogger {
     }
     public void fatal(String message){
         System.out.println(ConsoleColors.BLACK_BRIGHT + "["+currentTime()+"] " + ConsoleColors.BLACK + ConsoleColors.RED_BACKGROUND + "[FATAL]" + ConsoleColors.RESET + ConsoleColors.RED_BRIGHT + ": " + ConsoleColors.RED + message + ConsoleColors.RESET);
-        
+    }
+
+    public void progressPercentage(int done, int total) {
+        int size = 20;
+        String iconLeftBoundary = ConsoleColors.BLACK_BRIGHT + "[" + ConsoleColors.RESET;
+        String iconDone = ConsoleColors.YELLOW_BRIGHT + "=" + ConsoleColors.RESET;
+        String iconRemain = ConsoleColors.RED + "-" + ConsoleColors.RESET;
+        String iconRightBoundary = ConsoleColors.BLACK_BRIGHT + "]" + ConsoleColors.RESET;
+
+        if (done > total) {
+            throw new IllegalArgumentException();
+        }
+        int donePercents = (100 * done) / total;
+        int doneLength = size * donePercents / 100;
+
+        StringBuilder bar = new StringBuilder(iconLeftBoundary);
+        for (int i = 0; i < size; i++) {
+            if (i < doneLength) {
+                bar.append(iconDone);
+            } else {
+                bar.append(iconRemain);
+            }
+        }
+        bar.append(iconRightBoundary);
+
+        System.out.print("\r" + ConsoleColors.BLACK_BRIGHT + "["+currentTime()+"] " + bar + " " + ConsoleColors.GREEN_BRIGHT + donePercents + "%");
+
+        if (done == total) {
+            System.out.print("\n");
+        }
     }
 
     //debug alternatives

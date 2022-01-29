@@ -1,0 +1,38 @@
+{
+  "variants": {
+    "single=true": [
+      {
+        "model": "wildnature:block/geyser_single"
+      },
+      {
+        "model": "wildnature:block/geyser_single",
+        "y": 90
+      },
+      {
+        "model": "wildnature:block/geyser_single",
+        "y": 180
+      },
+      {
+        "model": "wildnature:block/geyser_single",
+        "y": 270
+      }
+    ],
+    "single=false": [
+      {
+        "model": "wildnature:block/geyser"
+      },
+      {
+        "model": "wildnature:block/geyser",
+        "y": 90
+      },
+      {
+        "model": "wildnature:block/geyser",
+        "y": 180
+      },
+      {
+        "model": "wildnature:block/geyser",
+        "y": 270
+      }
+    ]
+  }
+}

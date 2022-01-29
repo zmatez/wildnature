@@ -1,3 +1,9 @@
+/*
+ * Copyright (c) matez.net 2022.
+ * All rights reserved.
+ * Consider supporting this project on Patreon: https://patreon.com/wildnaturemod
+ */
+
 package net.matez.wildnature.common.objects.items.fruits;
 
 import net.minecraft.world.food.FoodProperties;
@@ -43,7 +49,7 @@ public enum Fruit {
     RASPBERRY("raspberry", Foods.APPLE),
     RED_CURRANT("red_currant", Foods.APPLE),
     WHITE_CURRANT("white_currant", Foods.APPLE),
-    WILD_STRAWBERRY("wild_strawberry", Foods.APPLE),
+    STRAWBERRY("strawberry", Foods.APPLE),
 
     BELLADONNA("belladonna_fruit", Foods.APPLE),
     WILD_ROSE("wild_rose_fruit", Foods.APPLE),

@@ -1,0 +1,68 @@
+{
+  "variants": {
+    "facing=north,size=small": {
+      "model": "wildnature:block/ruby_formation_small",
+      "x": 90,
+      "uvlock": false
+    },
+    "facing=east,size=small": {
+      "model": "wildnature:block/ruby_formation_small",
+      "x": 90,
+      "y": 90,
+      "uvlock": false
+    },
+    "facing=south,size=small": {
+      "model": "wildnature:block/ruby_formation_small",
+      "x": 90,
+      "y": 180,
+      "uvlock": false
+    },
+    "facing=west,size=small": {
+      "model": "wildnature:block/ruby_formation_small",
+      "x": 90,
+      "y": 270,
+      "uvlock": false
+    },
+    "facing=up,size=small": {
+      "model": "wildnature:block/ruby_formation_small",
+      "uvlock": false
+    },
+    "facing=down,size=small": {
+      "model": "wildnature:block/ruby_formation_small",
+      "x": 180,
+      "uvlock": false
+    },
+    "facing=north,size=big": {
+      "model": "wildnature:block/ruby_formation_big",
+      "x": 90,
+      "uvlock": false
+    },
+    "facing=east,size=big": {
+      "model": "wildnature:block/ruby_formation_big",
+      "x": 90,
+      "y": 90,
+      "uvlock": false
+    },
+    "facing=south,size=big": {
+      "model": "wildnature:block/ruby_formation_big",
+      "x": 90,
+      "y": 180,
+      "uvlock": false
+    },
+    "facing=west,size=big": {
+      "model": "wildnature:block/ruby_formation_big",
+      "x": 90,
+      "y": 270,
+      "uvlock": false
+    },
+    "facing=up,size=big": {
+      "model": "wildnature:block/ruby_formation_big",
+      "uvlock": false
+    },
+    "facing=down,size=big": {
+      "model": "wildnature:block/ruby_formation_big",
+      "x": 180,
+      "uvlock": false
+    }
+  }
+}

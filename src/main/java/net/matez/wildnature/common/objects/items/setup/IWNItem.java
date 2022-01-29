@@ -1,6 +1,11 @@
+/*
+ * Copyright (c) matez.net 2022.
+ * All rights reserved.
+ * Consider supporting this project on Patreon: https://patreon.com/wildnaturemod
+ */
+
 package net.matez.wildnature.common.objects.items.setup;
 
-import net.matez.wildnature.data.item_models.WNItemModel_BlockParent;
 import net.matez.wildnature.data.setup.base.WNResource;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.ItemLike;
@@ -8,10 +13,18 @@ import net.minecraft.world.level.ItemLike;
 import javax.annotation.Nullable;
 
 public interface IWNItem extends ItemLike {
-    public void construct();
+    public default void construct(){
+
+    }
 
     @Nullable
     public WNResource getItemModel();
+
+    @Nullable
+    public default ItemModelList getItemModels() {
+        return null;
+    }
+
     /**
      * @return e.g "stone"
      */

@@ -1,0 +1,7 @@
+{
+    "parent": "wildnature:block/bench_side",
+    "textures": {
+        "material": "wildnature:blocks/trees/mahogany/mahogany_planks",
+        "material2": "wildnature:blocks/trees/mahogany/mahogany_stripped_log"
+    }
+}

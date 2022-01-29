@@ -1,0 +1,6 @@
+{
+    "parent": "wildnature:block/table_leg",
+    "textures": {
+        "texture": "minecraft:block/stripped_jungle_log"
+    }
+}

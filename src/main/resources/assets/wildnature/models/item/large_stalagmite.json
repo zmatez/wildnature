@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "wildnature:blocks/plants/cave/large_stalagmite/large_stalagmite_item"
+  }
+}

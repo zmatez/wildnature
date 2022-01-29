@@ -1,0 +1,8 @@
+{
+    "parent": "wildnature:block/flowering_cross",
+    "textures": {
+        "colored": "wildnature:blocks/plants/cave/cave_lily/cave_lily",
+        "greyscale": "wildnature:blocks/plants/cave/cave_lily/cave_lily_stalk",
+        "particle": "wildnature:blocks/plants/cave/cave_lily/cave_lily_stalk"
+    }
+}

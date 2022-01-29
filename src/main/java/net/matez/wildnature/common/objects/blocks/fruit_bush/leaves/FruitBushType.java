@@ -1,19 +1,36 @@
+/*
+ * Copyright (c) matez.net 2022.
+ * All rights reserved.
+ * Consider supporting this project on Patreon: https://patreon.com/wildnaturemod
+ */
+
 package net.matez.wildnature.common.objects.blocks.fruit_bush.leaves;
 
 import net.matez.wildnature.common.objects.blocks.leaves.LeafConfig;
+import net.matez.wildnature.common.objects.items.fruits.Fruit;
+import net.matez.wildnature.common.registry.items.WNItems;
 import net.matez.wildnature.common.registry.tabs.WNTabs;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.level.material.MaterialColor;
 
 public enum FruitBushType {
-    BILBERRY("bilberry","bilberry", MaterialColor.PLANT, false, new LeafConfig(1,false)),
-    BLUEBERRY("blueberry","blueberry", MaterialColor.PLANT, false, new LeafConfig(1,false)),
-    CHOKEBERRY("chokeberry","chokeberry", MaterialColor.PLANT, false, new LeafConfig(1,false)),
-    GOOSEBERRY("gooseberry","gooseberry", MaterialColor.PLANT, false, new LeafConfig(1,false)),
-    HAWTHORN("hawthorn","hawthorn", MaterialColor.PLANT, false, new LeafConfig(2,false)),
-    KAMCHATKA("kamchatka","kamchatka", MaterialColor.PLANT, false, new LeafConfig(1,false)),
-    LINGONBERRY("lingonberry","lingonberry", MaterialColor.PLANT, false, new LeafConfig(1,false)),
-    RASPBERRY("raspberry","raspberry", MaterialColor.PLANT, false, new LeafConfig(1,false)),
+    BILBERRY("bilberry","bilberry", MaterialColor.PLANT, false, new LeafConfig(1,false)
+            .with(1,() -> WNItems.FRUITS.get(Fruit.BILBERRIES),1,2)),
+    BLUEBERRY("blueberry","blueberry", MaterialColor.PLANT, false, new LeafConfig(1,false)
+            .with(1,() -> WNItems.FRUITS.get(Fruit.BLUEBERRIES),1,2)),
+    CHOKEBERRY("chokeberry","chokeberry", MaterialColor.PLANT, false, new LeafConfig(1,false)
+            .with(1,() -> WNItems.FRUITS.get(Fruit.CHOKEBERRIES),1,2)),
+    GOOSEBERRY("gooseberry","gooseberry", MaterialColor.PLANT, false, new LeafConfig(1,false)
+            .with(1,() -> WNItems.FRUITS.get(Fruit.GOOSEBERRIES),1,2)),
+    HAWTHORN("hawthorn","hawthorn", MaterialColor.PLANT, false, new LeafConfig(2,false)
+            .with(1,() -> WNItems.FRUITS.get(Fruit.HAWTHORN_BERRIES),1,2)
+            .with(2,() -> WNItems.FRUITS.get(Fruit.HAWTHORN_BERRIES),1,3)),
+    KAMCHATKA("kamchatka","kamchatka", MaterialColor.PLANT, false, new LeafConfig(1,false)
+            .with(1,() -> WNItems.FRUITS.get(Fruit.KAMCHATKA_BERRIES),1,2)),
+    LINGONBERRY("lingonberry","lingonberry", MaterialColor.PLANT, false, new LeafConfig(1,false)
+            .with(1,() -> WNItems.FRUITS.get(Fruit.LINGONBERRIES),1,2)),
+    RASPBERRY("raspberry","raspberry", MaterialColor.PLANT, false, new LeafConfig(1,false)
+            .with(1,() -> WNItems.FRUITS.get(Fruit.RASPBERRY),1,2)),
 
     ;
     //?------------------------------

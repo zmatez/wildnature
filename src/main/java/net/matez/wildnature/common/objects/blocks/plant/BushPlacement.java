@@ -1,3 +1,9 @@
+/*
+ * Copyright (c) matez.net 2022.
+ * All rights reserved.
+ * Consider supporting this project on Patreon: https://patreon.com/wildnaturemod
+ */
+
 package net.matez.wildnature.common.objects.blocks.plant;
 
 import net.minecraft.tags.BlockTags;
@@ -21,6 +27,12 @@ public enum BushPlacement {
     }),
     ALL_NATURAL((state, stateOn, getter, pos) -> {
         return stateOn.is(BlockTags.DIRT) || stateOn.is(Blocks.FARMLAND) || stateOn.is(BlockTags.SAND) || stateOn.is(BlockTags.LOGS) || stateOn.is(BlockTags.LEAVES);
+    }),
+    LOGS((state, stateOn, getter, pos) -> {
+        return stateOn.is(BlockTags.LOGS);
+    }),
+    STONE((state, stateOn, getter, pos) -> {
+        return stateOn.is(BlockTags.BASE_STONE_OVERWORLD);
     })
     ;
 

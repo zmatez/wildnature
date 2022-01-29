@@ -1,13 +1,16 @@
+/*
+ * Copyright (c) matez.net 2022.
+ * All rights reserved.
+ * Consider supporting this project on Patreon: https://patreon.com/wildnaturemod
+ */
+
 package net.matez.wildnature.common.objects.blocks.fruit_bush.plants;
 
-import net.matez.wildnature.common.objects.blocks.plant.BushType;
-import net.matez.wildnature.common.objects.blocks.plant.WNDoublePlantBlock;
 import net.matez.wildnature.common.objects.blocks.setup.WNBlockProperties;
 import net.matez.wildnature.common.objects.tags.WNTags;
 import net.matez.wildnature.common.util.WNUtil;
 import net.matez.wildnature.data.block_models.plants.WNBlockModel_FloweringBush;
 import net.matez.wildnature.data.block_models.plants.WNBlockModel_LeafedFloweringBush;
-import net.matez.wildnature.data.block_models.plants.WNBlockModel_TintedCross;
 import net.matez.wildnature.data.blockstates.plants.WNBlockstate_ChineseLanternFlower;
 import net.matez.wildnature.data.setup.base.WNResource;
 import net.minecraft.core.BlockPos;
@@ -34,6 +37,7 @@ import java.util.Random;
 
 public class WNBelladonnaFruitPlantBlock extends WNDoubleFruitPlantBlock {
     public static final IntegerProperty STAGE = WNBlockProperties.CHINESE_LANTERN_STAGE;
+    protected int max = 3;
 
     public WNBelladonnaFruitPlantBlock(ResourceLocation location, Properties properties, FruitPlantType type) {
         super(location, properties, type);
@@ -56,7 +60,7 @@ public class WNBelladonnaFruitPlantBlock extends WNDoubleFruitPlantBlock {
     public BlockState getStateForPlacement(BlockPlaceContext context) {
         BlockState state = super.getStateForPlacement(context);
         if(state != null && context.getPlayer() != null && context.getPlayer().isCreative()){
-            return state.setValue(STAGE,3);
+            return state.setValue(LEAF_STAGE,max);
         }
         return state;
     }
@@ -64,7 +68,7 @@ public class WNBelladonnaFruitPlantBlock extends WNDoubleFruitPlantBlock {
     @Override
     public void construct() {
         super.construct();
-        this.registerDefaultState(this.stateDefinition.any().setValue(HALF, DoubleBlockHalf.LOWER).setValue(STAGE,0));
+        this.registerDefaultState(this.stateDefinition.any().setValue(HALF, DoubleBlockHalf.LOWER).setValue(LEAF_STAGE,0));
     }
 
     @Override
@@ -115,20 +119,20 @@ public class WNBelladonnaFruitPlantBlock extends WNDoubleFruitPlantBlock {
 
     @Override
     public boolean isRandomlyTicking(BlockState state) {
-        return state.getValue(STAGE) != 3 && state.getValue(HALF) == DoubleBlockHalf.LOWER;
+        return state.getValue(LEAF_STAGE) != max && state.getValue(HALF) == DoubleBlockHalf.LOWER;
     }
 
     @Override
     public void setPlacedBy(Level level, BlockPos pos, BlockState state, LivingEntity entity, ItemStack stack) {
         BlockPos blockpos = pos.above();
-        level.setBlock(blockpos, copyWaterloggedFrom(level, blockpos, this.defaultBlockState().setValue(HALF, DoubleBlockHalf.UPPER).setValue(STAGE, state.getValue(STAGE))), 3);
+        level.setBlock(blockpos, copyWaterloggedFrom(level, blockpos, this.defaultBlockState().setValue(HALF, DoubleBlockHalf.UPPER).setValue(LEAF_STAGE, state.getValue(LEAF_STAGE))), 3);
     }
 
     @Override
     public void randomTick(BlockState state, ServerLevel level, BlockPos pos, Random random) {
-        if(state.getValue(STAGE) != 3){
+        if(state.getValue(LEAF_STAGE) != 3){
             if(WNUtil.rint(0,5) == 0){
-                placeAt(level,state.setValue(STAGE,state.getValue(STAGE) + 1),pos,2);
+                placeAt(level,state.setValue(LEAF_STAGE,state.getValue(LEAF_STAGE) + 1),pos,2);
             }
         }
     }
@@ -146,7 +150,7 @@ public class WNBelladonnaFruitPlantBlock extends WNDoubleFruitPlantBlock {
                         }
                     });
 
-                    int stage = available.isEmpty() ? 0 : (available.get(WNUtil.rint(0,available.size())));
+                    int stage = available.isEmpty() ? 0 : (available.get(WNUtil.rint(0,available.size()-1)));
 
                     BlockState next = null;
                     BlockPos nextPos = null;

@@ -1,0 +1,7 @@
+{
+    "parent": "wildnature:block/bench_single",
+    "textures": {
+        "material": "wildnature:blocks/trees/palm/palm_planks",
+        "material2": "wildnature:blocks/trees/palm/palm_stripped_log"
+    }
+}

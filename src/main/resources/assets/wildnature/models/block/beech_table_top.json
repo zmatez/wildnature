@@ -1,0 +1,6 @@
+{
+    "parent": "wildnature:block/table_top",
+    "textures": {
+        "texture": "wildnature:blocks/trees/beech/beech_stripped_log"
+    }
+}

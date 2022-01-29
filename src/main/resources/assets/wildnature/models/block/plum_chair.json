@@ -1,0 +1,7 @@
+{
+    "parent": "wildnature:block/chair",
+    "textures": {
+        "log": "wildnature:blocks/trees/plum/plum_stripped_log",
+        "planks": "wildnature:blocks/trees/plum/plum_planks"
+    }
+}

@@ -1,0 +1,36 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "wildnature:block/topaz_formation",
+      "x": 90,
+      "uvlock": false
+    },
+    "facing=east": {
+      "model": "wildnature:block/topaz_formation",
+      "x": 90,
+      "y": 90,
+      "uvlock": false
+    },
+    "facing=south": {
+      "model": "wildnature:block/topaz_formation",
+      "x": 90,
+      "y": 180,
+      "uvlock": false
+    },
+    "facing=west": {
+      "model": "wildnature:block/topaz_formation",
+      "x": 90,
+      "y": 270,
+      "uvlock": false
+    },
+    "facing=up": {
+      "model": "wildnature:block/topaz_formation",
+      "uvlock": false
+    },
+    "facing=down": {
+      "model": "wildnature:block/topaz_formation",
+      "x": 180,
+      "uvlock": false
+    }
+  }
+}

@@ -1,3 +1,9 @@
+/*
+ * Copyright (c) matez.net 2022.
+ * All rights reserved.
+ * Consider supporting this project on Patreon: https://patreon.com/wildnaturemod
+ */
+
 package net.matez.wildnature.common.objects.blocks.fruit_bush.plants;
 
 import net.matez.wildnature.common.objects.blocks.fruit_bush.plants.stages.*;
@@ -19,7 +25,6 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -158,7 +163,7 @@ public abstract class WNFruitBushPlantTypedBlock extends WNBushBlock {
                         }
                     });
 
-                    int stage = available.isEmpty() ? 0 : (available.get(WNUtil.rint(0,available.size())));
+                    int stage = available.isEmpty() ? 0 : (available.get(WNUtil.rint(0,available.size()-1)));
 
                     level.setBlock(pos, state.setValue(this.LEAF_STAGE, stage), 2);
                     Block.popResourceFromFace(level, pos, result.getDirection(), fruit);

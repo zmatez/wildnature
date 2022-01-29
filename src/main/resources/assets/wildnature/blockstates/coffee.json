@@ -1,0 +1,22 @@
+{
+    "variants": {
+      "stage=0,half=lower": {
+          "model": "wildnature:block/coffee_stage_0_bottom"
+      },
+      "stage=0,half=upper": {
+          "model": "wildnature:block/coffee_stage_0_top"
+      },
+      "stage=1,half=lower": {
+          "model": "wildnature:block/coffee_stage_1_bottom"
+      },
+      "stage=1,half=upper": {
+          "model": "wildnature:block/coffee_stage_1_top"
+      },
+      "stage=2,half=lower": {
+          "model": "wildnature:block/coffee_stage_2_bottom"
+      },
+      "stage=2,half=upper": {
+          "model": "wildnature:block/coffee_stage_2_top"
+      }
+  }
+}

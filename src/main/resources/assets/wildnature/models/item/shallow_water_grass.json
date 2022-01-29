@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "wildnature:blocks/plants/water/shallow_water_grass/shallow_water_grass_item"
+  }
+}

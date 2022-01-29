@@ -1,0 +1,7 @@
+{
+    "parent": "wildnature:block/bench_side",
+    "textures": {
+        "material": "wildnature:blocks/trees/mangrove/mangrove_planks",
+        "material2": "wildnature:blocks/trees/mangrove/mangrove_stripped_log"
+    }
+}

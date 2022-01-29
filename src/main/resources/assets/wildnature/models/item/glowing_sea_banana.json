@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "wildnature:blocks/plants/water/glowing_sea_banana/glowing_sea_banana_item"
+  }
+}

@@ -1,3 +1,9 @@
+/*
+ * Copyright (c) matez.net 2022.
+ * All rights reserved.
+ * Consider supporting this project on Patreon: https://patreon.com/wildnaturemod
+ */
+
 package net.matez.wildnature.common.objects.blocks.plant.plants;
 
 import com.google.common.collect.ImmutableMap;
@@ -12,6 +18,8 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Mirror;
+import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -63,7 +71,7 @@ public abstract class WNVerticalBushBlock extends WNBushConfiguredBlock {
         if (state == null) {
             return null;
         }
-        Direction direction = context.getNearestLookingDirection().getOpposite();
+        Direction direction = context.getClickedFace();
         if (!isDirectionAllowed(context,direction)) {
             return null;
         }
@@ -81,7 +89,20 @@ public abstract class WNVerticalBushBlock extends WNBushConfiguredBlock {
         return SHAPE.get(p_58092_.getValue(FACING));
     }
 
+    @Override
+    public OffsetType getOffsetType() {
+        return OffsetType.NONE;
+    }
+
     public boolean isDirectionAllowed(BlockPlaceContext context, Direction direction){
         return true;
+    }
+
+    public BlockState rotate(BlockState p_154354_, Rotation p_154355_) {
+        return p_154354_.setValue(FACING, p_154355_.rotate(p_154354_.getValue(FACING)));
+    }
+
+    public BlockState mirror(BlockState p_154351_, Mirror p_154352_) {
+        return p_154351_.setValue(FACING, p_154352_.mirror(p_154351_.getValue(FACING)));
     }
 }

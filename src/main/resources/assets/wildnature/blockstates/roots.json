@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "":[
+      { "model": "wildnature:block/roots_1" },
+      { "model": "wildnature:block/roots_2" }
+    ]
+  }
+}

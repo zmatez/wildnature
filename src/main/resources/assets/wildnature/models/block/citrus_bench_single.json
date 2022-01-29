@@ -1,0 +1,7 @@
+{
+    "parent": "wildnature:block/bench_single",
+    "textures": {
+        "material": "wildnature:blocks/trees/citrus/citrus_planks",
+        "material2": "wildnature:blocks/trees/citrus/citrus_stripped_log"
+    }
+}

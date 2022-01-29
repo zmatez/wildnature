@@ -1,0 +1,38 @@
+{
+  "variants": {
+    "flowering=false": [
+      {
+        "model": "wildnature:block/water_hyacinth"
+      },
+      {
+        "model": "wildnature:block/water_hyacinth",
+        "y": 90
+      },
+      {
+        "model": "wildnature:block/water_hyacinth",
+        "y": 180
+      },
+      {
+        "model": "wildnature:block/water_hyacinth",
+        "y": 270
+      }
+    ],
+    "flowering=true": [
+      {
+        "model": "wildnature:block/water_hyacinth_flowering"
+      },
+      {
+        "model": "wildnature:block/water_hyacinth_flowering",
+        "y": 90
+      },
+      {
+        "model": "wildnature:block/water_hyacinth_flowering",
+        "y": 180
+      },
+      {
+        "model": "wildnature:block/water_hyacinth_flowering",
+        "y": 270
+      }
+    ]
+  }
+}

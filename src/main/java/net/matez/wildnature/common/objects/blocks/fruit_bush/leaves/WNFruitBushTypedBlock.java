@@ -1,3 +1,9 @@
+/*
+ * Copyright (c) matez.net 2022.
+ * All rights reserved.
+ * Consider supporting this project on Patreon: https://patreon.com/wildnaturemod
+ */
+
 package net.matez.wildnature.common.objects.blocks.fruit_bush.leaves;
 
 import net.matez.wildnature.common.objects.blocks.basic.WNLeavesBlock;
@@ -143,14 +149,9 @@ public abstract class WNFruitBushTypedBlock extends WNLeavesBlock {
             ItemStack fruit = getFruit(state);
              {
                 if (fruit != null) {
-                    if(WNUtil.rint(0,3) == 0){
-                        level.setBlock(pos, state.setValue(this.LEAF_STAGE, 0), 2);
-                        Block.popResourceFromFace(level, pos, result.getDirection(), fruit);
-
-                        return InteractionResult.SUCCESS;
-                    }else{
-                        return InteractionResult.CONSUME_PARTIAL;
-                    }
+                    level.setBlock(pos, state.setValue(this.LEAF_STAGE, 0), 2);
+                    Block.popResourceFromFace(level, pos, result.getDirection(), fruit);
+                    return InteractionResult.SUCCESS;
                 }
             }
         }

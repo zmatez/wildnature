@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "wildnature:blocks/plants/cave/slime_shroom_green/slime_shroom_green"
+  }
+}

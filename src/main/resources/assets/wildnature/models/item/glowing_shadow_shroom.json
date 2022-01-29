@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "wildnature:blocks/plants/cave/glowing_shadow_shroom/glowing_shadow_shroom"
+  }
+}

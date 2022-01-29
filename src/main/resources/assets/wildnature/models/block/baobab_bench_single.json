@@ -1,0 +1,7 @@
+{
+    "parent": "wildnature:block/bench_single",
+    "textures": {
+        "material": "wildnature:blocks/trees/baobab/baobab_planks",
+        "material2": "wildnature:blocks/trees/baobab/baobab_stripped_log"
+    }
+}

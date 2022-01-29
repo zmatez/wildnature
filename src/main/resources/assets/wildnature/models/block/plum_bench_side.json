@@ -1,0 +1,7 @@
+{
+    "parent": "wildnature:block/bench_side",
+    "textures": {
+        "material": "wildnature:blocks/trees/plum/plum_planks",
+        "material2": "wildnature:blocks/trees/plum/plum_stripped_log"
+    }
+}

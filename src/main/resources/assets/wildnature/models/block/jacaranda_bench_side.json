@@ -1,0 +1,7 @@
+{
+    "parent": "wildnature:block/bench_side",
+    "textures": {
+        "material": "wildnature:blocks/trees/jacaranda/jacaranda_planks",
+        "material2": "wildnature:blocks/trees/jacaranda/jacaranda_stripped_log"
+    }
+}

@@ -1,28 +1,53 @@
+/*
+ * Copyright (c) matez.net 2022.
+ * All rights reserved.
+ * Consider supporting this project on Patreon: https://patreon.com/wildnaturemod
+ */
+
 package net.matez.wildnature.common.registry.blocks;
 
 import net.matez.wildnature.common.log.WNLogger;
+import net.matez.wildnature.common.objects.blocks.cave_plants.CavePlantType;
 import net.matez.wildnature.common.objects.blocks.crops.CropType;
 import net.matez.wildnature.common.objects.blocks.crops.WNCropTypedBlock;
 import net.matez.wildnature.common.objects.blocks.fruit_bush.leaves.FruitBushType;
 import net.matez.wildnature.common.objects.blocks.fruit_bush.leaves.WNFruitBushTypedBlock;
 import net.matez.wildnature.common.objects.blocks.fruit_bush.plants.FruitPlantType;
 import net.matez.wildnature.common.objects.blocks.fruit_bush.plants.WNFruitBushPlantTypedBlock;
+import net.matez.wildnature.common.objects.blocks.fruit_bush.vines.FruitVineType;
+import net.matez.wildnature.common.objects.blocks.fruit_bush.vines.WNFruitVineBlock;
+import net.matez.wildnature.common.objects.blocks.geyser.WNGeyserBlock;
 import net.matez.wildnature.common.objects.blocks.grass.*;
+import net.matez.wildnature.common.objects.blocks.lanterns.Lantern;
+import net.matez.wildnature.common.objects.blocks.lanterns.WNLanternBlock;
 import net.matez.wildnature.common.objects.blocks.leaves.LeafBushType;
 import net.matez.wildnature.common.objects.blocks.leaves.LeafType;
 import net.matez.wildnature.common.objects.blocks.leaves.WNBushLeafBlock;
 import net.matez.wildnature.common.objects.blocks.leaves.WNLeavesTypedBlock;
-import net.matez.wildnature.common.objects.blocks.plant.BushSetup;
+import net.matez.wildnature.common.objects.blocks.mushrooms.*;
+import net.matez.wildnature.common.objects.blocks.ores.*;
 import net.matez.wildnature.common.objects.blocks.plant.BushType;
-import net.matez.wildnature.common.objects.blocks.plant.BushVariant;
-import net.matez.wildnature.common.objects.blocks.plant.flowering.WNCloverBlock;
 import net.matez.wildnature.common.objects.blocks.rocks.*;
 import net.matez.wildnature.common.objects.blocks.sand.SandType;
 import net.matez.wildnature.common.objects.blocks.sand.WNMudBlock;
 import net.matez.wildnature.common.objects.blocks.sand.WNQuicksandBlock;
 import net.matez.wildnature.common.objects.blocks.sand.WNSandBlock;
 import net.matez.wildnature.common.objects.blocks.setup.WNBlock;
-import net.matez.wildnature.common.objects.blocks.wood.*;
+import net.matez.wildnature.common.objects.blocks.shells.Shell;
+import net.matez.wildnature.common.objects.blocks.shells.WNShellBlock;
+import net.matez.wildnature.common.objects.blocks.underwater_plants.*;
+import net.matez.wildnature.common.objects.blocks.water_plants.WaterPlant;
+import net.matez.wildnature.common.objects.blocks.wood.LogType;
+import net.matez.wildnature.common.objects.blocks.wood.building.*;
+import net.matez.wildnature.common.objects.blocks.wood.furniture.*;
+import net.matez.wildnature.common.objects.blocks.wood.vanilla.VanillaLogType;
+import net.matez.wildnature.common.objects.blocks.wood.vanilla.building.WNVanillaBranchBlock;
+import net.matez.wildnature.common.objects.blocks.wood.vanilla.building.WNVanillaPlanksBlock;
+import net.matez.wildnature.common.objects.blocks.wood.vanilla.building.WNVanillaPlanksSlabBlock;
+import net.matez.wildnature.common.objects.blocks.wood.vanilla.building.WNVanillaPlanksStairBlock;
+import net.matez.wildnature.common.objects.blocks.wood.vanilla.furniture.WNVanillaBenchBlock;
+import net.matez.wildnature.common.objects.blocks.wood.vanilla.furniture.WNVanillaChairBlock;
+import net.matez.wildnature.common.objects.blocks.wood.vanilla.furniture.WNVanillaTableBlock;
 import net.matez.wildnature.common.objects.initializer.ExcludeInit;
 import net.matez.wildnature.common.objects.initializer.InitStage;
 import net.matez.wildnature.common.objects.initializer.Initialize;
@@ -40,7 +65,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
 
-import java.util.ArrayList;
 import java.util.LinkedHashMap;
 
 @Initialize(InitStage.CONSTRUCT)
@@ -89,6 +113,17 @@ public class WNBlocks {
         }
         return new WNPlanksBlock(
                 location(value.getIdBase() + "_parquet"),
+                BlockBehaviour.Properties.of(Material.WOOD, value.getColor())
+                        .strength(2.0F)
+                        .sound(SoundType.WOOD),
+                new Item.Properties()
+                        .tab(WNTabs.TAB_WOOD_BUILDING),
+                value
+        );
+    });
+    public static final LinkedHashMap<VanillaLogType, WNBlock> VANILLA_PARQUET = register(VanillaLogType.values(), (value) -> {
+        return new WNVanillaPlanksBlock(
+                location(value.getName() + "_parquet"),
                 BlockBehaviour.Properties.of(Material.WOOD, value.getColor())
                         .strength(2.0F)
                         .sound(SoundType.WOOD),
@@ -162,11 +197,22 @@ public class WNBlocks {
         return new WNPlanksSlabBlock(
                 location(value.getIdBase() + "_slab_parquet"),
                 BlockBehaviour.Properties.of(Material.WOOD, value.getColor())
-                        .strength(2.0F, 3.0F)
+                        .strength(2.0F,3.0F)
                         .sound(SoundType.WOOD),
                 new Item.Properties()
                         .tab(WNTabs.TAB_WOOD_BUILDING),
                 value, true
+        );
+    });
+    public static final LinkedHashMap<VanillaLogType, WNBlock> SLAB_VANILLA_PARQUET = register(VanillaLogType.values(), (value) -> {
+        return new WNVanillaPlanksSlabBlock(
+                location(value.getName() + "_slab_parquet"),
+                BlockBehaviour.Properties.of(Material.WOOD, value.getColor())
+                        .strength(2.0F)
+                        .sound(SoundType.WOOD),
+                new Item.Properties()
+                        .tab(WNTabs.TAB_WOOD_BUILDING),
+                value
         );
     });
     public static final LinkedHashMap<LogType, WNBlock> STAIRS_PLANKS = register(LogType.values(), (value) -> {
@@ -189,10 +235,22 @@ public class WNBlocks {
         return new WNPlanksStairBlock(
                 location(value.getIdBase() + "_stairs_parquet"),
                 () -> PARQUET.get(value).defaultBlockState(),
-                BlockBehaviour.Properties.copy(PLANKS.get(value)),
+                BlockBehaviour.Properties.copy(PARQUET.get(value)),
                 new Item.Properties()
                         .tab(WNTabs.TAB_WOOD_BUILDING),
                 value, true
+        );
+    });
+    public static final LinkedHashMap<VanillaLogType, WNBlock> STAIRS_VANILLA_PARQUET = register(VanillaLogType.values(), (value) -> {
+        return new WNVanillaPlanksStairBlock(
+                location(value.getName() + "_stairs_parquet"),
+                () -> VANILLA_PARQUET.get(value).defaultBlockState(),
+                BlockBehaviour.Properties.of(Material.WOOD, value.getColor())
+                        .strength(2.0F)
+                        .sound(SoundType.WOOD),
+        new Item.Properties()
+                        .tab(WNTabs.TAB_WOOD_BUILDING),
+                value
         );
     });
     public static final LinkedHashMap<LogType, WNBlock> WOODEN_FENCES = register(LogType.values(), (value) -> {
@@ -266,7 +324,7 @@ public class WNBlocks {
                         .strength(3F)
                         .sound(SoundType.WOOD),
                 new Item.Properties()
-                        .tab(WNTabs.TAB_WOOD_BUILDING),
+                        .tab(WNTabs.TAB_FURNITURE),
                 value
         );
     });
@@ -282,7 +340,7 @@ public class WNBlocks {
                             return false;
                         }),
                 new Item.Properties()
-                        .tab(WNTabs.TAB_WOOD_BUILDING),
+                        .tab(WNTabs.TAB_FURNITURE),
                 value
         );
     });
@@ -296,6 +354,104 @@ public class WNBlocks {
                         .noOcclusion(),
                 new Item.Properties()
                         .tab(WNTabs.TAB_WOOD_BUILDING),
+                value
+        );
+    });
+    public static final LinkedHashMap<VanillaLogType, WNBlock> VANILLA_BRANCHES = register(VanillaLogType.values(), (value) -> {
+        return new WNVanillaBranchBlock(
+                location(value.getName() + "_branch"),
+                BlockBehaviour.Properties.of(Material.WOOD, value.getColor())
+                        .strength(1.4F)
+                        .sound(SoundType.WOOD)
+                        .noOcclusion(),
+                new Item.Properties()
+                        .tab(WNTabs.TAB_WOOD_BUILDING),
+                value
+        );
+    });
+    public static final LinkedHashMap<LogType, WNBlock> TABLES = register(LogType.values(), (value) -> {
+        //todo different strength for logs
+        if (value.getParent() != null) {
+            return null;
+        }
+        return new WNTableBlock(
+                location(value.getIdBase() + "_table"),
+                BlockBehaviour.Properties.of(Material.WOOD, value.getColor())
+                        .strength(2.0F, 3.0F)
+                        .sound(SoundType.WOOD)
+                        .noOcclusion(),
+                new Item.Properties()
+                        .tab(WNTabs.TAB_FURNITURE),
+                value
+        );
+    });
+    public static final LinkedHashMap<VanillaLogType, WNBlock> VANILLA_TABLES = register(VanillaLogType.values(), (value) -> {
+        return new WNVanillaTableBlock(
+                location(value.getName() + "_table"),
+                BlockBehaviour.Properties.of(Material.WOOD, value.getColor())
+                        .strength(2.0F, 3.0F)
+                        .sound(SoundType.WOOD)
+                        .noOcclusion(),
+                new Item.Properties()
+                        .tab(WNTabs.TAB_FURNITURE),
+                value
+        );
+    });
+
+    public static final LinkedHashMap<LogType, WNBlock> CHAIRS = register(LogType.values(), (value) -> {
+        //todo different strength for logs
+        if (value.getParent() != null) {
+            return null;
+        }
+        return new WNChairBlock(
+                location(value.getIdBase() + "_chair"),
+                BlockBehaviour.Properties.of(Material.WOOD, value.getColor())
+                        .strength(2.0F, 3.0F)
+                        .sound(SoundType.WOOD)
+                        .noOcclusion(),
+                new Item.Properties()
+                        .tab(WNTabs.TAB_FURNITURE),
+                value
+        );
+    });
+    public static final LinkedHashMap<VanillaLogType, WNBlock> VANILLA_CHAIRS = register(VanillaLogType.values(), (value) -> {
+        return new WNVanillaChairBlock(
+                location(value.getName() + "_chair"),
+                BlockBehaviour.Properties.of(Material.WOOD, value.getColor())
+                        .strength(2.0F, 3.0F)
+                        .sound(SoundType.WOOD)
+                        .noOcclusion(),
+                new Item.Properties()
+                        .tab(WNTabs.TAB_FURNITURE),
+                value
+        );
+    });
+
+    public static final LinkedHashMap<LogType, WNBlock> BENCHES = register(LogType.values(), (value) -> {
+        //todo different strength for logs
+        if (value.getParent() != null) {
+            return null;
+        }
+        return new WNBenchBlock(
+                location(value.getIdBase() + "_bench"),
+                BlockBehaviour.Properties.of(Material.WOOD, value.getColor())
+                        .strength(2.0F, 3.0F)
+                        .sound(SoundType.WOOD)
+                        .noOcclusion(),
+                new Item.Properties()
+                        .tab(WNTabs.TAB_FURNITURE),
+                value
+        );
+    });
+    public static final LinkedHashMap<VanillaLogType, WNBlock> VANILLA_BENCHES = register(VanillaLogType.values(), (value) -> {
+        return new WNVanillaBenchBlock(
+                location(value.getName() + "_bench"),
+                BlockBehaviour.Properties.of(Material.WOOD, value.getColor())
+                        .strength(2.0F, 3.0F)
+                        .sound(SoundType.WOOD)
+                        .noOcclusion(),
+                new Item.Properties()
+                        .tab(WNTabs.TAB_FURNITURE),
                 value
         );
     });
@@ -398,6 +554,15 @@ public class WNBlocks {
             new Item.Properties()
                     .tab(WNTabs.TAB_SURFACE), null
     ));
+    public static final WNBlock GEYSER = register(new WNGeyserBlock(
+            location("geyser"),
+            BlockBehaviour.Properties.of(Material.GRASS, MaterialColor.GRASS)
+                    .strength(5F)
+                    .sound(SoundType.DRIPSTONE_BLOCK)
+                    .randomTicks(),
+            new Item.Properties()
+                    .tab(WNTabs.TAB_SURFACE)
+    ));
     //################# LEAVES
     public static final LinkedHashMap<LeafType, WNBlock> LEAVES = register(LeafType.values(), (value) -> {
         return WNLeavesTypedBlock.create(
@@ -485,6 +650,19 @@ public class WNBlocks {
         );
     });
 
+    public static final LinkedHashMap<FruitVineType, WNBlock> FRUIT_VINES = register(FruitVineType.values(), (value) -> {
+        return new WNFruitVineBlock(
+                location(value.getIdBase()),
+                BlockBehaviour.Properties.of(Material.EGG, value.getColor())
+                        .noOcclusion()
+                        .strength(0.2f)
+                        .randomTicks(),
+                new Item.Properties()
+                        .tab(WNTabs.TAB_SURFACE_PLANTS),
+                value
+        );
+    });
+
     public static final LinkedHashMap<CropType, WNBlock> CROPS = register(CropType.values(), (value) -> {
         BlockBehaviour.Properties blockProp = BlockBehaviour.Properties.of(Material.PLANT, MaterialColor.PLANT)
                 .instabreak()
@@ -512,6 +690,129 @@ public class WNBlocks {
                 blockProp,
                 itemProp,
                 value
+        );
+    });
+
+    public static final LinkedHashMap<Mushroom, WNBlock> MUSHROOMS = register(Mushroom.values(), (value) -> {
+        BlockBehaviour.Properties prop = BlockBehaviour.Properties.of(Material.PLANT,MaterialColor.COLOR_BROWN)
+                .sound(SoundType.GRASS).noCollission().randomTicks().instabreak().lightLevel((state) -> {
+                    return 1;
+                });
+
+        if(value.getType() == MushroomType.NORMAL) {
+            return new WNMushroomBlock(
+                    location(value.getId()),
+                    prop.dynamicShape(),
+                    new Item.Properties()
+                            .tab(WNTabs.TAB_SURFACE_PLANTS),
+                    value
+            );
+        }else if(value.getType() == MushroomType.PUFFBALL){
+            return new WNPuffballBlock(
+                    location(value.getId()),
+                    prop,
+                    new Item.Properties()
+                            .tab(WNTabs.TAB_SURFACE_PLANTS),
+                    value
+            );
+        }else if(value.getType() == MushroomType.TREE){
+            return new WNTreeFungusBlock(
+                    location(value.getId()),
+                    prop,
+                    new Item.Properties()
+                            .tab(WNTabs.TAB_SURFACE_PLANTS),
+                    value
+            );
+        }
+        return null;
+    });
+
+    public static final LinkedHashMap<UnderwaterPlant, WNBlock> UNDERWATER_BUSHES = register(UnderwaterPlant.values(), (value) -> {
+        if(value.getVariant() == UnderwaterPlantVariant.NORMAL){
+            return new WNUnderwaterBushBlock(
+                    location(value.getId()),
+                    BlockBehaviour.Properties.of(Material.WATER_PLANT, value.getColor())
+                            .sound(SoundType.WET_GRASS)
+                            .noOcclusion()
+                            .instabreak()
+                            .dynamicShape()
+                            .noCollission(),
+                    new Item.Properties()
+                            .tab(WNTabs.TAB_UNDERWATER),
+                    value
+            );
+        }else if(value.getVariant() == UnderwaterPlantVariant.DOUBLE){
+            return new WNUnderwaterDoublePlantBlock(
+                    location(value.getId()),
+                    BlockBehaviour.Properties.of(Material.WATER_PLANT, value.getColor())
+                            .sound(SoundType.WET_GRASS)
+                            .noOcclusion()
+                            .instabreak()
+                            .dynamicShape()
+                            .noCollission(),
+                    new Item.Properties()
+                            .tab(WNTabs.TAB_UNDERWATER),
+                    value
+            );
+        }else if(value.getVariant() == UnderwaterPlantVariant.VINE){
+            return new WNUnderwaterVineBlock(
+                    location(value.getId()),
+                    BlockBehaviour.Properties.of(Material.WATER_PLANT, value.getColor())
+                            .sound(SoundType.WET_GRASS)
+                            .noOcclusion()
+                            .strength(0.2f)
+                            .randomTicks(),
+                    new Item.Properties()
+                            .tab(WNTabs.TAB_UNDERWATER),
+                    value
+            );
+        }
+
+        return null;
+    });
+    public static final LinkedHashMap<WaterPlant, WNBlock> WATER_PLANTS = register(WaterPlant.values(), (value) -> {
+        var prop = BlockBehaviour.Properties.of(Material.WATER_PLANT, value.getColor())
+                .sound(SoundType.LILY_PAD)
+                .noOcclusion()
+                .instabreak()
+                .dynamicShape();
+        var itemProp = new Item.Properties()
+                .tab(WNTabs.TAB_UNDERWATER);
+
+
+        return value.getConstructor().get(value,location(value.getId()),prop,itemProp);
+    });
+
+    public static final LinkedHashMap<Shell, WNBlock> SHELLS = register(Shell.values(), (value) -> {
+        return new WNShellBlock(
+                location(value.getId()),
+                BlockBehaviour.Properties.of(Material.EGG, value.getColor())
+                        .strength(0.3F)
+                        .sound(SoundType.CORAL_BLOCK)
+                        .noOcclusion()
+                        .dynamicShape(),
+                new Item.Properties()
+                        .tab(WNTabs.TAB_UNDERWATER),
+                value
+        );
+    });
+
+    public static final LinkedHashMap<CavePlantType, WNBlock> CAVE_PLANTS = register(CavePlantType.values(), (value) -> {
+        BlockBehaviour.Properties prop = BlockBehaviour.Properties.of(Material.PLANT, value.getColor())
+                .instabreak()
+                .sound(SoundType.CAVE_VINES)
+                .noOcclusion()
+                .dynamicShape();
+
+        if(value != CavePlantType.MAGMA_PAD){
+            prop.noCollission();
+        }
+
+        return value.getConstructor().get(
+                value,
+                prop,
+                new Item.Properties()
+                        .tab(WNTabs.TAB_CAVES)
         );
     });
 
@@ -828,6 +1129,78 @@ public class WNBlocks {
                         .requiresCorrectToolForDrops(),
                 new Item.Properties()
                         .tab(WNTabs.TAB_ROCK_BUILDING),
+                value
+        );
+    });
+    //################# ORES
+    public static final LinkedHashMap<Ore, WNBlock> ORES = register(Ore.values(), (value) -> {
+        if(value.getType() == OreType.BLOCK || value.getType() == OreType.BLOCK_DEEPSLATE) {
+            BlockBehaviour.Properties prop = BlockBehaviour.Properties.of(Material.STONE, value.getType() == OreType.BLOCK ? MaterialColor.STONE : MaterialColor.DEEPSLATE)
+                    .sound(value.getType() == OreType.BLOCK ? SoundType.STONE : SoundType.DEEPSLATE)
+                    .requiresCorrectToolForDrops();
+
+            prop = value.getPropertiesSupplier().getProperties(prop);
+
+            return new WNOreBlock(
+                    location(value.getId()),
+                    prop,
+                    new Item.Properties()
+                            .tab(WNTabs.TAB_CAVES),
+                    value
+            );
+        }else{
+            BlockBehaviour.Properties prop = BlockBehaviour.Properties.of(Material.STONE, MaterialColor.STONE)
+                    .sound(SoundType.AMETHYST)
+                    .requiresCorrectToolForDrops()
+                    .noOcclusion();
+
+            prop = value.getPropertiesSupplier().getProperties(prop);
+
+            if(value.getType() == OreType.FORMATION){
+                return new WNOreFormationBlock(
+                        location(value.getId()),
+                        prop,
+                        new Item.Properties()
+                                .tab(WNTabs.TAB_CAVES),
+                        value
+                );
+            }else{
+                return new WNOreDoubleFormationBlock(
+                        location(value.getId()),
+                        prop,
+                        new Item.Properties()
+                                .tab(WNTabs.TAB_CAVES),
+                        value
+                );
+            }
+        }
+    });
+    public static final LinkedHashMap<GemBlock, WNBlock> GEM_BLOCKS = register(GemBlock.values(), (value) -> {
+        BlockBehaviour.Properties prop = BlockBehaviour.Properties.of(Material.METAL)
+                .sound(SoundType.METAL);
+
+        prop = value.getPropertiesSupplier().getProperties(prop);
+
+        return new WNGemBlock(
+                location(value.getId()),
+                prop,
+                new Item.Properties()
+                        .tab(WNTabs.TAB_CAVES),
+                value
+        );
+    });
+
+    public static final LinkedHashMap<Lantern, WNBlock> LANTERNS = register(Lantern.values(), (value) -> {
+        return new WNLanternBlock(
+                location(value.getId()),
+                BlockBehaviour.Properties.of(Material.METAL)
+                        .strength(3.5F)
+                        .sound(SoundType.LANTERN)
+                        .noOcclusion()
+                        .requiresCorrectToolForDrops()
+                        .lightLevel((a) -> value.getLight()),
+                new Item.Properties()
+                        .tab(WNTabs.TAB_FURNITURE),
                 value
         );
     });

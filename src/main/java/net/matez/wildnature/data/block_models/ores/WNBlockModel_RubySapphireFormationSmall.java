@@ -1,0 +1,520 @@
+/*
+ * Copyright (c) matez.net 2022.
+ * All rights reserved.
+ * Consider supporting this project on Patreon: https://patreon.com/wildnaturemod
+ */
+
+package net.matez.wildnature.data.block_models.ores;
+
+import net.matez.wildnature.data.setup.base.WNBlockModel;
+
+
+public class WNBlockModel_RubySapphireFormationSmall extends WNBlockModel {
+    /**
+     * Required: @texture
+     */
+    public WNBlockModel_RubySapphireFormationSmall(String name) {
+        super(name);
+    }
+
+    @Override
+    public String getJSON() {
+        return """
+                {
+                        "textures": {
+                          "1": "%texture%",
+                          "2": "block/stone",
+                          "particle": "%texture%"
+                        },
+                        "elements": [
+                          {
+                            "from": [
+                              12.25643,
+                              -0.09118,
+                              11.61408
+                            ],
+                            "to": [
+                              13.25643,
+                              0.90882,
+                              12.61408
+                            ],
+                            "rotation": {
+                              "angle": 0,
+                              "axis": "y",
+                              "origin": [
+                                8.27161,
+                                0.74241,
+                                6.21943
+                              ]
+                            },
+                            "faces": {
+                              "north": {
+                                "uv": [
+                                  12,
+                                  1,
+                                  13,
+                                  2
+                                ],
+                                "texture": "#1"
+                              },
+                              "east": {
+                                "uv": [
+                                  7,
+                                  3,
+                                  8,
+                                  4
+                                ],
+                                "rotation": 90,
+                                "texture": "#1"
+                              },
+                              "south": {
+                                "uv": [
+                                  2,
+                                  4,
+                                  3,
+                                  5
+                                ],
+                                "texture": "#1"
+                              },
+                              "west": {
+                                "uv": [
+                                  2,
+                                  4,
+                                  3,
+                                  5
+                                ],
+                                "rotation": 270,
+                                "texture": "#1"
+                              },
+                              "up": {
+                                "uv": [
+                                  12,
+                                  1,
+                                  13,
+                                  2
+                                ],
+                                "rotation": 90,
+                                "texture": "#1"
+                              },
+                              "down": {
+                                "uv": [
+                                  5,
+                                  4,
+                                  7,
+                                  6
+                                ],
+                                "rotation": 90,
+                                "texture": "#1"
+                              }
+                            }
+                          },
+                          {
+                            "from": [
+                              6.5,
+                              -1.5,
+                              6
+                            ],
+                            "to": [
+                              10.5,
+                              2.5,
+                              10
+                            ],
+                            "rotation": {
+                              "angle": -45,
+                              "axis": "x",
+                              "origin": [
+                                8.27161,
+                                0.74241,
+                                6.21943
+                              ]
+                            },
+                            "faces": {
+                              "north": {
+                                "uv": [
+                                  8,
+                                  12,
+                                  12,
+                                  16
+                                ],
+                                "texture": "#1"
+                              },
+                              "east": {
+                                "uv": [
+                                  8,
+                                  12,
+                                  12,
+                                  16
+                                ],
+                                "rotation": 270,
+                                "texture": "#1"
+                              },
+                              "south": {
+                                "uv": [
+                                  8,
+                                  12,
+                                  4,
+                                  16
+                                ],
+                                "rotation": 90,
+                                "texture": "#1"
+                              },
+                              "west": {
+                                "uv": [
+                                  0,
+                                  12,
+                                  4,
+                                  16
+                                ],
+                                "texture": "#1"
+                              },
+                              "up": {
+                                "uv": [
+                                  16,
+                                  16,
+                                  12,
+                                  12
+                                ],
+                                "rotation": 90,
+                                "texture": "#1"
+                              },
+                              "down": {
+                                "uv": [
+                                  4,
+                                  12,
+                                  8,
+                                  16
+                                ],
+                                "rotation": 270,
+                                "texture": "#1"
+                              }
+                            }
+                          },
+                          {
+                            "from": [
+                              11,
+                              -0.25,
+                              1.5
+                            ],
+                            "to": [
+                              13,
+                              1.75,
+                              3.5
+                            ],
+                            "rotation": {
+                              "angle": 22.5,
+                              "axis": "z",
+                              "origin": [
+                                12.56329,
+                                0.8841,
+                                2.46184
+                              ]
+                            },
+                            "faces": {
+                              "north": {
+                                "uv": [
+                                  2,
+                                  2,
+                                  4,
+                                  4
+                                ],
+                                "texture": "#1"
+                              },
+                              "east": {
+                                "uv": [
+                                  6,
+                                  0,
+                                  8,
+                                  2
+                                ],
+                                "rotation": 90,
+                                "texture": "#1"
+                              },
+                              "south": {
+                                "uv": [
+                                  4,
+                                  0,
+                                  6,
+                                  2
+                                ],
+                                "texture": "#1"
+                              },
+                              "west": {
+                                "uv": [
+                                  4,
+                                  2,
+                                  6,
+                                  4
+                                ],
+                                "rotation": 270,
+                                "texture": "#1"
+                              },
+                              "up": {
+                                "uv": [
+                                  2,
+                                  0,
+                                  4,
+                                  2
+                                ],
+                                "rotation": 90,
+                                "texture": "#1"
+                              },
+                              "down": {
+                                "uv": [
+                                  6,
+                                  2,
+                                  8,
+                                  4
+                                ],
+                                "rotation": 90,
+                                "texture": "#1"
+                              }
+                            }
+                          },
+                          {
+                            "from": [
+                              2.5,
+                              0,
+                              9.75
+                            ],
+                            "to": [
+                              4.5,
+                              2,
+                              11.75
+                            ],
+                            "rotation": {
+                              "angle": 22.5,
+                              "axis": "x",
+                              "origin": [
+                                3.00643,
+                                1.11911,
+                                9.15932
+                              ]
+                            },
+                            "faces": {
+                              "north": {
+                                "uv": [
+                                  11,
+                                  0,
+                                  13,
+                                  2
+                                ],
+                                "texture": "#1"
+                              },
+                              "east": {
+                                "uv": [
+                                  13,
+                                  0,
+                                  15,
+                                  2
+                                ],
+                                "rotation": 90,
+                                "texture": "#1"
+                              },
+                              "south": {
+                                "uv": [
+                                  13,
+                                  2,
+                                  15,
+                                  4
+                                ],
+                                "texture": "#1"
+                              },
+                              "west": {
+                                "uv": [
+                                  13,
+                                  4,
+                                  15,
+                                  6
+                                ],
+                                "rotation": 270,
+                                "texture": "#1"
+                              },
+                              "up": {
+                                "uv": [
+                                  0,
+                                  0,
+                                  2,
+                                  2
+                                ],
+                                "rotation": 90,
+                                "texture": "#1"
+                              },
+                              "down": {
+                                "uv": [
+                                  11,
+                                  2,
+                                  13,
+                                  4
+                                ],
+                                "rotation": 90,
+                                "texture": "#1"
+                              }
+                            }
+                          },
+                          {
+                            "from": [
+                              5,
+                              0,
+                              4
+                            ],
+                            "to": [
+                              12,
+                              2,
+                              11
+                            ],
+                            "faces": {
+                              "north": {
+                                "uv": [
+                                  5,
+                                  0,
+                                  12,
+                                  2
+                                ],
+                                "texture": "#2"
+                              },
+                              "east": {
+                                "uv": [
+                                  5,
+                                  14,
+                                  12,
+                                  16
+                                ],
+                                "texture": "#2"
+                              },
+                              "south": {
+                                "uv": [
+                                  5,
+                                  11,
+                                  12,
+                                  13
+                                ],
+                                "texture": "#2"
+                              },
+                              "west": {
+                                "uv": [
+                                  5,
+                                  2,
+                                  12,
+                                  4
+                                ],
+                                "texture": "#2"
+                              },
+                              "up": {
+                                "uv": [
+                                  5,
+                                  4,
+                                  12,
+                                  11
+                                ],
+                                "texture": "#2"
+                              }
+                            }
+                          }
+                        ],
+                        "display": {
+                          "thirdperson_righthand": {
+                            "rotation": [
+                              75,
+                              45,
+                              0
+                            ],
+                            "translation": [
+                              0,
+                              2.5,
+                              0
+                            ],
+                            "scale": [
+                              0.375,
+                              0.375,
+                              0.375
+                            ]
+                          },
+                          "thirdperson_lefthand": {
+                            "rotation": [
+                              75,
+                              45,
+                              0
+                            ],
+                            "translation": [
+                              0,
+                              2.5,
+                              0
+                            ],
+                            "scale": [
+                              0.375,
+                              0.375,
+                              0.375
+                            ]
+                          },
+                          "firstperson_righthand": {
+                            "rotation": [
+                              0,
+                              45,
+                              0
+                            ],
+                            "scale": [
+                              0.4,
+                              0.4,
+                              0.4
+                            ]
+                          },
+                          "firstperson_lefthand": {
+                            "rotation": [
+                              0,
+                              225,
+                              0
+                            ],
+                            "scale": [
+                              0.4,
+                              0.4,
+                              0.4
+                            ]
+                          },
+                          "ground": {
+                            "translation": [
+                              0,
+                              3,
+                              0
+                            ],
+                            "scale": [
+                              0.25,
+                              0.25,
+                              0.25
+                            ]
+                          },
+                          "gui": {
+                            "rotation": [
+                              30,
+                              225,
+                              0
+                            ],
+                            "scale": [
+                              0.625,
+                              0.625,
+                              0.625
+                            ]
+                          },
+                          "head": {
+                            "rotation": [
+                              1,
+                              141,
+                              0
+                            ],
+                            "translation": [
+                              -7.75,
+                              2,
+                              -5.5
+                            ]
+                          },
+                          "fixed": {
+                            "scale": [
+                              0.5,
+                              0.5,
+                              0.5
+                            ]
+                          }
+                        }
+                      }
+                """;
+    }
+}

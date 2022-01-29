@@ -1,0 +1,7 @@
+{
+    "parent": "wildnature:block/chair",
+    "textures": {
+        "log": "wildnature:blocks/trees/pine/pine_stripped_log",
+        "planks": "wildnature:blocks/trees/pine/pine_planks"
+    }
+}

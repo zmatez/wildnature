@@ -1,6 +1,11 @@
+/*
+ * Copyright (c) matez.net 2022.
+ * All rights reserved.
+ * Consider supporting this project on Patreon: https://patreon.com/wildnaturemod
+ */
+
 package net.matez.wildnature.common.objects.blocks.plant;
 
-import net.matez.wildnature.common.objects.blocks.plant.config.BushConfig;
 import net.matez.wildnature.common.objects.blocks.plant.config.FloweringBushConfig;
 import net.matez.wildnature.common.objects.blocks.plant.flowering.*;
 import net.matez.wildnature.common.objects.blocks.plant.plants.*;
@@ -180,7 +185,11 @@ public enum BushSetup {
         return new WNFloweringVineBlock(
                 WNBlocks.location(name), BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().randomTicks().strength(0.2F).sound(SoundType.VINE), itemProp,
                 variant
-        );    })
+        );    }),
+
+    COTTON((variant, blockProp, itemProp) -> {
+        return new WNCottonBlock(WNBlocks.location(variant.getVariant().getBaseName()),blockProp,itemProp,variant);
+    })
     ;
     private BushConstructor<BushType> constructor;
 

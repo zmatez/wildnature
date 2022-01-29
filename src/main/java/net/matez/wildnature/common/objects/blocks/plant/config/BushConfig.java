@@ -1,3 +1,9 @@
+/*
+ * Copyright (c) matez.net 2022.
+ * All rights reserved.
+ * Consider supporting this project on Patreon: https://patreon.com/wildnaturemod
+ */
+
 package net.matez.wildnature.common.objects.blocks.plant.config;
 
 import net.matez.wildnature.common.objects.blocks.plant.BushPlacement;
@@ -6,6 +12,8 @@ import java.util.function.Supplier;
 
 public class BushConfig {
     public static final Supplier<BushConfig> NOT_TINTED = () -> new BushConfig().notTinted();
+    public static final Supplier<BushConfig> CAVE_BUSH_TINTED = () -> new BushConfig().withPlacement(BushPlacement.STONE);
+    public static final Supplier<BushConfig> CAVE_BUSH = () -> new BushConfig().withPlacement(BushPlacement.STONE).notTinted();
 
     protected int bushShapeWidth;
     protected int bushShapeOffset;

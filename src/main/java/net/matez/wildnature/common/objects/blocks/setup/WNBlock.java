@@ -1,3 +1,9 @@
+/*
+ * Copyright (c) matez.net 2022.
+ * All rights reserved.
+ * Consider supporting this project on Patreon: https://patreon.com/wildnaturemod
+ */
+
 package net.matez.wildnature.common.objects.blocks.setup;
 
 import net.matez.wildnature.common.objects.items.setup.WNBlockItem;
@@ -41,9 +47,7 @@ public class WNBlock extends Block {
         super(properties);
 
         this.setRegistryName(location);
-        this.item = new WNBlockItem(this,itemProperties);
-        this.item.setRegistryName(location);
-        WNItems.BLOCK_ITEMS.put(location, this.item);
+        createBlockItem(itemProperties);
     }
 
     public WNBlock(ResourceLocation location, Properties properties, WNBlockItem item){
@@ -60,6 +64,12 @@ public class WNBlock extends Block {
      */
     public void construct(){
 
+    }
+
+    public void createBlockItem(Item.Properties itemProperties){
+        this.item = new WNBlockItem(this,itemProperties);
+        this.item.setRegistryName(this.getRegistryName());
+        WNItems.BLOCK_ITEMS.put(this.getRegistryName(), this.item);
     }
 
     /**

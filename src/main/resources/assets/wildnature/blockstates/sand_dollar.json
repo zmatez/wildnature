@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "wildnature:block/sand_dollar"
+      },
+      {
+        "model": "wildnature:block/sand_dollar",
+        "y": 90
+      },
+      {
+        "model": "wildnature:block/sand_dollar",
+        "y": 180
+      },
+      {
+        "model": "wildnature:block/sand_dollar",
+        "y": 270
+      }
+    ]
+  }
+}

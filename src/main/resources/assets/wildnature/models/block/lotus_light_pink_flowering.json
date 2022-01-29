@@ -1,0 +1,7 @@
+{
+  "parent": "wildnature:block/cross_lilypad",
+  "textures": {
+    "pad": "wildnature:blocks/plants/water/lotus/lotus_light_pink_pad",
+    "cross": "wildnature:blocks/plants/water/lotus/lotus_light_pink"
+  }
+}

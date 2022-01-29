@@ -1,0 +1,6 @@
+{
+    "parent": "block/tinted_cross",
+    "textures": {
+        "cross": "wildnature:blocks/fruit_bushes/coffee/coffee_stage_3_top"
+    }
+}

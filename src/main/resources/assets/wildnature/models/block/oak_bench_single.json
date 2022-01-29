@@ -1,0 +1,7 @@
+{
+    "parent": "wildnature:block/bench_single",
+    "textures": {
+        "material": "minecraft:block/oak_planks",
+        "material2": "minecraft:block/stripped_oak_log"
+    }
+}

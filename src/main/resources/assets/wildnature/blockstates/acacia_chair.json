@@ -1,0 +1,22 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "wildnature:block/acacia_chair"
+    },
+    "facing=east": {
+      "model": "wildnature:block/acacia_chair",
+      "y": 90,
+      "uvlock": true
+    },
+    "facing=south": {
+      "model": "wildnature:block/acacia_chair",
+      "y": 180,
+      "uvlock": true
+    },
+    "facing=west": {
+      "model": "wildnature:block/acacia_chair",
+      "y": 270,
+      "uvlock": true
+    }
+  }
+}

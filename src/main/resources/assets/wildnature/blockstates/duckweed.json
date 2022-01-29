@@ -1,0 +1,18 @@
+{
+  "variants": {
+    "":[
+      { "model": "wildnature:block/duckweed_1" },
+      { "model": "wildnature:block/duckweed_1","y": 90},
+      { "model": "wildnature:block/duckweed_1","y": 180 },
+      { "model": "wildnature:block/duckweed_1","y": 270 },
+      { "model": "wildnature:block/duckweed_2" },
+      { "model": "wildnature:block/duckweed_2","y": 90},
+      { "model": "wildnature:block/duckweed_2","y": 180 },
+      { "model": "wildnature:block/duckweed_2","y": 270 },
+      { "model": "wildnature:block/duckweed_3" },
+      { "model": "wildnature:block/duckweed_3","y": 90},
+      { "model": "wildnature:block/duckweed_3","y": 180 },
+      { "model": "wildnature:block/duckweed_3","y": 270 }
+    ]
+  }
+}

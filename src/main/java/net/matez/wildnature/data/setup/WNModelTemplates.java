@@ -1,10 +1,19 @@
+/*
+ * Copyright (c) matez.net 2022.
+ * All rights reserved.
+ * Consider supporting this project on Patreon: https://patreon.com/wildnaturemod
+ */
+
 package net.matez.wildnature.data.setup;
 
 import net.matez.wildnature.common.objects.initializer.InitStage;
 import net.matez.wildnature.common.objects.initializer.Initialize;
 import net.matez.wildnature.data.block_models.templates.*;
 import net.matez.wildnature.data.block_models.templates.plants.*;
-import net.matez.wildnature.data.block_models.templates.plants.succulent.*;
+import net.matez.wildnature.data.block_models.templates.plants.succulent.WNTBlockModel_SucculentBig;
+import net.matez.wildnature.data.block_models.templates.plants.succulent.WNTBlockModel_SucculentBigAndSmall;
+import net.matez.wildnature.data.block_models.templates.plants.succulent.WNTBlockModel_SucculentSmall;
+import net.matez.wildnature.data.block_models.templates.plants.succulent.WNTBlockModel_SucculentTall;
 import net.matez.wildnature.data.block_models.templates.plants.wisteria.WNTBlockModel_WisteriaBottom;
 import net.matez.wildnature.data.block_models.templates.plants.wisteria.WNTBlockModel_WisteriaSide;
 import net.matez.wildnature.data.setup.base.WNResource;
@@ -33,6 +42,14 @@ public class WNModelTemplates {
     public static final WNResource BLOCK_VERTICAL_BUSH = register(new WNTBlockModel_VerticalBush());
     public static final WNResource BLOCK_WISTERIA_SIDE = register(new WNTBlockModel_WisteriaSide());
     public static final WNResource BLOCK_WISTERIA_BOTTOM = register(new WNTBlockModel_WisteriaBottom());
+    public static final WNResource BLOCK_TABLE_TOP = register(new WNTBlockModel_TableTop());
+    public static final WNResource BLOCK_TABLE_LEG = register(new WNTBlockModel_TableLeg());
+    public static final WNResource BLOCK_TABLE_ITEM = register(new WNTBlockModel_TableInventory());
+    public static final WNResource BLOCK_CHAIR = register(new WNTBlockModel_Chair());
+    public static final WNResource BLOCK_CROSS_LILYPAD = register(new WNTBlockModel_CrossLilypad());
+    public static final WNResource BLOCK_BENCH_SIDE = register(new WNTBlockModel_BenchSide());
+    public static final WNResource BLOCK_BENCH_SINGLE = register(new WNTBlockModel_BenchSingle());
+    public static final WNResource BLOCK_BENCH_MIDDLE = register(new WNTBlockModel_BenchMiddle());
 
 
     private static WNResource register(WNResource resource){

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "wildnature:blocks/ores/dark_amethyst/dark_amethyst_formation_item"
+  }
+}

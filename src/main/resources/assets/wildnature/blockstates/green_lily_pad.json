@@ -1,0 +1,22 @@
+{
+  "variants": {
+    "":[
+      { "model": "wildnature:block/green_lily_pad_1" },
+      { "model": "wildnature:block/green_lily_pad_1","y": 90},
+      { "model": "wildnature:block/green_lily_pad_1","y": 180 },
+      { "model": "wildnature:block/green_lily_pad_1","y": 270 },
+      { "model": "wildnature:block/green_lily_pad_2" },
+      { "model": "wildnature:block/green_lily_pad_2","y": 90},
+      { "model": "wildnature:block/green_lily_pad_2","y": 180 },
+      { "model": "wildnature:block/green_lily_pad_2","y": 270 },
+      { "model": "wildnature:block/green_lily_pad_3" },
+      { "model": "wildnature:block/green_lily_pad_3","y": 90},
+      { "model": "wildnature:block/green_lily_pad_3","y": 180 },
+      { "model": "wildnature:block/green_lily_pad_3","y": 270 },
+      { "model": "wildnature:block/green_lily_pad_4" },
+      { "model": "wildnature:block/green_lily_pad_4","y": 90},
+      { "model": "wildnature:block/green_lily_pad_4","y": 180 },
+      { "model": "wildnature:block/green_lily_pad_4","y": 270 }
+    ]
+  }
+}

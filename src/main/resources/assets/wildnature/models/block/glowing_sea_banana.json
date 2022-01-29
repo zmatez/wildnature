@@ -1,0 +1,6 @@
+{
+    "parent": "block/tinted_cross",
+    "textures": {
+        "cross": "wildnature:blocks/plants/water/glowing_sea_banana/glowing_sea_banana"
+    }
+}

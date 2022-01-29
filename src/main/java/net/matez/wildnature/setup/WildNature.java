@@ -1,8 +1,15 @@
+/*
+ * Copyright (c) matez.net 2022.
+ * All rights reserved.
+ * Consider supporting this project on Patreon: https://patreon.com/wildnaturemod
+ */
+
 package net.matez.wildnature.setup;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import net.matez.wildnature.client.objects.blocks.WNBlockRenderer;
+import net.matez.wildnature.client.registry.setup.WNClientRegistry;
 import net.matez.wildnature.common.log.WNLogger;
 import net.matez.wildnature.common.objects.initializer.InitStage;
 import net.matez.wildnature.common.objects.initializer.Initializer;
@@ -15,8 +22,11 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.*;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
+import java.util.ArrayList;
+
 @Mod("wildnature")
 public class WildNature {
+    public static WildNature instance;
     public static final boolean debugMode = true;
     public static final String modid = "wildnature";
     public static final Gson gson = new GsonBuilder()
@@ -25,15 +35,19 @@ public class WildNature {
             .create();
 
     private static final WNLogger log = getLogger();
-    private final Initializer initializer;
+    public final Initializer initializer;
     //---
     private final long startTime;
 
+    private ArrayList<Callback> clientCallbacks = new ArrayList<>();
+
     // change this for data gen
+    public WNDataGenerator dataGenerator;
     private final DataGenType dataGenType = DataGenType.GEN_REFRESH_ALL;
     //private final DataGenType dataGenType = null;
 
     public WildNature() {
+        instance = this;
         startTime = System.currentTimeMillis();
         log.progress("Starting WildNature Mod");
         initializer = new Initializer();
@@ -45,6 +59,8 @@ public class WildNature {
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::enqueueIMC);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::processIMC);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::finish);
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(WNClientRegistry::registerParticleFactories);
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(WNClientRegistry::registerBlockEntityRenderers);
         //# -----------------
 
         MinecraftForge.EVENT_BUS.register(this);
@@ -56,7 +72,7 @@ public class WildNature {
         initializer.init(InitStage.CONSTRUCT);
 
         if (dataGenType != null) {
-            WNDataGenerator dataGenerator = new WNDataGenerator(modid, dataGenType);
+            dataGenerator = new WNDataGenerator(modid, dataGenType);
             dataGenerator.register();
             dataGenerator.generate();
         }
@@ -72,6 +88,11 @@ public class WildNature {
     private void clientSetup(final FMLClientSetupEvent event) {
         log.progress("WildNature Client Setup");
         WNBlockRenderer.registerAll();
+        initializer.init(InitStage.CLIENT);
+        log.log("Running " + clientCallbacks.size() + " client callbacks.");
+        for (Callback clientCallback : clientCallbacks) {
+            clientCallback.call();
+        }
         log.success("WildNature Client Setup Complete");
     }
 
@@ -97,5 +118,9 @@ public class WildNature {
 
     public static WNLogger getLogger() {
         return new WNLogger(debugMode);
+    }
+
+    public static void doOnClient(Callback callback){
+        WildNature.instance.clientCallbacks.add(callback);
     }
 }

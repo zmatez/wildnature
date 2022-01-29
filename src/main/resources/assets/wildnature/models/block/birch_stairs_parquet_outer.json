@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "bottom": "wildnature:blocks/trees/birch/birch_parquet",
+    "top": "wildnature:blocks/trees/birch/birch_parquet",
+    "side": "wildnature:blocks/trees/birch/birch_parquet"
+  }
+}

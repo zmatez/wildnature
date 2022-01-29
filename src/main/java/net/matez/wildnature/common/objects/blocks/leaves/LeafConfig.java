@@ -1,7 +1,16 @@
+/*
+ * Copyright (c) matez.net 2022.
+ * All rights reserved.
+ * Consider supporting this project on Patreon: https://patreon.com/wildnaturemod
+ */
+
 package net.matez.wildnature.common.objects.blocks.leaves;
 
+import net.matez.wildnature.common.objects.blocks.setup.ModelSupplier;
 import net.minecraft.world.item.Item;
 
+import javax.annotation.Nullable;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.function.Supplier;
 
@@ -10,6 +19,10 @@ public class LeafConfig {
     private final int stages;
     private final boolean flowering;
     private boolean isBush = false;
+    private final ArrayList<ModelSupplier> customModels = new ArrayList<>();
+    @Nullable
+    private ModelSupplier itemModel = null;
+    private boolean itemTinted = true;
 
     private final LinkedHashMap<Integer, ItemConfig> stageDrops = new LinkedHashMap<>();
 
@@ -37,6 +50,34 @@ public class LeafConfig {
 
     public boolean isBush() {
         return isBush;
+    }
+
+    public LeafConfig model(ModelSupplier supplier){
+        customModels.add(supplier);
+        return this;
+    }
+
+    public LeafConfig itemModel(ModelSupplier supplier){
+        this.itemModel = supplier;
+        return this;
+    }
+
+    @Nullable
+    public ModelSupplier getItemModel() {
+        return itemModel;
+    }
+
+    public ArrayList<ModelSupplier> getCustomModels() {
+        return customModels;
+    }
+
+    public LeafConfig makeItemNotTinted(){
+        this.itemTinted = false;
+        return this;
+    }
+
+    public boolean isItemTinted() {
+        return itemTinted;
     }
 
     public static class ItemConfig{

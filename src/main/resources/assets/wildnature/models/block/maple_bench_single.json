@@ -1,0 +1,7 @@
+{
+    "parent": "wildnature:block/bench_single",
+    "textures": {
+        "material": "wildnature:blocks/trees/maple/maple_planks",
+        "material2": "wildnature:blocks/trees/maple/maple_stripped_log"
+    }
+}

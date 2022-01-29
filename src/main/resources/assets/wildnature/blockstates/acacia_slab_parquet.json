@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "wildnature:block/acacia_slab_parquet"
+    },
+    "type=double": {
+      "model": "wildnature:block/acacia_parquet"
+    },
+    "type=top": {
+      "model": "wildnature:block/acacia_slab_parquet_top"
+    }
+  }
+}

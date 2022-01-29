@@ -1,3 +1,9 @@
+/*
+ * Copyright (c) matez.net 2022.
+ * All rights reserved.
+ * Consider supporting this project on Patreon: https://patreon.com/wildnaturemod
+ */
+
 package net.matez.wildnature.common.objects.blocks.plant.plants;
 
 import net.matez.wildnature.common.objects.blocks.plant.BushType;
@@ -122,8 +128,8 @@ public class WNStranglingVineBlock extends WNBushConfiguredBlock {
     @Override
     public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
         super.entityInside(state, level, pos, entity);
-        if(WNUtil.rint(0,2) == 0 && !level.isClientSide()) {
-            entity.setDeltaMovement(entity.getDeltaMovement().x, 6F, entity.getDeltaMovement().z);
+        if(WNUtil.rint(0,20) == 0) {
+            entity.setDeltaMovement(entity.getDeltaMovement().x, 1F, entity.getDeltaMovement().z);
         }
     }
 

@@ -1,0 +1,10 @@
+{
+    "variants": {
+      "half=lower": {
+          "model": "wildnature:block/large_glowshroom_bottom"
+      },
+      "half=upper": {
+          "model": "wildnature:block/large_glowshroom_top"
+      }
+  }
+}

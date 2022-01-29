@@ -1,0 +1,508 @@
+{
+  "multipart": [
+    {
+      "when": {
+        "up": "true",
+        "stage": "0"
+      },
+      "apply": {
+        "model": "wildnature:block/grape_vine_yellow",
+        "x": 270,
+        "uvlock": true
+      }
+    },
+    {
+      "when": {
+        "up": "true",
+        "stage": "1"
+      },
+      "apply": {
+        "model": "wildnature:block/grape_vine_yellow_1",
+        "x": 270,
+        "uvlock": true
+      }
+    },
+    {
+      "when": {
+        "up": "true",
+        "stage": "2"
+      },
+      "apply": {
+        "model": "wildnature:block/grape_vine_yellow_2",
+        "x": 270,
+        "uvlock": true
+      }
+    },
+    {
+      "when": {
+        "up": "true",
+        "stage": "3"
+      },
+      "apply": {
+        "model": "wildnature:block/grape_vine_yellow_3",
+        "x": 270,
+        "uvlock": true
+      }
+    },
+    {
+      "when": {
+        "up": "false",
+        "north": "false",
+        "west": "false",
+        "south": "false",
+        "east": "false",
+        "stage": "0"
+      },
+      "apply": {
+        "model": "wildnature:block/grape_vine_yellow",
+        "x": 270,
+        "uvlock": true
+      }
+    },
+    {
+      "when": {
+        "up": "false",
+        "north": "false",
+        "west": "false",
+        "south": "false",
+        "east": "false",
+        "stage": "1"
+      },
+      "apply": {
+        "model": "wildnature:block/grape_vine_yellow_1",
+        "x": 270,
+        "uvlock": true
+      }
+    },
+    {
+      "when": {
+        "up": "false",
+        "north": "false",
+        "west": "false",
+        "south": "false",
+        "east": "false",
+        "stage": "2"
+      },
+      "apply": {
+        "model": "wildnature:block/grape_vine_yellow_2",
+        "x": 270,
+        "uvlock": true
+      }
+    },
+    {
+      "when": {
+        "up": "false",
+        "north": "false",
+        "west": "false",
+        "south": "false",
+        "east": "false",
+        "stage": "3"
+      },
+      "apply": {
+        "model": "wildnature:block/grape_vine_yellow_3",
+        "x": 270,
+        "uvlock": true
+      }
+    },
+    {
+      "when": {
+        "north": "true",
+        "stage": "0"
+      },
+      "apply": {
+        "model": "wildnature:block/grape_vine_yellow"
+      }
+    },
+    {
+      "when": {
+        "north": "true",
+        "stage": "1"
+      },
+      "apply": {
+        "model": "wildnature:block/grape_vine_yellow_1"
+      }
+    },
+    {
+      "when": {
+        "north": "true",
+        "stage": "2"
+      },
+      "apply": {
+        "model": "wildnature:block/grape_vine_yellow_2"
+      }
+    },
+    {
+      "when": {
+        "north": "true",
+        "stage": "3"
+      },
+      "apply": {
+        "model": "wildnature:block/grape_vine_yellow_3"
+      }
+    },
+    {
+      "when": {
+        "up": "false",
+        "north": "false",
+        "west": "false",
+        "south": "false",
+        "east": "false",
+        "stage": "0"
+      },
+      "apply": {
+        "model": "wildnature:block/grape_vine_yellow"
+      }
+    },
+    {
+      "when": {
+        "up": "false",
+        "north": "false",
+        "west": "false",
+        "south": "false",
+        "east": "false",
+        "stage": "1"
+      },
+      "apply": {
+        "model": "wildnature:block/grape_vine_yellow_1"
+      }
+    },
+    {
+      "when": {
+        "up": "false",
+        "north": "false",
+        "west": "false",
+        "south": "false",
+        "east": "false",
+        "stage": "2"
+      },
+      "apply": {
+        "model": "wildnature:block/grape_vine_yellow_2"
+      }
+    },
+    {
+      "when": {
+        "up": "false",
+        "north": "false",
+        "west": "false",
+        "south": "false",
+        "east": "false",
+        "stage": "3"
+      },
+      "apply": {
+        "model": "wildnature:block/grape_vine_yellow_3"
+      }
+    },
+    {
+      "when": {
+        "west": "true",
+        "stage": "0"
+      },
+      "apply": {
+        "model": "wildnature:block/grape_vine_yellow",
+        "y": 270,
+        "uvlock": true
+      }
+    },
+    {
+      "when": {
+        "west": "true",
+        "stage": "1"
+      },
+      "apply": {
+        "model": "wildnature:block/grape_vine_yellow_1",
+        "y": 270,
+        "uvlock": true
+      }
+    },
+    {
+      "when": {
+        "west": "true",
+        "stage": "2"
+      },
+      "apply": {
+        "model": "wildnature:block/grape_vine_yellow_2",
+        "y": 270,
+        "uvlock": true
+      }
+    },
+    {
+      "when": {
+        "west": "true",
+        "stage": "3"
+      },
+      "apply": {
+        "model": "wildnature:block/grape_vine_yellow_3",
+        "y": 270,
+        "uvlock": true
+      }
+    },
+    {
+      "when": {
+        "up": "false",
+        "north": "false",
+        "west": "false",
+        "south": "false",
+        "east": "false",
+        "stage": "0"
+      },
+      "apply": {
+        "model": "wildnature:block/grape_vine_yellow",
+        "y": 270,
+        "uvlock": true
+      }
+    },
+    {
+      "when": {
+        "up": "false",
+        "north": "false",
+        "west": "false",
+        "south": "false",
+        "east": "false",
+        "stage": "1"
+      },
+      "apply": {
+        "model": "wildnature:block/grape_vine_yellow_1",
+        "y": 270,
+        "uvlock": true
+      }
+    },
+    {
+      "when": {
+        "up": "false",
+        "north": "false",
+        "west": "false",
+        "south": "false",
+        "east": "false",
+        "stage": "2"
+      },
+      "apply": {
+        "model": "wildnature:block/grape_vine_yellow_2",
+        "y": 270,
+        "uvlock": true
+      }
+    },
+    {
+      "when": {
+        "up": "false",
+        "north": "false",
+        "west": "false",
+        "south": "false",
+        "east": "false",
+        "stage": "3"
+      },
+      "apply": {
+        "model": "wildnature:block/grape_vine_yellow_3",
+        "y": 270,
+        "uvlock": true
+      }
+    },
+    {
+      "when": {
+        "south": "true",
+        "stage": "0"
+      },
+      "apply": {
+        "model": "wildnature:block/grape_vine_yellow",
+        "y": 180,
+        "uvlock": true
+      }
+    },
+    {
+      "when": {
+        "south": "true",
+        "stage": "1"
+      },
+      "apply": {
+        "model": "wildnature:block/grape_vine_yellow_1",
+        "y": 180,
+        "uvlock": true
+      }
+    },
+    {
+      "when": {
+        "south": "true",
+        "stage": "2"
+      },
+      "apply": {
+        "model": "wildnature:block/grape_vine_yellow_2",
+        "y": 180,
+        "uvlock": true
+      }
+    },
+    {
+      "when": {
+        "south": "true",
+        "stage": "3"
+      },
+      "apply": {
+        "model": "wildnature:block/grape_vine_yellow_3",
+        "y": 180,
+        "uvlock": true
+      }
+    },
+    {
+      "when": {
+        "up": "false",
+        "north": "false",
+        "west": "false",
+        "south": "false",
+        "east": "false",
+        "stage": "0"
+      },
+      "apply": {
+        "model": "wildnature:block/grape_vine_yellow",
+        "y": 180,
+        "uvlock": true
+      }
+    },
+    {
+      "when": {
+        "up": "false",
+        "north": "false",
+        "west": "false",
+        "south": "false",
+        "east": "false",
+        "stage": "1"
+      },
+      "apply": {
+        "model": "wildnature:block/grape_vine_yellow_1",
+        "y": 180,
+        "uvlock": true
+      }
+    },
+    {
+      "when": {
+        "up": "false",
+        "north": "false",
+        "west": "false",
+        "south": "false",
+        "east": "false",
+        "stage": "2"
+      },
+      "apply": {
+        "model": "wildnature:block/grape_vine_yellow_2",
+        "y": 180,
+        "uvlock": true
+      }
+    },
+    {
+      "when": {
+        "up": "false",
+        "north": "false",
+        "west": "false",
+        "south": "false",
+        "east": "false",
+        "stage": "3"
+      },
+      "apply": {
+        "model": "wildnature:block/grape_vine_yellow_3",
+        "y": 180,
+        "uvlock": true
+      }
+    },
+    {
+      "when": {
+        "east": "true",
+        "stage": "0"
+      },
+      "apply": {
+        "model": "wildnature:block/grape_vine_yellow",
+        "y": 90,
+        "uvlock": true
+      }
+    },
+    {
+      "when": {
+        "east": "true",
+        "stage": "1"
+      },
+      "apply": {
+        "model": "wildnature:block/grape_vine_yellow_1",
+        "y": 90,
+        "uvlock": true
+      }
+    },
+    {
+      "when": {
+        "east": "true",
+        "stage": "2"
+      },
+      "apply": {
+        "model": "wildnature:block/grape_vine_yellow_2",
+        "y": 90,
+        "uvlock": true
+      }
+    },
+    {
+      "when": {
+        "east": "true",
+        "stage": "3"
+      },
+      "apply": {
+        "model": "wildnature:block/grape_vine_yellow_3",
+        "y": 90,
+        "uvlock": true
+      }
+    },
+    {
+      "when": {
+        "up": "false",
+        "north": "false",
+        "west": "false",
+        "south": "false",
+        "east": "false",
+        "stage": "0"
+      },
+      "apply": {
+        "model": "wildnature:block/grape_vine_yellow",
+        "y": 90,
+        "uvlock": true
+      }
+    },
+    {
+      "when": {
+        "up": "false",
+        "north": "false",
+        "west": "false",
+        "south": "false",
+        "east": "false",
+        "stage": "1"
+      },
+      "apply": {
+        "model": "wildnature:block/grape_vine_yellow_1",
+        "y": 90,
+        "uvlock": true
+      }
+    },
+    {
+      "when": {
+        "up": "false",
+        "north": "false",
+        "west": "false",
+        "south": "false",
+        "east": "false",
+        "stage": "2"
+      },
+      "apply": {
+        "model": "wildnature:block/grape_vine_yellow_2",
+        "y": 90,
+        "uvlock": true
+      }
+    },
+    {
+      "when": {
+        "up": "false",
+        "north": "false",
+        "west": "false",
+        "south": "false",
+        "east": "false",
+        "stage": "3"
+      },
+      "apply": {
+        "model": "wildnature:block/grape_vine_yellow_3",
+        "y": 90,
+        "uvlock": true
+      }
+    }
+  ]
+}

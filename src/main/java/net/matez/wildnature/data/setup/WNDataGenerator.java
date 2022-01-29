@@ -1,3 +1,9 @@
+/*
+ * Copyright (c) matez.net 2022.
+ * All rights reserved.
+ * Consider supporting this project on Patreon: https://patreon.com/wildnaturemod
+ */
+
 package net.matez.wildnature.data.setup;
 
 import com.google.gson.JsonElement;
@@ -8,6 +14,7 @@ import net.matez.wildnature.common.objects.tags.TagCategory;
 import net.matez.wildnature.common.objects.tags.WNTags;
 import net.matez.wildnature.common.registry.blocks.WNBlocks;
 import net.matez.wildnature.common.registry.items.WNItems;
+import net.matez.wildnature.common.registry.particles.WNParticles;
 import net.matez.wildnature.data.setup.base.WNResource;
 import net.matez.wildnature.data.setup.base.WNTag;
 import org.apache.commons.io.FileUtils;
@@ -39,6 +46,7 @@ public class WNDataGenerator {
         deletePaths = new String[]{
                 "/assets/" + modid + "/blockstates",
                 "/assets/" + modid + "/models",
+                "/assets/" + modid + "/particles",
                 "/data/" + modid + "/recipes",
                 "/data/" + modid + "/tags" ,
                 "/data/minecraft/recipes",
@@ -72,7 +80,11 @@ public class WNDataGenerator {
 
         WNItems.BLOCK_ITEMS.forEach((key, value) -> {
             if(value.getItemModel() == null){
-                log.warn("Block Item " + key.toString() + " doesn't have own model.");
+                if(value.getItemModels() == null) {
+                    log.warn("Block Item " + key.toString() + " doesn't have own model.");
+                }else{
+                    resources.addAll(value.getItemModels().models);
+                }
             }else {
                 resources.add(value.getItemModel());
             }
@@ -80,7 +92,11 @@ public class WNDataGenerator {
 
         WNItems.ITEMS.forEach((key, value) -> {
             if(value.getItemModel() == null){
-                log.warn("Item " + key.toString() + " doesn't have own model.");
+                if(value.getItemModels() == null) {
+                    log.warn("Item " + key.toString() + " doesn't have own model.");
+                }else{
+                    resources.addAll(value.getItemModels().models);
+                }
             }else {
                 resources.add(value.getItemModel());
             }
@@ -118,6 +134,17 @@ public class WNDataGenerator {
         }
     }
 
+    public void generateParticles(){
+        log.progress("Starting Data Generator on setting " + this.mode + " for PARTICLES");
+        ArrayList<WNResource> particles = new ArrayList<>();
+        WNParticles.PARTICLE_PROVIDERS.forEach((key, value) -> {
+            resources.addAll(value.getTextures().models);
+            particles.addAll(value.getTextures().models);
+        });
+
+        createFor(particles);
+    }
+
     public void deleteAll(){
         log.debug("Deleting and refreshing mode enabled. Deleting files..");
         for (String deletePath : deletePaths) {
@@ -141,6 +168,7 @@ public class WNDataGenerator {
 
     public void createFor(ArrayList<WNResource> resources){
         int changed = 0;
+        log.progressPercentage(0,resources.size());
         for (WNResource resource : resources) {
             String path = resource.getPath() + "/" + resource.getName() + ".json";
             try {
@@ -154,8 +182,8 @@ public class WNDataGenerator {
                         FileWriter myWriter = new FileWriter(file);
                         myWriter.write(resource.parseJSON());
                         myWriter.close();
-                        log.debug("Created resource: " + path);
                         changed++;
+                        log.progressPercentage(changed,resources.size());
                     }
                 }
             } catch (IOException e) {

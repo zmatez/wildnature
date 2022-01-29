@@ -1,3 +1,9 @@
+/*
+ * Copyright (c) matez.net 2022.
+ * All rights reserved.
+ * Consider supporting this project on Patreon: https://patreon.com/wildnaturemod
+ */
+
 package net.matez.wildnature.data.block_models.templates.plants.succulent;
 
 import net.matez.wildnature.data.setup.base.WNBlockModel;
@@ -27,7 +33,8 @@ public class WNTBlockModel_SucculentTall extends WNBlockModel {
                 				"west": {"uv": [0, 0, 1, 0.5], "texture": "#texture"},
                 				"up": {"uv": [0, 0, 1, 1], "texture": "#texture"},
                 				"down": {"uv": [0, 0, 1, 1], "texture": "#texture"}
-                			}
+                			},
+                			"shade": false
                 		},
                 		{
                 			"from": [2.5, 0, 7.5],
@@ -40,7 +47,8 @@ public class WNTBlockModel_SucculentTall extends WNBlockModel {
                 				"west": {"uv": [0, 0, 1, 0.5], "texture": "#texture"},
                 				"up": {"uv": [0, 0, 1, 1], "rotation": 90, "texture": "#texture"},
                 				"down": {"uv": [0, 0, 1, 1], "rotation": 270, "texture": "#texture"}
-                			}
+                			},
+                			"shade": false
                 		},
                 		{
                 			"from": [7.5, -0.35355, 2.64645],
@@ -53,7 +61,8 @@ public class WNTBlockModel_SucculentTall extends WNBlockModel {
                 				"west": {"uv": [0, 0, 1, 0.5], "texture": "#texture"},
                 				"up": {"uv": [0, 0, 1, 1], "rotation": 180, "texture": "#texture"},
                 				"down": {"uv": [0, 0, 1, 1], "rotation": 180, "texture": "#texture"}
-                			}
+                			},
+                			"shade": false
                 		},
                 		{
                 			"from": [7.95711, 4.95711, 7.5],
@@ -66,7 +75,8 @@ public class WNTBlockModel_SucculentTall extends WNBlockModel {
                 				"west": {"uv": [0, 0, 1, 1], "rotation": 180, "texture": "#texture"},
                 				"up": {"uv": [0, 0, 1, 0.5], "rotation": 270, "texture": "#texture"},
                 				"down": {"uv": [0, 0, 1, 0.5], "rotation": 270, "texture": "#texture"}
-                			}
+                			},
+                			"shade": false
                 		},
                 		{
                 			"from": [8.02582, 4.35119, 7.5],
@@ -79,7 +89,8 @@ public class WNTBlockModel_SucculentTall extends WNBlockModel {
                 				"west": {"uv": [0, 0, 1, 1.5], "rotation": 180, "texture": "#texture"},
                 				"up": {"uv": [0, 0, 1, 0.5], "rotation": 270, "texture": "#texture"},
                 				"down": {"uv": [0, 0, 1, 0.5], "rotation": 270, "texture": "#texture"}
-                			}
+                			},
+                			"shade": false
                 		},
                 		{
                 			"from": [7.50902, 4.33206, 7.5],
@@ -92,7 +103,8 @@ public class WNTBlockModel_SucculentTall extends WNBlockModel {
                 				"west": {"uv": [0, 0, 1, 1.5], "rotation": 180, "texture": "#texture"},
                 				"up": {"uv": [0, 0, 1, 0.5], "rotation": 270, "texture": "#texture"},
                 				"down": {"uv": [0, 0, 1, 0.5], "rotation": 270, "texture": "#texture"}
-                			}
+                			},
+                			"shade": false
                 		},
                 		{
                 			"from": [7.5, 4.58216, 7.9415],
@@ -105,7 +117,8 @@ public class WNTBlockModel_SucculentTall extends WNBlockModel {
                 				"west": {"uv": [0, 0, 1.5, 0.5], "rotation": 90, "texture": "#texture"},
                 				"up": {"uv": [0, 0, 1, 0.5], "rotation": 180, "texture": "#texture"},
                 				"down": {"uv": [0, 0, 1, 0.5], "texture": "#texture"}
-                			}
+                			},
+                			"shade": false
                 		},
                 		{
                 			"from": [7.5, 4.19948, 7.48238],
@@ -118,7 +131,8 @@ public class WNTBlockModel_SucculentTall extends WNBlockModel {
                 				"west": {"uv": [0, 0, 1.5, 0.5], "rotation": 270, "texture": "#texture"},
                 				"up": {"uv": [0, 0, 1, 0.5], "texture": "#texture"},
                 				"down": {"uv": [0, 0, 1, 0.5], "rotation": 180, "texture": "#texture"}
-                			}
+                			},
+                			"shade": false
                 		},
                 		{
                 			"from": [7.65, 6.79619, 6.67006],
@@ -131,7 +145,8 @@ public class WNTBlockModel_SucculentTall extends WNBlockModel {
                 				"west": {"uv": [0, 0, 1, 0.5], "rotation": 270, "texture": "#texture"},
                 				"up": {"uv": [0, 0, 0.75, 0.5], "texture": "#texture"},
                 				"down": {"uv": [0, 0, 0.75, 0.5], "rotation": 180, "texture": "#texture"}
-                			}
+                			},
+                			"shade": false
                 		},
                 		{
                 			"from": [6.70812, 6.60485, 7.6],
@@ -144,7 +159,8 @@ public class WNTBlockModel_SucculentTall extends WNBlockModel {
                 				"west": {"uv": [0, 0, 0.75, 1], "rotation": 180, "texture": "#texture"},
                 				"up": {"uv": [0, 0, 0.75, 0.5], "rotation": 270, "texture": "#texture"},
                 				"down": {"uv": [0, 0, 0.75, 0.5], "rotation": 270, "texture": "#texture"}
-                			}
+                			},
+                			"shade": false
                 		},
                 		{
                 			"from": [7.65, 6.41351, 8.67006],
@@ -157,7 +173,8 @@ public class WNTBlockModel_SucculentTall extends WNBlockModel {
                 				"west": {"uv": [0, 0, 1, 0.5], "rotation": 270, "texture": "#texture"},
                 				"up": {"uv": [0, 0, 0.75, 0.5], "texture": "#texture"},
                 				"down": {"uv": [0, 0, 0.75, 0.5], "rotation": 180, "texture": "#texture"}
-                			}
+                			},
+                			"shade": false
                 		},
                 		{
                 			"from": [8.70812, 6.60485, 7.6],
@@ -170,7 +187,8 @@ public class WNTBlockModel_SucculentTall extends WNBlockModel {
                 				"west": {"uv": [0, 0, 0.75, 1], "rotation": 180, "texture": "#texture"},
                 				"up": {"uv": [0, 0, 0.75, 0.5], "rotation": 270, "texture": "#texture"},
                 				"down": {"uv": [0, 0, 0.75, 0.5], "rotation": 270, "texture": "#texture"}
-                			}
+                			},
+                			"shade": false
                 		},
                 		{
                 			"from": [7.50902, 0.83206, 7],
@@ -183,7 +201,8 @@ public class WNTBlockModel_SucculentTall extends WNBlockModel {
                 				"west": {"uv": [0, 0, 2, 3.5], "rotation": 180, "texture": "#texture"},
                 				"up": {"uv": [0, 0, 2, 0.5], "rotation": 270, "texture": "#texture"},
                 				"down": {"uv": [0, 0, 2, 0.5], "rotation": 270, "texture": "#texture"}
-                			}
+                			},
+                			"shade": false
                 		},
                 		{
                 			"from": [7, 1.08216, 7.9415],
@@ -196,7 +215,8 @@ public class WNTBlockModel_SucculentTall extends WNBlockModel {
                 				"west": {"uv": [0, 0, 3.5, 0.5], "rotation": 90, "texture": "#texture"},
                 				"up": {"uv": [0, 0, 2, 0.5], "rotation": 180, "texture": "#texture"},
                 				"down": {"uv": [0, 0, 2, 0.5], "texture": "#texture"}
-                			}
+                			},
+                			"shade": false
                 		},
                 		{
                 			"from": [7, 0.69948, 7.48238],
@@ -209,7 +229,8 @@ public class WNTBlockModel_SucculentTall extends WNBlockModel {
                 				"west": {"uv": [0, 0, 3.5, 0.5], "rotation": 270, "texture": "#texture"},
                 				"up": {"uv": [0, 0, 2, 0.5], "texture": "#texture"},
                 				"down": {"uv": [0, 0, 2, 0.5], "rotation": 180, "texture": "#texture"}
-                			}
+                			},
+                			"shade": false
                 		},
                 		{
                 			"from": [7.25, 3.29619, 6.67006],
@@ -222,7 +243,8 @@ public class WNTBlockModel_SucculentTall extends WNBlockModel {
                 				"west": {"uv": [0, 0, 3.5, 0.5], "rotation": 270, "texture": "#texture"},
                 				"up": {"uv": [0, 0, 1.5, 0.5], "texture": "#texture"},
                 				"down": {"uv": [0, 0, 1.5, 0.5], "rotation": 180, "texture": "#texture"}
-                			}
+                			},
+                			"shade": false
                 		},
                 		{
                 			"from": [6.70812, 3.10485, 7.25],
@@ -235,7 +257,8 @@ public class WNTBlockModel_SucculentTall extends WNBlockModel {
                 				"west": {"uv": [0, 0, 1.5, 3.5], "rotation": 180, "texture": "#texture"},
                 				"up": {"uv": [0, 0, 1.5, 0.5], "rotation": 270, "texture": "#texture"},
                 				"down": {"uv": [0, 0, 1.5, 0.5], "rotation": 270, "texture": "#texture"}
-                			}
+                			},
+                			"shade": false
                 		},
                 		{
                 			"from": [7.25, 2.91351, 8.67006],
@@ -248,7 +271,8 @@ public class WNTBlockModel_SucculentTall extends WNBlockModel {
                 				"west": {"uv": [0, 0, 3.5, 0.5], "rotation": 270, "texture": "#texture"},
                 				"up": {"uv": [0, 0, 1.5, 0.5], "texture": "#texture"},
                 				"down": {"uv": [0, 0, 1.5, 0.5], "rotation": 180, "texture": "#texture"}
-                			}
+                			},
+                			"shade": false
                 		},
                 		{
                 			"from": [8.70812, 3.10485, 7.25],
@@ -261,7 +285,8 @@ public class WNTBlockModel_SucculentTall extends WNBlockModel {
                 				"west": {"uv": [0, 0, 1.5, 3.5], "rotation": 180, "texture": "#texture"},
                 				"up": {"uv": [0, 0, 1.5, 0.5], "rotation": 270, "texture": "#texture"},
                 				"down": {"uv": [0, 0, 1.5, 0.5], "rotation": 270, "texture": "#texture"}
-                			}
+                			},
+                			"shade": false
                 		},
                 		{
                 			"from": [7, -0.35355, 8.35355],
@@ -274,7 +299,8 @@ public class WNTBlockModel_SucculentTall extends WNBlockModel {
                 				"west": {"uv": [0, 0, 4, 0.5], "texture": "#texture"},
                 				"up": {"uv": [0, 0, 2, 4], "texture": "#texture"},
                 				"down": {"uv": [0, 0, 2, 4], "texture": "#texture"}
-                			}
+                			},
+                			"shade": false
                 		},
                 		{
                 			"from": [3.5, 0, 7],
@@ -287,7 +313,8 @@ public class WNTBlockModel_SucculentTall extends WNBlockModel {
                 				"west": {"uv": [0, 0, 2, 0.5], "texture": "#texture"},
                 				"up": {"uv": [0, 0, 2, 4], "rotation": 90, "texture": "#texture"},
                 				"down": {"uv": [0, 0, 2, 4], "rotation": 270, "texture": "#texture"}
-                			}
+                			},
+                			"shade": false
                 		},
                 		{
                 			"from": [7, -0.35355, 3.64645],
@@ -300,7 +327,8 @@ public class WNTBlockModel_SucculentTall extends WNBlockModel {
                 				"west": {"uv": [0, 0, 4, 0.5], "texture": "#texture"},
                 				"up": {"uv": [0, 0, 2, 4], "rotation": 180, "texture": "#texture"},
                 				"down": {"uv": [0, 0, 2, 4], "rotation": 180, "texture": "#texture"}
-                			}
+                			},
+                			"shade": false
                 		},
                 		{
                 			"from": [7.95711, 0.95711, 7],
@@ -313,7 +341,8 @@ public class WNTBlockModel_SucculentTall extends WNBlockModel {
                 				"west": {"uv": [0, 0, 2, 4], "rotation": 180, "texture": "#texture"},
                 				"up": {"uv": [0, 0, 2, 0.5], "rotation": 270, "texture": "#texture"},
                 				"down": {"uv": [0, 0, 2, 0.5], "rotation": 270, "texture": "#texture"}
-                			}
+                			},
+                			"shade": false
                 		},
                 		{
                 			"from": [8.02582, 0.85119, 7],
@@ -326,7 +355,8 @@ public class WNTBlockModel_SucculentTall extends WNBlockModel {
                 				"west": {"uv": [0, 0, 2, 3.5], "rotation": 180, "texture": "#texture"},
                 				"up": {"uv": [0, 0, 2, 0.5], "rotation": 270, "texture": "#texture"},
                 				"down": {"uv": [0, 0, 2, 0.5], "rotation": 270, "texture": "#texture"}
-                			}
+                			},
+                			"shade": false
                 		},
                 		{
                 			"from": [7.5, 0, 7.5],
@@ -338,7 +368,8 @@ public class WNTBlockModel_SucculentTall extends WNBlockModel {
                 				"west": {"uv": [0, 0, 1, 6], "texture": "#texture"},
                 				"up": {"uv": [0, 0, 1, 1], "texture": "#texture"},
                 				"down": {"uv": [0, 0, 1, 1], "texture": "#texture"}
-                			}
+                			},
+                			"shade": false
                 		}
                 	]
                 }

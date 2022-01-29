@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "wildnature:block/parrots_feather_plant"
+      },
+      {
+        "model": "wildnature:block/parrots_feather_plant",
+        "y": 90
+      },
+      {
+        "model": "wildnature:block/parrots_feather_plant",
+        "y": 180
+      },
+      {
+        "model": "wildnature:block/parrots_feather_plant",
+        "y": 270
+      }
+    ]
+  }
+}

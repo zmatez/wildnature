@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "reflects=true": {
+        "model": "wildnature:block/sun_shroom"
+    },
+    "reflects=false": {
+        "model": "wildnature:block/sun_shroom_night"
+    }
+  }
+}

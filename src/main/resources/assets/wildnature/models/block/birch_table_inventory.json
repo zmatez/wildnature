@@ -1,0 +1,6 @@
+{
+    "parent": "wildnature:block/table_inventory",
+    "textures": {
+        "texture": "minecraft:block/stripped_birch_log"
+    }
+}

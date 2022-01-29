@@ -1,0 +1,26 @@
+{
+  "variants": {
+    "":[
+      { "model": "wildnature:block/reindeer_moss_1" },
+      { "model": "wildnature:block/reindeer_moss_1","y": 90},
+      { "model": "wildnature:block/reindeer_moss_1","y": 180 },
+      { "model": "wildnature:block/reindeer_moss_1","y": 270 },
+      { "model": "wildnature:block/reindeer_moss_2" },
+      { "model": "wildnature:block/reindeer_moss_2","y": 90},
+      { "model": "wildnature:block/reindeer_moss_2","y": 180 },
+      { "model": "wildnature:block/reindeer_moss_2","y": 270 },
+      { "model": "wildnature:block/reindeer_moss_3" },
+      { "model": "wildnature:block/reindeer_moss_3","y": 90},
+      { "model": "wildnature:block/reindeer_moss_3","y": 180 },
+      { "model": "wildnature:block/reindeer_moss_3","y": 270 },
+      { "model": "wildnature:block/reindeer_moss_4" },
+      { "model": "wildnature:block/reindeer_moss_4","y": 90},
+      { "model": "wildnature:block/reindeer_moss_4","y": 180 },
+      { "model": "wildnature:block/reindeer_moss_4","y": 270 },
+      { "model": "wildnature:block/reindeer_moss_5" },
+      { "model": "wildnature:block/reindeer_moss_5","y": 90},
+      { "model": "wildnature:block/reindeer_moss_5","y": 180 },
+      { "model": "wildnature:block/reindeer_moss_5","y": 270 }
+    ]
+  }
+}

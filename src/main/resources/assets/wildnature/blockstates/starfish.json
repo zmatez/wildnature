@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "wildnature:block/starfish"
+      },
+      {
+        "model": "wildnature:block/starfish",
+        "y": 90
+      },
+      {
+        "model": "wildnature:block/starfish",
+        "y": 180
+      },
+      {
+        "model": "wildnature:block/starfish",
+        "y": 270
+      }
+    ]
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "wildnature:blocks/plants/water/deep_sea_night_shade/deep_sea_night_shade_item"
+  }
+}

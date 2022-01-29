@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/lily_pad",
+  "textures": {
+    "texture": "wildnature:blocks/plants/water/green_lily_pad/green_lily_pad_1",
+    "particle": "wildnature:blocks/plants/water/green_lily_pad/green_lily_pad_1"
+  }
+}

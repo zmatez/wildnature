@@ -1,4 +1,13 @@
+/*
+ * Copyright (c) matez.net 2022.
+ * All rights reserved.
+ * Consider supporting this project on Patreon: https://patreon.com/wildnaturemod
+ */
+
 package net.matez.wildnature.data.setup.base;
+
+import net.matez.wildnature.common.log.WNLogger;
+import net.matez.wildnature.setup.WildNature;
 
 import java.util.LinkedHashMap;
 import java.util.concurrent.atomic.AtomicReference;
@@ -7,6 +16,7 @@ public abstract class WNResource {
     private final LinkedHashMap<String, Param<?>> params = new LinkedHashMap<>();
     public static String modid;
     private final String name;
+    private static final WNLogger log = WildNature.getLogger();
 
     public WNResource(String name){
         this.name = name;
@@ -49,7 +59,12 @@ public abstract class WNResource {
             if(value == null || value.value == null){
                 return;
             }
-            template.set(template.get().replaceAll("%" + value.name + "%",value.value.toString()));
+            String ref = template.get();
+            if(ref == null){
+                log.error("Unable to get AtomicReference for resource: " + this.getName());
+                return;
+            }
+            template.set(ref.replaceAll("%" + value.name + "%",value.value.toString()));
         });
 
         return template.get();

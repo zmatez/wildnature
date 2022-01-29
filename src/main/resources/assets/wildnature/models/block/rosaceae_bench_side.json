@@ -1,0 +1,7 @@
+{
+    "parent": "wildnature:block/bench_side",
+    "textures": {
+        "material": "wildnature:blocks/trees/rosaceae/rosaceae_planks",
+        "material2": "wildnature:blocks/trees/rosaceae/rosaceae_stripped_log"
+    }
+}

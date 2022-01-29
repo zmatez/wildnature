@@ -1,7 +1,14 @@
+/*
+ * Copyright (c) matez.net 2022.
+ * All rights reserved.
+ * Consider supporting this project on Patreon: https://patreon.com/wildnaturemod
+ */
+
 package net.matez.wildnature.common.objects.blocks.leaves;
 
 import net.matez.wildnature.common.objects.blocks.basic.WNLeavesBlock;
 import net.matez.wildnature.common.objects.blocks.leaves.stages.*;
+import net.matez.wildnature.common.objects.blocks.setup.ModelSupplier;
 import net.matez.wildnature.common.util.WNUtil;
 import net.matez.wildnature.data.block_models.WNBlockModel_Leaves;
 import net.matez.wildnature.data.blockstates.WNBlockstate_TypedLeaves;
@@ -82,7 +89,7 @@ public abstract class WNLeavesTypedBlock extends WNLeavesBlock {
     @Nullable
     @Override
     public ItemColor getItemColor(BlockColors colors) {
-        if(!this.leafType.isTinted()){
+        if(!this.leafType.isTinted() || !this.leafType.getConfig().isItemTinted()){
             return null;
         }
         return (stack, num) -> {
@@ -99,27 +106,42 @@ public abstract class WNLeavesTypedBlock extends WNLeavesBlock {
     @Override
     public ModelList getBlockModels() {
         ModelList list = new ModelList();
-        list.with(
-                new WNBlockModel_Leaves(this.getRegName())
-                        .with("texture",this.getTextureName("trees/" + leafType.getFolder()))
-        );
-        if(this.LEAF_STAGE != null){
-            if(leafType.getConfig().isFlowering()){
-                list.with(
-                        new WNBlockModel_Leaves(this.getRegName() + "_flowering")
-                                .with("texture",this.getTextureName("trees/" + leafType.getFolder()) + "_flowering")
-                );
-            }
+        if(this.leafType.getConfig().getCustomModels().isEmpty()) {
+            list.with(
+                    new WNBlockModel_Leaves(this.getRegName())
+                            .with("texture", this.getTextureName("trees/" + leafType.getFolder()))
+            );
+            if (this.LEAF_STAGE != null) {
+                if (leafType.getConfig().isFlowering()) {
+                    list.with(
+                            new WNBlockModel_Leaves(this.getRegName() + "_flowering")
+                                    .with("texture", this.getTextureName("trees/" + leafType.getFolder()) + "_flowering")
+                    );
+                }
 
-            int ordinal = 1;
-            for(int i = leafType.getConfig().isFlowering() ? 2 : 1; i <= leafType.getConfig().getStages(); i++, ordinal++){
-                list.with(
-                        new WNBlockModel_Leaves(this.getRegName() + "_fruit_" + ordinal)
-                                .with("texture",this.getTextureName("trees/" + leafType.getFolder()) + "_fruit_" + ordinal)
-                );
+                int ordinal = 1;
+                for (int i = leafType.getConfig().isFlowering() ? 2 : 1; i <= leafType.getConfig().getStages(); i++, ordinal++) {
+                    list.with(
+                            new WNBlockModel_Leaves(this.getRegName() + "_fruit_" + ordinal)
+                                    .with("texture", this.getTextureName("trees/" + leafType.getFolder()) + "_fruit_" + ordinal)
+                    );
+                }
+            }
+        }else{
+            for (ModelSupplier customModel : this.leafType.getConfig().getCustomModels()) {
+                list.with(customModel.getModel(this));
             }
         }
         return list;
+    }
+
+    @Nullable
+    @Override
+    public WNResource getItemModel() {
+        if(this.leafType.getConfig().getItemModel() != null){
+            return this.leafType.getConfig().getItemModel().getModel(this);
+        }
+        return super.getItemModel();
     }
 
     @Nullable
@@ -224,5 +246,9 @@ public abstract class WNLeavesTypedBlock extends WNLeavesBlock {
         }
 
         return null;
+    }
+
+    public LeafType getLeafType() {
+        return leafType;
     }
 }
