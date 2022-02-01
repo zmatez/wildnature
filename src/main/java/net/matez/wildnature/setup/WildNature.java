@@ -9,6 +9,7 @@ package net.matez.wildnature.setup;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import net.matez.wildnature.client.objects.blocks.WNBlockRenderer;
+import net.matez.wildnature.client.registry.screen.WNScreenMenuBindings;
 import net.matez.wildnature.client.registry.setup.WNClientRegistry;
 import net.matez.wildnature.common.log.WNLogger;
 import net.matez.wildnature.common.objects.initializer.InitStage;
@@ -43,8 +44,8 @@ public class WildNature {
 
     // change this for data gen
     public WNDataGenerator dataGenerator;
-    private final DataGenType dataGenType = DataGenType.GEN_REFRESH_ALL;
-    //private final DataGenType dataGenType = null;
+    //private final DataGenType dataGenType = DataGenType.GEN_REFRESH_ALL;
+    private final DataGenType dataGenType = null;
 
     public WildNature() {
         instance = this;
@@ -89,6 +90,9 @@ public class WildNature {
         log.progress("WildNature Client Setup");
         WNBlockRenderer.registerAll();
         initializer.init(InitStage.CLIENT);
+
+        WNScreenMenuBindings.register();
+
         log.log("Running " + clientCallbacks.size() + " client callbacks.");
         for (Callback clientCallback : clientCallbacks) {
             clientCallback.call();

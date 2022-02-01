@@ -7,6 +7,8 @@
 package net.matez.wildnature.common.registry.blockentities;
 
 import net.matez.wildnature.common.log.WNLogger;
+import net.matez.wildnature.common.objects.blockentities.geyser.WNGeyserBlockEntity;
+import net.matez.wildnature.common.objects.blockentities.seat.WNSeatBlockEntity;
 import net.matez.wildnature.common.objects.blockentities.table.WNTableBlockEntity;
 import net.matez.wildnature.common.objects.initializer.InitStage;
 import net.matez.wildnature.common.objects.initializer.Initialize;
@@ -25,7 +27,7 @@ import java.util.function.Supplier;
 public class WNBlockEntities {
     private static final WNLogger log = WildNature.getLogger();
 
-    //# --- ALL PARTICLES ---
+    //# --- ALL BLOCK ENTITIES  ---
     public static final LinkedHashMap<ResourceLocation, BlockEntityType<?>> BLOCK_ENTITY_TYPES = new LinkedHashMap<>();
     //#------------------
 
@@ -35,16 +37,27 @@ public class WNBlockEntities {
         list.addAll(WNBlocks.VANILLA_TABLES.values());
         return BlockEntityType.Builder.of(WNTableBlockEntity::new, list.toArray(new Block[0]));
     });
+    public static final BlockEntityType<WNGeyserBlockEntity> GEYSER = register(location("geyser"), () -> {
+        return BlockEntityType.Builder.of(WNGeyserBlockEntity::new, WNBlocks.GEYSER);
+    });
+    public static final BlockEntityType<WNSeatBlockEntity> SEAT = register(location("seat"), () -> {
+        ArrayList<Block> list = new ArrayList<>();
+        list.addAll(WNBlocks.CHAIRS.values());
+        list.addAll(WNBlocks.VANILLA_CHAIRS.values());
+        list.addAll(WNBlocks.BENCHES.values());
+        list.addAll(WNBlocks.VANILLA_BENCHES.values());
+        return BlockEntityType.Builder.of(WNSeatBlockEntity::new, list.toArray(new Block[0]));
+    });
 
     //#------------------
     public static ResourceLocation location(String name) {
         return new ResourceLocation(WildNature.modid, name);
     }
 
-    private static <T extends BlockEntity> BlockEntityType<T> register(ResourceLocation registryName, Supplier<BlockEntityType.Builder<T>> builder){
+    private static <T extends BlockEntity> BlockEntityType<T> register(ResourceLocation registryName, Supplier<BlockEntityType.Builder<T>> builder) {
         BlockEntityType<T> blockEntityType = builder.get().build(null);
         blockEntityType.setRegistryName(registryName);
-        BLOCK_ENTITY_TYPES.put(registryName,blockEntityType);
+        BLOCK_ENTITY_TYPES.put(registryName, blockEntityType);
 
         return blockEntityType;
     }

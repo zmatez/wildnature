@@ -9,6 +9,7 @@ package net.matez.wildnature.common.objects.items.geyser;
 import net.matez.wildnature.common.objects.items.setup.WNItem;
 import net.matez.wildnature.data.item_models.WNItemModel_Generated;
 import net.matez.wildnature.data.setup.base.WNResource;
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextComponent;
 import net.minecraft.resources.ResourceLocation;
@@ -16,7 +17,11 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 public class WNGeyserEssenceItem extends WNItem {
     public WNGeyserEssenceItem(ResourceLocation location, Properties properties) {
@@ -35,7 +40,11 @@ public class WNGeyserEssenceItem extends WNItem {
     }
 
     @Override
-    public Component getHighlightTip(ItemStack item, Component displayName) {
-        return new TextComponent("Unstable");
+    public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> components, TooltipFlag flag) {
+        super.appendHoverText(stack, level, components, flag);
+        var tag = stack.getOrCreateTag();
+
+        ///todo hex colors
+        components.add(new TextComponent("Unstable").withStyle(ChatFormatting.DARK_PURPLE));
     }
 }

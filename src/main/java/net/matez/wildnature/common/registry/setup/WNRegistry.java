@@ -10,10 +10,14 @@ import net.matez.wildnature.common.log.WNLogger;
 import net.matez.wildnature.common.objects.items.setup.IWNItem;
 import net.matez.wildnature.common.registry.blockentities.WNBlockEntities;
 import net.matez.wildnature.common.registry.blocks.WNBlocks;
+import net.matez.wildnature.common.registry.containers.WNContainers;
+import net.matez.wildnature.common.registry.entities.WNEntities;
 import net.matez.wildnature.common.registry.items.WNItems;
 import net.matez.wildnature.common.registry.particles.WNParticles;
 import net.matez.wildnature.setup.WildNature;
 import net.minecraft.core.particles.ParticleType;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -66,6 +70,28 @@ public class WNRegistry {
         });
 
         log.success("Registered " + WNBlockEntities.BLOCK_ENTITY_TYPES.size() + " block entities");
+    }
+
+    @SubscribeEvent
+    public static void registerEntities(final RegistryEvent.Register<EntityType<?>> event) {
+        log.progress("Registering entities");
+
+        WNEntities.ENTITY_TYPES.forEach((location, entityType) -> {
+            event.getRegistry().register(entityType);
+        });
+
+        log.success("Registered " + WNEntities.ENTITY_TYPES.size() + " entities");
+    }
+
+    @SubscribeEvent
+    public static void registerMenus(final RegistryEvent.Register<MenuType<?>> event) {
+        log.progress("Registering menus");
+
+        WNContainers.MENU_TYPES.forEach((location, menuType) -> {
+            event.getRegistry().register(menuType);
+        });
+
+        log.success("Registered " + WNContainers.MENU_TYPES.size() + " menus");
     }
 
 }

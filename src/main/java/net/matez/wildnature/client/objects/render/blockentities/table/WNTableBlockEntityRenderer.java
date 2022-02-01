@@ -36,8 +36,8 @@ public class WNTableBlockEntityRenderer implements BlockEntityRenderer<WNTableBl
             poseStack.scale(1.3F, 1.3F, 1.3F);
             poseStack.mulPose(Vector3f.XP.rotationDegrees(90.0F));
             poseStack.mulPose(Vector3f.ZP.rotationDegrees(blockEntity.getFacing().get2DDataValue() * 90));
-            poseStack.translate(0.0,-0.25D,0.0);
-            Minecraft.getInstance().getItemRenderer().renderStatic(blockEntity.getPlacedStack(), ItemTransforms.TransformType.GROUND, combinedLight,combinedOverlay,poseStack,source,id);
+            poseStack.translate(0.0, -0.125D, 0.0);
+            Minecraft.getInstance().getItemRenderer().renderStatic(blockEntity.getPlacedStack(), ItemTransforms.TransformType.GROUND, combinedLight, combinedOverlay, poseStack, source, id);
             poseStack.popPose();
         }
     }

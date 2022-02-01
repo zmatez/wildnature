@@ -16,11 +16,9 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 
-import java.util.ArrayList;
 import java.util.Random;
 
 public class WNTableBlockEntity extends BlockEntity {
-    public static final ArrayList<Block> SUPPORTED_BLOCKS = new ArrayList<>();
     private ItemStack placedStack = ItemStack.EMPTY;
     private Direction facing = Direction.NORTH;
     private Player eatingPlayer;

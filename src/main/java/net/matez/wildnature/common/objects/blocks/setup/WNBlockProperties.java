@@ -30,5 +30,6 @@ public class WNBlockProperties {
     public static final BooleanProperty CRACK = BooleanProperty.create("crack");
     public static final EnumProperty<BenchPart> BENCH_PART = EnumProperty.create("part", BenchPart.class);
     public static final BooleanProperty SINGLE = BooleanProperty.create("single");
+    public static final BooleanProperty HYDROTHERMAL = BooleanProperty.create("hydrothermal");
 
 }

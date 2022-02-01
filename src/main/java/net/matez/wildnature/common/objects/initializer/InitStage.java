@@ -12,6 +12,7 @@ public enum InitStage {
     CLIENT,
     PARTICLE,
     ENTITY_RENDERER,
+    SCREEN,
     SETUP,
     FINISH
 }
