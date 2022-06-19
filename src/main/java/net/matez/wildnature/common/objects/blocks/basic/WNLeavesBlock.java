@@ -1,19 +1,25 @@
+/*
+ * Copyright (c) matez.net 2022.
+ * All rights reserved.
+ * Consider supporting this project on Patreon: https://patreon.com/wildnaturemod
+ */
+
 package net.matez.wildnature.common.objects.blocks.basic;
 
 import net.matez.wildnature.common.objects.blocks.setup.WNBlock;
-import net.matez.wildnature.common.objects.blocks.setup.WNBlockProperties;
 import net.matez.wildnature.common.objects.items.setup.WNBlockItem;
 import net.matez.wildnature.common.objects.tags.WNTags;
 import net.matez.wildnature.common.registry.setup.WNRenderType;
+import net.matez.wildnature.common.util.WNUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -22,14 +28,15 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SimpleWaterloggedBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.*;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.common.IForgeShearable;
+import net.minecraftforge.common.Tags;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Random;
@@ -37,7 +44,7 @@ import java.util.Random;
 public abstract class WNLeavesBlock extends WNBlock implements IForgeShearable, SimpleWaterloggedBlock {
     protected static final VoxelShape SHAPE = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 13.0D, 16.0D);
 
-    public static final BooleanProperty HYDRATED = WNBlockProperties.LEAVES_HYDRATED;
+    public static final BooleanProperty PERSISTENT = BlockStateProperties.PERSISTENT;
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 
     public WNLeavesBlock(ResourceLocation location, Properties properties) {
@@ -55,7 +62,7 @@ public abstract class WNLeavesBlock extends WNBlock implements IForgeShearable, 
     @Override
     public void construct() {
         super.construct();
-        this.registerDefaultState(this.stateDefinition.any().setValue(HYDRATED, true).setValue(WATERLOGGED, false));
+        this.registerDefaultState(this.stateDefinition.any().setValue(PERSISTENT, true).setValue(WATERLOGGED, false));
     }
 
     @Override
@@ -72,11 +79,7 @@ public abstract class WNLeavesBlock extends WNBlock implements IForgeShearable, 
     }
 
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> p_54447_) {
-        p_54447_.add(HYDRATED, WATERLOGGED);
-    }
-
-    public int getLightBlock(BlockState state, BlockGetter getter, BlockPos pos) {
-        return 1;
+        p_54447_.add(PERSISTENT, WATERLOGGED);
     }
 
     public void animateTick(BlockState state, Level level, BlockPos pos, Random random) {
@@ -95,11 +98,11 @@ public abstract class WNLeavesBlock extends WNBlock implements IForgeShearable, 
     }
 
     public boolean isRandomlyTicking(BlockState state) {
-        return !state.getValue(HYDRATED);
+        return !state.getValue(PERSISTENT);
     }
 
     public void randomTick(BlockState state, ServerLevel level, BlockPos pos, Random random) {
-        if (!state.getValue(HYDRATED)) {
+        if (!state.getValue(PERSISTENT)) {
             dropResources(state, level, pos);
             level.removeBlock(pos, false);
         }
@@ -117,10 +120,10 @@ public abstract class WNLeavesBlock extends WNBlock implements IForgeShearable, 
         blockstate = blockstate.setValue(WATERLOGGED, fluidstate.getType() == Fluids.WATER);
         if(context.getPlayer() != null){
             if(!context.getPlayer().isCreative()){
-                blockstate = blockstate.setValue(HYDRATED,true);
+                blockstate = blockstate.setValue(PERSISTENT, true);
             }
         }else{
-            blockstate = blockstate.setValue(HYDRATED,true);
+            blockstate = blockstate.setValue(PERSISTENT, true);
         }
         return blockstate;
     }
@@ -135,9 +138,9 @@ public abstract class WNLeavesBlock extends WNBlock implements IForgeShearable, 
         return 60;
     }
 
-    public VoxelShape getCollisionShape(BlockState p_56702_, BlockGetter p_56703_, BlockPos p_56704_, CollisionContext p_56705_) {
-        return SHAPE;
-    }
+//    public VoxelShape getCollisionShape(BlockState p_56702_, BlockGetter p_56703_, BlockPos p_56704_, CollisionContext p_56705_) {
+//        return SHAPE;
+//    }
 
     public VoxelShape getBlockSupportShape(BlockState p_56707_, BlockGetter p_56708_, BlockPos p_56709_) {
         return Shapes.block();
@@ -162,4 +165,17 @@ public abstract class WNLeavesBlock extends WNBlock implements IForgeShearable, 
                 WNTags.LEAVES, WNTags.MINEABLE_HOE, WNTags.PARROTS_SPAWNABLE_ON, WNTags.LAVA_POOL_STONE_CANNOT_REPLACE
         );
     }
+
+
+    @Nullable
+    @Override
+    public DropList getDrops(BlockState state, ServerLevel level, float luck, int fortune, boolean silkTouch, @Nullable LivingEntity entity, ItemStack brokenBy) {
+        if (brokenBy.is(Tags.Items.SHEARS)) {
+            return DropList.single(asItem());
+        } else {
+            return new DropList()
+                    .with(ItemStack.EMPTY, 3).with(new ItemStack(Items.STICK, WNUtil.rint(1, Math.max(3, 2 * fortune))), 1);
+        }
+    }
+
 }

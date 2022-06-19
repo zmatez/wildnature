@@ -6,6 +6,8 @@
 
 package net.matez.wildnature.common.objects.items.fruits;
 
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.food.Foods;
 
@@ -51,7 +53,7 @@ public enum Fruit {
     WHITE_CURRANT("white_currant", Foods.APPLE),
     STRAWBERRY("strawberry", Foods.APPLE),
 
-    BELLADONNA("belladonna_fruit", Foods.APPLE),
+    BELLADONNA("belladonna_fruit", (new FoodProperties.Builder()).nutrition(4).saturationMod(0.3F).effect(new MobEffectInstance(MobEffects.POISON, 400, 0), 0.5F).build()),
     WILD_ROSE("wild_rose_fruit", Foods.APPLE),
     ORANGE_ROWANBERRIES_CLUSTER("orange_rowanberries_cluster", null),
     RED_ROWANBERRIES_CLUSTER("red_rowanberries_cluster", null),

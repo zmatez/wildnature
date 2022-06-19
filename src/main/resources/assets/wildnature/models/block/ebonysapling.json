@@ -1,0 +1,8 @@
+{
+  "parent": "wildnature:block/sapling",
+  "textures": {
+    "particle": "wildnature:blocks/trees/ebony/ebonysapling_leaves",
+    "leaves": "wildnature:blocks/trees/ebony/ebonysapling_leaves",
+    "log": "wildnature:blocks/trees/ebony/ebonysapling_log"
+  }
+}

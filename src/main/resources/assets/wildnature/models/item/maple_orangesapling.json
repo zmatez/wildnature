@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "wildnature:blocks/trees/maple/maple_orangesapling_item"
+  }
+}

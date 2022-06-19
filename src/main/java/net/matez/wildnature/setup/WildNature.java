@@ -12,11 +12,17 @@ import net.matez.wildnature.client.objects.blocks.WNBlockRenderer;
 import net.matez.wildnature.client.registry.screen.WNScreenMenuBindings;
 import net.matez.wildnature.client.registry.setup.WNClientRegistry;
 import net.matez.wildnature.common.log.WNLogger;
+import net.matez.wildnature.common.networking.WNNetworking;
 import net.matez.wildnature.common.objects.initializer.InitStage;
 import net.matez.wildnature.common.objects.initializer.Initializer;
+import net.matez.wildnature.common.objects.structures.WNStructures;
+import net.matez.wildnature.common.registry.commands.WNCommandArguments;
+import net.matez.wildnature.common.registry.commands.WNCommands;
 import net.matez.wildnature.data.setup.DataGenType;
 import net.matez.wildnature.data.setup.WNDataGenerator;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.RegisterCommandsEvent;
+import net.minecraftforge.event.server.ServerAboutToStartEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -28,7 +34,8 @@ import java.util.ArrayList;
 @Mod("wildnature")
 public class WildNature {
     public static WildNature instance;
-    public static final boolean debugMode = true;
+    public static final boolean debugMode = true; //! <-------- DISABLE IN PRODUCTION
+    public static final boolean devMode = true; //! <-------- DISABLE IN PRODUCTION
     public static final String modid = "wildnature";
     public static final Gson gson = new GsonBuilder()
             .setPrettyPrinting()
@@ -37,12 +44,13 @@ public class WildNature {
 
     private static final WNLogger log = getLogger();
     public final Initializer initializer;
+    public String version = "3.1_a1";
     //---
     private final long startTime;
 
     private ArrayList<Callback> clientCallbacks = new ArrayList<>();
 
-    // change this for data gen
+    //! change this for data gen
     public WNDataGenerator dataGenerator;
     //private final DataGenType dataGenType = DataGenType.GEN_REFRESH_ALL;
     private final DataGenType dataGenType = null;
@@ -79,11 +87,8 @@ public class WildNature {
         }
     }
 
-    private void setup(final FMLCommonSetupEvent event) {
-        log.progress("WildNature Setup");
-        initializer.init(InitStage.SETUP);
-
-        log.success("WildNature Setup Complete");
+    public static String getVersion() {
+        return instance.version;
     }
 
     private void clientSetup(final FMLClientSetupEvent event) {
@@ -115,16 +120,35 @@ public class WildNature {
         log.success("WildNature loaded in " + (ms / 1000) + "s");
     }
 
+    private void setup(final FMLCommonSetupEvent event) {
+        log.progress("WildNature Setup");
+        initializer.init(InitStage.SETUP);
+        WNNetworking.register();
+
+        log.success("WildNature Setup Complete");
+    }
+
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event) {
 
+    }
+
+    @SubscribeEvent
+    public void onServerAboutToStart(ServerAboutToStartEvent event) {
+        WNStructures.load(event.getServer().getResourceManager());
     }
 
     public static WNLogger getLogger() {
         return new WNLogger(debugMode);
     }
 
-    public static void doOnClient(Callback callback){
+    public static void doOnClient(Callback callback) {
         WildNature.instance.clientCallbacks.add(callback);
+    }
+
+    @SubscribeEvent
+    public void onCommandsRegister(RegisterCommandsEvent event) {
+        WNCommandArguments.register();
+        WNCommands.register(event.getDispatcher());
     }
 }

@@ -37,7 +37,7 @@ public class WNEntities {
     }
 
     private static <T extends Entity> EntityType<T> register(ResourceLocation registryName, Supplier<EntityType.Builder<T>> builder) {
-        EntityType<T> entityType = builder.get().build(null);
+        EntityType<T> entityType = builder.get().build(registryName.toString());
         entityType.setRegistryName(registryName);
         ENTITY_TYPES.put(registryName, entityType);
 

@@ -1,12 +1,16 @@
+/*
+ * Copyright (c) matez.net 2022.
+ * All rights reserved.
+ * Consider supporting this project on Patreon: https://patreon.com/wildnaturemod
+ */
+
 package net.matez.wildnature.common.objects.blocks.plant;
 
 import net.matez.wildnature.common.objects.blocks.plant.config.BushConfig;
 import net.matez.wildnature.common.objects.blocks.setup.WNBlock;
 import net.matez.wildnature.common.objects.tags.WNTags;
 import net.matez.wildnature.common.registry.setup.WNRenderType;
-import net.matez.wildnature.data.block_models.plants.WNBlockModel_TintedCross;
 import net.matez.wildnature.data.blockstates.WNBlockstate_Cube;
-import net.matez.wildnature.data.item_models.WNItemModel_Generated;
 import net.matez.wildnature.data.setup.base.WNResource;
 import net.minecraft.client.color.block.BlockColor;
 import net.minecraft.client.color.block.BlockColors;
@@ -52,19 +56,23 @@ public abstract class WNBushBlock extends WNBlock implements net.minecraftforge.
     }
 
     protected boolean mayPlaceOn(BlockState state, BlockState stateOn, BlockGetter getter, BlockPos pos) {
-        return getConfig() != null ? getConfig().getPlacement().getSupplier().canPlace(state,stateOn,getter,pos) : BushPlacement.DIRT.getSupplier().canPlace(state,stateOn,getter,pos);
+        return getConfig() != null ? getConfig().getPlacement().getSupplier().canPlace(state, stateOn, getter, pos) : BushPlacement.DIRT.getSupplier().canPlace(state, stateOn, getter, pos);
     }
 
     public BlockState updateShape(BlockState p_51032_, Direction p_51033_, BlockState p_51034_, LevelAccessor p_51035_, BlockPos p_51036_, BlockPos p_51037_) {
         return !p_51032_.canSurvive(p_51035_, p_51036_) ? Blocks.AIR.defaultBlockState() : super.updateShape(p_51032_, p_51033_, p_51034_, p_51035_, p_51036_, p_51037_);
     }
 
-    public boolean canSurvive(BlockState blockState, LevelReader state, BlockPos pos) {
+    public boolean canSurvive(BlockState blockState, LevelReader reader, BlockPos pos) {
         BlockPos blockpos = pos.below();
         if (blockState.getBlock() == this) //Forge: This function is called during world gen and placement, before this block is set, so if we are not 'here' then assume it's the pre-check.
-            return (state.getBlockState(blockpos).canSustainPlant(state, blockpos, Direction.UP, this) && this.mayPlaceOn(blockState, state.getBlockState(blockpos), state, blockpos))
-                    || this.mayPlaceOn(blockState, state.getBlockState(blockpos), state, blockpos);
-        return this.mayPlaceOn(blockState, state.getBlockState(blockpos), state, blockpos);
+            return (reader.getBlockState(blockpos).canSustainPlant(reader, blockpos, Direction.UP, this) && this.mayPlaceOn(blockState, reader.getBlockState(blockpos), reader, blockpos))
+                    || this.mayPlaceOn(blockState, reader.getBlockState(blockpos), reader, blockpos);
+        return this.mayPlaceOn(blockState, reader.getBlockState(blockpos), reader, blockpos);
+    }
+
+    public void place(BlockState state, LevelAccessor reader, BlockPos pos, int data) {
+        reader.setBlock(pos, state, data);
     }
 
     public boolean propagatesSkylightDown(BlockState state, BlockGetter getter, BlockPos pos) {

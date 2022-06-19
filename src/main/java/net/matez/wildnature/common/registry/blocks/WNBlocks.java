@@ -10,6 +10,7 @@ import net.matez.wildnature.common.log.WNLogger;
 import net.matez.wildnature.common.objects.blocks.cave_plants.CavePlantType;
 import net.matez.wildnature.common.objects.blocks.crops.CropType;
 import net.matez.wildnature.common.objects.blocks.crops.WNCropTypedBlock;
+import net.matez.wildnature.common.objects.blocks.dev.WNDevBlock;
 import net.matez.wildnature.common.objects.blocks.fruit_bush.leaves.FruitBushType;
 import net.matez.wildnature.common.objects.blocks.fruit_bush.leaves.WNFruitBushTypedBlock;
 import net.matez.wildnature.common.objects.blocks.fruit_bush.plants.FruitPlantType;
@@ -32,6 +33,8 @@ import net.matez.wildnature.common.objects.blocks.sand.SandType;
 import net.matez.wildnature.common.objects.blocks.sand.WNMudBlock;
 import net.matez.wildnature.common.objects.blocks.sand.WNQuicksandBlock;
 import net.matez.wildnature.common.objects.blocks.sand.WNSandBlock;
+import net.matez.wildnature.common.objects.blocks.saplings.WNSaplingBlock;
+import net.matez.wildnature.common.objects.blocks.saplings.WNSaplingType;
 import net.matez.wildnature.common.objects.blocks.setup.WNBlock;
 import net.matez.wildnature.common.objects.blocks.shells.Shell;
 import net.matez.wildnature.common.objects.blocks.shells.WNShellBlock;
@@ -58,6 +61,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -486,7 +490,7 @@ public class WNBlocks {
                         .sound(SoundType.GRAVEL),
                 new Item.Properties()
                         .tab(WNTabs.TAB_SURFACE),
-                value
+                value, value.getIdBase()
         );
     });
     public static final WNBlock DRIED_SOIL = register(new WNDirtBlock(
@@ -495,7 +499,7 @@ public class WNBlocks {
                     .strength(0.4F)
                     .sound(SoundType.GRAVEL),
             new Item.Properties()
-                    .tab(WNTabs.TAB_SURFACE), null
+                    .tab(WNTabs.TAB_SURFACE), null, "misc"
     ));
     public static final LinkedHashMap<GrassType, WNBlock> PODZOLS = register(GrassType.values(), (value) -> {
         return new WNPodzolBlock(
@@ -508,6 +512,14 @@ public class WNBlocks {
                 value
         );
     });
+    public static final WNBlock BARREN_MYCELIUM = register(new WNMyceliumBlock(
+            location("barren_mycelium"),
+            BlockBehaviour.Properties.of(Material.DIRT, MaterialColor.PODZOL)
+                    .strength(0.5F)
+                    .sound(SoundType.GRAVEL),
+            new Item.Properties()
+                    .tab(WNTabs.TAB_SURFACE), GrassType.BARREN
+    ));
     public static final LinkedHashMap<GrassType, WNBlock> COARSE_DIRTS = register(GrassType.values(), (value) -> {
         return new WNDirtBlock(
                 location(value.getIdBase() + "_coarse_dirt"),
@@ -516,7 +528,7 @@ public class WNBlocks {
                         .sound(SoundType.GRAVEL),
                 new Item.Properties()
                         .tab(WNTabs.TAB_SURFACE),
-                value
+                value, value.getIdBase()
         );
     });
     public static final LinkedHashMap<GrassType, WNBlock> DIRT_PATHS = register(GrassType.values(), (value) -> {
@@ -546,13 +558,35 @@ public class WNBlocks {
                 value
         );
     });
+    public static final LinkedHashMap<OvergrownGrassType, WNBlock> OVERGROWN_STONES = register(OvergrownGrassType.values(), (value) -> {
+        return new WNOvergrownStoneBlock(
+                location(value.getIdBase()),
+                BlockBehaviour.Properties.of(Material.GRASS, MaterialColor.GRASS)
+                        .strength(1.5F, 3F)
+                        .randomTicks()
+                        .sound(SoundType.STONE)
+                        .isViewBlocking(WNBlocks::always)
+                        .isSuffocating(WNBlocks::always),
+                new Item.Properties()
+                        .tab(WNTabs.TAB_SURFACE),
+                value
+        );
+    });
+    public static final WNBlock MOSSY_STONE = register(new WNMossyStone(
+            location("mossy_stone"),
+            BlockBehaviour.Properties.of(Material.STONE, MaterialColor.STONE)
+                    .strength(1.5F, 3F)
+                    .sound(SoundType.STONE),
+            new Item.Properties()
+                    .tab(WNTabs.TAB_SURFACE), null
+    ));
     public static final WNBlock SOIL = register(new WNSoilBlock(
             location("soil"),
             BlockBehaviour.Properties.of(Material.DIRT, MaterialColor.DIRT)
                     .strength(0.6F)
                     .sound(SoundType.GRAVEL),
             new Item.Properties()
-                    .tab(WNTabs.TAB_SURFACE), null
+                    .tab(WNTabs.TAB_SURFACE)
     ));
     public static final WNBlock GEYSER = register(new WNGeyserBlock(
             location("geyser"),
@@ -682,7 +716,7 @@ public class WNBlocks {
         }
 
         if(value.getBlockConstructor() != null){
-            return value.getBlockConstructor().get(value,blockProp,itemProp);
+            return value.getBlockConstructor().get(value, blockProp, itemProp);
         }
 
         return WNCropTypedBlock.create(
@@ -692,14 +726,27 @@ public class WNBlocks {
                 value
         );
     });
+    public static final LinkedHashMap<WNSaplingType, WNBlock> SAPLINGS = register(WNSaplingType.values(), (value) -> {
+        BlockBehaviour.Properties blockProp = BlockBehaviour.Properties.of(Material.PLANT, MaterialColor.PLANT)
+                .sound(SoundType.GRASS)
+                .instabreak()
+                .noOcclusion()
+                .noCollission()
+                .dynamicShape()
+                .randomTicks();
+        Item.Properties itemProp = new Item.Properties()
+                .tab(WNTabs.TAB_SURFACE_PLANTS);
+
+        return new WNSaplingBlock(location(value.getIdBase() + "_sapling"), blockProp, itemProp, value);
+    });
 
     public static final LinkedHashMap<Mushroom, WNBlock> MUSHROOMS = register(Mushroom.values(), (value) -> {
-        BlockBehaviour.Properties prop = BlockBehaviour.Properties.of(Material.PLANT,MaterialColor.COLOR_BROWN)
+        BlockBehaviour.Properties prop = BlockBehaviour.Properties.of(Material.PLANT, MaterialColor.COLOR_BROWN)
                 .sound(SoundType.GRASS).noCollission().randomTicks().instabreak().lightLevel((state) -> {
                     return 1;
                 });
 
-        if(value.getType() == MushroomType.NORMAL) {
+        if (value.getType() == MushroomType.NORMAL) {
             return new WNMushroomBlock(
                     location(value.getId()),
                     prop.dynamicShape(),
@@ -1209,6 +1256,15 @@ public class WNBlocks {
     //#------------------
     //?---
 
+
+    public static final WNDevBlock DEV_STRUCTURE_CENTER = register(new WNDevBlock(
+            location("dev_structure_center"),
+            BlockBehaviour.Properties.of(Material.AMETHYST, MaterialColor.DIAMOND)
+                    .strength(999F)
+                    .sound(SoundType.AMETHYST),
+            new Item.Properties()
+                    .rarity(Rarity.EPIC)
+    ));
 
     //!------------------
     public static ResourceLocation location(String name) {

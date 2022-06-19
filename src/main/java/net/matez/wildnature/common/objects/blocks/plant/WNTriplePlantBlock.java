@@ -1,3 +1,9 @@
+/*
+ * Copyright (c) matez.net 2022.
+ * All rights reserved.
+ * Consider supporting this project on Patreon: https://patreon.com/wildnaturemod
+ */
+
 package net.matez.wildnature.common.objects.blocks.plant;
 
 import net.matez.wildnature.common.objects.blocks.plant.plants.TripleBlockHalf;
@@ -74,25 +80,31 @@ public class WNTriplePlantBlock extends WNBushConfiguredBlock {
       level.setBlock(pos.above(2), copyWaterloggedFrom(level, pos.above(2), this.defaultBlockState().setValue(HALF, TripleBlockHalf.UPPER)), 3);
    }
 
-   public boolean canSurvive(BlockState state, LevelReader reader, BlockPos pos) {
-      if (state.getValue(HALF) == TripleBlockHalf.LOWER) {
-         return super.canSurvive(state, reader, pos);
-      } else {
-         BlockState blockstate = reader.getBlockState(pos.below());
-         if (state.getBlock() != this) return super.canSurvive(state, reader, pos); //Forge: This function is called during world gen and placement, before this block is set, so if we are not 'here' then assume it's the pre-check.
-         return blockstate.is(this) && (blockstate.getValue(HALF) == TripleBlockHalf.LOWER || blockstate.getValue(HALF) == TripleBlockHalf.MIDDLE);
-      }
-   }
+    public boolean canSurvive(BlockState state, LevelReader reader, BlockPos pos) {
+        if (state.getValue(HALF) == TripleBlockHalf.LOWER) {
+            return super.canSurvive(state, reader, pos);
+        } else {
+            BlockState blockstate = reader.getBlockState(pos.below());
+            if (state.getBlock() != this)
+                return super.canSurvive(state, reader, pos); //Forge: This function is called during world gen and placement, before this block is set, so if we are not 'here' then assume it's the pre-check.
+            return blockstate.is(this) && (blockstate.getValue(HALF) == TripleBlockHalf.LOWER || blockstate.getValue(HALF) == TripleBlockHalf.MIDDLE);
+        }
+    }
 
-   public static void placeAt(LevelAccessor level, BlockState state, BlockPos pos, int arg) {
-      level.setBlock(pos, copyWaterloggedFrom(level, pos, state.setValue(HALF, TripleBlockHalf.LOWER)), arg);
-      level.setBlock(pos.above(), copyWaterloggedFrom(level, pos.above(), state.setValue(HALF, TripleBlockHalf.MIDDLE)), arg);
-      level.setBlock(pos.above(2), copyWaterloggedFrom(level, pos.above(2), state.setValue(HALF, TripleBlockHalf.UPPER)), arg);
-   }
+    @Override
+    public void place(BlockState state, LevelAccessor reader, BlockPos pos, int data) {
+        placeAt(reader, state, pos, data);
+    }
 
-   public static BlockState copyWaterloggedFrom(LevelReader level, BlockPos pos, BlockState state) {
-      return state.hasProperty(BlockStateProperties.WATERLOGGED) ? state.setValue(BlockStateProperties.WATERLOGGED, Boolean.valueOf(level.isWaterAt(pos))) : state;
-   }
+    public static void placeAt(LevelAccessor level, BlockState state, BlockPos pos, int arg) {
+        level.setBlock(pos, copyWaterloggedFrom(level, pos, state.setValue(HALF, TripleBlockHalf.LOWER)), arg);
+        level.setBlock(pos.above(), copyWaterloggedFrom(level, pos.above(), state.setValue(HALF, TripleBlockHalf.MIDDLE)), arg);
+        level.setBlock(pos.above(2), copyWaterloggedFrom(level, pos.above(2), state.setValue(HALF, TripleBlockHalf.UPPER)), arg);
+    }
+
+    public static BlockState copyWaterloggedFrom(LevelReader level, BlockPos pos, BlockState state) {
+        return state.hasProperty(BlockStateProperties.WATERLOGGED) ? state.setValue(BlockStateProperties.WATERLOGGED, Boolean.valueOf(level.isWaterAt(pos))) : state;
+    }
 
    public void playerWillDestroy(Level level, BlockPos p_52879_, BlockState p_52880_, Player p_52881_) {
       if (!level.isClientSide) {

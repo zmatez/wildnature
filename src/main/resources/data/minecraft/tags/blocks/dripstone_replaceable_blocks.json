@@ -1,1 +1,12 @@
-{"replace":false,"values":["wildnature:barren_dirt","wildnature:tropical_dirt","wildnature:dried_soil","wildnature:barren_coarse_dirt","wildnature:tropical_coarse_dirt","wildnature:soil"]}
+{
+  "replace": false,
+  "values": [
+    "wildnature:barren_dirt",
+    "wildnature:tropical_dirt",
+    "wildnature:dried_soil",
+    "wildnature:barren_coarse_dirt",
+    "wildnature:tropical_coarse_dirt",
+    "wildnature:mossy_stone",
+    "wildnature:soil"
+  ]
+}

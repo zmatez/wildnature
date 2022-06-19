@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:block/template_farmland",
   "textures": {
-    "dirt": "wildnature:blocks/grass/tropical_dirt",
-    "top": "wildnature:blocks/grass/tropical_farmland_moist"
+    "dirt": "wildnature:blocks/grass/tropical/tropical_dirt",
+    "top": "wildnature:blocks/grass/tropical/tropical_farmland_moist"
   }
 }

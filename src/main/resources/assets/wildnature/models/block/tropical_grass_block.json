@@ -1,10 +1,10 @@
 {   "parent": "block/block",
     "textures": {
-        "particle": "wildnature:blocks/grass/tropical_dirt",
-        "bottom": "wildnature:blocks/grass/tropical_dirt",
-        "top": "wildnature:blocks/grass/tropical_grass_block_top",
-        "side": "wildnature:blocks/grass/tropical_grass_block_side",
-        "overlay": "wildnature:blocks/grass/tropical_grass_block_side_overlay"
+      "particle": "wildnature:blocks/grass/tropical/tropical_dirt",
+      "bottom": "wildnature:blocks/grass/tropical/tropical_dirt",
+      "top": "wildnature:blocks/grass/tropical/tropical_grass_block_top",
+      "side": "wildnature:blocks/grass/tropical/tropical_grass_block_side",
+      "overlay": "wildnature:blocks/grass/tropical/tropical_grass_block_side_overlay"
     },
     "elements": [
         {   "from": [ 0, 0, 0 ],

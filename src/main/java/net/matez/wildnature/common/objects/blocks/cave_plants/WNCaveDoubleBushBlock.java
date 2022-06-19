@@ -78,14 +78,15 @@ public class WNCaveDoubleBushBlock extends WNCaveBushBlock {
       p_52872_.setBlock(blockpos, copyWaterloggedFrom(p_52872_, blockpos, this.defaultBlockState().setValue(HALF, DoubleBlockHalf.UPPER)), 3);
    }
 
-   public boolean canSurvive(BlockState p_52887_, LevelReader p_52888_, BlockPos p_52889_) {
-      if (p_52887_.getValue(HALF) != DoubleBlockHalf.UPPER) {
-         return super.canSurvive(p_52887_, p_52888_, p_52889_);
-      } else {
-         BlockState blockstate = p_52888_.getBlockState(p_52889_.above());
-         if (p_52887_.getBlock() != this) return super.canSurvive(p_52887_, p_52888_, p_52889_); //Forge: This function is called during world gen and placement, before this block is set, so if we are not 'here' then assume it's the pre-check.
-         return blockstate.is(this) && blockstate.getValue(HALF) == DoubleBlockHalf.LOWER && super.canSurvive(p_52887_, p_52888_, p_52889_);
-      }
+   public boolean canSurvive(BlockState p_52887_, LevelReader reader, BlockPos p_52889_) {
+       if (p_52887_.getValue(HALF) != DoubleBlockHalf.UPPER) {
+           return super.canSurvive(p_52887_, reader, p_52889_);
+       } else {
+           BlockState blockstate = reader.getBlockState(p_52889_.above());
+           if (p_52887_.getBlock() != this)
+               return super.canSurvive(p_52887_, reader, p_52889_); //Forge: This function is called during world gen and placement, before this block is set, so if we are not 'here' then assume it's the pre-check.
+           return blockstate.is(this) && blockstate.getValue(HALF) == DoubleBlockHalf.LOWER && super.canSurvive(p_52887_, reader, p_52889_);
+       }
    }
 
    protected boolean mayPlaceOn(BlockState state, BlockState stateOn, BlockGetter getter, BlockPos pos) {

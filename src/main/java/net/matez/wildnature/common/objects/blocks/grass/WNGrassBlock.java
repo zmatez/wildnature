@@ -1,3 +1,9 @@
+/*
+ * Copyright (c) matez.net 2022.
+ * All rights reserved.
+ * Consider supporting this project on Patreon: https://patreon.com/wildnaturemod
+ */
+
 package net.matez.wildnature.common.objects.blocks.grass;
 
 import net.matez.wildnature.common.objects.blocks.basic.WNAbstractGrassBlock;
@@ -81,12 +87,12 @@ public class WNGrassBlock extends WNAbstractGrassBlock implements BonemealableBl
         return new ModelList()
                 .with(
                         new WNBlockModel_GrassBlock(this.getRegName())
-                                .with("texture", this.getTextureName("grass"))
-                                .with("dirt", WNBlocks.DIRTS.get(this.grassType).getTextureName("grass")),
+                                .with("texture", this.getTextureName("grass/" + this.grassType.getIdBase()))
+                                .with("dirt", WNBlocks.DIRTS.get(this.grassType).getTextureName("grass/" + this.grassType.getIdBase())),
                         new WNBlockModel_CubeBottomTop(this.getRegName() + "_snow")
-                                .with("texture_top", this.getTextureName("grass") + "_top")
-                                .with("texture_bottom", WNBlocks.DIRTS.get(this.grassType).getTextureName("grass"))
-                                .with("texture_side", this.getTextureName("grass") + "_side_snowed")
+                                .with("texture_top", this.getTextureName("grass/" + this.grassType.getIdBase()) + "_top")
+                                .with("texture_bottom", WNBlocks.DIRTS.get(this.grassType).getTextureName("grass/" + this.grassType.getIdBase()))
+                                .with("texture_side", this.getTextureName("grass/" + this.grassType.getIdBase()) + "_side_snowed")
                 );
     }
 }

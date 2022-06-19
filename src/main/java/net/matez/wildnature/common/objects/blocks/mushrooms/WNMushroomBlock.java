@@ -40,13 +40,13 @@ public class WNMushroomBlock extends WNBushBlock {
     }
 
     @Override
-    public boolean canSurvive(BlockState p_54880_, LevelReader p_54881_, BlockPos p_54882_) {
+    public boolean canSurvive(BlockState p_54880_, LevelReader reader, BlockPos p_54882_) {
         BlockPos blockpos = p_54882_.below();
-        BlockState blockstate = p_54881_.getBlockState(blockpos);
+        BlockState blockstate = reader.getBlockState(blockpos);
         if (blockstate.is(BlockTags.MUSHROOM_GROW_BLOCK)) {
             return true;
         } else {
-            return p_54881_.getRawBrightness(p_54882_, 0) < 13 && blockstate.canSustainPlant(p_54881_, blockpos, net.minecraft.core.Direction.UP, this);
+            return reader.getRawBrightness(p_54882_, 0) < 13 && blockstate.canSustainPlant(reader, blockpos, net.minecraft.core.Direction.UP, this);
         }
     }
 

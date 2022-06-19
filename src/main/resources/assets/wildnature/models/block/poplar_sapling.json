@@ -1,0 +1,8 @@
+{
+  "parent": "wildnature:block/sapling",
+  "textures": {
+    "particle": "wildnature:blocks/trees/poplar/poplar_leaves",
+    "leaves": "wildnature:blocks/trees/poplar/poplar_leaves",
+    "log": "minecraft:block/oak_log"
+  }
+}

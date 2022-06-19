@@ -1,9 +1,12 @@
+/*
+ * Copyright (c) matez.net 2022.
+ * All rights reserved.
+ * Consider supporting this project on Patreon: https://patreon.com/wildnaturemod
+ */
+
 package net.matez.wildnature.common.objects.blocks.fruit_bush.plants;
 
-import net.matez.wildnature.common.objects.blocks.fruit_bush.leaves.WNFruitBushTypedBlock;
-import net.matez.wildnature.data.block_models.plants.WNBlockModel_TintedCross;
 import net.matez.wildnature.data.blockstates.plants.WNBlockstate_DoubleBush;
-import net.matez.wildnature.data.item_models.WNItemModel_Generated;
 import net.matez.wildnature.data.setup.base.WNResource;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -74,12 +77,13 @@ public abstract class WNDoubleFruitPlantBlock extends WNFruitBushPlantTypedBlock
       p_52872_.setBlock(blockpos, copyWaterloggedFrom(p_52872_, blockpos, this.defaultBlockState().setValue(HALF, DoubleBlockHalf.UPPER)), 3);
    }
 
-   public boolean canSurvive(BlockState p_52887_, LevelReader p_52888_, BlockPos p_52889_) {
+   public boolean canSurvive(BlockState p_52887_, LevelReader reader, BlockPos p_52889_) {
       if (p_52887_.getValue(HALF) != DoubleBlockHalf.UPPER) {
-         return super.canSurvive(p_52887_, p_52888_, p_52889_);
+         return super.canSurvive(p_52887_, reader, p_52889_);
       } else {
-         BlockState blockstate = p_52888_.getBlockState(p_52889_.below());
-         if (p_52887_.getBlock() != this) return super.canSurvive(p_52887_, p_52888_, p_52889_); //Forge: This function is called during world gen and placement, before this block is set, so if we are not 'here' then assume it's the pre-check.
+         BlockState blockstate = reader.getBlockState(p_52889_.below());
+         if (p_52887_.getBlock() != this)
+            return super.canSurvive(p_52887_, reader, p_52889_); //Forge: This function is called during world gen and placement, before this block is set, so if we are not 'here' then assume it's the pre-check.
          return blockstate.is(this) && blockstate.getValue(HALF) == DoubleBlockHalf.LOWER;
       }
    }

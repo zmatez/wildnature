@@ -10,7 +10,6 @@ import net.matez.wildnature.common.objects.initializer.InitStage;
 import net.matez.wildnature.common.objects.initializer.Initialize;
 import net.matez.wildnature.common.objects.particles.*;
 import net.matez.wildnature.common.objects.particles.setup.WNParticleProvider;
-import net.matez.wildnature.mixin.ParticleEngineMixin;
 import net.matez.wildnature.setup.WildNature;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.ParticleEngine;
@@ -33,6 +32,7 @@ public class WNParticles {
     public static final SimpleParticleType SLIME_SHROOM_GREEN = register(WNSlimeShroomParticle.SlimeShroomGreenProvider.getRegistryNameStatic(), true, WNSlimeShroomParticle.SlimeShroomGreenProvider::new);
     public static final SimpleParticleType THERMAL_SMOKE = register(WNSmokeParticle.ThermalSmokeProvider.getRegistryNameStatic(), true, WNSmokeParticle.ThermalSmokeProvider::new);
     public static final SimpleParticleType WISTERIA_PINK = register(WNWisteriaParticle.WisteriaPinkProvider.getRegistryNameStatic(), true, WNWisteriaParticle.WisteriaPinkProvider::new);
+    public static final SimpleParticleType STEAM = register(WNSteamParticle.SteamProvider.getRegistryNameStatic(), true, WNSteamParticle.SteamProvider::new);
 
 
     public static ResourceLocation location(String name) {
@@ -52,9 +52,9 @@ public class WNParticles {
         PARTICLE_TYPES.forEach((registryName, particleType) -> {
             if(PARTICLE_FACTORIES.containsKey(registryName)) {
                 Minecraft.getInstance().particleEngine.register(particleType, PARTICLE_FACTORIES.get(registryName));
-                if (((ParticleEngineMixin) Minecraft.getInstance().particleEngine).getProviders().get(registryName) instanceof WNParticleProvider<?> provider) {
-                    PARTICLE_PROVIDERS.put(registryName, provider);
-                }
+//                if (((ParticleEngineMixin) Minecraft.getInstance().particleEngine).getProviders().get(registryName) instanceof WNParticleProvider<?> provider) {
+//                    PARTICLE_PROVIDERS.put(registryName, provider);
+//                }
             }
         });
     }

@@ -1,3 +1,9 @@
+/*
+ * Copyright (c) matez.net 2022.
+ * All rights reserved.
+ * Consider supporting this project on Patreon: https://patreon.com/wildnaturemod
+ */
+
 package net.matez.wildnature.common.objects.blocks.sand;
 
 import net.matez.wildnature.common.objects.blocks.setup.WNBlock;
@@ -52,7 +58,9 @@ public class WNQuicksandBlock extends WNBlock {
     }
 
     public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
-        entity.makeStuckInBlock(state, new Vec3(0.3D, (double)0.05F, 0.25D));
+        if (!entity.isSprinting() || !level.getBlockState(new BlockPos(entity.position().add(0, (12F / 16F), 0))).isAir()) {
+            entity.makeStuckInBlock(state, new Vec3(0.3D, (double) 0.05F, 0.25D));
+        }
     }
 
     public VoxelShape getCollisionShape(BlockState p_56702_, BlockGetter p_56703_, BlockPos p_56704_, CollisionContext p_56705_) {

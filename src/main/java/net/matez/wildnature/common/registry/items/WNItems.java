@@ -14,8 +14,10 @@ import net.matez.wildnature.common.objects.initializer.Initialize;
 import net.matez.wildnature.common.objects.items.backpacks.Backpack;
 import net.matez.wildnature.common.objects.items.backpacks.WNBackpackItem;
 import net.matez.wildnature.common.objects.items.cotton.WNCottonItem;
+import net.matez.wildnature.common.objects.items.dev.WNDevStickItem;
 import net.matez.wildnature.common.objects.items.dust.DustItem;
 import net.matez.wildnature.common.objects.items.dust.WNDustItem;
+import net.matez.wildnature.common.objects.items.fertilizer.WNFertilizerItem;
 import net.matez.wildnature.common.objects.items.fruits.Fruit;
 import net.matez.wildnature.common.objects.items.fruits.WNFruitItem;
 import net.matez.wildnature.common.objects.items.geyser.WNGeyserEssenceItem;
@@ -34,6 +36,7 @@ import net.matez.wildnature.common.registry.tabs.WNTabs;
 import net.matez.wildnature.setup.WildNature;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Rarity;
 
 import java.util.LinkedHashMap;
 
@@ -182,16 +185,20 @@ public class WNItems {
         return null;
     });
     public static final LinkedHashMap<Handle, IWNItem> HANDLES = register(Handle.values(), (value) -> {
-        return new WNHandleItem(location(value.getId()),new Item.Properties().tab(WNTabs.TAB_EQUIPMENT), value);
+        return new WNHandleItem(location(value.getId()), new Item.Properties().tab(WNTabs.TAB_EQUIPMENT), value);
     });
     public static final LinkedHashMap<Backpack, IWNItem> BACKPACKS = register(Backpack.values(), (value) -> {
-        return new WNBackpackItem(location(value.getId()),new Item.Properties().tab(WNTabs.TAB_EQUIPMENT), value);
+        return new WNBackpackItem(location(value.getId()), new Item.Properties().tab(WNTabs.TAB_EQUIPMENT).stacksTo(1), value);
     });
     public static final LinkedHashMap<DustItem, IWNItem> DUSTS = register(DustItem.values(), (value) -> {
-        return new WNDustItem(location(value.getId()),new Item.Properties().tab(WNTabs.TAB_CAVES), value);
+        return new WNDustItem(location(value.getId()), new Item.Properties().tab(WNTabs.TAB_CAVES), value);
     });
 
-    public static final WNItem GEYSER_ESSENCE = register(new WNGeyserEssenceItem(location("geyser_essence"),new Item.Properties().tab(WNTabs.TAB_SURFACE).stacksTo(1)));
+    public static final WNItem GEYSER_ESSENCE = register(new WNGeyserEssenceItem(location("geyser_essence"), new Item.Properties().tab(WNTabs.TAB_SURFACE).stacksTo(1).rarity(Rarity.RARE)));
+    public static final WNItem FERTILIZER = register(new WNFertilizerItem(location("fertilizer"), new Item.Properties().tab(WNTabs.TAB_SURFACE)));
+
+
+    public static final WNItem DEVSTICK = register(new WNDevStickItem(location("devstick"), new Item.Properties().stacksTo(1).rarity(Rarity.EPIC)));
 
 
     //########################################################

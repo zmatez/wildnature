@@ -9,6 +9,7 @@ package net.matez.wildnature.common.registry.blockentities;
 import net.matez.wildnature.common.log.WNLogger;
 import net.matez.wildnature.common.objects.blockentities.geyser.WNGeyserBlockEntity;
 import net.matez.wildnature.common.objects.blockentities.seat.WNSeatBlockEntity;
+import net.matez.wildnature.common.objects.blockentities.soil.WNSoilBlockEntity;
 import net.matez.wildnature.common.objects.blockentities.table.WNTableBlockEntity;
 import net.matez.wildnature.common.objects.initializer.InitStage;
 import net.matez.wildnature.common.objects.initializer.Initialize;
@@ -47,6 +48,9 @@ public class WNBlockEntities {
         list.addAll(WNBlocks.BENCHES.values());
         list.addAll(WNBlocks.VANILLA_BENCHES.values());
         return BlockEntityType.Builder.of(WNSeatBlockEntity::new, list.toArray(new Block[0]));
+    });
+    public static final BlockEntityType<WNSoilBlockEntity> SOIL = register(location("soil"), () -> {
+        return BlockEntityType.Builder.of(WNSoilBlockEntity::new, WNBlocks.SOIL);
     });
 
     //#------------------

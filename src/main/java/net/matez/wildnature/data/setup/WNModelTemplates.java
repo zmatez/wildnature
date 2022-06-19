@@ -50,6 +50,7 @@ public class WNModelTemplates {
     public static final WNResource BLOCK_BENCH_SIDE = register(new WNTBlockModel_BenchSide());
     public static final WNResource BLOCK_BENCH_SINGLE = register(new WNTBlockModel_BenchSingle());
     public static final WNResource BLOCK_BENCH_MIDDLE = register(new WNTBlockModel_BenchMiddle());
+    public static final WNResource BLOCK_SAPLING = register(new WNTBlockModel_Sapling());
 
 
     private static WNResource register(WNResource resource){

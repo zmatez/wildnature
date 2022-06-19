@@ -1,0 +1,8 @@
+{
+  "parent": "wildnature:block/sapling",
+  "textures": {
+    "particle": "wildnature:blocks/trees/nuytsia/nuytsia_leaves",
+    "leaves": "wildnature:blocks/trees/nuytsia/nuytsia_leaves",
+    "log": "wildnature:blocks/trees/rosaceae/rosaceae_log"
+  }
+}

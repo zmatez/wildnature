@@ -7,6 +7,7 @@
 package net.matez.wildnature.common.objects.blocks.setup;
 
 import net.matez.wildnature.common.objects.items.setup.WNBlockItem;
+import net.matez.wildnature.common.objects.structures.WNStructure;
 import net.matez.wildnature.common.objects.tags.WNTags;
 import net.matez.wildnature.common.registry.items.WNItems;
 import net.matez.wildnature.common.registry.setup.WNRenderType;
@@ -19,18 +20,27 @@ import net.matez.wildnature.data.setup.recipes.WNRecipeList;
 import net.minecraft.client.color.block.BlockColor;
 import net.minecraft.client.color.block.BlockColors;
 import net.minecraft.client.color.item.ItemColor;
+import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.item.enchantment.Enchantments;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 public class WNBlock extends Block {
     @Nullable
@@ -75,7 +85,7 @@ public class WNBlock extends Block {
     /**
      * called on SETUP stage
      */
-    public void setup(){
+    public void setup() {
 
     }
 
@@ -86,12 +96,19 @@ public class WNBlock extends Block {
 
     //? ------------------------------------------------------------------------
 
+    public BlockState processStateOnPlace(LevelAccessor accessor, BlockState state, BlockPos pos, WNStructure structure, Random random, @Nullable Rotation rotation) {
+        return state;
+    }
+
+    //? ------------------------------------------------------------------------
+
     /**
      * @return e.g "stone"
      */
-    public String getRegName(){
+    public String getRegName() {
         return this.getRegistryName() == null ? "UNKNOWN" : (this.getRegistryName().getPath());
     }
+
     /**
      * @return e.g "stone"
      */
@@ -145,8 +162,19 @@ public class WNBlock extends Block {
     //? ------------------------------------------------------------------------
 
     @Nullable
-    public DropList getDrops(BlockState state, ServerLevel level, float luck){
-        if(this.item == null){
+    @Deprecated(forRemoval = true)
+    public DropList getDrops(BlockState state, ServerLevel level, float luck) {
+        if (this.item == null) {
+            return null;
+        }
+
+        return new DropList()
+                .with(this.item);
+    }
+
+    @Nullable
+    public DropList getDrops(BlockState state, ServerLevel level, float luck, int fortune, boolean silkTouch, @Nullable LivingEntity entity, ItemStack brokenBy) {
+        if (this.item == null) {
             return null;
         }
 
@@ -156,14 +184,34 @@ public class WNBlock extends Block {
 
     @Override
     public List<ItemStack> getDrops(BlockState state, LootContext.Builder context) {
-        DropList list = getDrops(state, context.getLevel(), 0); //todo luck
-        if(list == null || list.drops.isEmpty()) {
+        int luck = 0;
+        int fortune = 0;
+        boolean silkTouch = false;
+        LivingEntity livingEntity = null;
+        if (context.getOptionalParameter(LootContextParams.THIS_ENTITY) instanceof LivingEntity entity) {
+            livingEntity = entity;
+            var effect = livingEntity.getEffect(MobEffects.LUCK);
+            if (effect != null) {
+                luck = effect.getAmplifier() + 1;
+            }
+        }
+        var stack = context.getOptionalParameter(LootContextParams.TOOL);
+        if (stack != null && !stack.isEmpty()) {
+            fortune = EnchantmentHelper.getItemEnchantmentLevel(Enchantments.BLOCK_FORTUNE, stack);
+            silkTouch = EnchantmentHelper.getItemEnchantmentLevel(Enchantments.SILK_TOUCH, stack) > 0;
+        }
+
+        DropList list = getDrops(state, context.getLevel(), luck, fortune, silkTouch, livingEntity, stack);
+        if (list == null || list.drops.isEmpty()) {
             return super.getDrops(state, context);
         }
 
-        ArrayList<ItemStack> singleton = new ArrayList<>();
-        singleton.add(list.drops.getWeightedEntry().item);
-        return singleton;
+        ArrayList<ItemStack> array = new ArrayList<>();
+        array.add(list.drops.getWeightedEntry().item);
+        for (Drop drop : list.drops.getAllWithWeight(0)) {
+            array.add(drop.item);
+        }
+        return array;
     }
 
     //? ------------------------------------------------------------------------
@@ -191,42 +239,55 @@ public class WNBlock extends Block {
         }
     }
 
-    public static class DropList{
+    public static class DropList {
+        //rarity 0 means it will drop always with other item
+
         private final WeightedList<Drop> drops = new WeightedList<>();
 
-        public DropList(){}
+        public DropList() {
+        }
 
-        public DropList with(Item item){
-            drops.add(new Drop(item,0),1);
+        public static DropList single(Item item) {
+            return new DropList().with(item);
+        }
+
+        public static DropList single(ItemStack item) {
+            return new DropList().with(item);
+        }
+
+        public DropList with(Item item) {
+            drops.put(new Drop(item, 0), 1);
             return this;
         }
-        public DropList withExp(Item item, int exp){
-            drops.add(new Drop(item,exp),1);
+
+        public DropList withExp(Item item, int exp) {
+            drops.put(new Drop(item, exp), 1);
             return this;
         }
-        public DropList with(Item item, int rarity){
-            drops.add(new Drop(item,0),rarity);
+
+        public DropList with(Item item, int rarity) {
+            drops.put(new Drop(item, 0), rarity);
             return this;
         }
         public DropList withExp(Item item, int exp, int rarity){
-            drops.add(new Drop(item,exp),rarity);
+            drops.put(new Drop(item, exp), rarity);
             return this;
         }
 
         public DropList with(ItemStack item){
-            drops.add(new Drop(item,0),1);
+            drops.put(new Drop(item, 0), 1);
             return this;
         }
         public DropList withExp(ItemStack item, int exp){
-            drops.add(new Drop(item,exp),1);
+            drops.put(new Drop(item, exp), 1);
             return this;
         }
         public DropList with(ItemStack item, int rarity){
-            drops.add(new Drop(item,0),rarity);
+            drops.put(new Drop(item, 0), rarity);
             return this;
         }
         public DropList withExp(ItemStack item, int exp, int rarity){
-            drops.add(new Drop(item,exp),rarity);
+            drops.put(new Drop(item, exp), rarity);
             return this;
         }
     }

@@ -41,7 +41,7 @@ public class WNSilverCrossbowItem extends WNCrossbowItem {
     }
 
     public int getUseDuration(ItemStack stack) {
-        return getChargeDuration(stack) + 3;
+        return getChargeDuration(stack);
     }
 
     public int getChargeDurationWN(ItemStack stack) {

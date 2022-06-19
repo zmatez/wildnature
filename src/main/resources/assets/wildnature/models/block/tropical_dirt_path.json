@@ -1,10 +1,10 @@
 {
     "parent": "block/block",
     "textures": {
-        "top": "wildnature:blocks/grass/tropical_dirt_path_top",
-        "bottom": "wildnature:blocks/grass/tropical_dirt",
-        "side": "wildnature:blocks/grass/tropical_dirt_path_side",
-        "particle": "wildnature:blocks/grass/tropical_dirt"
+      "top": "wildnature:blocks/grass/tropical/tropical_dirt_path_top",
+      "bottom": "wildnature:blocks/grass/tropical/tropical_dirt",
+      "side": "wildnature:blocks/grass/tropical/tropical_dirt_path_side",
+      "particle": "wildnature:blocks/grass/tropical/tropical_dirt"
     },
     "elements": [
         {   "from": [ 0, 0, 0 ],

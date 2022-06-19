@@ -12,13 +12,14 @@ import java.util.Date;
 
 public class WNLogger {
     private final boolean debugMode;
+    private static boolean progressPending = false;
+    private static boolean lastMessageIsAProgress = false;
 
-    public WNLogger(boolean debug){
+    public WNLogger(boolean debug) {
         this.debugMode = debug;
-        debug("Logger started");
     }
 
-    private String currentTime(){
+    private String currentTime() {
         //DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
         Date date = new Date();
@@ -27,26 +28,51 @@ public class WNLogger {
 
     public void debug(String message){
         if(debugMode) {
+            pre();
             System.out.println(ConsoleColors.BLACK_BRIGHT + "[" + currentTime() + "] " + ConsoleColors.BLUE_BRIGHT + "[DEBUG]: " + ConsoleColors.BLUE + message + ConsoleColors.RESET);
         }
     }
     public void log(String message){
-        System.out.println(ConsoleColors.BLACK_BRIGHT + "["+currentTime()+"] " + ConsoleColors.YELLOW_BRIGHT + "[INFO]: " + ConsoleColors.YELLOW + message + ConsoleColors.RESET);
+        pre();
+        System.out.println(ConsoleColors.BLACK_BRIGHT + "[" + currentTime() + "] " + ConsoleColors.YELLOW_BRIGHT + "[INFO]: " + ConsoleColors.YELLOW + message + ConsoleColors.RESET);
     }
     public void progress(String message){
-        System.out.println(ConsoleColors.BLACK_BRIGHT + "["+currentTime()+"] " + ConsoleColors.PURPLE_BRIGHT + "[PROGRESS]: " + ConsoleColors.PURPLE + message + ConsoleColors.RESET);
+        pre();
+        System.out.println(ConsoleColors.BLACK_BRIGHT + "[" + currentTime() + "] " + ConsoleColors.PURPLE_BRIGHT + "[PROGRESS]: " + ConsoleColors.PURPLE + message + ConsoleColors.RESET);
     }
     public void success(String message){
-        System.out.println(ConsoleColors.BLACK_BRIGHT + "["+currentTime()+"] " + ConsoleColors.GREEN_BRIGHT + "[SUCCESS]: " + ConsoleColors.GREEN + message + ConsoleColors.RESET);
+        pre();
+        System.out.println(ConsoleColors.BLACK_BRIGHT + "[" + currentTime() + "] " + ConsoleColors.GREEN_BRIGHT + "[SUCCESS]: " + ConsoleColors.GREEN + message + ConsoleColors.RESET);
     }
     public void warn(String message){
-        System.out.println(ConsoleColors.BLACK_BRIGHT + "["+currentTime()+"] " + ConsoleColors.YELLOW_BRIGHT + "[WARN]: " + ConsoleColors.YELLOW + message + ConsoleColors.RESET);
+        pre();
+        System.out.println(ConsoleColors.BLACK_BRIGHT + "[" + currentTime() + "] " + ConsoleColors.YELLOW_BRIGHT + "[WARN]: " + ConsoleColors.YELLOW + message + ConsoleColors.RESET);
     }
-    public void error(String message){
-        System.out.println(ConsoleColors.BLACK_BRIGHT + "["+currentTime()+"] " + ConsoleColors.RED_BRIGHT + "[ERROR]: " + ConsoleColors.RED + message + ConsoleColors.RESET);
+
+    public void error(String message) {
+        pre();
+        System.out.println(ConsoleColors.BLACK_BRIGHT + "[" + currentTime() + "] " + ConsoleColors.RED_BRIGHT + "[ERROR]: " + ConsoleColors.RED + message + ConsoleColors.RESET);
     }
-    public void fatal(String message){
-        System.out.println(ConsoleColors.BLACK_BRIGHT + "["+currentTime()+"] " + ConsoleColors.BLACK + ConsoleColors.RED_BACKGROUND + "[FATAL]" + ConsoleColors.RESET + ConsoleColors.RED_BRIGHT + ": " + ConsoleColors.RED + message + ConsoleColors.RESET);
+
+    public void fatal(String message) {
+        pre();
+        System.out.println(ConsoleColors.BLACK_BRIGHT + "[" + currentTime() + "] " + ConsoleColors.BLACK + ConsoleColors.RED_BACKGROUND + "[FATAL]" + ConsoleColors.RESET + ConsoleColors.RED_BRIGHT + ": " + ConsoleColors.RED + message + ConsoleColors.RESET);
+    }
+
+    private void pre() {
+        if (progressPending && lastMessageIsAProgress) {
+            System.out.println("");
+        }
+        lastMessageIsAProgress = false;
+    }
+
+    public void startProgress() {
+        progressPending = true;
+    }
+
+    public void endProgress() {
+        progressPending = false;
+        System.out.print("\n");
     }
 
     public void progressPercentage(int done, int total) {
@@ -72,11 +98,8 @@ public class WNLogger {
         }
         bar.append(iconRightBoundary);
 
-        System.out.print("\r" + ConsoleColors.BLACK_BRIGHT + "["+currentTime()+"] " + bar + " " + ConsoleColors.GREEN_BRIGHT + donePercents + "%");
-
-        if (done == total) {
-            System.out.print("\n");
-        }
+        lastMessageIsAProgress = true;
+        System.out.print("\r" + ConsoleColors.BLACK_BRIGHT + "[" + currentTime() + "] " + bar + " " + ConsoleColors.GREEN_BRIGHT + donePercents + "%");
     }
 
     //debug alternatives

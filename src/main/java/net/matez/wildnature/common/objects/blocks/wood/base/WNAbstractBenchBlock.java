@@ -25,6 +25,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.RenderShape;
+import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -151,5 +152,10 @@ public abstract class WNAbstractBenchBlock extends WNBaseEntityBlock {
             seat.destroy();
         }
         return super.onDestroyedByPlayer(state, world, pos, player, willHarvest, fluid);
+    }
+
+    @Override
+    public BlockState rotate(BlockState state, LevelAccessor world, BlockPos pos, Rotation direction) {
+        return super.rotate(state, world, pos, direction).setValue(FACING, WNBlockProperties.rotate(state.getValue(FACING), direction));
     }
 }

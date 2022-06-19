@@ -1,6 +1,10 @@
-package net.matez.wildnature.common.objects.blocks.plant;
+/*
+ * Copyright (c) matez.net 2022.
+ * All rights reserved.
+ * Consider supporting this project on Patreon: https://patreon.com/wildnaturemod
+ */
 
-import javax.annotation.Nullable;
+package net.matez.wildnature.common.objects.blocks.plant;
 
 import net.matez.wildnature.data.block_models.plants.WNBlockModel_TintedCross;
 import net.matez.wildnature.data.blockstates.plants.WNBlockstate_DoubleBush;
@@ -31,6 +35,8 @@ import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+
+import javax.annotation.Nullable;
 
 public class WNDoublePlantBlock extends WNBushConfiguredBlock {
    private static final double OFFSET = 3D;
@@ -73,14 +79,20 @@ public class WNDoublePlantBlock extends WNBushConfiguredBlock {
       p_52872_.setBlock(blockpos, copyWaterloggedFrom(p_52872_, blockpos, this.defaultBlockState().setValue(HALF, DoubleBlockHalf.UPPER)), 3);
    }
 
-   public boolean canSurvive(BlockState p_52887_, LevelReader p_52888_, BlockPos p_52889_) {
+   public boolean canSurvive(BlockState p_52887_, LevelReader reader, BlockPos p_52889_) {
       if (p_52887_.getValue(HALF) != DoubleBlockHalf.UPPER) {
-         return super.canSurvive(p_52887_, p_52888_, p_52889_);
+         return super.canSurvive(p_52887_, reader, p_52889_);
       } else {
-         BlockState blockstate = p_52888_.getBlockState(p_52889_.below());
-         if (p_52887_.getBlock() != this) return super.canSurvive(p_52887_, p_52888_, p_52889_); //Forge: This function is called during world gen and placement, before this block is set, so if we are not 'here' then assume it's the pre-check.
+         BlockState blockstate = reader.getBlockState(p_52889_.below());
+         if (p_52887_.getBlock() != this)
+            return super.canSurvive(p_52887_, reader, p_52889_); //Forge: This function is called during world gen and placement, before this block is set, so if we are not 'here' then assume it's the pre-check.
          return blockstate.is(this) && blockstate.getValue(HALF) == DoubleBlockHalf.LOWER;
       }
+   }
+
+   @Override
+   public void place(BlockState state, LevelAccessor reader, BlockPos pos, int data) {
+      placeAt(reader, state, pos, data);
    }
 
    public static void placeAt(LevelAccessor level, BlockState state, BlockPos pos, int arg) {

@@ -27,10 +27,7 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.RenderShape;
-import net.minecraft.world.level.block.SimpleWaterloggedBlock;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -312,13 +309,46 @@ public abstract class WNAbstractTableBlock extends WNBaseEntityBlock implements 
         return getShape(state);
     }
 
-    //todo mirror and rotate
 
+    @Override
+    public BlockState rotate(BlockState state, LevelAccessor world, BlockPos pos, Rotation direction) {
+        return switch (direction) {
+            case CLOCKWISE_180 -> state
+                    .setValue(NORTH, state.getValue(SOUTH))
+                    .setValue(EAST, state.getValue(WEST))
+                    .setValue(SOUTH, state.getValue(NORTH))
+                    .setValue(WEST, state.getValue(EAST))
+            ;
+            case COUNTERCLOCKWISE_90 -> state
+                    .setValue(NORTH, state.getValue(EAST))
+                    .setValue(EAST, state.getValue(SOUTH))
+                    .setValue(SOUTH, state.getValue(WEST))
+                    .setValue(WEST, state.getValue(NORTH));
+            case CLOCKWISE_90 -> state
+                    .setValue(NORTH, state.getValue(WEST))
+                    .setValue(EAST, state.getValue(NORTH))
+                    .setValue(SOUTH, state.getValue(EAST))
+                    .setValue(WEST, state.getValue(SOUTH));
+            default -> state;
+        };
+    }
+
+    public BlockState mirror(BlockState state, Mirror mirror) {
+        return switch (mirror) {
+            case LEFT_RIGHT -> state
+                    .setValue(NORTH, state.getValue(SOUTH))
+                    .setValue(SOUTH, state.getValue(NORTH));
+            case FRONT_BACK -> state
+                    .setValue(EAST, state.getValue(WEST))
+                    .setValue(WEST, state.getValue(EAST));
+            default -> super.mirror(state, mirror);
+        };
+    }
 
     @Nullable
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-        return new WNTableBlockEntity(pos,state);
+        return new WNTableBlockEntity(pos, state);
     }
 
     public RenderShape getRenderShape(BlockState p_54296_) {

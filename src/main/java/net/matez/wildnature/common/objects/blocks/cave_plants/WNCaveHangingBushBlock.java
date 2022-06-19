@@ -31,12 +31,12 @@ public class WNCaveHangingBushBlock extends WNCaveBushBlock{
     }
 
     @Override
-    public boolean canSurvive(BlockState blockState, LevelReader state, BlockPos pos) {
+    public boolean canSurvive(BlockState blockState, LevelReader reader, BlockPos pos) {
         BlockPos blockpos = pos.above();
         if (blockState.getBlock() == this) //Forge: This function is called during world gen and placement, before this block is set, so if we are not 'here' then assume it's the pre-check.
-            return (state.getBlockState(blockpos).canSustainPlant(state, blockpos, Direction.DOWN, this) && this.mayPlaceOn(blockState, state.getBlockState(blockpos), state, blockpos))
-                    || this.mayPlaceOn(blockState, state.getBlockState(blockpos), state, blockpos);
-        return this.mayPlaceOn(blockState, state.getBlockState(blockpos), state, blockpos);
+            return (reader.getBlockState(blockpos).canSustainPlant(reader, blockpos, Direction.DOWN, this) && this.mayPlaceOn(blockState, reader.getBlockState(blockpos), reader, blockpos))
+                    || this.mayPlaceOn(blockState, reader.getBlockState(blockpos), reader, blockpos);
+        return this.mayPlaceOn(blockState, reader.getBlockState(blockpos), reader, blockpos);
     }
 
     public VoxelShape getShape(BlockState state, BlockGetter getter, BlockPos pos, CollisionContext context) {

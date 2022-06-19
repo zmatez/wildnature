@@ -6,7 +6,6 @@
 
 package net.matez.wildnature.common.objects.items.tools;
 
-import net.matez.wildnature.common.events.SilverBurnEvent;
 import net.matez.wildnature.common.log.WNLogger;
 import net.matez.wildnature.common.objects.items.ores.OreFamily;
 import net.matez.wildnature.common.objects.items.setup.IWNItem;
@@ -68,18 +67,18 @@ public class WNSwordItem extends SwordItem implements IWNItem {
 
     @Override
     public boolean hurtEnemy(ItemStack stack, LivingEntity target,LivingEntity attacker) {
-        if(super.hurtEnemy(stack, target, attacker) && target.getLevel() instanceof ServerLevel level){
-            if(this.toolItem.getFamily() == OreFamily.SILVER) {
+        if (super.hurtEnemy(stack, target, attacker)) {
+            if (this.toolItem.getFamily() == OreFamily.SILVER) {
                 if (target instanceof Zombie || target instanceof Skeleton || target instanceof Piglin || target instanceof SkeletonHorse || target instanceof ZombieHorse) {
-                    level.sendParticles(ParticleTypes.SMOKE, target.getX(), target.getY(), target.getZ(), 50,0, 0, 0,0.04f);
-                    level.playLocalSound(target.getX(), target.getY(), target.getZ(), SoundEvents.LAVA_EXTINGUISH, SoundSource.HOSTILE, 1F, 1F, false);
+                    target.getLevel().playLocalSound(target.getX(), target.getY(), target.getZ(), SoundEvents.LAVA_EXTINGUISH, SoundSource.HOSTILE, 1F, 1F, false);
+                    int ticks = WNUtil.rint(30, 50);
 
-                    int ticks = WNUtil.rint(30,50);
+                    //SilverBurnEvent.makeBurn(target,ticks);
 
-                    SilverBurnEvent.makeBurn(target,ticks);
-
-                    if (!target.getLevel().isClientSide()) {
-                        target.addEffect(new MobEffectInstance(MobEffects.WITHER, ticks,1,false,false));
+                    if (target.getLevel() instanceof ServerLevel level) {
+                        target.addEffect(new MobEffectInstance(MobEffects.WITHER, ticks, 1, false, false));
+                        level.sendParticles(ParticleTypes.SMOKE, target.getX(), target.getY(), target.getZ(), 50, 0, 0, 0, 0.04f);
+                        level.sendParticles(ParticleTypes.LAVA, target.getX(), target.getY(), target.getZ(), WNUtil.rint(3, 7), 0, 0, 0, 1f);
                     }
                 }
             }

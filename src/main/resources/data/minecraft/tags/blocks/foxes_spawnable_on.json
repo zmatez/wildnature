@@ -1,1 +1,12 @@
-{"replace":false,"values":["wildnature:barren_grass_block","wildnature:tropical_grass_block","wildnature:algae_block","wildnature:barren_podzol","wildnature:tropical_podzol"]}
+{
+  "replace": false,
+  "values": [
+    "wildnature:barren_grass_block",
+    "wildnature:tropical_grass_block",
+    "wildnature:algae_block",
+    "wildnature:barren_podzol",
+    "wildnature:tropical_podzol",
+    "wildnature:overgrown_stone",
+    "wildnature:overgrown_marble"
+  ]
+}

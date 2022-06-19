@@ -20,7 +20,7 @@ apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 apply plugin: 'org.spongepowered.mixin'
 
-version = '3.1_indev_4'
+version = project.version
 group = 'net.matez.wildnature'
 archivesBaseName = 'wildnature'
 
@@ -48,7 +48,7 @@ minecraft {
         client {
             workingDirectory project.file('run')
             arg "-mixin.config="+archivesBaseName+".mixins.json"
-            property 'mixin.env.disableRefMap', 'true'
+            //property 'mixin.env.disableRefMap', 'true'
 
             // Recommended logging data for a userdev environment
             // The markers can be added/remove as needed separated by commas.
@@ -72,7 +72,7 @@ minecraft {
         server {
             workingDirectory project.file('run')
             arg "-mixin.config="+archivesBaseName+".mixins.json"
-            property 'mixin.env.disableRefMap', 'true'
+            //property 'mixin.env.disableRefMap', 'true'
 
             property 'forge.logging.markers', 'REGISTRIES'
 
@@ -88,7 +88,7 @@ minecraft {
         data {
             workingDirectory project.file('run')
             arg "-mixin.config="+archivesBaseName+".mixins.json"
-            property 'mixin.env.disableRefMap', 'true'
+            //property 'mixin.env.disableRefMap', 'true'
 
             property 'forge.logging.markers', 'REGISTRIES'
 
@@ -106,6 +106,7 @@ minecraft {
 }
 
 sourceSets.main.resources { srcDir 'src/generated/resources' }
+
 
 configurations {
     include
@@ -127,7 +128,7 @@ dependencies {
     // Specify the version of Minecraft to use. If this is any group other than 'net.minecraft', it is assumed
     // that the dep is a ForgeGradle 'patcher' dependency, and its patches will be applied.
     // The userdev artifact is a special name and will get all sorts of transformations applied to it.
-    minecraft 'net.minecraftforge:forge:1.18.1-39.0.63'
+    minecraft 'net.minecraftforge:forge:1.18.1-39.1.0'
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
     //include 'org.reflections:reflections:0.10.2'
     include ('org.reflections:reflections:0.10.2') {
@@ -186,3 +187,7 @@ reobf {
 }
 
 jar.dependsOn("shadowJar")
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
+}

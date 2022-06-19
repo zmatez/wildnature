@@ -15,6 +15,8 @@ import net.matez.wildnature.common.objects.tags.WNTags;
 import net.matez.wildnature.common.registry.blocks.WNBlocks;
 import net.matez.wildnature.common.registry.items.WNItems;
 import net.matez.wildnature.common.registry.particles.WNParticles;
+import net.matez.wildnature.common.registry.tabs.WNTabs;
+import net.matez.wildnature.data.lang.WNTranslations;
 import net.matez.wildnature.data.setup.base.WNResource;
 import net.matez.wildnature.data.setup.base.WNTag;
 import org.apache.commons.io.FileUtils;
@@ -26,6 +28,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.Scanner;
 
 public class WNDataGenerator {
     private static final WNLogger log = new WNLogger(true);
@@ -103,13 +106,18 @@ public class WNDataGenerator {
         });
 
         WNTags.TAGS.forEach((key, tag) -> {
-            if(tag.getCategory() == TagCategory.BLOCKS || tag.getCategory() == TagCategory.BLOCKS_AND_ITEMS){
-                resources.add(new WNTag(tag,"blocks"));
+            if (tag.getCategory() == TagCategory.BLOCKS || tag.getCategory() == TagCategory.BLOCKS_AND_ITEMS) {
+                resources.add(new WNTag(tag, "blocks"));
             }
-            if(tag.getCategory() == TagCategory.ITEMS || tag.getCategory() == TagCategory.BLOCKS_AND_ITEMS){
-                resources.add(new WNTag(tag,"items"));
+            if (tag.getCategory() == TagCategory.ITEMS || tag.getCategory() == TagCategory.BLOCKS_AND_ITEMS) {
+                resources.add(new WNTag(tag, "items"));
             }
         });
+
+        WNTranslations.LANGUAGES.forEach((name, language) -> {
+            resources.add(language);
+        });
+        generateTranslations();
 
 
         log.log("Registered " + resources.size() + " resources to Data Generator.");
@@ -168,22 +176,36 @@ public class WNDataGenerator {
 
     public void createFor(ArrayList<WNResource> resources){
         int changed = 0;
-        log.progressPercentage(0,resources.size());
+        log.startProgress();
+        log.progressPercentage(0, resources.size());
         for (WNResource resource : resources) {
             String path = resource.getPath() + "/" + resource.getName() + ".json";
             try {
                 File file = new File(this.path + path);
-                if(file.exists() && mode == DataGenType.GEN_REFRESH_ALL){
+                String oldContents = null;
+                if (file.exists() && resource.needsOldFileContent()) {
+                    var scanner = new Scanner(file);
+                    oldContents = "";
+                    while (scanner.hasNextLine()) {
+                        oldContents += scanner.nextLine() + "\n";
+                    }
+                    scanner.close();
+                }
+                if (file.exists() && mode == DataGenType.GEN_REFRESH_ALL) {
                     file.delete();
                 }
-                if(!file.exists()) {
+                if (!file.exists()) {
                     file.getParentFile().mkdirs();
                     if (file.createNewFile()) {
                         FileWriter myWriter = new FileWriter(file);
-                        myWriter.write(resource.parseJSON());
+                        if (resource.needsOldFileContent()) {
+                            myWriter.write(resource.parseJSON(oldContents));
+                        } else {
+                            myWriter.write(resource.parseJSON());
+                        }
                         myWriter.close();
                         changed++;
-                        log.progressPercentage(changed,resources.size());
+                        log.progressPercentage(changed, resources.size());
                     }
                 }
             } catch (IOException e) {
@@ -191,9 +213,11 @@ public class WNDataGenerator {
             }
         }
 
-        if(changed > 0){
+        log.endProgress();
+
+        if (changed > 0) {
             log.success("Created " + changed + " new resources.");
-        }else{
+        } else {
             log.log("No resources created.");
         }
     }
@@ -204,6 +228,9 @@ public class WNDataGenerator {
         File missingTexture = new File(this.path + "/assets/" + this.modid + "/textures/missing_texture.png");
 
         for (WNResource resource : resources) {
+            if (!resource.containsTextures()) {
+                continue;
+            }
             try {
                 JsonElement element = JsonParser.parseString(resource.parseJSON());
                 JsonObject obj = element.getAsJsonObject();
@@ -273,5 +300,27 @@ public class WNDataGenerator {
             return false;
         }
         return true;
+    }
+
+
+    //-------
+    public void generateTranslations() {
+        WNBlocks.BLOCKS.forEach((id, block) -> {
+            WNTranslations.add(WNTranslations.Keys.BLOCK, id.getPath());
+        });
+        WNItems.ITEMS.forEach((id, item) -> {
+            WNTranslations.add(WNTranslations.Keys.ITEM, id.getPath());
+        });
+        WNItems.BLOCK_ITEMS.forEach((id, blockItem) -> {
+            WNTranslations.add(WNTranslations.Keys.ITEM, id.getPath());
+        });
+        WNTabs.TABS.forEach((id, tab) -> {
+            WNTranslations.add(WNTranslations.Keys.ITEM_GROUP, id);
+        });
+
+
+        log.success("Created " + WNTranslations.size() + " translations.");
+        // ---
+        WNTranslations.flush();
     }
 }

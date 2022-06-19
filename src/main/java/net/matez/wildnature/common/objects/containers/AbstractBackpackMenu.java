@@ -1,3 +1,9 @@
+/*
+ * Copyright (c) matez.net 2022.
+ * All rights reserved.
+ * Consider supporting this project on Patreon: https://patreon.com/wildnaturemod
+ */
+
 package net.matez.wildnature.common.objects.containers;
 
 import net.matez.wildnature.common.objects.containers.backpack.WNBackpackContainer;
@@ -11,10 +17,12 @@ import net.minecraft.world.item.ItemStack;
 public abstract class AbstractBackpackMenu extends AbstractContainerMenu {
     protected final WNBackpackContainer container;
     protected final ItemStack stack;
+    protected final int openedSlot;
 
     public AbstractBackpackMenu(MenuType<? extends AbstractBackpackMenu> type, int id, Inventory inventory, ItemStack stack, Player player) {
         super(type, id);
         this.stack = stack;
+        this.openedSlot = inventory.findSlotMatchingItem(stack);
         this.container = WNBackpackContainer.load(getSize(), stack);
         this.container.startOpen(inventory.player);
         this.container.addListener((container) -> {
@@ -32,7 +40,7 @@ public abstract class AbstractBackpackMenu extends AbstractContainerMenu {
     public abstract int getSize();
 
     public boolean stillValid(Player player) {
-        return this.container.stillValid(player);
+        return this.container.stillValid(player) && player.getInventory().getItem(this.openedSlot).equals(this.stack);
     }
 
     public ItemStack quickMoveStack(Player player, int slotId) {

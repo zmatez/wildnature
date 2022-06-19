@@ -8,6 +8,7 @@ package net.matez.wildnature.data.setup.base;
 
 import net.matez.wildnature.common.log.WNLogger;
 import net.matez.wildnature.setup.WildNature;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.LinkedHashMap;
 import java.util.concurrent.atomic.AtomicReference;
@@ -32,15 +33,25 @@ public abstract class WNResource {
 
     public abstract String getPath();
 
-    public WNResource with(String name, String value){
-        params.put(name, new Param<>(name,value));
+    public boolean needsOldFileContent() {
+        return false;
+    }
+
+    public boolean containsTextures() {
+        return false;
+    }
+
+    public WNResource with(String name, String value) {
+        params.put(name, new Param<>(name, value));
         return this;
     }
-    public WNResource with(String name, boolean value){
-        params.put(name, new Param<>(name,value));
+
+    public WNResource with(String name, boolean value) {
+        params.put(name, new Param<>(name, value));
         return this;
     }
-    public WNResource with(String name, int value){
+
+    public WNResource with(String name, int value) {
         params.put(name, new Param<>(name,value));
         return this;
     }
@@ -60,17 +71,21 @@ public abstract class WNResource {
                 return;
             }
             String ref = template.get();
-            if(ref == null){
+            if (ref == null) {
                 log.error("Unable to get AtomicReference for resource: " + this.getName());
                 return;
             }
-            template.set(ref.replaceAll("%" + value.name + "%",value.value.toString()));
+            template.set(ref.replaceAll("%" + value.name + "%", value.value.toString()));
         });
 
         return template.get();
     }
 
-    public static class Param<T>{
+    public String parseJSON(@Nullable String oldContent) {
+        return parseJSON();
+    }
+
+    public static class Param<T> {
         private final String name;
         private final T value;
 

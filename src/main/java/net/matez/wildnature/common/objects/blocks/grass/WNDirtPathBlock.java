@@ -1,3 +1,9 @@
+/*
+ * Copyright (c) matez.net 2022.
+ * All rights reserved.
+ * Consider supporting this project on Patreon: https://patreon.com/wildnaturemod
+ */
+
 package net.matez.wildnature.common.objects.blocks.grass;
 
 import net.matez.wildnature.common.objects.blocks.basic.WNAbstractDirtPathBlock;
@@ -38,13 +44,13 @@ public class WNDirtPathBlock extends WNAbstractDirtPathBlock {
         return new ModelList()
                 .with(
                         new WNBlockModel_DirtPath(this.getRegName())
-                                .with("texture_top", this.getTextureName("grass") + "_top")
-                                .with("texture_bottom", getDirt().getTextureName("grass"))
-                                .with("texture_side", this.getTextureName("grass") + "_side"),
+                                .with("texture_top", this.getTextureName("grass/" + this.grassType.getIdBase()) + "_top")
+                                .with("texture_bottom", getDirt().getTextureName("grass/" + this.grassType.getIdBase()))
+                                .with("texture_side", this.getTextureName("grass/" + this.grassType.getIdBase()) + "_side"),
                         new WNBlockModel_DirtPath(this.getRegName() + "_snow")
-                                .with("texture_top", this.getTextureName("grass") + "_top")
-                                .with("texture_bottom", getDirt().getTextureName("grass"))
-                                .with("texture_side", this.getTextureName("grass") + "_side")
+                                .with("texture_top", this.getTextureName("grass/" + this.grassType.getIdBase()) + "_top")
+                                .with("texture_bottom", getDirt().getTextureName("grass/" + this.grassType.getIdBase()))
+                                .with("texture_side", this.getTextureName("grass/" + this.grassType.getIdBase()) + "_side")
                 );
     }
 

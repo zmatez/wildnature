@@ -74,7 +74,7 @@ public class WNTreeFungusBlock extends WNMushroomBlock{
             return null;
         }
         Direction direction = context.getClickedFace();
-        if (!isDirectionAllowed(context,direction)) {
+        if (!isDirectionAllowed(context, direction)) {
             return null;
         }
 
@@ -83,12 +83,12 @@ public class WNTreeFungusBlock extends WNMushroomBlock{
         return canSurvive(state, context.getLevel(), context.getClickedPos()) ? state : null;
     }
 
-    public boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
-        return mayPlaceOn(state,level.getBlockState(pos.relative(state.getValue(FACING).getOpposite())),level,pos);
+    public boolean canSurvive(BlockState state, LevelReader reader, BlockPos pos) {
+        return mayPlaceOn(state, reader.getBlockState(pos.relative(state.getValue(FACING).getOpposite())), reader, pos);
     }
 
     protected boolean mayPlaceOn(BlockState state, BlockState stateOn, BlockGetter getter, BlockPos pos) {
-        return BushPlacement.LOGS.getSupplier().canPlace(state,stateOn,getter,pos);
+        return BushPlacement.LOGS.getSupplier().canPlace(state, stateOn, getter, pos);
     }
 
     public VoxelShape getShape(BlockState p_58092_, BlockGetter p_58093_, BlockPos p_58094_, CollisionContext p_58095_) {

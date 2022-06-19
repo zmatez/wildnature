@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "wildnature:blocks/trees/beech/purple_beech_sapling_item"
+  }
+}

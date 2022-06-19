@@ -1,1 +1,8 @@
-{"replace":false,"values":["wildnature:barren_podzol","wildnature:tropical_podzol"]}
+{
+  "replace": false,
+  "values": [
+    "wildnature:barren_podzol",
+    "wildnature:tropical_podzol",
+    "wildnature:barren_mycelium"
+  ]
+}

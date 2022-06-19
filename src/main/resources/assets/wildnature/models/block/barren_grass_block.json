@@ -1,10 +1,10 @@
 {   "parent": "block/block",
     "textures": {
-        "particle": "wildnature:blocks/grass/barren_dirt",
-        "bottom": "wildnature:blocks/grass/barren_dirt",
-        "top": "wildnature:blocks/grass/barren_grass_block_top",
-        "side": "wildnature:blocks/grass/barren_grass_block_side",
-        "overlay": "wildnature:blocks/grass/barren_grass_block_side_overlay"
+      "particle": "wildnature:blocks/grass/barren/barren_dirt",
+      "bottom": "wildnature:blocks/grass/barren/barren_dirt",
+      "top": "wildnature:blocks/grass/barren/barren_grass_block_top",
+      "side": "wildnature:blocks/grass/barren/barren_grass_block_side",
+      "overlay": "wildnature:blocks/grass/barren/barren_grass_block_side_overlay"
     },
     "elements": [
         {   "from": [ 0, 0, 0 ],

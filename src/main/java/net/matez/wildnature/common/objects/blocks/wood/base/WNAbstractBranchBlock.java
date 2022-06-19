@@ -15,6 +15,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -23,6 +24,8 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Mirror;
+import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.SimpleWaterloggedBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -101,9 +104,13 @@ public abstract class WNAbstractBranchBlock extends WNBlock implements SimpleWat
 
     @Nullable
     @Override
-    public DropList getDrops(BlockState state, ServerLevel level, float luck) {
-        return new DropList()
-                .with(getLog().asItem(), 1).with(new ItemStack(Items.STICK, WNUtil.rint(1, 3)), 2);
+    public DropList getDrops(BlockState state, ServerLevel level, float luck, int fortune, boolean silkTouch, @Nullable LivingEntity entity, ItemStack brokenBy) {
+        if (silkTouch) {
+            return DropList.single(asItem());
+        } else {
+            return new DropList()
+                    .with(getLog().asItem(), 1).with(new ItemStack(Items.STICK, WNUtil.rint(1, Math.max(3, 2 * fortune))), 2);
+        }
     }
 
     @Override
@@ -240,5 +247,38 @@ public abstract class WNAbstractBranchBlock extends WNBlock implements SimpleWat
         return getShape(state);
     }
 
-    //todo mirror and rotate
+    @Override
+    public BlockState rotate(BlockState state, LevelAccessor world, BlockPos pos, Rotation direction) {
+        return switch (direction) {
+            case CLOCKWISE_180 -> state
+                    .setValue(NORTH, state.getValue(SOUTH))
+                    .setValue(EAST, state.getValue(WEST))
+                    .setValue(SOUTH, state.getValue(NORTH))
+                    .setValue(WEST, state.getValue(EAST))
+            ;
+            case COUNTERCLOCKWISE_90 -> state
+                    .setValue(NORTH, state.getValue(EAST))
+                    .setValue(EAST, state.getValue(SOUTH))
+                    .setValue(SOUTH, state.getValue(WEST))
+                    .setValue(WEST, state.getValue(NORTH));
+            case CLOCKWISE_90 -> state
+                    .setValue(NORTH, state.getValue(WEST))
+                    .setValue(EAST, state.getValue(NORTH))
+                    .setValue(SOUTH, state.getValue(EAST))
+                    .setValue(WEST, state.getValue(SOUTH));
+            default -> state;
+        };
+    }
+
+    public BlockState mirror(BlockState state, Mirror mirror) {
+        return switch (mirror) {
+            case LEFT_RIGHT -> state
+                    .setValue(NORTH, state.getValue(SOUTH))
+                    .setValue(SOUTH, state.getValue(NORTH));
+            case FRONT_BACK -> state
+                    .setValue(EAST, state.getValue(WEST))
+                    .setValue(WEST, state.getValue(EAST));
+            default -> super.mirror(state, mirror);
+        };
+    }
 }

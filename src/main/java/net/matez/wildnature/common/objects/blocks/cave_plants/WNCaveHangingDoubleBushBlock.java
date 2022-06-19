@@ -79,18 +79,19 @@ public class WNCaveHangingDoubleBushBlock extends WNCaveBushBlock {
       p_52872_.setBlock(blockpos, copyWaterloggedFrom(p_52872_, blockpos, this.defaultBlockState().setValue(HALF, DoubleBlockHalf.LOWER)), 3);
    }
 
-   public boolean canSurvive(BlockState blockState, LevelReader level, BlockPos pos) {
-      if (blockState.getValue(HALF) == DoubleBlockHalf.UPPER) {
-         BlockPos blockpos = pos.above();
-         if (blockState.getBlock() == this) //Forge: This function is called during world gen and placement, before this block is set, so if we are not 'here' then assume it's the pre-check.
-            return (level.getBlockState(blockpos).canSustainPlant(level, blockpos, Direction.DOWN, this) && this.mayPlaceOn(blockState, level.getBlockState(blockpos), level, blockpos))
-                    || this.mayPlaceOn(blockState, level.getBlockState(blockpos), level, blockpos);
-         return this.mayPlaceOn(blockState, level.getBlockState(blockpos), level, blockpos);
-      } else {
-         BlockState blockstate = level.getBlockState(pos.above());
-         if (blockState.getBlock() != this) return super.canSurvive(blockState, level, pos); //Forge: This function is called during world gen and placement, before this block is set, so if we are not 'here' then assume it's the pre-check.
-         return blockstate.is(this) && blockstate.getValue(HALF) == DoubleBlockHalf.UPPER;
-      }
+   public boolean canSurvive(BlockState blockState, LevelReader reader, BlockPos pos) {
+       if (blockState.getValue(HALF) == DoubleBlockHalf.UPPER) {
+           BlockPos blockpos = pos.above();
+           if (blockState.getBlock() == this) //Forge: This function is called during world gen and placement, before this block is set, so if we are not 'here' then assume it's the pre-check.
+               return (reader.getBlockState(blockpos).canSustainPlant(reader, blockpos, Direction.DOWN, this) && this.mayPlaceOn(blockState, reader.getBlockState(blockpos), reader, blockpos))
+                       || this.mayPlaceOn(blockState, reader.getBlockState(blockpos), reader, blockpos);
+           return this.mayPlaceOn(blockState, reader.getBlockState(blockpos), reader, blockpos);
+       } else {
+           BlockState blockstate = reader.getBlockState(pos.above());
+           if (blockState.getBlock() != this)
+               return super.canSurvive(blockState, reader, pos); //Forge: This function is called during world gen and placement, before this block is set, so if we are not 'here' then assume it's the pre-check.
+           return blockstate.is(this) && blockstate.getValue(HALF) == DoubleBlockHalf.UPPER;
+       }
    }
 
    protected boolean mayPlaceOn(BlockState state, BlockState stateOn, BlockGetter getter, BlockPos pos) {

@@ -1,3 +1,9 @@
+/*
+ * Copyright (c) matez.net 2022.
+ * All rights reserved.
+ * Consider supporting this project on Patreon: https://patreon.com/wildnaturemod
+ */
+
 package net.matez.wildnature.common.objects.blocks.grass;
 
 import net.matez.wildnature.common.objects.blocks.basic.WNAbstractFarmBlock;
@@ -38,11 +44,11 @@ public class WNFarmBlock extends WNAbstractFarmBlock {
         return new ModelList()
                 .with(
                         new WNBlockModel_FarmBlock(this.getRegName())
-                                .with("texture", this.getTextureName("grass"))
-                                .with("dirt", getDirt().getTextureName("grass")),
+                                .with("texture", this.getTextureName("grass/" + this.grassType.getIdBase()))
+                                .with("dirt", getDirt().getTextureName("grass/" + this.grassType.getIdBase())),
                         new WNBlockModel_FarmBlock(this.getRegName() + "_moist")
-                                .with("texture", this.getTextureName("grass") + "_moist")
-                                .with("dirt", getDirt().getTextureName("grass"))
+                                .with("texture", this.getTextureName("grass/" + this.grassType.getIdBase()) + "_moist")
+                                .with("dirt", getDirt().getTextureName("grass/" + this.grassType.getIdBase()))
                 );
     }
 

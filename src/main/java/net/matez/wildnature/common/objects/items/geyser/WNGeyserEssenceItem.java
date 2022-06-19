@@ -6,10 +6,11 @@
 
 package net.matez.wildnature.common.objects.items.geyser;
 
+import net.matez.wildnature.common.events.GeyserItemEvent;
 import net.matez.wildnature.common.objects.items.setup.WNItem;
+import net.matez.wildnature.common.util.WNChatUtil;
 import net.matez.wildnature.data.item_models.WNItemModel_Generated;
 import net.matez.wildnature.data.setup.base.WNResource;
-import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextComponent;
 import net.minecraft.resources.ResourceLocation;
@@ -35,16 +36,16 @@ public class WNGeyserEssenceItem extends WNItem {
 
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
-
+        if (!level.isClientSide()) {
+            GeyserItemEvent.explode(player);
+        }
         return InteractionResultHolder.success(ItemStack.EMPTY);
     }
 
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> components, TooltipFlag flag) {
         super.appendHoverText(stack, level, components, flag);
-        var tag = stack.getOrCreateTag();
 
-        ///todo hex colors
-        components.add(new TextComponent("Unstable").withStyle(ChatFormatting.DARK_PURPLE));
+        components.add(new TextComponent("Unstable").withStyle(WNChatUtil.format(WNChatUtil.ACCENT_COLOR)));
     }
 }

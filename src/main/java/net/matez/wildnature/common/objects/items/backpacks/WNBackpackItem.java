@@ -10,6 +10,7 @@ import net.matez.wildnature.common.objects.containers.backpack.WNBackpackMenuBig
 import net.matez.wildnature.common.objects.containers.backpack.WNBackpackMenuMedium;
 import net.matez.wildnature.common.objects.containers.backpack.WNBackpackMenuSmall;
 import net.matez.wildnature.common.objects.items.setup.WNItem;
+import net.matez.wildnature.common.util.WNChatUtil;
 import net.matez.wildnature.data.item_models.WNItemModel_Generated;
 import net.matez.wildnature.data.setup.base.WNResource;
 import net.minecraft.ChatFormatting;
@@ -65,26 +66,32 @@ public class WNBackpackItem extends WNItem {
         }, this.getName(stack));
     }
 
+    public int getSize() {
+        return switch (this.backpackItem) {
+            case BACKPACK_SMALL -> 18;
+            case BACKPACK_MEDIUM -> 27;
+            case BACKPACK_BIG -> 44;
+        };
+    }
+
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> components, TooltipFlag flag) {
         super.appendHoverText(stack, level, components, flag);
         var tag = stack.getOrCreateTag();
 
-        ///todo hex colors
         if (tag.contains("owner")) {
             if (level != null) {
                 Player player = level.getPlayerByUUID(tag.getUUID("owner"));
                 if (player != null) {
-                    components.add(new TextComponent("Owned by ").withStyle(ChatFormatting.GRAY).append(player.getDisplayName()).withStyle(ChatFormatting.DARK_PURPLE));
+                    components.add(new TextComponent("Owned by ").withStyle(ChatFormatting.GRAY).append(new TextComponent(player.getDisplayName().getString()).withStyle(WNChatUtil.format(WNChatUtil.ACCENT_COLOR))));
                 }
             }
         }
 
         if (tag.contains("count")) {
             int count = tag.getInt("count");
-            components.add(new TextComponent("Contains ").withStyle(ChatFormatting.GRAY)
-                    .append(new TextComponent(count + "").withStyle(ChatFormatting.DARK_PURPLE))
-                    .append(new TextComponent(" items").withStyle(ChatFormatting.GRAY)));
+            components.add(new TextComponent("Filled in ").withStyle(ChatFormatting.GRAY)
+                    .append(new TextComponent((int) Math.ceil((double) count / (double) getSize() * 100) + "%").withStyle(WNChatUtil.format(WNChatUtil.ACCENT_COLOR))));
 
         }
     }

@@ -26,54 +26,54 @@ import java.util.LinkedHashMap;
 @Initialize(InitStage.CONSTRUCT)
 public class WNTabs {
     public static final LinkedHashMap<String, CreativeModeTab> TABS = new LinkedHashMap<>();
-    public static final CreativeModeTab TAB_SURFACE = new CreativeModeTab(WildNature.modid + ".surface") {
+    public static final CreativeModeTab TAB_SURFACE = register("surface", new CreativeModeTab(WildNature.modid + ".surface") {
         public ItemStack makeIcon() {
             return new ItemStack(WNBlocks.GRASSES.get(GrassType.TROPICAL).getItem());
         }
-    };
-    public static final CreativeModeTab TAB_SURFACE_PLANTS = new CreativeModeTab( WildNature.modid + ".surface_plants") {
+    });
+    public static final CreativeModeTab TAB_SURFACE_PLANTS = register("surface_plants", new CreativeModeTab(WildNature.modid + ".surface_plants") {
         public ItemStack makeIcon() {
             return new ItemStack(WNBlocks.BUSHES.get(BushType.MATTHIOLA_PINK));
         }
-    };
-    public static final CreativeModeTab TAB_CAVES = new CreativeModeTab( WildNature.modid + ".caves") {
+    });
+    public static final CreativeModeTab TAB_CAVES = register("caves", new CreativeModeTab(WildNature.modid + ".caves") {
         public ItemStack makeIcon() {
             return new ItemStack(WNBlocks.IGNEOUS_BASANITE.getItem());
         }
-    };
-    public static final CreativeModeTab TAB_UNDERWATER = new CreativeModeTab( WildNature.modid + ".underwater") {
+    });
+    public static final CreativeModeTab TAB_UNDERWATER = register("underwater", new CreativeModeTab(WildNature.modid + ".underwater") {
         public ItemStack makeIcon() {
             return new ItemStack(WNBlocks.UNDERWATER_BUSHES.get(UnderwaterPlant.OAR_WEED).getItem());
         }
-    };
-    public static final CreativeModeTab TAB_FOOD = new CreativeModeTab( WildNature.modid + ".food") {
+    });
+    public static final CreativeModeTab TAB_FOOD = register("food", new CreativeModeTab(WildNature.modid + ".food") {
         public ItemStack makeIcon() {
             return new ItemStack(WNItems.FRUITS.get(Fruit.MANGO));
         }
-    };
-    public static final CreativeModeTab TAB_EQUIPMENT = new CreativeModeTab( WildNature.modid + ".equipment") {
+    });
+    public static final CreativeModeTab TAB_EQUIPMENT = register("equipment", new CreativeModeTab(WildNature.modid + ".equipment") {
         public ItemStack makeIcon() {
             return new ItemStack(WNItems.ORE_ITEMS.get(OreItem.AMBER));
         }
-    };
-    public static final CreativeModeTab TAB_WOOD_BUILDING = new CreativeModeTab( WildNature.modid + ".wood_building") {
+    });
+    public static final CreativeModeTab TAB_WOOD_BUILDING = register("wood_building", new CreativeModeTab(WildNature.modid + ".wood_building") {
         public ItemStack makeIcon() {
             return new ItemStack(WNBlocks.STAIRS_PARQUET.get(LogType.REDWOOD).getItem());
         }
-    };
-    public static final CreativeModeTab TAB_FURNITURE = new CreativeModeTab( WildNature.modid + ".furniture") {
+    });
+    public static final CreativeModeTab TAB_FURNITURE = register("furniture", new CreativeModeTab(WildNature.modid + ".furniture") {
         public ItemStack makeIcon() {
             return new ItemStack(WNBlocks.WOODEN_DOORS.get(LogType.MAHOGANY));
         }
-    };
-    public static final CreativeModeTab TAB_ROCK_BUILDING = new CreativeModeTab( WildNature.modid + ".rock_building") {
+    });
+    public static final CreativeModeTab TAB_ROCK_BUILDING = register("rock_building", new CreativeModeTab(WildNature.modid + ".rock_building") {
         public ItemStack makeIcon() {
             return new ItemStack(WNBlocks.ROCKS_POLISHED.get(RockType.LIMESTONE).getItem());
         }
-    };
+    });
 
-    private static CreativeModeTab register(CreativeModeTab tab){
-        TABS.put(tab.getDisplayName().toString(),tab);
+    private static CreativeModeTab register(String id, CreativeModeTab tab) {
+        TABS.put(id, tab);
         return tab;
     }
 }

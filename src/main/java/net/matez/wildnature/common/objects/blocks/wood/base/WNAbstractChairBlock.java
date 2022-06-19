@@ -8,6 +8,7 @@ package net.matez.wildnature.common.objects.blocks.wood.base;
 
 import net.matez.wildnature.common.objects.blockentities.seat.WNSeatBlockEntity;
 import net.matez.wildnature.common.objects.blocks.basic.WNBaseEntityBlock;
+import net.matez.wildnature.common.objects.blocks.setup.WNBlockProperties;
 import net.matez.wildnature.data.blockstates.WNBlockstate_FacedHorizCubeUvLock;
 import net.matez.wildnature.data.setup.base.WNResource;
 import net.minecraft.core.BlockPos;
@@ -174,5 +175,10 @@ public abstract class WNAbstractChairBlock extends WNBaseEntityBlock implements 
             seat.destroy();
         }
         return super.onDestroyedByPlayer(state, world, pos, player, willHarvest, fluid);
+    }
+
+    @Override
+    public BlockState rotate(BlockState state, LevelAccessor world, BlockPos pos, Rotation direction) {
+        return super.rotate(state, world, pos, direction).setValue(FACING, WNBlockProperties.rotate(state.getValue(FACING), direction));
     }
 }

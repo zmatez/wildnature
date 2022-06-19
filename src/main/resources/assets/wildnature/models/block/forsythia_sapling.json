@@ -1,0 +1,8 @@
+{
+  "parent": "wildnature:block/sapling",
+  "textures": {
+    "particle": "wildnature:blocks/trees/forsythia/forsythia_sapling",
+    "leaves": "wildnature:blocks/trees/forsythia/forsythia_sapling",
+    "log": "wildnature:blocks/trees/rosaceae/rosaceae_log"
+  }
+}

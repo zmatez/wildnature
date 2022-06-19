@@ -160,28 +160,29 @@ public enum LeafType {
             new LeafConfig(6,false)
     ),
     SILVER_FIR("silver_fir","fir",MaterialColor.PLANT, false,
-            new LeafConfig(5,false)
+            new LeafConfig(5, false)
     ),
-    FORSYTHIA("forsythia","forsythia",MaterialColor.COLOR_YELLOW,false,LeafConfig.SIMPLE.get().model((block) -> {
-        if(block instanceof WNLeavesTypedBlock leaf) {
+    FORSYTHIA("forsythia", "forsythia", MaterialColor.COLOR_YELLOW, false, LeafConfig.SIMPLE.get().model((block) -> {
+        if (block instanceof WNLeavesTypedBlock leaf) {
             return new WNBlockModel_BushLeaves(block.getRegName())
                     .with("texture", block.getTextureName("trees/" + leaf.getLeafType().getFolder()) + "_flower")
                     .with("branch", block.getTextureName("trees/" + leaf.getLeafType().getFolder()) + "_branch");
         }
         return null;
     })),
-    GINGKO("gingko","gingko",MaterialColor.PLANT, false, LeafConfig.SIMPLE.get()),
-    HORNBEAM("hornbeam","hornbeam",MaterialColor.PLANT, true, LeafConfig.SIMPLE.get()),
-    JACARANDA("jacaranda","jacaranda",MaterialColor.COLOR_PURPLE, false,
-            new LeafConfig(3,false)
+    GINKGO("ginkgo", "ginkgo", MaterialColor.PLANT, false, LeafConfig.SIMPLE.get()),
+    HORNBEAM("hornbeam", "hornbeam", MaterialColor.PLANT, true, LeafConfig.SIMPLE.get()),
+    HAZEL("hazel", "hazel", MaterialColor.PLANT, false, LeafConfig.SIMPLE.get()),
+    JACARANDA("jacaranda", "jacaranda", MaterialColor.COLOR_PURPLE, false,
+            new LeafConfig(3, false)
     ),
-    RED_JACARANDA("red_jacaranda","jacaranda",MaterialColor.COLOR_RED, false, LeafConfig.SIMPLE.get()),
-    LARCH("larch","larch",MaterialColor.PLANT, false,
-            new LeafConfig(6,false)
+    RED_JACARANDA("red_jacaranda", "jacaranda", MaterialColor.COLOR_RED, false, LeafConfig.SIMPLE.get()),
+    LARCH("larch", "larch", MaterialColor.PLANT, false,
+            new LeafConfig(6, false)
     ),
-    MAHOGANY("mahogany","mahogany",MaterialColor.PLANT, true, LeafConfig.SIMPLE.get()),
-    MANGROVE("mangrove","mangrove",MaterialColor.PLANT, true, LeafConfig.SIMPLE.get()),
-    MAPLE("maple","maple",MaterialColor.PLANT, true, LeafConfig.SIMPLE.get()),
+    MAHOGANY("mahogany", "mahogany", MaterialColor.PLANT, true, LeafConfig.SIMPLE.get()),
+    MANGROVE("mangrove", "mangrove", MaterialColor.PLANT, true, LeafConfig.SIMPLE.get()),
+    MAPLE("maple", "maple", MaterialColor.PLANT, true, LeafConfig.SIMPLE.get()),
     MAPLE_RED("maple_red","maple",MaterialColor.COLOR_RED, false, LeafConfig.SIMPLE.get()),
     MAPLE_ORANGE("maple_orange","maple",MaterialColor.COLOR_ORANGE, false, LeafConfig.SIMPLE.get()),
     MAPLE_YELLOW("maple_yellow","maple",MaterialColor.COLOR_YELLOW, false, LeafConfig.SIMPLE.get()),
@@ -223,18 +224,27 @@ public enum LeafType {
                     .with(6,() -> WNItems.FRUITS.get(Fruit.PLUM),2,2)
     ),
     MIRABELLE_PLUM("mirabelle_plum","plum",MaterialColor.PLANT, false,
-            new LeafConfig(7,true)
-                    .with(2,() -> WNItems.FRUITS.get(Fruit.MIRABELLE_PLUM),2,2)
-                    .with(3,() -> WNItems.FRUITS.get(Fruit.MIRABELLE_PLUM),3,3)
-                    .with(4,() -> WNItems.FRUITS.get(Fruit.MIRABELLE_PLUM),3,3)
-                    .with(5,() -> WNItems.FRUITS.get(Fruit.MIRABELLE_PLUM),2,2)
-                    .with(6,() -> WNItems.FRUITS.get(Fruit.MIRABELLE_PLUM),1,1)
-                    .with(7,() -> WNItems.FRUITS.get(Fruit.MIRABELLE_PLUM),1,1)
+            new LeafConfig(7, true)
+                    .with(2, () -> WNItems.FRUITS.get(Fruit.MIRABELLE_PLUM), 2, 2)
+                    .with(3, () -> WNItems.FRUITS.get(Fruit.MIRABELLE_PLUM), 3, 3)
+                    .with(4, () -> WNItems.FRUITS.get(Fruit.MIRABELLE_PLUM), 3, 3)
+                    .with(5, () -> WNItems.FRUITS.get(Fruit.MIRABELLE_PLUM), 2, 2)
+                    .with(6, () -> WNItems.FRUITS.get(Fruit.MIRABELLE_PLUM), 1, 1)
+                    .with(7, () -> WNItems.FRUITS.get(Fruit.MIRABELLE_PLUM), 1, 1)
     ),
-    POPLAR("poplar","poplar",MaterialColor.PLANT, true, LeafConfig.SIMPLE.get()),
-    REDWOOD("redwood","redwood",MaterialColor.PLANT, false, LeafConfig.SIMPLE.get()),
-    WILLOW("willow","willow",MaterialColor.PLANT, true, LeafConfig.SIMPLE.get()),
-    GLOWING_CAVE_OAK("glowing_cave_oak","glowing_cave_oak",MaterialColor.PLANT, false, LeafConfig.SIMPLE.get()),
+    POPLAR("poplar", "poplar", MaterialColor.PLANT, true, LeafConfig.SIMPLE.get()),
+    REDWOOD("redwood", "redwood", MaterialColor.PLANT, false, LeafConfig.SIMPLE.get()),
+    ROWAN("rowan", "rowan", MaterialColor.PLANT, false,
+            new LeafConfig(6, false)
+                    .with(1, () -> WNItems.FRUITS.get(Fruit.ORANGE_ROWANBERRIES_CLUSTER), 2, 2)
+                    .with(2, () -> WNItems.FRUITS.get(Fruit.RED_ROWANBERRIES_CLUSTER), 2, 2)
+                    .with(3, () -> WNItems.FRUITS.get(Fruit.ORANGE_ROWANBERRIES_CLUSTER), 3, 3)
+                    .with(4, () -> WNItems.FRUITS.get(Fruit.RED_ROWANBERRIES_CLUSTER), 3, 3)
+                    .with(5, () -> WNItems.FRUITS.get(Fruit.ORANGE_ROWANBERRIES_CLUSTER), 1, 1)
+                    .with(6, () -> WNItems.FRUITS.get(Fruit.RED_ROWANBERRIES_CLUSTER), 1, 1)
+    ),
+    WILLOW("willow", "willow", MaterialColor.PLANT, true, LeafConfig.SIMPLE.get()),
+    GLOWING_CAVE_OAK("glowing_cave_oak", "glowing_cave_oak", MaterialColor.PLANT, false, LeafConfig.SIMPLE.get()),
     ;
     //?------------------------------
 

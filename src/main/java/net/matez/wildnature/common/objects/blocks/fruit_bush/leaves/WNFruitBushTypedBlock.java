@@ -70,11 +70,11 @@ public abstract class WNFruitBushTypedBlock extends WNLeavesBlock {
     @Override
     public void randomTick(BlockState state, ServerLevel level, BlockPos pos, Random random) {
         super.randomTick(state, level, pos, random);
-        if(state.getValue(HYDRATED)){
-            if(this.LEAF_STAGE != null && this.leafType.getConfig().isFlowering() && state.getValue(this.LEAF_STAGE) == 0){
-                level.setBlock(pos,state.setValue(this.LEAF_STAGE,WNUtil.rint(2,1)),2);
-            }else if(this.LEAF_STAGE != null && ((this.leafType.getConfig().isFlowering() && state.getValue(this.LEAF_STAGE) == 1) || state.getValue(this.LEAF_STAGE) == 0)){
-                level.setBlock(pos,state.setValue(this.LEAF_STAGE,WNUtil.rint(2,leafType.getConfig().getStages())),2);
+        if (state.getValue(PERSISTENT)) {
+            if (this.LEAF_STAGE != null && this.leafType.getConfig().isFlowering() && state.getValue(this.LEAF_STAGE) == 0) {
+                level.setBlock(pos, state.setValue(this.LEAF_STAGE, WNUtil.rint(2, 1)), 2);
+            } else if (this.LEAF_STAGE != null && ((this.leafType.getConfig().isFlowering() && state.getValue(this.LEAF_STAGE) == 1) || state.getValue(this.LEAF_STAGE) == 0)) {
+                level.setBlock(pos, state.setValue(this.LEAF_STAGE, WNUtil.rint(2, leafType.getConfig().getStages())), 2);
             }
         }
     }

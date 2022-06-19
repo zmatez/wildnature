@@ -1,0 +1,8 @@
+{
+  "parent": "wildnature:block/sapling",
+  "textures": {
+    "particle": "wildnature:blocks/trees/pear/pearsapling_leaves",
+    "leaves": "wildnature:blocks/trees/pear/pearsapling_leaves",
+    "log": "wildnature:blocks/trees/pear/pearsapling_log"
+  }
+}

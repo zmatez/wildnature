@@ -1,9 +1,9 @@
 {
   "parent": "minecraft:block/cube_bottom_top",
   "textures": {
-    "top": "wildnature:blocks/grass/barren_podzol_top",
-    "bottom": "wildnature:blocks/grass/barren_dirt",
-    "side": "wildnature:blocks/grass/barren_podzol_side",
-    "particle": "wildnature:blocks/grass/barren_dirt"
+    "top": "wildnature:blocks/grass/barren/barren_podzol_top",
+    "bottom": "wildnature:blocks/grass/barren/barren_dirt",
+    "side": "wildnature:blocks/grass/barren/barren_podzol_side",
+    "particle": "wildnature:blocks/grass/barren/barren_dirt"
   }
 }

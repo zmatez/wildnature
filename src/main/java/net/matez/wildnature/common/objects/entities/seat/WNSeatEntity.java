@@ -1,3 +1,9 @@
+/*
+ * Copyright (c) matez.net 2022.
+ * All rights reserved.
+ * Consider supporting this project on Patreon: https://patreon.com/wildnaturemod
+ */
+
 package net.matez.wildnature.common.objects.entities.seat;
 
 import net.matez.wildnature.common.log.WNLogger;
@@ -9,11 +15,14 @@ import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientboundAddEntityPacket;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.Vec3;
 
 public class WNSeatEntity extends Entity {
     private WNSeatBlockEntity blockEntity;
+    //private Vec3 origin;
     private static final WNLogger log = WildNature.getLogger();
 
     public WNSeatEntity(WNSeatBlockEntity blockEntity, Level level) {
@@ -30,6 +39,7 @@ public class WNSeatEntity extends Entity {
     }
 
     public void seat(Player player) {
+        //origin = new Vec3(player.getX(),player.getY(),player.getZ());
         player.startRiding(this);
     }
 
@@ -44,6 +54,18 @@ public class WNSeatEntity extends Entity {
         if (this.blockEntity != null) {
             this.blockEntity.destroy();
         }
+    }
+
+    @Override
+    public Vec3 getDismountLocationForPassenger(LivingEntity entity) {
+//        if(entity instanceof Player && this.origin != null){
+//            BlockState state = this.level.getBlockState(new BlockPos(this.origin));
+//            BlockState stateAbove = this.level.getBlockState(new BlockPos(this.origin).above());
+//            if((state.isAir() || state.is(Blocks.WATER)) && (stateAbove.isAir() || stateAbove.is(Blocks.WATER))){
+//
+//            }
+//        }
+        return super.getDismountLocationForPassenger(entity);
     }
 
     @Override

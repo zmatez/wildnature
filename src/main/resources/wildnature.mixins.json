@@ -4,6 +4,7 @@
   "compatibilityLevel": "JAVA_17",
   "refmap": "wildnature.refmap.json",
   "mixins": [
+    "BiomeMixin",
     "ItemStackMixin"
   ],
   "injectors": {
@@ -11,6 +12,7 @@
   },
   "minVersion": "0.8",
   "client": [
-    "ParticleEngineMixin"
+    "ParticleEngineMixin",
+    "ParticleEngineMixinAccessor"
   ]
 }

@@ -11,14 +11,13 @@ import net.matez.wildnature.common.objects.items.setup.WNItemUtil;
 import net.matez.wildnature.data.item_models.WNItemModel_Handheld;
 import net.matez.wildnature.data.setup.base.WNResource;
 import net.minecraft.world.item.AxeItem;
-import net.minecraft.world.item.Tier;
 import org.jetbrains.annotations.Nullable;
 
 public class WNAxeItem extends AxeItem implements IWNItem {
     private final ToolItem toolItem;
 
-    public WNAxeItem(Tier tier, Properties properties, ToolItem toolItem) {
-        super(tier, 6F,-3F, properties);
+    public WNAxeItem(WNTier tier, Properties properties, ToolItem toolItem) {
+        super(tier, 6F, tier.getAxeAttackSpeed(), properties);
         this.toolItem = toolItem;
     }
 

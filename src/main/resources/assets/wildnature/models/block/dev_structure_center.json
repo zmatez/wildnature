@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "wildnature:blocks/misc/dev/dev_structure_center"
+  }
+}

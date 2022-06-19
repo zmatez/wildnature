@@ -6,12 +6,17 @@
 
 package net.matez.wildnature.data.setup.base;
 
-public abstract class WNIParticleTexture extends WNResource{
+public abstract class WNIParticleTexture extends WNResource {
     public WNIParticleTexture(String name) {
         super(name);
     }
 
-    public String getPath(){
+    public String getPath() {
         return "/assets/" + modid + "/particles";
+    }
+
+    @Override
+    public boolean containsTextures() {
+        return true;
     }
 }

@@ -8,6 +8,7 @@ package net.matez.wildnature.common.registry.setup;
 
 import net.matez.wildnature.common.log.WNLogger;
 import net.matez.wildnature.common.objects.items.setup.IWNItem;
+import net.matez.wildnature.common.registry.biomes.WNBiomes;
 import net.matez.wildnature.common.registry.blockentities.WNBlockEntities;
 import net.matez.wildnature.common.registry.blocks.WNBlocks;
 import net.matez.wildnature.common.registry.containers.WNContainers;
@@ -16,12 +17,16 @@ import net.matez.wildnature.common.registry.items.WNItems;
 import net.matez.wildnature.common.registry.particles.WNParticles;
 import net.matez.wildnature.setup.WildNature;
 import net.minecraft.core.particles.ParticleType;
+import net.minecraft.data.worldgen.features.FeatureUtils;
+import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -94,4 +99,36 @@ public class WNRegistry {
         log.success("Registered " + WNContainers.MENU_TYPES.size() + " menus");
     }
 
+    @SubscribeEvent
+    public static void registerBiomes(final RegistryEvent.Register<Biome> event) {
+        log.progress("Registering menus");
+
+        WNBiomes.BIOMES.forEach((location, biome) -> {
+            event.getRegistry().register(biome.getVanilla());
+            var optional = event.getRegistry().getResourceKey(biome.getVanilla());
+            optional.ifPresentOrElse(biome::postRegister, () -> {
+                log.error("Unable to register biome: " + biome.getRegistryName());
+            });
+        });
+
+        log.success("Registered " + WNBiomes.BIOMES.size() + " biomes");
+    }
+
+    @SubscribeEvent
+    public static void registerFeatures(final RegistryEvent.Register<Feature<?>> event) {
+        log.progress("Registering features");
+
+        WNBiomes.FEATURES.forEach((location, feature) -> {
+            event.getRegistry().register(feature);
+        });
+
+        WNBiomes.CONFIGURED_FEATURES.forEach((location, configuredFeature) -> {
+            FeatureUtils.register(location.toString(), configuredFeature);
+        });
+        WNBiomes.PLACED_FEATURES.forEach((location, placedFeature) -> {
+            PlacementUtils.register(location.toString(), placedFeature);
+        });
+
+        log.success("Registered " + WNBiomes.FEATURES.size() + " features");
+    }
 }

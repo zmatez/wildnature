@@ -1,1 +1,30 @@
-{"replace":false,"values":["wildnature:barren_grass_block","wildnature:tropical_grass_block","wildnature:algae_block","wildnature:barren_dirt","wildnature:tropical_dirt","wildnature:dried_soil","wildnature:barren_podzol","wildnature:tropical_podzol","wildnature:barren_coarse_dirt","wildnature:tropical_coarse_dirt","wildnature:barren_dirt_path","wildnature:tropical_dirt_path","wildnature:barren_farmland","wildnature:tropical_farmland","wildnature:soil","wildnature:desert_sand","wildnature:crimson_sand","wildnature:tropical_sand","wildnature:iron_sand","wildnature:mud","wildnature:quicksand"]}
+{
+  "replace": false,
+  "values": [
+    "wildnature:barren_grass_block",
+    "wildnature:tropical_grass_block",
+    "wildnature:algae_block",
+    "wildnature:barren_dirt",
+    "wildnature:tropical_dirt",
+    "wildnature:dried_soil",
+    "wildnature:barren_podzol",
+    "wildnature:tropical_podzol",
+    "wildnature:barren_mycelium",
+    "wildnature:barren_coarse_dirt",
+    "wildnature:tropical_coarse_dirt",
+    "wildnature:barren_dirt_path",
+    "wildnature:tropical_dirt_path",
+    "wildnature:barren_farmland",
+    "wildnature:tropical_farmland",
+    "wildnature:overgrown_stone",
+    "wildnature:overgrown_marble",
+    "wildnature:mossy_stone",
+    "wildnature:soil",
+    "wildnature:desert_sand",
+    "wildnature:crimson_sand",
+    "wildnature:tropical_sand",
+    "wildnature:iron_sand",
+    "wildnature:mud",
+    "wildnature:quicksand"
+  ]
+}

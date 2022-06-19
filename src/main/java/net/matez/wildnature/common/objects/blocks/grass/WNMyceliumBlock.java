@@ -1,3 +1,9 @@
+/*
+ * Copyright (c) matez.net 2022.
+ * All rights reserved.
+ * Consider supporting this project on Patreon: https://patreon.com/wildnaturemod
+ */
+
 package net.matez.wildnature.common.objects.blocks.grass;
 
 import net.matez.wildnature.common.objects.blocks.basic.WNAbstractMyceliumBlock;
@@ -33,13 +39,13 @@ public class WNMyceliumBlock extends WNAbstractMyceliumBlock {
         return new ModelList()
                 .with(
                         new WNBlockModel_CubeBottomTop(this.getRegName())
-                                .with("texture_top", this.getTextureName("grass") + "_top")
-                                .with("texture_bottom", WNBlocks.DIRTS.get(this.grassType).getTextureName("grass"))
-                                .with("texture_side", this.getTextureName("grass") + "_side"),
+                                .with("texture_top", this.getTextureName("grass/" + this.grassType.getIdBase()) + "_top")
+                                .with("texture_bottom", WNBlocks.DIRTS.get(this.grassType).getTextureName("grass/" + this.grassType.getIdBase()))
+                                .with("texture_side", this.getTextureName("grass/" + this.grassType.getIdBase()) + "_side"),
                         new WNBlockModel_CubeBottomTop(this.getRegName() + "_snow")
-                                .with("texture_top", WNBlocks.GRASSES.get(this.grassType).getTextureName("grass") + "_top")
-                                .with("texture_bottom", WNBlocks.DIRTS.get(this.grassType).getTextureName("grass"))
-                                .with("texture_side", WNBlocks.GRASSES.get(this.grassType).getTextureName("grass") + "_side_snowed")
+                                .with("texture_top", WNBlocks.GRASSES.get(this.grassType).getTextureName("grass/" + this.grassType.getIdBase()) + "_top")
+                                .with("texture_bottom", WNBlocks.DIRTS.get(this.grassType).getTextureName("grass/" + this.grassType.getIdBase()))
+                                .with("texture_side", WNBlocks.GRASSES.get(this.grassType).getTextureName("grass/" + this.grassType.getIdBase()) + "_side_snowed")
                 );
     }
 

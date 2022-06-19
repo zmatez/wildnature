@@ -1,9 +1,9 @@
 {
   "parent": "minecraft:block/cube_bottom_top",
   "textures": {
-    "top": "wildnature:blocks/grass/tropical_grass_block_top",
-    "bottom": "wildnature:blocks/grass/tropical_dirt",
-    "side": "wildnature:blocks/grass/tropical_grass_block_side_snowed",
-    "particle": "wildnature:blocks/grass/tropical_dirt"
+    "top": "wildnature:blocks/grass/tropical/tropical_grass_block_top",
+    "bottom": "wildnature:blocks/grass/tropical/tropical_dirt",
+    "side": "wildnature:blocks/grass/tropical/tropical_grass_block_side_snowed",
+    "particle": "wildnature:blocks/grass/tropical/tropical_dirt"
   }
 }

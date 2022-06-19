@@ -1,3 +1,9 @@
+/*
+ * Copyright (c) matez.net 2022.
+ * All rights reserved.
+ * Consider supporting this project on Patreon: https://patreon.com/wildnaturemod
+ */
+
 package net.matez.wildnature.common.objects.blocks.grass;
 
 import net.matez.wildnature.common.objects.blocks.basic.WNAbstractGrassBlock;
@@ -43,13 +49,13 @@ public class WNAlgaeBlock extends WNAbstractGrassBlock implements BonemealableBl
         return new ModelList()
                 .with(
                         new WNBlockModel_CubeBottomTop(this.getRegName())
-                                .with("texture_top", this.getTextureName("grass") + "_top")
+                                .with("texture_top", this.getTextureName("grass/algae") + "_top")
                                 .with("texture_bottom", dirt)
-                                .with("texture_side", this.getTextureName("grass") + "_side"),
+                                .with("texture_side", this.getTextureName("grass/algae") + "_side"),
                         new WNBlockModel_CubeBottomTop(this.getRegName() + "_snow")
-                                .with("texture_top", this.getTextureName("grass") + "_top")
+                                .with("texture_top", this.getTextureName("grass/algae") + "_top")
                                 .with("texture_bottom", dirt)
-                                .with("texture_side", this.getTextureName("grass") + "_side")
+                                .with("texture_side", this.getTextureName("grass/algae") + "_side")
                 );
     }
 }

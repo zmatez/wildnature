@@ -1,0 +1,8 @@
+{
+  "parent": "wildnature:block/sapling",
+  "textures": {
+    "particle": "wildnature:blocks/trees/redwood/redwoodsapling_leaves",
+    "leaves": "wildnature:blocks/trees/redwood/redwoodsapling_leaves",
+    "log": "wildnature:blocks/trees/redwood/redwoodsapling_log"
+  }
+}

@@ -1,1 +1,10 @@
-{"replace":false,"values":["wildnature:barren_grass_block","wildnature:tropical_grass_block","wildnature:algae_block"]}
+{
+  "replace": false,
+  "values": [
+    "wildnature:barren_grass_block",
+    "wildnature:tropical_grass_block",
+    "wildnature:algae_block",
+    "wildnature:overgrown_stone",
+    "wildnature:overgrown_marble"
+  ]
+}

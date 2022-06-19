@@ -1,9 +1,9 @@
 {
   "parent": "minecraft:block/cube_bottom_top",
   "textures": {
-    "top": "wildnature:blocks/grass/tropical_podzol_top",
-    "bottom": "wildnature:blocks/grass/tropical_dirt",
-    "side": "wildnature:blocks/grass/tropical_podzol_side",
-    "particle": "wildnature:blocks/grass/tropical_dirt"
+    "top": "wildnature:blocks/grass/tropical/tropical_podzol_top",
+    "bottom": "wildnature:blocks/grass/tropical/tropical_dirt",
+    "side": "wildnature:blocks/grass/tropical/tropical_podzol_side",
+    "particle": "wildnature:blocks/grass/tropical/tropical_dirt"
   }
 }

@@ -21,21 +21,28 @@ import org.jetbrains.annotations.NotNull;
 
 @OnlyIn(Dist.CLIENT)
 public class WNPuffParticle extends BaseAshSmokeParticle {
-   protected WNPuffParticle(ClientLevel p_107685_, double p_107686_, double p_107687_, double p_107688_, double p_107689_, double p_107690_, double p_107691_, float p_107692_, SpriteSet p_107693_) {
-      super(p_107685_, p_107686_, p_107687_, p_107688_, 0.1F, 0.1F, 0.1F, p_107689_, p_107690_, p_107691_, p_107692_, p_107693_, 0.3F, 8, -0.1F, true);
-      float shade = (float)WNUtil.rdoub(0.8,1F);
-      this.rCol = shade;
-      this.gCol = shade;
-      this.bCol = shade;
-   }
+    protected WNPuffParticle(ClientLevel p_107685_, double x, double y, double z, double p_107689_, double p_107690_, double p_107691_, float size, SpriteSet spriteSet) {
+        super(p_107685_, x, y, z, 0.1F, 0.1F, 0.1F, p_107689_, p_107690_, p_107691_, size, spriteSet, 0.3F, 8, -0.1F, true);
+        float shade = (float) WNUtil.rdoub(0.8, 1F);
+        this.rCol = shade;
+        this.gCol = shade;
+        this.bCol = shade;
+        this.lifetime *= 1.4;
+    }
 
-   @OnlyIn(Dist.CLIENT)
-   public static class PuffballProvider implements WNParticleProvider<SimpleParticleType> {
-      private final SpriteSet sprite;
+    @Override
+    public void tick() {
+        super.tick();
+        this.gravity = Math.min(0.15f, this.gravity + 0.012f);
+    }
 
-      public PuffballProvider(SpriteSet spriteSet) {
-         this.sprite = spriteSet;
-      }
+    @OnlyIn(Dist.CLIENT)
+    public static class PuffballProvider implements WNParticleProvider<SimpleParticleType> {
+        private final SpriteSet sprite;
+
+        public PuffballProvider(SpriteSet spriteSet) {
+            this.sprite = spriteSet;
+        }
 
       public Particle createParticle(@NotNull SimpleParticleType particleType, @NotNull ClientLevel level, double x, double y, double z, double dX, double dY, double dZ) {
          WNPuffParticle particle = new WNPuffParticle(level, x, y, z, dX,dY,dZ,1.5F,this.sprite);

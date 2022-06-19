@@ -1,3 +1,9 @@
+/*
+ * Copyright (c) matez.net 2022.
+ * All rights reserved.
+ * Consider supporting this project on Patreon: https://patreon.com/wildnaturemod
+ */
+
 package net.matez.wildnature.common.objects.blocks.grass;
 
 import net.matez.wildnature.common.objects.blocks.setup.WNBlock;
@@ -11,19 +17,23 @@ public class WNDirtBlock extends WNBlock {
     @Nullable
     private final GrassType grassType;
 
-    public WNDirtBlock(ResourceLocation location, Properties properties, GrassType grassType) {
+    private final String folder;
+
+    public WNDirtBlock(ResourceLocation location, Properties properties, @Nullable GrassType grassType, String folder) {
         super(location, properties);
         this.grassType = grassType;
+        this.folder = folder;
     }
 
-    public WNDirtBlock(ResourceLocation location, Properties properties, Item.Properties itemProperties, GrassType grassType) {
+    public WNDirtBlock(ResourceLocation location, Properties properties, Item.Properties itemProperties, @Nullable GrassType grassType, String folder) {
         super(location, properties, itemProperties);
         this.grassType = grassType;
+        this.folder = folder;
     }
 
     public ModelList getBlockModels(){
         return new ModelList()
-                .with(new WNBlockModel_CubeAll(this.getRegName()).with("texture",this.getTextureName("grass")));
+                .with(new WNBlockModel_CubeAll(this.getRegName()).with("texture", this.getTextureName("grass/" + this.folder)));
     }
 
     @Nullable
