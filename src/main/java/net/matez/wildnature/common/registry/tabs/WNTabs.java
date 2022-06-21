@@ -23,7 +23,7 @@ import net.minecraft.world.item.ItemStack;
 
 import java.util.LinkedHashMap;
 
-@Initialize(InitStage.CONSTRUCT)
+@Initialize(InitStage.REG_ITEMS)
 public class WNTabs {
     public static final LinkedHashMap<String, CreativeModeTab> TABS = new LinkedHashMap<>();
     public static final CreativeModeTab TAB_SURFACE = register("surface", new CreativeModeTab(WildNature.modid + ".surface") {

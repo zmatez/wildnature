@@ -1,9 +1,13 @@
+/*
+ * Copyright (c) matez.net 2022.
+ * All rights reserved.
+ * Consider supporting this project on Patreon: https://patreon.com/wildnaturemod
+ */
+
 package net.matez.wildnature.common.objects.blocks.basic;
 
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableMap.Builder;
-import java.util.Map;
-
 import net.matez.wildnature.common.objects.blocks.setup.WNBlock;
 import net.matez.wildnature.common.objects.items.setup.WNBlockItem;
 import net.minecraft.core.BlockPos;
@@ -18,11 +22,7 @@ import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.block.state.properties.Property;
-import net.minecraft.world.level.block.state.properties.WallSide;
+import net.minecraft.world.level.block.state.properties.*;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.pathfinder.PathComputationType;
@@ -31,15 +31,17 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
+import java.util.Map;
+
 public abstract class WNAbstractWallBlock extends WNBlock implements SimpleWaterloggedBlock {
-   public static final BooleanProperty UP = BlockStateProperties.UP;
-   public static final EnumProperty<WallSide> EAST_WALL = BlockStateProperties.EAST_WALL;
-   public static final EnumProperty<WallSide> NORTH_WALL = BlockStateProperties.NORTH_WALL;
-   public static final EnumProperty<WallSide> SOUTH_WALL = BlockStateProperties.SOUTH_WALL;
-   public static final EnumProperty<WallSide> WEST_WALL = BlockStateProperties.WEST_WALL;
-   public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
-   private Map<BlockState, VoxelShape> shapeByIndex;
-   private Map<BlockState, VoxelShape> collisionShapeByIndex;
+    public static final BooleanProperty UP = BlockStateProperties.UP;
+    public static final EnumProperty<WallSide> EAST_WALL = BlockStateProperties.EAST_WALL;
+    public static final EnumProperty<WallSide> NORTH_WALL = BlockStateProperties.NORTH_WALL;
+    public static final EnumProperty<WallSide> SOUTH_WALL = BlockStateProperties.SOUTH_WALL;
+    public static final EnumProperty<WallSide> WEST_WALL = BlockStateProperties.WEST_WALL;
+    public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
+    private Map<BlockState, VoxelShape> shapeByIndex;
+    private Map<BlockState, VoxelShape> collisionShapeByIndex;
    private static final int WALL_WIDTH = 3;
    private static final int WALL_HEIGHT = 14;
    private static final int POST_WIDTH = 4;

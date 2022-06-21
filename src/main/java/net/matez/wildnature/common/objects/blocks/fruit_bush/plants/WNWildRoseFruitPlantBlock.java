@@ -1,7 +1,11 @@
+/*
+ * Copyright (c) matez.net 2022.
+ * All rights reserved.
+ * Consider supporting this project on Patreon: https://patreon.com/wildnaturemod
+ */
+
 package net.matez.wildnature.common.objects.blocks.fruit_bush.plants;
 
-import net.matez.wildnature.common.objects.blocks.fruit_bush.leaves.FruitBushType;
-import net.matez.wildnature.common.objects.blocks.fruit_bush.leaves.WNFruitBushTypedBlock;
 import net.matez.wildnature.common.objects.blocks.fruit_bush.plants.stages.WNFruitBushPlantBlock_Stage3;
 import net.matez.wildnature.common.util.WNUtil;
 import net.minecraft.core.BlockPos;

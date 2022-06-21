@@ -7,27 +7,22 @@
 package net.matez.wildnature.common.registry.biomes;
 
 import net.matez.wildnature.common.log.WNLogger;
-import net.matez.wildnature.common.objects.biomes.WNTestBiome;
 import net.matez.wildnature.common.objects.biomes.setup.WNBiome;
 import net.matez.wildnature.common.objects.initializer.InitStage;
 import net.matez.wildnature.common.objects.initializer.Initialize;
 import net.matez.wildnature.setup.WildNature;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
-import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 
 import java.util.LinkedHashMap;
 
-@Initialize(InitStage.CONSTRUCT)
+@Initialize(InitStage.REG_BIOMES)
 public class WNBiomes {
     //# --- ALL BIOMES  ---
     public static final LinkedHashMap<ResourceLocation, WNBiome> BIOMES = new LinkedHashMap<>();
     public static final LinkedHashMap<ResourceLocation, Feature<?>> FEATURES = new LinkedHashMap<>();
-    public static final LinkedHashMap<ResourceLocation, ConfiguredFeature<?, ?>> CONFIGURED_FEATURES = new LinkedHashMap<>();
-    public static final LinkedHashMap<ResourceLocation, PlacedFeature> PLACED_FEATURES = new LinkedHashMap<>();
     //#------------------
-    public static final WNBiome TEST = register(new WNTestBiome(location("test")));
+    //public static final WNBiome TEST = register(new WNTestBiome(location("test")));
     private static final WNLogger log = WildNature.getLogger();
 
     //#------------------
@@ -36,6 +31,9 @@ public class WNBiomes {
     }
 
     private static WNBiome register(WNBiome biome) {
+        if (!WildNature.instance.initializer.isInitialized(InitStage.REG_BIOMES)) {
+            return null;
+        }
         biome.build();
         biome.loadVanilla();
         BIOMES.put(biome.getRegistryName(), biome);

@@ -40,6 +40,9 @@ public class WNParticles {
     }
 
     private static SimpleParticleType register(ResourceLocation registryName, boolean something, ParticleEngine.SpriteParticleRegistration<SimpleParticleType> factory) {
+        if (!WildNature.instance.initializer.isInitialized(InitStage.CLIENT)) {
+            return null;
+        }
         SimpleParticleType particleType = new SimpleParticleType(something);
         particleType.setRegistryName(registryName);
         PARTICLE_TYPES.put(registryName, particleType);

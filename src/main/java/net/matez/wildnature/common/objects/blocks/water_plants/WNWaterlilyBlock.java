@@ -9,7 +9,7 @@ package net.matez.wildnature.common.objects.blocks.water_plants;
 import net.matez.wildnature.common.objects.blocks.plant.WNBushBlock;
 import net.matez.wildnature.common.objects.blocks.plant.config.BushConfig;
 import net.matez.wildnature.common.objects.items.waterlilies.WNWaterLilyBlockItem;
-import net.matez.wildnature.common.registry.items.WNItems;
+import net.matez.wildnature.common.registry.blocks.WNBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
@@ -44,7 +44,7 @@ public abstract class WNWaterlilyBlock extends WNBushBlock {
     public void createBlockItem(Item.Properties itemProperties) {
         this.item = new WNWaterLilyBlockItem(this,itemProperties);
         this.item.setRegistryName(this.getRegistryName());
-        WNItems.BLOCK_ITEMS.put(this.getRegistryName(), this.item);
+        WNBlocks.BLOCK_ITEMS.put(this.getRegistryName(), this.item);
     }
 
     @Override

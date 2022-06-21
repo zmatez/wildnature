@@ -1,15 +1,18 @@
+/*
+ * Copyright (c) matez.net 2022.
+ * All rights reserved.
+ * Consider supporting this project on Patreon: https://patreon.com/wildnaturemod
+ */
+
 package net.matez.wildnature.common.objects.blocks.crops;
 
-import net.matez.wildnature.common.objects.blocks.crops.stages.WNCropBlock_Stage0;
 import net.matez.wildnature.common.objects.blocks.crops.stages.WNCropBlock_Stage1;
-import net.matez.wildnature.common.objects.blocks.plant.WNBushBlock;
 import net.matez.wildnature.common.objects.items.vegetables.WNVeggieBlockItem;
 import net.matez.wildnature.common.objects.tags.WNTags;
+import net.matez.wildnature.common.registry.blocks.WNBlocks;
 import net.matez.wildnature.common.registry.items.WNItems;
 import net.matez.wildnature.data.block_models.plants.WNBlockModel_FloweringBush;
 import net.matez.wildnature.data.block_models.plants.WNBlockModel_TintedCross;
-import net.matez.wildnature.data.blockstates.WNBlockstate_Cube;
-import net.matez.wildnature.data.setup.base.WNResource;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
@@ -28,10 +31,15 @@ public class WNTeaCropBlock extends WNCropBlock_Stage1 {
     public WNTeaCropBlock(ResourceLocation location, Properties properties, Item.Properties itemProperties, CropType cropType) {
         super(location, properties, cropType);
 
-        this.item = new WNVeggieBlockItem(this,itemProperties,cropType.getVeggie());
+        this.item = new WNVeggieBlockItem(this, itemProperties, cropType.getVeggie());
         this.item.setRegistryName(WNItems.location(cropType.getVeggie().getId()));
-        WNItems.BLOCK_ITEMS.put(location, this.item);
-        WNItems.VEGGIES.put(cropType.getVeggie(),this.item);
+        WNBlocks.BLOCK_ITEMS.put(location, this.item);
+    }
+
+    @Override
+    public void onItemConstruct() {
+        super.onItemConstruct();
+        WNItems.VEGGIES.put(cropType.getVeggie(), this.item);
     }
 
     @Override

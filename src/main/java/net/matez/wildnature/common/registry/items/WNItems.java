@@ -8,7 +8,6 @@ package net.matez.wildnature.common.registry.items;
 
 import net.matez.wildnature.common.log.WNLogger;
 import net.matez.wildnature.common.objects.blocks.crops.CropType;
-import net.matez.wildnature.common.objects.initializer.ExcludeInit;
 import net.matez.wildnature.common.objects.initializer.InitStage;
 import net.matez.wildnature.common.objects.initializer.Initialize;
 import net.matez.wildnature.common.objects.items.backpacks.Backpack;
@@ -32,6 +31,7 @@ import net.matez.wildnature.common.objects.items.setup.WNItem;
 import net.matez.wildnature.common.objects.items.tools.*;
 import net.matez.wildnature.common.objects.items.vegetables.Veggie;
 import net.matez.wildnature.common.objects.items.vegetables.WNVeggieItem;
+import net.matez.wildnature.common.registry.blocks.WNBlocks;
 import net.matez.wildnature.common.registry.tabs.WNTabs;
 import net.matez.wildnature.setup.WildNature;
 import net.minecraft.resources.ResourceLocation;
@@ -40,14 +40,12 @@ import net.minecraft.world.item.Rarity;
 
 import java.util.LinkedHashMap;
 
-@Initialize(InitStage.CONSTRUCT)
+@Initialize(InitStage.REG_ITEMS)
 public class WNItems {
-    @ExcludeInit
     private static final WNLogger log = WildNature.getLogger();
 
     //# --- ALL ITEMS ---
     public static final LinkedHashMap<ResourceLocation, IWNItem> ITEMS = new LinkedHashMap<>();
-    public static final LinkedHashMap<ResourceLocation, WNBlockItem> BLOCK_ITEMS = new LinkedHashMap<>();
     //#------------------
 
     public static final WNItem COTTON = register(new WNCottonItem(location("cotton"),new Item.Properties().tab(WNTabs.TAB_SURFACE_PLANTS)));
@@ -208,16 +206,24 @@ public class WNItems {
     }
 
     private static <T extends IWNItem> T register(T item) {
+        if (!WildNature.instance.initializer.isInitialized(InitStage.REG_BLOCKS)) {
+            log.error("Can't register items");
+            return null;
+        }
         item.construct();
-        if(item instanceof WNBlockItem i){
-            BLOCK_ITEMS.put(item.getRegistryName(),i);
-        }else{
-            ITEMS.put(item.getRegistryName(),item);
+        if (item instanceof WNBlockItem i) {
+            WNBlocks.BLOCK_ITEMS.put(item.getRegistryName(), i);
+        } else {
+            ITEMS.put(item.getRegistryName(), item);
         }
         return item;
     }
 
     private static <T, U extends IWNItem> LinkedHashMap<T, U> register(T[] list, ItemRegisterCallback<T, U> register) {
+        if (!WildNature.instance.initializer.isInitialized(InitStage.REG_BLOCKS)) {
+            log.error("Can't register items");
+            return null;
+        }
         LinkedHashMap<T, U> map = new LinkedHashMap<>();
         for (T element : list) {
             U result = register.register(element);

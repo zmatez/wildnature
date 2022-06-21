@@ -6,7 +6,7 @@
 
 package net.matez.wildnature.common.objects.items.tools;
 
-import net.minecraft.tags.Tag;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Block;
@@ -15,7 +15,7 @@ import javax.annotation.Nonnull;
 import java.util.function.Supplier;
 
 public record WNTier(int level, int uses, float speed, float attackDamageBonus, float axeAttackSpeed,
-                     int enchantmentValue, @Nonnull Tag<Block> tag,
+                     int enchantmentValue, @Nonnull TagKey<Block> tag,
                      @Nonnull Supplier<Ingredient> repairIngredient) implements Tier {
 
     @Override
@@ -48,7 +48,7 @@ public record WNTier(int level, int uses, float speed, float attackDamageBonus, 
     }
 
     @Nonnull
-    public Tag<Block> getTag() {
+    public TagKey<Block> getTag() {
         return this.tag;
     }
 

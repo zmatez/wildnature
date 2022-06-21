@@ -10,6 +10,7 @@ import net.matez.wildnature.common.objects.blocks.crops.stages.WNCropBlock_Stage
 import net.matez.wildnature.common.objects.blocks.setup.WNBlockProperties;
 import net.matez.wildnature.common.objects.items.vegetables.WNVeggieBlockItem;
 import net.matez.wildnature.common.objects.tags.WNTags;
+import net.matez.wildnature.common.registry.blocks.WNBlocks;
 import net.matez.wildnature.common.registry.items.WNItems;
 import net.matez.wildnature.data.block_models.plants.WNBlockModel_TintedCross;
 import net.matez.wildnature.data.setup.base.WNResource;
@@ -55,14 +56,19 @@ public class WNGiantCropBlock extends WNCropBlock_Stage2 {
 
         this.item = new WNVeggieBlockItem(this, itemProperties, cropType.getVeggie());
         this.item.setRegistryName(WNItems.location(cropType.getVeggie().getId()));
-        WNItems.BLOCK_ITEMS.put(location, this.item);
-        WNItems.VEGGIES.put(cropType.getVeggie(), this.item);
+        WNBlocks.BLOCK_ITEMS.put(location, this.item);
     }
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> state) {
         super.createBlockStateDefinition(state);
         state.add(GROWING);
+    }
+
+    @Override
+    public void onItemConstruct() {
+        super.onItemConstruct();
+        WNItems.VEGGIES.put(cropType.getVeggie(), this.item);
     }
 
     @Override

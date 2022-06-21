@@ -19,7 +19,7 @@ import net.minecraft.world.entity.MobCategory;
 import java.util.LinkedHashMap;
 import java.util.function.Supplier;
 
-@Initialize(InitStage.CONSTRUCT)
+@Initialize(InitStage.REG_ENTITIES)
 public class WNEntities {
     private static final WNLogger log = WildNature.getLogger();
 
@@ -37,6 +37,9 @@ public class WNEntities {
     }
 
     private static <T extends Entity> EntityType<T> register(ResourceLocation registryName, Supplier<EntityType.Builder<T>> builder) {
+        if (!WildNature.instance.initializer.isInitialized(InitStage.REG_ENTITIES)) {
+            return null;
+        }
         EntityType<T> entityType = builder.get().build(registryName.toString());
         entityType.setRegistryName(registryName);
         ENTITY_TYPES.put(registryName, entityType);

@@ -1,3 +1,9 @@
+/*
+ * Copyright (c) matez.net 2022.
+ * All rights reserved.
+ * Consider supporting this project on Patreon: https://patreon.com/wildnaturemod
+ */
+
 package net.matez.wildnature.common.objects.initializer;
 
 import net.matez.wildnature.common.log.WNLogger;
@@ -14,9 +20,14 @@ import java.util.stream.Collectors;
 
 public class Initializer {
     private final LinkedHashMap<InitStage, ArrayList<Field>> map = new LinkedHashMap<>();
+    private final ArrayList<InitStage> alreadyInitialized = new ArrayList<>();
     private static final WNLogger log = WildNature.getLogger();
 
-    public Initializer(){
+    public Initializer() {
+
+    }
+
+    public void prepare() {
         log.debug("Preparing Initializer");
 
 //        Reflections reflections = new Reflections("net.matez.wildnature");
@@ -32,10 +43,9 @@ public class Initializer {
 
         for (ModFileScanData.AnnotationData annotation : annotations) {
             //only classes
-            if(annotation.targetType() == ElementType.TYPE) {
+            if (annotation.targetType() == ElementType.TYPE) {
                 try {
-                    Class<?> clazz = Class.forName(annotation.clazz().getClassName());
-                    //log.debug("Clazz: " + clazz.getName());
+                    Class<?> clazz = Class.forName(annotation.clazz().getClassName(), false, this.getClass().getClassLoader());
 
                     Field[] declaredFields = clazz.getDeclaredFields();
                     ArrayList<Field> fields = new ArrayList<Field>();
@@ -43,14 +53,14 @@ public class Initializer {
 
                     for (Field field : declaredFields) {
                         if (Modifier.isStatic(field.getModifiers())) {
-                            if(!field.isAnnotationPresent(ExcludeInit.class)) {
+                            if (!field.isAnnotationPresent(ExcludeInit.class)) {
                                 fields.add(field);
                             }
                         }
                     }
                     //log.debug("Found matching fields: " + fields.size());
 
-                    if(!fields.isEmpty()) {
+                    if (!fields.isEmpty()) {
                         Initialize i = clazz.getAnnotationsByType(Initialize.class)[0];
                         if (i != null) {
                             InitStage stage = i.value();
@@ -59,7 +69,7 @@ public class Initializer {
                             } else {
                                 map.put(stage, fields);
                             }
-                        }else{
+                        } else {
                             log.error("Initialize is null in class: " + clazz.getName());
                         }
                     }
@@ -68,13 +78,13 @@ public class Initializer {
                     log.error("Unable to find class: " + e.getMessage());
                     e.printStackTrace();
                 }
-            }else if(annotation.targetType() == ElementType.FIELD){
+            } else if (annotation.targetType() == ElementType.FIELD) {
                 try {
                     Class<?> clazz = Class.forName(annotation.clazz().getClassName());
 
                     Field field = clazz.getField(annotation.memberName());
                     if (Modifier.isStatic(field.getModifiers())) {
-                        if(!field.isAnnotationPresent(ExcludeInit.class)) {
+                        if (!field.isAnnotationPresent(ExcludeInit.class)) {
                             Initialize i = clazz.getAnnotationsByType(Initialize.class)[0];
                             if (i != null) {
                                 InitStage stage = i.value();
@@ -102,20 +112,31 @@ public class Initializer {
         });
     }
 
-    public void init(InitStage stage){
+    public void init(InitStage stage) {
         log.debug("Initializing stage " + stage.name());
+        if (this.alreadyInitialized.contains(stage)) {
+            log.warn("Stage " + stage.name() + " is already initialized.");
+
+            return;
+        }
+        this.alreadyInitialized.add(stage);
         if (map.containsKey(stage)) {
             for (Field field : map.get(stage)) {
                 try {
                     field.get(null);
-                }catch (Exception e){
+                    Class.forName(field.getDeclaringClass().getName());
+                } catch (Exception e) {
                     log.error("Unable to initialize field: " + e.getMessage());
                 }
             }
 
             log.debug("Initialized " + map.get(stage).size() + " fields.");
-        }else{
+        } else {
             log.debug("No entries found.");
         }
+    }
+
+    public boolean isInitialized(InitStage stage) {
+        return this.alreadyInitialized.contains(stage);
     }
 }

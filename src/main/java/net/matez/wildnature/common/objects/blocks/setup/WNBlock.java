@@ -9,7 +9,7 @@ package net.matez.wildnature.common.objects.blocks.setup;
 import net.matez.wildnature.common.objects.items.setup.WNBlockItem;
 import net.matez.wildnature.common.objects.structures.WNStructure;
 import net.matez.wildnature.common.objects.tags.WNTags;
-import net.matez.wildnature.common.registry.items.WNItems;
+import net.matez.wildnature.common.registry.blocks.WNBlocks;
 import net.matez.wildnature.common.registry.setup.WNRenderType;
 import net.matez.wildnature.common.util.WeightedList;
 import net.matez.wildnature.data.block_models.WNBlockModel_CubeAll;
@@ -66,20 +66,24 @@ public class WNBlock extends Block {
         this.setRegistryName(location);
         this.item = item;
         this.item.setRegistryName(location);
-        WNItems.BLOCK_ITEMS.put(location, this.item);
+        WNBlocks.BLOCK_ITEMS.put(location, this.item);
     }
 
     /**
      * called after constructor
      */
-    public void construct(){
+    public void construct() {
 
     }
 
-    public void createBlockItem(Item.Properties itemProperties){
-        this.item = new WNBlockItem(this,itemProperties);
+    public void onItemConstruct() {
+
+    }
+
+    public void createBlockItem(Item.Properties itemProperties) {
+        this.item = new WNBlockItem(this, itemProperties);
         this.item.setRegistryName(this.getRegistryName());
-        WNItems.BLOCK_ITEMS.put(this.getRegistryName(), this.item);
+        WNBlocks.BLOCK_ITEMS.put(this.getRegistryName(), this.item);
     }
 
     /**
@@ -241,6 +245,8 @@ public class WNBlock extends Block {
 
     public static class DropList {
         //rarity 0 means it will drop always with other item
+
+        public static DropList EMPTY = new DropList();
 
         private final WeightedList<Drop> drops = new WeightedList<>();
 

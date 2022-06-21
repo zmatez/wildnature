@@ -19,7 +19,7 @@ import net.minecraft.world.inventory.MenuType;
 
 import java.util.LinkedHashMap;
 
-@Initialize(InitStage.CONSTRUCT)
+@Initialize(InitStage.REG_MENUS)
 public class WNContainers {
     private static final WNLogger log = WildNature.getLogger();
 
@@ -37,6 +37,9 @@ public class WNContainers {
     }
 
     private static <T extends AbstractContainerMenu> MenuType<T> register(ResourceLocation registryName, MenuType.MenuSupplier<T> supplier) {
+        if (!WildNature.instance.initializer.isInitialized(InitStage.REG_MENUS)) {
+            return null;
+        }
         MenuType<T> type = new MenuType<>(supplier);
         type.setRegistryName(registryName);
         MENU_TYPES.put(registryName, type);

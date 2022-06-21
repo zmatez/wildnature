@@ -1,12 +1,13 @@
+/*
+ * Copyright (c) matez.net 2022.
+ * All rights reserved.
+ * Consider supporting this project on Patreon: https://patreon.com/wildnaturemod
+ */
+
 package net.matez.wildnature.common.objects.blocks.crops;
 
 import net.matez.wildnature.common.objects.blocks.crops.stages.WNCropBlock_Stage0;
-import net.matez.wildnature.common.objects.blocks.crops.stages.WNCropBlock_Stage1;
-import net.matez.wildnature.common.objects.blocks.plant.WNBushBlock;
-import net.matez.wildnature.common.objects.items.vegetables.WNVeggieBlockItem;
 import net.matez.wildnature.common.objects.tags.WNTags;
-import net.matez.wildnature.common.registry.items.WNItems;
-import net.matez.wildnature.data.block_models.plants.WNBlockModel_FloweringBush;
 import net.matez.wildnature.data.block_models.plants.WNBlockModel_TintedCross;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;

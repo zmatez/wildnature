@@ -24,7 +24,7 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.function.Supplier;
 
-@Initialize(InitStage.CONSTRUCT)
+@Initialize(InitStage.REG_BLOCK_ENTITIES)
 public class WNBlockEntities {
     private static final WNLogger log = WildNature.getLogger();
 
@@ -59,6 +59,9 @@ public class WNBlockEntities {
     }
 
     private static <T extends BlockEntity> BlockEntityType<T> register(ResourceLocation registryName, Supplier<BlockEntityType.Builder<T>> builder) {
+        if (!WildNature.instance.initializer.isInitialized(InitStage.REG_BLOCK_ENTITIES)) {
+            return null;
+        }
         BlockEntityType<T> blockEntityType = builder.get().build(null);
         blockEntityType.setRegistryName(registryName);
         BLOCK_ENTITY_TYPES.put(registryName, blockEntityType);

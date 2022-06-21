@@ -11,6 +11,7 @@ import net.matez.wildnature.common.objects.blockentities.table.WNTableBlockEntit
 import net.matez.wildnature.common.objects.initializer.InitStage;
 import net.matez.wildnature.common.objects.initializer.Initialize;
 import net.matez.wildnature.common.registry.blockentities.WNBlockEntities;
+import net.matez.wildnature.setup.WildNature;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -25,8 +26,11 @@ public class WNBlockEntityRenderers {
 
     public static final BlockEntityRendererProvider<WNTableBlockEntity> TABLE = register(WNBlockEntities.TABLE, WNTableBlockEntityRenderer::new);
 
-    private static <T extends BlockEntity> BlockEntityRendererProvider<T> register(BlockEntityType<? extends T> type, BlockEntityRendererProvider<T> provider){
-        BLOCK_ENTITY_RENDERER_PROVIDERS.put(type,provider);
+    private static <T extends BlockEntity> BlockEntityRendererProvider<T> register(BlockEntityType<? extends T> type, BlockEntityRendererProvider<T> provider) {
+        if (!WildNature.instance.initializer.isInitialized(InitStage.ENTITY_RENDERER)) {
+            return null;
+        }
+        BLOCK_ENTITY_RENDERER_PROVIDERS.put(type, provider);
         return provider;
     }
 }

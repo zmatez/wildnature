@@ -51,9 +51,9 @@ import net.matez.wildnature.common.objects.blocks.wood.vanilla.building.WNVanill
 import net.matez.wildnature.common.objects.blocks.wood.vanilla.furniture.WNVanillaBenchBlock;
 import net.matez.wildnature.common.objects.blocks.wood.vanilla.furniture.WNVanillaChairBlock;
 import net.matez.wildnature.common.objects.blocks.wood.vanilla.furniture.WNVanillaTableBlock;
-import net.matez.wildnature.common.objects.initializer.ExcludeInit;
 import net.matez.wildnature.common.objects.initializer.InitStage;
 import net.matez.wildnature.common.objects.initializer.Initialize;
+import net.matez.wildnature.common.objects.items.setup.WNBlockItem;
 import net.matez.wildnature.common.objects.items.vegetables.Veggie;
 import net.matez.wildnature.common.registry.tabs.WNTabs;
 import net.matez.wildnature.setup.WildNature;
@@ -71,13 +71,14 @@ import net.minecraft.world.level.material.MaterialColor;
 
 import java.util.LinkedHashMap;
 
-@Initialize(InitStage.CONSTRUCT)
+@Initialize(InitStage.REG_BLOCKS)
 public class WNBlocks {
-    @ExcludeInit
     private static final WNLogger log = WildNature.getLogger();
 
     //# --- ALL BLOCKS ---
     public static final LinkedHashMap<ResourceLocation, WNBlock> BLOCKS = new LinkedHashMap<>();
+    public static final LinkedHashMap<ResourceLocation, WNBlockItem> BLOCK_ITEMS = new LinkedHashMap<>();
+
     //#-------------------
     //?---
     //# --- ENUM MAPS ---
@@ -1272,12 +1273,18 @@ public class WNBlocks {
     }
 
     private static <T extends WNBlock> T register(T block) {
+        if (!WildNature.instance.initializer.isInitialized(InitStage.REG_BLOCKS)) {
+            return null;
+        }
         block.construct();
         BLOCKS.put(block.getRegistryName(), block);
         return block;
     }
 
     private static <T, U extends WNBlock> LinkedHashMap<T, U> register(T[] list, BlockRegisterCallback<T, U> register) {
+        if (!WildNature.instance.initializer.isInitialized(InitStage.REG_BLOCKS)) {
+            return null;
+        }
         LinkedHashMap<T, U> map = new LinkedHashMap<>();
         for (T element : list) {
             U result = register.register(element);

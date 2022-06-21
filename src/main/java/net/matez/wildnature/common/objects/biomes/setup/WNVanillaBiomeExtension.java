@@ -8,9 +8,9 @@ package net.matez.wildnature.common.objects.biomes.setup;
 
 import com.google.common.collect.ImmutableList;
 import net.matez.wildnature.common.log.WNLogger;
-import net.matez.wildnature.common.registry.biomes.WNBiomes;
 import net.matez.wildnature.setup.WildNature;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
@@ -65,11 +65,11 @@ public abstract class WNVanillaBiomeExtension {
         }
     }
 
-    public void addFeature(GenerationStep.Decoration stage, PlacedFeature feature) {
+    public void addFeature(GenerationStep.Decoration stage, Holder<PlacedFeature> feature) {
         features.add(new FeatureEntry(stage, feature, true));
     }
 
-    public void addFeature(GenerationStep.Decoration stage, PlacedFeature feature, boolean shouldRegister) {
+    public void addFeature(GenerationStep.Decoration stage, Holder<PlacedFeature> feature, boolean shouldRegister) {
         features.add(new FeatureEntry(stage, feature, shouldRegister));
     }
 
@@ -146,22 +146,22 @@ public abstract class WNVanillaBiomeExtension {
                 continue;
             }
 
-            var placed = feature.feature();
-            placed.getFeatures().forEach((configuredFeature) -> {
-                if (configuredFeature.feature().getRegistryName() == null) {
-                    var loc = new ResourceLocation(WildNature.modid, "feature_" + (WNBiomes.FEATURES.size() + 1));
-                    configuredFeature.feature().setRegistryName(loc);
-                    WNBiomes.FEATURES.put(loc, configuredFeature.feature());
-                }
-                var cfLoc = new ResourceLocation(WildNature.modid, "configured_feature_" + (WNBiomes.FEATURES.size() + 1));
-                WNBiomes.CONFIGURED_FEATURES.put(cfLoc, configuredFeature);
-            });
-
-            var pLoc = new ResourceLocation(WildNature.modid, "placed_feature_" + (WNBiomes.FEATURES.size() + 1));
-            WNBiomes.PLACED_FEATURES.put(pLoc, placed);
+//            var placed = feature.feature();
+//            placed.getFeatures().forEach((configuredFeature) -> {
+//                if (configuredFeature.feature().getRegistryName() == null) {
+//                    var loc = new ResourceLocation(WildNature.modid, "feature_" + (WNBiomes.FEATURES.size() + 1));
+//                    configuredFeature.feature().setRegistryName(loc);
+//                    WNBiomes.FEATURES.put(loc, configuredFeature.feature());
+//                }
+//                var cfLoc = new ResourceLocation(WildNature.modid, "configured_feature_" + (WNBiomes.FEATURES.size() + 1));
+//                WNBiomes.CONFIGURED_FEATURES.put(cfLoc, configuredFeature);
+//            });
+//
+//            var pLoc = new ResourceLocation(WildNature.modid, "placed_feature_" + (WNBiomes.FEATURES.size() + 1));
+//            WNBiomes.PLACED_FEATURES.put(pLoc, placed);
         }
     }
 
-    public record FeatureEntry(GenerationStep.Decoration stage, PlacedFeature feature, boolean register) {
+    public record FeatureEntry(GenerationStep.Decoration stage, Holder<PlacedFeature> feature, boolean register) {
     }
 }

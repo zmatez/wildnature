@@ -1,3 +1,9 @@
+/*
+ * Copyright (c) matez.net 2022.
+ * All rights reserved.
+ * Consider supporting this project on Patreon: https://patreon.com/wildnaturemod
+ */
+
 package net.matez.wildnature.common.objects.blocks.basic;
 
 import net.matez.wildnature.common.objects.blocks.plant.WNDoublePlantBlock;
@@ -7,6 +13,7 @@ import net.matez.wildnature.common.registry.setup.WNRenderType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -249,5 +256,14 @@ public abstract class WNDoorBlock extends WNBlock {
 
    public static boolean isWoodenDoor(BlockState p_52818_) {
       return p_52818_.getBlock() instanceof WNDoorBlock && (p_52818_.getMaterial() == Material.WOOD || p_52818_.getMaterial() == Material.NETHER_WOOD);
+   }
+
+   @Nullable
+   @Override
+   public DropList getDrops(BlockState state, ServerLevel level, float luck, int fortune, boolean silkTouch, @Nullable LivingEntity entity, ItemStack brokenBy) {
+      if (state.getValue(HALF) == DoubleBlockHalf.UPPER) {
+         return DropList.EMPTY;
+      }
+      return super.getDrops(state, level, luck, fortune, silkTouch, entity, brokenBy);
    }
 }

@@ -14,7 +14,7 @@ import net.matez.wildnature.client.registry.setup.WNClientRegistry;
 import net.matez.wildnature.common.log.WNLogger;
 import net.matez.wildnature.common.networking.WNNetworking;
 import net.matez.wildnature.common.objects.initializer.InitStage;
-import net.matez.wildnature.common.objects.initializer.Initializer;
+import net.matez.wildnature.common.objects.initializer.NewInitializer;
 import net.matez.wildnature.common.objects.structures.WNStructures;
 import net.matez.wildnature.common.registry.commands.WNCommandArguments;
 import net.matez.wildnature.common.registry.commands.WNCommands;
@@ -43,7 +43,7 @@ public class WildNature {
             .create();
 
     private static final WNLogger log = getLogger();
-    public final Initializer initializer;
+    public final NewInitializer initializer;
     public String version = "3.1_a1";
     //---
     private final long startTime;
@@ -59,7 +59,8 @@ public class WildNature {
         instance = this;
         startTime = System.currentTimeMillis();
         log.progress("Starting WildNature Mod");
-        initializer = new Initializer();
+        initializer = new NewInitializer();
+        initializer.prepare();
 
         //# --- EVENT BUS ---
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::construct);
@@ -78,7 +79,7 @@ public class WildNature {
 
     private void construct(final FMLConstructModEvent event) {
         log.progress("WildNature Construct");
-        initializer.init(InitStage.CONSTRUCT);
+        //initializer.init(InitStage.CONSTRUCT);
 
         if (dataGenType != null) {
             dataGenerator = new WNDataGenerator(modid, dataGenType);

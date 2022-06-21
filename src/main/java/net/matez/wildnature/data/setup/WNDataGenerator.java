@@ -81,14 +81,14 @@ public class WNDataGenerator {
             }
         });
 
-        WNItems.BLOCK_ITEMS.forEach((key, value) -> {
-            if(value.getItemModel() == null){
-                if(value.getItemModels() == null) {
+        WNBlocks.BLOCK_ITEMS.forEach((key, value) -> {
+            if (value.getItemModel() == null) {
+                if (value.getItemModels() == null) {
                     log.warn("Block Item " + key.toString() + " doesn't have own model.");
-                }else{
+                } else {
                     resources.addAll(value.getItemModels().models);
                 }
-            }else {
+            } else {
                 resources.add(value.getItemModel());
             }
         });
@@ -311,7 +311,7 @@ public class WNDataGenerator {
         WNItems.ITEMS.forEach((id, item) -> {
             WNTranslations.add(WNTranslations.Keys.ITEM, id.getPath());
         });
-        WNItems.BLOCK_ITEMS.forEach((id, blockItem) -> {
+        WNBlocks.BLOCK_ITEMS.forEach((id, blockItem) -> {
             WNTranslations.add(WNTranslations.Keys.ITEM, id.getPath());
         });
         WNTabs.TABS.forEach((id, tab) -> {

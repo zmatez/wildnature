@@ -1,14 +1,17 @@
+/*
+ * Copyright (c) matez.net 2022.
+ * All rights reserved.
+ * Consider supporting this project on Patreon: https://patreon.com/wildnaturemod
+ */
+
 package net.matez.wildnature.common.objects.blocks.fruit_bush.plants;
 
-import net.matez.wildnature.common.objects.blocks.fruit_bush.leaves.FruitBushType;
 import net.matez.wildnature.common.objects.blocks.leaves.LeafConfig;
 import net.matez.wildnature.common.objects.blocks.plant.BushConstructor;
 import net.matez.wildnature.common.objects.blocks.plant.config.BushConfig;
-import net.minecraft.world.item.Item;
 
 import javax.annotation.Nullable;
 import java.util.LinkedHashMap;
-import java.util.function.Supplier;
 
 public class FruitBushConfig extends BushConfig {
     private final int stages;

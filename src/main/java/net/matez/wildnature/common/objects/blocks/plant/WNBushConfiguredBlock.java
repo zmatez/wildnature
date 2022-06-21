@@ -1,8 +1,13 @@
+/*
+ * Copyright (c) matez.net 2022.
+ * All rights reserved.
+ * Consider supporting this project on Patreon: https://patreon.com/wildnaturemod
+ */
+
 package net.matez.wildnature.common.objects.blocks.plant;
 
 import net.matez.wildnature.common.objects.blocks.setup.WNBlock;
 import net.matez.wildnature.common.objects.tags.WNTags;
-import net.matez.wildnature.common.registry.setup.WNRenderType;
 import net.matez.wildnature.data.block_models.plants.WNBlockModel_TintedCross;
 import net.matez.wildnature.data.blockstates.WNBlockstate_Cube;
 import net.matez.wildnature.data.item_models.WNItemModel_Generated;
@@ -14,17 +19,15 @@ import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.level.*;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.FoliageColor;
+import net.minecraft.world.level.GrassColor;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.pathfinder.PathComputationType;
-import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 

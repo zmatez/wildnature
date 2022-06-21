@@ -1,3 +1,9 @@
+/*
+ * Copyright (c) matez.net 2022.
+ * All rights reserved.
+ * Consider supporting this project on Patreon: https://patreon.com/wildnaturemod
+ */
+
 package net.matez.wildnature.common.objects.blocks.plant.vines;
 
 import net.matez.wildnature.common.objects.blocks.plant.BushType;
@@ -6,10 +12,7 @@ import net.matez.wildnature.common.objects.blocks.setup.WNBlockProperties;
 import net.matez.wildnature.common.objects.tags.WNTags;
 import net.matez.wildnature.common.registry.setup.WNRenderType;
 import net.matez.wildnature.common.util.WNUtil;
-import net.matez.wildnature.data.block_models.plants.WNBlockModel_FloweringBush;
-import net.matez.wildnature.data.block_models.plants.WNBlockModel_TintedCross;
 import net.matez.wildnature.data.block_models.plants.WNBlockModel_Vine;
-import net.matez.wildnature.data.blockstates.plants.WNBlockstate_FloweringBush;
 import net.matez.wildnature.data.blockstates.plants.WNBlockstate_FloweringVine;
 import net.matez.wildnature.data.item_models.WNItemModel_Generated;
 import net.matez.wildnature.data.setup.base.WNResource;

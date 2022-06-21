@@ -15,12 +15,13 @@ import net.matez.wildnature.common.objects.structures.WNStructurePlacement;
 import net.matez.wildnature.common.registry.blocks.WNBlocks;
 import net.matez.wildnature.common.util.WeightedList;
 import net.matez.wildnature.setup.WildNature;
+import net.minecraft.core.Holder;
+import net.minecraft.data.worldgen.features.FeatureUtils;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.GenerationStep;
-import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 import net.minecraft.world.level.levelgen.placement.*;
 
 import java.util.ArrayList;
@@ -89,12 +90,15 @@ public class WNBiome extends WNVanillaBiomeExtension {
     }
 
     private void buildTrees() {
+        int index = 0;
         for (TreeEntry treeEntry : trees) {
             var tree = treeEntry.placement();
 
-            var treeFeature = new WNTreeFeature(tree).configured(new NoneFeatureConfiguration()).placed(PlacementUtils.countExtra(5, 0.1F, 1));
+            var configuredTree = FeatureUtils.register(this.getRegistryName() + "_trees_" + index, new WNTreeFeature(tree));
+            var placementTree = PlacementUtils.register(this.getRegistryName() + "_trees_" + index, configuredTree, PlacementUtils.countExtra(5, 0.1F, 1));
 
-            addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, treeFeature);
+            addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, placementTree);
+            index++;
         }
     }
 
@@ -117,6 +121,8 @@ public class WNBiome extends WNVanillaBiomeExtension {
         private int tries;
         private int avgOnceEvery;
         private boolean disabled = false;
+
+        private static int plantIndex = 0;
 
         public FlowerConfig(int xzSpread, int ySpread, int tries, int avgOnceEvery, boolean grass) {
             this.xzSpread = xzSpread;
@@ -154,15 +160,30 @@ public class WNBiome extends WNVanillaBiomeExtension {
             addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, getFeature(), register);
         }
 
-        public PlacedFeature getFeature() {
+        public Holder<PlacedFeature> getFeature() {
             if (grass) {
-                return new WNFlowerFeature(grasses, flowerConfig.xzSpread, flowerConfig.ySpread, flowerConfig.tries)
-                        .configured(new NoneFeatureConfiguration())
-                        .placed(NoiseThresholdCountPlacement.of(-0.8D, 5, avgOnceEvery), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome());
+                var configuredGrass = FeatureUtils.register(getRegistryName() + "_plants_" + plantIndex, new WNFlowerFeature(grasses, flowerConfig.xzSpread, flowerConfig.ySpread, flowerConfig.tries));
+                var placedGrass = PlacementUtils.register(
+                        getRegistryName() + "_plants_" + plantIndex,
+                        configuredGrass,
+                        NoiseThresholdCountPlacement.of(-0.8D, 5, avgOnceEvery), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome()
+                );
+
+                plantIndex++;
+
+                return placedGrass;
             }
-            return new WNFlowerFeature(flowers, flowerConfig.xzSpread, flowerConfig.ySpread, flowerConfig.tries)
-                    .configured(new NoneFeatureConfiguration())
-                    .placed(NoiseThresholdCountPlacement.of(-0.8D, 15, 4), RarityFilter.onAverageOnceEvery(flowerConfig.avgOnceEvery), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome());
+
+            var configuredFlower = FeatureUtils.register(getRegistryName() + "_plants_" + plantIndex, new WNFlowerFeature(flowers, flowerConfig.xzSpread, flowerConfig.ySpread, flowerConfig.tries));
+            var placedFlower = PlacementUtils.register(
+                    getRegistryName() + "_plants_" + plantIndex,
+                    configuredFlower,
+                    NoiseThresholdCountPlacement.of(-0.8D, 15, 4), RarityFilter.onAverageOnceEvery(flowerConfig.avgOnceEvery), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome()
+            );
+
+            plantIndex++;
+
+            return placedFlower;
         }
     }
 }

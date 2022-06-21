@@ -1,3 +1,9 @@
+/*
+ * Copyright (c) matez.net 2022.
+ * All rights reserved.
+ * Consider supporting this project on Patreon: https://patreon.com/wildnaturemod
+ */
+
 package net.matez.wildnature.common.objects.blocks.basic;
 
 import net.matez.wildnature.common.objects.blocks.setup.WNBlock;
@@ -45,9 +51,8 @@ public abstract class WNFallingBlock extends WNBlock implements Fallable {
 
    public void tick(BlockState p_53216_, ServerLevel p_53217_, BlockPos p_53218_, Random p_53219_) {
       if (isFree(p_53217_.getBlockState(p_53218_.below())) && p_53218_.getY() >= p_53217_.getMinBuildHeight()) {
-         FallingBlockEntity fallingblockentity = new FallingBlockEntity(p_53217_, (double)p_53218_.getX() + 0.5D, p_53218_.getY(), (double)p_53218_.getZ() + 0.5D, p_53217_.getBlockState(p_53218_));
+         FallingBlockEntity fallingblockentity = FallingBlockEntity.fall(p_53217_, p_53218_, p_53216_);
          this.falling(fallingblockentity);
-         p_53217_.addFreshEntity(fallingblockentity);
       }
    }
 
