@@ -9,7 +9,7 @@ package net.matez.wildnature.data.lang;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.JsonParser;
-import net.matez.wildnature.common.log.WNLogger;
+import net.matez.wildnature.api.util.log.SimpleLogger;
 import net.matez.wildnature.common.util.WNChatUtil;
 import net.matez.wildnature.data.setup.base.WNResource;
 import net.matez.wildnature.setup.WildNature;
@@ -30,7 +30,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class WNTranslation extends WNResource {
-    private static final WNLogger log = WildNature.getLogger();
+    private static final SimpleLogger log = WildNature.getLogger();
     private final String localizedName;
 
     public WNTranslation(String name, String codename) {

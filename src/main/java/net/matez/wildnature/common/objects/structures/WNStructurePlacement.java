@@ -6,10 +6,11 @@
 
 package net.matez.wildnature.common.objects.structures;
 
-import net.matez.wildnature.common.log.WNLogger;
-import net.matez.wildnature.common.util.WeightedList;
+import net.matez.wildnature.api.util.log.SimpleLogger;
+import net.matez.wildnature.api.util.WeightedList;
 import net.matez.wildnature.setup.WildNature;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.RandomSource;
 
 import javax.annotation.Nullable;
 import java.util.LinkedHashMap;
@@ -17,7 +18,7 @@ import java.util.Random;
 
 public class WNStructurePlacement {
 
-    private static final WNLogger log = WildNature.getLogger();
+    private static final SimpleLogger log = WildNature.getLogger();
 
     private final WeightedList<Entry<WNStructure>> structures = new WeightedList<>();
     private final LinkedHashMap<Entry<String>, Integer> preStructures = new LinkedHashMap<>();
@@ -89,7 +90,7 @@ public class WNStructurePlacement {
     }
 
     @Nullable
-    public Entry<WNStructure> get(Random random) {
+    public Entry<WNStructure> get(RandomSource random) {
         return structures.getWeightedEntry(random);
     }
 

@@ -6,7 +6,7 @@
 
 package net.matez.wildnature.common.registry.setup;
 
-import net.matez.wildnature.common.log.WNLogger;
+import net.matez.wildnature.api.util.log.SimpleLogger;
 import net.matez.wildnature.common.objects.initializer.InitStage;
 import net.matez.wildnature.common.objects.items.setup.IWNItem;
 import net.matez.wildnature.common.registry.biomes.WNBiomes;
@@ -32,7 +32,7 @@ import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(bus=Mod.EventBusSubscriber.Bus.MOD)
 public class WNRegistry {
-    private static final WNLogger log = WildNature.getLogger();
+    private static final SimpleLogger log = WildNature.getLogger();
 
     @SubscribeEvent
     public static void registerBlocks(final RegistryEvent.Register<Block> event) {

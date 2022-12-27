@@ -6,7 +6,7 @@
 
 package net.matez.wildnature.common.objects.items.tools;
 
-import net.matez.wildnature.common.log.WNLogger;
+import net.matez.wildnature.api.util.log.SimpleLogger;
 import net.matez.wildnature.common.objects.items.ores.OreFamily;
 import net.matez.wildnature.common.objects.items.setup.IWNItem;
 import net.matez.wildnature.common.objects.items.setup.WNItemUtil;
@@ -33,7 +33,7 @@ import org.jetbrains.annotations.Nullable;
 
 public class WNSwordItem extends SwordItem implements IWNItem {
     private final ToolItem toolItem;
-    private static final WNLogger log = WildNature.getLogger();
+    private static final SimpleLogger log = WildNature.getLogger();
 
     public WNSwordItem(Tier tier, Properties properties, ToolItem toolItem) {
         super(tier, 3, -2.4F, properties);

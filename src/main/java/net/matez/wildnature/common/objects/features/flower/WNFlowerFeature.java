@@ -8,8 +8,9 @@ package net.matez.wildnature.common.objects.features.flower;
 
 import net.matez.wildnature.common.objects.blocks.plant.WNBushBlock;
 import net.matez.wildnature.common.objects.features.WNFeature;
-import net.matez.wildnature.common.util.WeightedList;
+import net.matez.wildnature.api.util.WeightedList;
 import net.minecraft.core.BlockPos;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.block.DoublePlantBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
@@ -32,7 +33,7 @@ public class WNFlowerFeature extends WNFeature {
     }
 
     public boolean place(FeaturePlaceContext<NoneFeatureConfiguration> context) {
-        Random random = context.random();
+        RandomSource random = context.random();
         BlockPos blockpos = context.origin();
         int i = 0;
         BlockPos.MutableBlockPos mutable = new BlockPos.MutableBlockPos();

@@ -6,7 +6,7 @@
 
 package net.matez.wildnature.common.events;
 
-import net.matez.wildnature.common.log.WNLogger;
+import net.matez.wildnature.api.util.log.SimpleLogger;
 import net.matez.wildnature.common.registry.particles.WNParticles;
 import net.matez.wildnature.common.util.WNUtil;
 import net.matez.wildnature.setup.WildNature;
@@ -25,7 +25,7 @@ import java.util.LinkedHashMap;
 
 @Mod.EventBusSubscriber(modid = WildNature.modid, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class GeyserItemEvent {
-    private static final WNLogger log = WildNature.getLogger();
+    private static final SimpleLogger log = WildNature.getLogger();
     public static LinkedHashMap<GeyserItemEntry, Integer> GEYSER_TICKS = new LinkedHashMap<>();
 
     @SubscribeEvent

@@ -9,7 +9,7 @@ package net.matez.wildnature.data.setup;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import net.matez.wildnature.common.log.WNLogger;
+import net.matez.wildnature.api.util.log.SimpleLogger;
 import net.matez.wildnature.common.objects.tags.TagCategory;
 import net.matez.wildnature.common.objects.tags.WNTags;
 import net.matez.wildnature.common.registry.blocks.WNBlocks;
@@ -31,7 +31,7 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class WNDataGenerator {
-    private static final WNLogger log = new WNLogger(true);
+    private static final SimpleLogger log = new SimpleLogger(true);
 
 
     private final DataGenType mode;

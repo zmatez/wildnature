@@ -6,7 +6,7 @@
 
 package net.matez.wildnature.common.objects.entities.seat;
 
-import net.matez.wildnature.common.log.WNLogger;
+import net.matez.wildnature.api.util.log.SimpleLogger;
 import net.matez.wildnature.common.objects.blockentities.seat.WNSeatBlockEntity;
 import net.matez.wildnature.common.registry.entities.WNEntities;
 import net.matez.wildnature.setup.WildNature;
@@ -23,7 +23,7 @@ import net.minecraft.world.phys.Vec3;
 public class WNSeatEntity extends Entity {
     private WNSeatBlockEntity blockEntity;
     //private Vec3 origin;
-    private static final WNLogger log = WildNature.getLogger();
+    private static final SimpleLogger log = WildNature.getLogger();
 
     public WNSeatEntity(WNSeatBlockEntity blockEntity, Level level) {
         super(WNEntities.SEAT, level);

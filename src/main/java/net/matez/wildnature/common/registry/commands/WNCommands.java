@@ -7,14 +7,14 @@
 package net.matez.wildnature.common.registry.commands;
 
 import com.mojang.brigadier.CommandDispatcher;
-import net.matez.wildnature.common.log.WNLogger;
+import net.matez.wildnature.api.util.log.SimpleLogger;
 import net.matez.wildnature.common.objects.commands.dev.WNCommandDev;
 import net.matez.wildnature.setup.WildNature;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 
 public class WNCommands {
-    private static final WNLogger log = WildNature.getLogger();
+    private static final SimpleLogger log = WildNature.getLogger();
 
     public static void register(CommandDispatcher<CommandSourceStack> dispatcher) {
         var main = Commands.literal("wn");

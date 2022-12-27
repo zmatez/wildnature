@@ -7,7 +7,7 @@
 package net.matez.wildnature.common.managers.structure.server;
 
 import net.matez.wildnature.common.managers.structure.WNDevStructureSelection;
-import net.matez.wildnature.common.networking.packets.WNDevStructurePacket;
+import net.matez.wildnature.api.networking.packets.WNDevStructurePacket;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 

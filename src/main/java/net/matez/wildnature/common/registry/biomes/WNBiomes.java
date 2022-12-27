@@ -6,7 +6,7 @@
 
 package net.matez.wildnature.common.registry.biomes;
 
-import net.matez.wildnature.common.log.WNLogger;
+import net.matez.wildnature.api.util.log.SimpleLogger;
 import net.matez.wildnature.common.objects.biomes.setup.WNBiome;
 import net.matez.wildnature.common.objects.initializer.InitStage;
 import net.matez.wildnature.common.objects.initializer.Initialize;
@@ -23,7 +23,7 @@ public class WNBiomes {
     public static final LinkedHashMap<ResourceLocation, Feature<?>> FEATURES = new LinkedHashMap<>();
     //#------------------
     //public static final WNBiome TEST = register(new WNTestBiome(location("test")));
-    private static final WNLogger log = WildNature.getLogger();
+    private static final SimpleLogger log = WildNature.getLogger();
 
     //#------------------
     public static ResourceLocation location(String name) {

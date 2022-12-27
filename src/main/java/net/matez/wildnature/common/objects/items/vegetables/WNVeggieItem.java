@@ -6,7 +6,7 @@
 
 package net.matez.wildnature.common.objects.items.vegetables;
 
-import net.matez.wildnature.common.log.WNLogger;
+import net.matez.wildnature.api.util.log.SimpleLogger;
 import net.matez.wildnature.common.objects.items.setup.WNItem;
 import net.matez.wildnature.data.item_models.WNItemModel_Generated;
 import net.matez.wildnature.data.setup.base.WNResource;
@@ -23,7 +23,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class WNVeggieItem extends WNItem {
     private final Veggie veggie;
-    private static final WNLogger log = WildNature.getLogger();
+    private static final SimpleLogger log = WildNature.getLogger();
 
     public WNVeggieItem(ResourceLocation location, Properties properties, Veggie veggie) {
         super(location, properties);

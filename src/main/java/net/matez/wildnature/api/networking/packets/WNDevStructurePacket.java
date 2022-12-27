@@ -4,12 +4,12 @@
  * Consider supporting this project on Patreon: https://patreon.com/wildnaturemod
  */
 
-package net.matez.wildnature.common.networking.packets;
+package net.matez.wildnature.api.networking.packets;
 
-import net.matez.wildnature.common.log.WNLogger;
+import net.matez.wildnature.api.util.log.SimpleLogger;
 import net.matez.wildnature.common.managers.structure.client.WNDevClientStructureManager;
 import net.matez.wildnature.common.managers.structure.client.WNDevClientStructureSelection;
-import net.matez.wildnature.common.networking.WNPacket;
+import net.matez.wildnature.api.networking.WNPacket;
 import net.matez.wildnature.setup.WildNature;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
@@ -25,7 +25,7 @@ import java.util.UUID;
 import java.util.function.Supplier;
 
 public class WNDevStructurePacket extends WNPacket<WNDevStructurePacket> {
-    private static final WNLogger log = WildNature.getLogger();
+    private static final SimpleLogger log = WildNature.getLogger();
     @Nullable
     private final BlockPos pos1, pos2;
     private final UUID owner;

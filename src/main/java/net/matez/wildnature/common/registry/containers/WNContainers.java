@@ -6,7 +6,7 @@
 
 package net.matez.wildnature.common.registry.containers;
 
-import net.matez.wildnature.common.log.WNLogger;
+import net.matez.wildnature.api.util.log.SimpleLogger;
 import net.matez.wildnature.common.objects.containers.backpack.WNBackpackMenuBig;
 import net.matez.wildnature.common.objects.containers.backpack.WNBackpackMenuMedium;
 import net.matez.wildnature.common.objects.containers.backpack.WNBackpackMenuSmall;
@@ -21,7 +21,7 @@ import java.util.LinkedHashMap;
 
 @Initialize(InitStage.REG_MENUS)
 public class WNContainers {
-    private static final WNLogger log = WildNature.getLogger();
+    private static final SimpleLogger log = WildNature.getLogger();
 
     //# --- ALL BLOCK ENTITIES  ---
     public static final LinkedHashMap<ResourceLocation, MenuType<?>> MENU_TYPES = new LinkedHashMap<>();

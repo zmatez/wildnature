@@ -6,7 +6,7 @@
 
 package net.matez.wildnature.common.registry.items;
 
-import net.matez.wildnature.common.log.WNLogger;
+import net.matez.wildnature.api.util.log.SimpleLogger;
 import net.matez.wildnature.common.objects.blocks.crops.CropType;
 import net.matez.wildnature.common.objects.initializer.InitStage;
 import net.matez.wildnature.common.objects.initializer.Initialize;
@@ -42,7 +42,7 @@ import java.util.LinkedHashMap;
 
 @Initialize(InitStage.REG_ITEMS)
 public class WNItems {
-    private static final WNLogger log = WildNature.getLogger();
+    private static final SimpleLogger log = WildNature.getLogger();
 
     //# --- ALL ITEMS ---
     public static final LinkedHashMap<ResourceLocation, IWNItem> ITEMS = new LinkedHashMap<>();

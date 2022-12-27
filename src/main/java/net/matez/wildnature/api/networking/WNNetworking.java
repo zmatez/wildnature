@@ -4,9 +4,9 @@
  * Consider supporting this project on Patreon: https://patreon.com/wildnaturemod
  */
 
-package net.matez.wildnature.common.networking;
+package net.matez.wildnature.api.networking;
 
-import net.matez.wildnature.common.networking.packets.WNDevStructurePacket;
+import net.matez.wildnature.api.networking.packets.WNDevStructurePacket;
 import net.matez.wildnature.setup.WildNature;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.network.NetworkDirection;

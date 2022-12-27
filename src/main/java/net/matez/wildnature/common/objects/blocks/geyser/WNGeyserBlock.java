@@ -6,7 +6,7 @@
 
 package net.matez.wildnature.common.objects.blocks.geyser;
 
-import net.matez.wildnature.common.log.WNLogger;
+import net.matez.wildnature.api.util.log.SimpleLogger;
 import net.matez.wildnature.common.objects.blockentities.geyser.WNGeyserBlockEntity;
 import net.matez.wildnature.common.objects.blocks.basic.WNBaseEntityBlock;
 import net.matez.wildnature.common.objects.blocks.setup.WNBlock;
@@ -52,7 +52,7 @@ public class WNGeyserBlock extends WNBaseEntityBlock {
 
     public static final BooleanProperty SINGLE = WNBlockProperties.SINGLE;
     public static final BooleanProperty HYDROTHERMAL = WNBlockProperties.HYDROTHERMAL;
-    private static final WNLogger log = WildNature.getLogger();
+    private static final SimpleLogger log = WildNature.getLogger();
 
     public WNGeyserBlock(ResourceLocation location, Properties properties) {
         super(location, properties);

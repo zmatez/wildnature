@@ -6,7 +6,7 @@
 
 package net.matez.wildnature.common.events;
 
-import net.matez.wildnature.common.log.WNLogger;
+import net.matez.wildnature.api.util.log.SimpleLogger;
 import net.matez.wildnature.setup.WildNature;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
@@ -22,7 +22,7 @@ import java.util.LinkedHashMap;
 public class SilverBurnEvent {
     public static LinkedHashMap<LivingEntity, Integer> SILVER_BURNS = new LinkedHashMap<>();
     private static int tick = 0;
-    private static final WNLogger log = WildNature.getLogger();
+    private static final SimpleLogger log = WildNature.getLogger();
 
     @SubscribeEvent
     public static void onServerTick(TickEvent.ServerTickEvent event){

@@ -6,7 +6,7 @@
 
 package net.matez.wildnature.common.objects.structures;
 
-import net.matez.wildnature.common.log.WNLogger;
+import net.matez.wildnature.api.util.log.SimpleLogger;
 import net.matez.wildnature.common.objects.structures.types.WNFallenTreeStructure;
 import net.matez.wildnature.common.objects.structures.types.WNTreeStructure;
 import net.matez.wildnature.setup.WildNature;
@@ -21,7 +21,7 @@ public class WNStructures {
     //# ---------------
     protected static final String directory = "wn_structures";
     protected static final String extension = ".wnstruct";
-    private static final WNLogger log = WildNature.getLogger();
+    private static final SimpleLogger log = WildNature.getLogger();
     private static final LinkedHashMap<String, StructureSupplier> SUPPLIERS = new LinkedHashMap<>();
 
     static {

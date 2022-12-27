@@ -11,7 +11,7 @@ import net.matez.wildnature.common.objects.structures.WNStructure;
 import net.matez.wildnature.common.objects.tags.WNTags;
 import net.matez.wildnature.common.registry.blocks.WNBlocks;
 import net.matez.wildnature.common.registry.setup.WNRenderType;
-import net.matez.wildnature.common.util.WeightedList;
+import net.matez.wildnature.api.util.WeightedList;
 import net.matez.wildnature.data.block_models.WNBlockModel_CubeAll;
 import net.matez.wildnature.data.blockstates.WNBlockstate_Cube;
 import net.matez.wildnature.data.item_models.WNItemModel_BlockParent;

@@ -55,29 +55,29 @@ public class WNChatUtil {
 
     public static MutableComponent getLogo() {
         return
-                new TextComponent("[")
+                Component.literal("[")
                         .withStyle(WNChatUtil.format(WNChatUtil.GRAY_COLOR).withBold(false))
-                        .append(new TextComponent("WN")
+                        .append(Component.literal("WN")
                                 .withStyle(WNChatUtil.format(WNChatUtil.ACCENT_COLOR).withBold(true)
                                         .withClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://wildnaturemod.com"))
                                         .withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT,
-                                                new TextComponent("WildNature Mod\n").withStyle(WNChatUtil.format(ACCENT_COLOR))
-                                                        .append(new TextComponent("v" + WildNature.getVersion() + "\n").withStyle(WNChatUtil.format(DARK_ACCENT_COLOR)))
-                                                        .append(new TextComponent("---\n").withStyle(WNChatUtil.format(GRAY_COLOR)))
-                                                        .append(new TextComponent("Click to go to the official page").withStyle(WNChatUtil.format(BRIGHT_ACCENT_COLOR)))
+                                                Component.literal("WildNature Mod\n").withStyle(WNChatUtil.format(ACCENT_COLOR))
+                                                        .append(Component.literal("v" + WildNature.getVersion() + "\n").withStyle(WNChatUtil.format(DARK_ACCENT_COLOR)))
+                                                        .append(Component.literal("---\n").withStyle(WNChatUtil.format(GRAY_COLOR)))
+                                                        .append(Component.literal("Click to go to the official page").withStyle(WNChatUtil.format(BRIGHT_ACCENT_COLOR)))
                                         ))
                                 ))
-                        .append(new TextComponent("] ")
+                        .append(Component.literal("] ")
                                 .withStyle(WNChatUtil.format(WNChatUtil.GRAY_COLOR).withBold(false)))
-                        .append(new TextComponent("").withStyle(WNChatUtil.format(WNChatUtil.BRIGHT_ACCENT_COLOR)));
+                        .append(Component.literal("").withStyle(WNChatUtil.format(WNChatUtil.BRIGHT_ACCENT_COLOR)));
     }
 
     public static MutableComponent getHeader(String title) {
-        return new TextComponent("------------ ").withStyle(WNChatUtil.format(WNChatUtil.GRAY_COLOR).withBold(false))
-                .append(new TextComponent("WN").withStyle(WNChatUtil.format(WNChatUtil.ACCENT_COLOR).withBold(true)))
-                .append(new TextComponent(" >> ").withStyle(WNChatUtil.format(WNChatUtil.GRAY_COLOR).withBold(false)))
-                .append(new TextComponent(title).withStyle(WNChatUtil.format(WNChatUtil.ACCENT_COLOR).withBold(false)))
-                .append(new TextComponent(" ------------\n").withStyle(WNChatUtil.format(WNChatUtil.GRAY_COLOR).withBold(false)))
+        return Component.literal("------------ ").withStyle(WNChatUtil.format(WNChatUtil.GRAY_COLOR).withBold(false))
+                .append(Component.literal("WN").withStyle(WNChatUtil.format(WNChatUtil.ACCENT_COLOR).withBold(true)))
+                .append(Component.literal(" >> ").withStyle(WNChatUtil.format(WNChatUtil.GRAY_COLOR).withBold(false)))
+                .append(Component.literal(title).withStyle(WNChatUtil.format(WNChatUtil.ACCENT_COLOR).withBold(false)))
+                .append(Component.literal(" ------------\n").withStyle(WNChatUtil.format(WNChatUtil.GRAY_COLOR).withBold(false)))
                 ;
     }
 
@@ -100,11 +100,11 @@ public class WNChatUtil {
                 footer += "-";
             }
         }
-        return new TextComponent(footer).withStyle(WNChatUtil.format(WNChatUtil.GRAY_COLOR).withBold(false));
+        return Component.literal(footer).withStyle(WNChatUtil.format(WNChatUtil.GRAY_COLOR).withBold(false));
     }
 
     public static MutableComponent lineStarter() {
-        return new TextComponent("- ").withStyle(WNChatUtil.format(WNChatUtil.GRAY_COLOR));
+        return Component.literal("- ").withStyle(WNChatUtil.format(WNChatUtil.GRAY_COLOR));
     }
 
     public static MutableComponent lineStarter(int count) {
@@ -112,7 +112,7 @@ public class WNChatUtil {
         for (int i = 0; i < count; i++) {
             start += "-";
         }
-        return new TextComponent(start + " ").withStyle(WNChatUtil.format(WNChatUtil.GRAY_COLOR));
+        return Component.literal(start + " ").withStyle(WNChatUtil.format(WNChatUtil.GRAY_COLOR));
     }
     // -------------------------------------
 
@@ -139,17 +139,17 @@ public class WNChatUtil {
 
     public static void send(Player player, String message, boolean success) {
         MutableComponent component = getLogo().append(parseMessage(message, success ? BRIGHT_ACCENT_COLOR : FAIL_COLOR));
-        player.sendMessage(component, Util.NIL_UUID);
+        player.displayClientMessage(component, true);
     }
 
     public static void send(Player player, MutableComponent component) {
-        player.sendMessage(component, Util.NIL_UUID);
+        player.displayClientMessage(component, true);
     }
 
     // -------------------------------------
 
     public static MutableComponent parseMessage(String message, String defaultColor) {
-        MutableComponent component = new TextComponent("");
+        MutableComponent component = Component.literal("");
         StringBuilder prev = new StringBuilder();
         Style defaultStyle = format(defaultColor)
                 .withBold(false)
@@ -211,7 +211,7 @@ public class WNChatUtil {
                     }
 
                     if (changeStyle && success) {
-                        component.append(new TextComponent(prev.toString()).withStyle(style));
+                        component.append(Component.literal(prev.toString()).withStyle(style));
                         style = newStyle;
                         prev = new StringBuilder();
                     }
@@ -227,7 +227,7 @@ public class WNChatUtil {
             prev.append(c);
         }
         if (!prev.isEmpty()) {
-            component.append(new TextComponent(prev.toString()).withStyle(style));
+            component.append(Component.literal(prev.toString()).withStyle(style));
         }
         return component.append("").withStyle(ChatFormatting.RESET);
     }

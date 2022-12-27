@@ -4,7 +4,10 @@
  * Consider supporting this project on Patreon: https://patreon.com/wildnaturemod
  */
 
-package net.matez.wildnature.common.util;
+package net.matez.wildnature.api.util;
+
+import net.matez.wildnature.common.util.WNUtil;
+import net.minecraft.util.RandomSource;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -21,7 +24,7 @@ public class WeightedList<T> extends LinkedHashMap<T, Integer> {
         return null;
     }
 
-    public T getWeightedEntry(Random rand) {
+    public T getWeightedEntry(RandomSource rand) {
         if (!(size() == 0)) {
             var objects = new ArrayList<>(this.keySet());
             int x = WNUtil.rint(0, objects.size() - 1, rand);

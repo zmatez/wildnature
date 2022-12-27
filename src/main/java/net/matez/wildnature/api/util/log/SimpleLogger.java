@@ -4,18 +4,20 @@
  * Consider supporting this project on Patreon: https://patreon.com/wildnaturemod
  */
 
-package net.matez.wildnature.common.log;
+package net.matez.wildnature.api.util.log;
+
+import net.matez.wildnature.api.util.ConsoleColors;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class WNLogger {
+public final class SimpleLogger {
     private final boolean debugMode;
     private static boolean progressPending = false;
     private static boolean lastMessageIsAProgress = false;
 
-    public WNLogger(boolean debug) {
+    public SimpleLogger(boolean debug) {
         this.debugMode = debug;
     }
 

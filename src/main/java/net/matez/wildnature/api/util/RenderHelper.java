@@ -4,16 +4,21 @@
  * Consider supporting this project on Patreon: https://patreon.com/wildnaturemod
  */
 
-package net.matez.wildnature.common.util;
+package net.matez.wildnature.api.util;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import com.mojang.math.Matrix3f;
-import com.mojang.math.Matrix4f;
 import net.minecraft.client.renderer.LevelRenderer;
 import net.minecraft.world.phys.AABB;
+import org.joml.Matrix3f;
+import org.joml.Matrix4f;
 
-public class WNRenderUtils {
+public final class RenderHelper {
+
+    private RenderHelper() {
+    }
+
+
     public static void drawBoundingBox(PoseStack matrixStackIn, VertexConsumer bufferIn, AABB boundingBox, int red, int green, int blue, int alpha) {
         LevelRenderer.renderLineBox(matrixStackIn, bufferIn, boundingBox.minX, boundingBox.minY, boundingBox.minZ, boundingBox.maxX, boundingBox.maxY, boundingBox.maxZ, red / 255f, green / 255f, blue / 255f, alpha / 255f);
     }

@@ -11,8 +11,8 @@ import com.google.gson.GsonBuilder;
 import net.matez.wildnature.client.objects.blocks.WNBlockRenderer;
 import net.matez.wildnature.client.registry.screen.WNScreenMenuBindings;
 import net.matez.wildnature.client.registry.setup.WNClientRegistry;
-import net.matez.wildnature.common.log.WNLogger;
-import net.matez.wildnature.common.networking.WNNetworking;
+import net.matez.wildnature.api.util.log.SimpleLogger;
+import net.matez.wildnature.api.networking.WNNetworking;
 import net.matez.wildnature.common.objects.initializer.InitStage;
 import net.matez.wildnature.common.objects.initializer.NewInitializer;
 import net.matez.wildnature.common.objects.structures.WNStructures;
@@ -42,7 +42,7 @@ public class WildNature {
             .disableHtmlEscaping()
             .create();
 
-    private static final WNLogger log = getLogger();
+    private static final SimpleLogger log = getLogger();
     public final NewInitializer initializer;
     public String version = "3.1_a1";
     //---
@@ -59,8 +59,6 @@ public class WildNature {
         instance = this;
         startTime = System.currentTimeMillis();
         log.progress("Starting WildNature Mod");
-        initializer = new NewInitializer();
-        initializer.prepare();
 
         //# --- EVENT BUS ---
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::construct);
@@ -139,8 +137,8 @@ public class WildNature {
         WNStructures.load(event.getServer().getResourceManager());
     }
 
-    public static WNLogger getLogger() {
-        return new WNLogger(debugMode);
+    public static SimpleLogger getLogger() {
+        return new SimpleLogger(debugMode);
     }
 
     public static void doOnClient(Callback callback) {

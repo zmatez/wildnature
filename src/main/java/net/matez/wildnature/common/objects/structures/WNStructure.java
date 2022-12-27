@@ -12,7 +12,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import net.matez.wildnature.common.log.WNLogger;
+import net.matez.wildnature.api.util.log.SimpleLogger;
 import net.matez.wildnature.common.objects.blocks.setup.WNBlock;
 import net.matez.wildnature.setup.WildNature;
 import net.minecraft.commands.arguments.blocks.BlockStateParser;
@@ -37,7 +37,7 @@ import java.util.function.Function;
 import java.util.zip.InflaterInputStream;
 
 public class WNStructure {
-    private static final WNLogger log = WildNature.getLogger();
+    private static final SimpleLogger log = WildNature.getLogger();
 
     protected final ResourceLocation location;
     protected final LinkedHashMap<BlockPos, BlockState> blocks = new LinkedHashMap<>();

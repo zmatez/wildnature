@@ -8,7 +8,7 @@ package net.matez.wildnature.client.objects.render.blockentities.table;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Vector3f;
-import net.matez.wildnature.common.log.WNLogger;
+import net.matez.wildnature.api.util.log.SimpleLogger;
 import net.matez.wildnature.common.objects.blockentities.table.WNTableBlockEntity;
 import net.matez.wildnature.setup.WildNature;
 import net.minecraft.client.Minecraft;
@@ -22,7 +22,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
 public class WNTableBlockEntityRenderer implements BlockEntityRenderer<WNTableBlockEntity> {
-    private static final WNLogger log = WildNature.getLogger();
+    private static final SimpleLogger log = WildNature.getLogger();
 
     public WNTableBlockEntityRenderer(BlockEntityRendererProvider.Context context){}
 

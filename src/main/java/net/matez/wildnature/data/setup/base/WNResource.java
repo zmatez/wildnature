@@ -6,7 +6,7 @@
 
 package net.matez.wildnature.data.setup.base;
 
-import net.matez.wildnature.common.log.WNLogger;
+import net.matez.wildnature.api.util.log.SimpleLogger;
 import net.matez.wildnature.setup.WildNature;
 import org.jetbrains.annotations.Nullable;
 
@@ -17,7 +17,7 @@ public abstract class WNResource {
     private final LinkedHashMap<String, Param<?>> params = new LinkedHashMap<>();
     public static String modid;
     private final String name;
-    private static final WNLogger log = WildNature.getLogger();
+    private static final SimpleLogger log = WildNature.getLogger();
 
     public WNResource(String name){
         this.name = name;

@@ -6,7 +6,7 @@
 
 package net.matez.wildnature.common.registry.entities;
 
-import net.matez.wildnature.common.log.WNLogger;
+import net.matez.wildnature.api.util.log.SimpleLogger;
 import net.matez.wildnature.common.objects.entities.seat.WNSeatEntity;
 import net.matez.wildnature.common.objects.initializer.InitStage;
 import net.matez.wildnature.common.objects.initializer.Initialize;
@@ -21,7 +21,7 @@ import java.util.function.Supplier;
 
 @Initialize(InitStage.REG_ENTITIES)
 public class WNEntities {
-    private static final WNLogger log = WildNature.getLogger();
+    private static final SimpleLogger log = WildNature.getLogger();
 
     //# --- ALL BLOCK ENTITIES  ---
     public static final LinkedHashMap<ResourceLocation, EntityType<?>> ENTITY_TYPES = new LinkedHashMap<>();

@@ -1,6 +1,8 @@
-package net.matez.wildnature.common.log;
+package net.matez.wildnature.api.util;
 
-public class ConsoleColors {
+public final class ConsoleColors {
+
+
     // Reset
     public static final String RESET = "\033[0m";  // Text Reset
 

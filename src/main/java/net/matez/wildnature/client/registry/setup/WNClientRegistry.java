@@ -8,7 +8,7 @@ package net.matez.wildnature.client.registry.setup;
 
 import net.matez.wildnature.client.registry.blockentities.WNBlockEntityRenderers;
 import net.matez.wildnature.client.registry.entities.WNEntityRenderers;
-import net.matez.wildnature.common.log.WNLogger;
+import net.matez.wildnature.api.util.log.SimpleLogger;
 import net.matez.wildnature.common.objects.initializer.InitStage;
 import net.matez.wildnature.common.registry.particles.WNParticles;
 import net.matez.wildnature.setup.WildNature;
@@ -21,7 +21,7 @@ import net.minecraftforge.fml.common.Mod;
 @OnlyIn(Dist.CLIENT)
 @Mod.EventBusSubscriber(bus=Mod.EventBusSubscriber.Bus.MOD,value=Dist.CLIENT)
 public class WNClientRegistry {
-    private static final WNLogger log = WildNature.getLogger();
+    private static final SimpleLogger log = WildNature.getLogger();
 
     public static void registerParticleFactories(final ParticleFactoryRegisterEvent event) {
         log.progress("Registering particle factories");

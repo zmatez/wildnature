@@ -7,6 +7,7 @@
 package net.matez.wildnature.common.util;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.phys.Vec3;
 
 import java.util.Random;
@@ -26,6 +27,18 @@ public class WNUtil {
     }
 
     public static int rint(int min, int max, Random rand) {
+        if (min == max) {
+            return min;
+        }
+
+        if (min >= max) {
+            return max;
+        }
+
+        return rand.nextInt((max - min) + 1) + min;
+    }
+
+    public static int rint(int min, int max, RandomSource rand) {
         if (min == max) {
             return min;
         }

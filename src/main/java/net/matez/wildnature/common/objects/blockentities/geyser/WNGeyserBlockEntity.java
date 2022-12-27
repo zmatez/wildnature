@@ -6,7 +6,7 @@
 
 package net.matez.wildnature.common.objects.blockentities.geyser;
 
-import net.matez.wildnature.common.log.WNLogger;
+import net.matez.wildnature.api.util.log.SimpleLogger;
 import net.matez.wildnature.common.objects.blocks.geyser.WNGeyserBlock;
 import net.matez.wildnature.common.registry.blockentities.WNBlockEntities;
 import net.matez.wildnature.common.registry.particles.WNParticles;
@@ -32,7 +32,7 @@ import net.minecraft.world.phys.Vec3;
 import java.util.LinkedHashMap;
 
 public class WNGeyserBlockEntity extends BlockEntity {
-    private static final WNLogger log = WildNature.getLogger();
+    private static final SimpleLogger log = WildNature.getLogger();
     private final LinkedHashMap<BlockPos, BlockState> CONNECTED_GEYSERS = new LinkedHashMap<>();
     private boolean isLocalLeader = true;
     private int statePercentage = 0; // 0 - 100(explosion)

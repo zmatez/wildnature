@@ -4,7 +4,7 @@
  * Consider supporting this project on Patreon: https://patreon.com/wildnaturemod
  */
 
-package net.matez.wildnature.common.networking;
+package net.matez.wildnature.api.networking;
 
 import net.minecraft.network.FriendlyByteBuf;
 

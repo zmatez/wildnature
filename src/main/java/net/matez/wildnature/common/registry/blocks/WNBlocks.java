@@ -6,7 +6,7 @@
 
 package net.matez.wildnature.common.registry.blocks;
 
-import net.matez.wildnature.common.log.WNLogger;
+import net.matez.wildnature.api.util.log.SimpleLogger;
 import net.matez.wildnature.common.objects.blocks.cave_plants.CavePlantType;
 import net.matez.wildnature.common.objects.blocks.crops.CropType;
 import net.matez.wildnature.common.objects.blocks.crops.WNCropTypedBlock;
@@ -73,7 +73,7 @@ import java.util.LinkedHashMap;
 
 @Initialize(InitStage.REG_BLOCKS)
 public class WNBlocks {
-    private static final WNLogger log = WildNature.getLogger();
+    private static final SimpleLogger log = WildNature.getLogger();
 
     //# --- ALL BLOCKS ---
     public static final LinkedHashMap<ResourceLocation, WNBlock> BLOCKS = new LinkedHashMap<>();
