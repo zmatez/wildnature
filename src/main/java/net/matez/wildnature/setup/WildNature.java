@@ -8,16 +8,14 @@ package net.matez.wildnature.setup;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import net.matez.wildnature.client.objects.blocks.WNBlockRenderer;
-import net.matez.wildnature.client.registry.screen.WNScreenMenuBindings;
-import net.matez.wildnature.client.registry.setup.WNClientRegistry;
+import net.matez.wildnature.core.registry.WNScreenMenuBindings;
 import net.matez.wildnature.api.util.log.SimpleLogger;
 import net.matez.wildnature.api.networking.WNNetworking;
 import net.matez.wildnature.common.objects.initializer.InitStage;
 import net.matez.wildnature.common.objects.initializer.NewInitializer;
-import net.matez.wildnature.common.objects.structures.WNStructures;
-import net.matez.wildnature.common.registry.commands.WNCommandArguments;
-import net.matez.wildnature.common.registry.commands.WNCommands;
+import net.matez.wildnature.common.structures.WNStructures;
+import net.matez.wildnature.common.command.WNCommandArguments;
+import net.matez.wildnature.core.registry.WNCommands;
 import net.matez.wildnature.data.setup.DataGenType;
 import net.matez.wildnature.data.setup.WNDataGenerator;
 import net.minecraftforge.common.MinecraftForge;
@@ -43,12 +41,11 @@ public class WildNature {
             .create();
 
     private static final SimpleLogger log = getLogger();
-    public final NewInitializer initializer;
     public String version = "3.1_a1";
     //---
     private final long startTime;
 
-    private ArrayList<Callback> clientCallbacks = new ArrayList<>();
+    private ArrayList<Runnable> clientCallbacks = new ArrayList<>();
 
     //! change this for data gen
     public WNDataGenerator dataGenerator;
@@ -72,7 +69,6 @@ public class WildNature {
         //# -----------------
 
         MinecraftForge.EVENT_BUS.register(this);
-        initializer.init(InitStage.START);
     }
 
     private void construct(final FMLConstructModEvent event) {
@@ -93,14 +89,11 @@ public class WildNature {
     private void clientSetup(final FMLClientSetupEvent event) {
         log.progress("WildNature Client Setup");
         WNBlockRenderer.registerAll();
-        initializer.init(InitStage.CLIENT);
 
         WNScreenMenuBindings.register();
 
         log.log("Running " + clientCallbacks.size() + " client callbacks.");
-        for (Callback clientCallback : clientCallbacks) {
-            clientCallback.call();
-        }
+        clientCallbacks.forEach(Runnable::run);
         log.success("WildNature Client Setup Complete");
     }
 
@@ -141,7 +134,7 @@ public class WildNature {
         return new SimpleLogger(debugMode);
     }
 
-    public static void doOnClient(Callback callback) {
+    public static void doOnClient(Runnable callback) {
         WildNature.instance.clientCallbacks.add(callback);
     }
 

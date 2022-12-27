@@ -6,18 +6,16 @@
 
 package net.matez.wildnature.api.util;
 
-import net.matez.wildnature.common.util.WNUtil;
 import net.minecraft.util.RandomSource;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
-import java.util.Random;
 
 public class WeightedList<T> extends LinkedHashMap<T, Integer> {
     public T getWeightedEntry() {
         if (!(size() == 0)) {
             var objects = new ArrayList<>(this.keySet());
-            int x = WNUtil.rint(0, objects.size() - 1);
+            int x = ExtraMath.rint(0, objects.size() - 1);
 
             return objects.get(x);
         }
@@ -27,7 +25,7 @@ public class WeightedList<T> extends LinkedHashMap<T, Integer> {
     public T getWeightedEntry(RandomSource rand) {
         if (!(size() == 0)) {
             var objects = new ArrayList<>(this.keySet());
-            int x = WNUtil.rint(0, objects.size() - 1, rand);
+            int x = ExtraMath.rint(0, objects.size() - 1, rand);
 
             return objects.get(x);
         }

@@ -6,8 +6,8 @@
 
 package net.matez.wildnature.mixin;
 
-import net.matez.wildnature.common.objects.particles.setup.WNParticleProvider;
-import net.matez.wildnature.common.registry.particles.WNParticles;
+import net.matez.wildnature.client.particle.setup.WNParticleProvider;
+import net.matez.wildnature.core.registry.WNParticles;
 import net.minecraft.client.particle.ParticleEngine;
 import net.minecraft.client.particle.ParticleProvider;
 import net.minecraft.core.particles.ParticleOptions;

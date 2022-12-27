@@ -1,0 +1,49 @@
+/*
+ * Copyright (c) matez.net 2022.
+ * All rights reserved.
+ * Consider supporting this project on Patreon: https://patreon.com/wildnaturemod
+ */
+
+package net.matez.wildnature.core.registry;
+
+import net.matez.wildnature.api.util.log.SimpleLogger;
+import net.matez.wildnature.common.entity.seat.WNSeatEntity;
+import net.matez.wildnature.common.objects.initializer.InitStage;
+import net.matez.wildnature.common.objects.initializer.Initialize;
+import net.matez.wildnature.setup.WildNature;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.MobCategory;
+
+import java.util.LinkedHashMap;
+import java.util.function.Supplier;
+
+@Initialize(InitStage.REG_ENTITIES)
+public class WNEntities {
+    private static final SimpleLogger log = WildNature.getLogger();
+
+    //# --- ALL BLOCK ENTITIES  ---
+    public static final LinkedHashMap<ResourceLocation, EntityType<?>> ENTITY_TYPES = new LinkedHashMap<>();
+    //#------------------
+
+    public static final EntityType<WNSeatEntity> SEAT = register(location("seat"), () -> {
+        return EntityType.Builder.<WNSeatEntity>of(WNSeatEntity::new, MobCategory.MISC).sized(0.25F, 0.25F).clientTrackingRange(4).noSummon().noSave();
+    });
+
+    //#------------------
+    public static ResourceLocation location(String name) {
+        return new ResourceLocation(WildNature.modid, name);
+    }
+
+    private static <T extends Entity> EntityType<T> register(ResourceLocation registryName, Supplier<EntityType.Builder<T>> builder) {
+        if (!WildNature.instance.initializer.isInitialized(InitStage.REG_ENTITIES)) {
+            return null;
+        }
+        EntityType<T> entityType = builder.get().build(registryName.toString());
+        entityType.setRegistryName(registryName);
+        ENTITY_TYPES.put(registryName, entityType);
+
+        return entityType;
+    }
+}
