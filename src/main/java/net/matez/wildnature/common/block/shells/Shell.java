@@ -6,7 +6,6 @@
 
 package net.matez.wildnature.common.block.shells;
 
-import net.matez.wildnature.common.block.ModelSupplier;
 import net.matez.wildnature.data.block_models.shells.*;
 import net.minecraft.world.level.material.MaterialColor;
 

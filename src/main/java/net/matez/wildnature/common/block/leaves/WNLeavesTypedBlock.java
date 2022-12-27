@@ -7,7 +7,6 @@
 package net.matez.wildnature.common.block.leaves;
 
 import net.matez.wildnature.common.block.leaves.stages.*;
-import net.matez.wildnature.common.block.ModelSupplier;
 import net.matez.wildnature.common.structures.WNStructure;
 import net.matez.wildnature.api.util.ExtraMath;
 import net.matez.wildnature.data.block_models.WNBlockModel_Leaves;

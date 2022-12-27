@@ -6,35 +6,18 @@
 
 package net.matez.wildnature.common.block.rocks;
 
-import net.matez.wildnature.common.tags.WNTags;
-import net.matez.wildnature.data.block_models.WNBlockModel_CubeAll;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.Item;
-import org.jetbrains.annotations.Nullable;
+import net.matez.wildnature.common.WNBlock;
+import net.minecraft.world.level.block.Block;
 
-public class WNRockBlock extends WNBlock {
+public class WNRockBlock extends Block implements WNBlock {
     private final RockType rockType;
 
-    public WNRockBlock(ResourceLocation location, Properties properties, RockType rockType) {
-        super(location, properties);
+    public WNRockBlock(Properties properties, RockType rockType) {
+        super(properties);
         this.rockType = rockType;
     }
 
-    public WNRockBlock(ResourceLocation location, Properties properties, Item.Properties itemProperties, RockType rockType) {
-        super(location, properties, itemProperties);
-        this.rockType = rockType;
-    }
-
-    public ModelList getBlockModels(){
-        return new ModelList()
-                .with(new WNBlockModel_CubeAll(this.getRegName()).with("texture",this.getTextureName("rocks/" + this.rockType.getIdBase())));
-    }
-
-    @Nullable
-    @Override
-    public WNTags.TagList getWNTags() {
-        return new WNTags.TagList(
-            WNTags.BASE_STONE_OVERWORLD, WNTags.FORGE_STONE, WNTags.MOSS_REPLACEABLE, WNTags.LUSH_GROUND_REPLACEABLE, WNTags.MINEABLE_PICKAXE
-        );
+    public RockType getRockType() {
+        return rockType;
     }
 }

@@ -18,6 +18,7 @@ import net.matez.wildnature.common.command.WNCommandArguments;
 import net.matez.wildnature.core.registry.WNCommands;
 import net.matez.wildnature.data.setup.DataGenType;
 import net.matez.wildnature.data.setup.WNDataGenerator;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.event.server.ServerAboutToStartEvent;
@@ -88,8 +89,6 @@ public class WildNature {
 
     private void clientSetup(final FMLClientSetupEvent event) {
         log.progress("WildNature Client Setup");
-        WNBlockRenderer.registerAll();
-
         WNScreenMenuBindings.register();
 
         log.log("Running " + clientCallbacks.size() + " client callbacks.");
@@ -106,17 +105,13 @@ public class WildNature {
     }
 
     private void finish(final FMLLoadCompleteEvent event) {
-        initializer.init(InitStage.FINISH);
-
         long ms = System.currentTimeMillis() - startTime;
         log.success("WildNature loaded in " + (ms / 1000) + "s");
     }
 
     private void setup(final FMLCommonSetupEvent event) {
         log.progress("WildNature Setup");
-        initializer.init(InitStage.SETUP);
         WNNetworking.register();
-
         log.success("WildNature Setup Complete");
     }
 
@@ -142,5 +137,9 @@ public class WildNature {
     public void onCommandsRegister(RegisterCommandsEvent event) {
         WNCommandArguments.register();
         WNCommands.register(event.getDispatcher());
+    }
+
+    public static ResourceLocation location(String name) {
+        return new ResourceLocation(WildNature.modid, name);
     }
 }

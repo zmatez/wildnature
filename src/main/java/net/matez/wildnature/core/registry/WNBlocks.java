@@ -7,6 +7,7 @@
 package net.matez.wildnature.core.registry;
 
 import net.matez.wildnature.api.util.log.SimpleLogger;
+import net.matez.wildnature.common.block.BlockFactory;
 import net.matez.wildnature.common.block.cave_plants.CavePlantType;
 import net.matez.wildnature.common.block.crops.CropType;
 import net.matez.wildnature.common.block.crops.WNCropTypedBlock;
@@ -50,40 +51,45 @@ import net.matez.wildnature.common.block.wood.vanilla.building.WNVanillaPlanksSt
 import net.matez.wildnature.common.block.wood.vanilla.furniture.WNVanillaBenchBlock;
 import net.matez.wildnature.common.block.wood.vanilla.furniture.WNVanillaChairBlock;
 import net.matez.wildnature.common.block.wood.vanilla.furniture.WNVanillaTableBlock;
-import net.matez.wildnature.common.objects.initializer.InitStage;
-import net.matez.wildnature.common.objects.initializer.Initialize;
 import net.matez.wildnature.common.item.vegetables.Veggie;
-import net.matez.wildnature.common.block.BlockRegisterCallback;
 import net.matez.wildnature.core.other.WNTabs;
 import net.matez.wildnature.setup.WildNature;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
 
 import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
-@Initialize(InitStage.REG_BLOCKS)
 public class WNBlocks {
     private static final SimpleLogger log = WildNature.getLogger();
+    public static final Supplier<Item.Properties> DEFAULT_PROPERTIES = Item.Properties::new;
 
-    //# --- ALL BLOCKS ---
-    public static final LinkedHashMap<ResourceLocation, WNBlock> BLOCKS = new LinkedHashMap<>();
-    public static final LinkedHashMap<ResourceLocation, WNBlockItem> BLOCK_ITEMS = new LinkedHashMap<>();
+    //# BLOCK REGISTRY #\\
+    public static final DeferredRegister<Block> REGISTRY = DeferredRegister.create(ForgeRegistries.BLOCKS, WildNature.modid);
 
-    //#-------------------
-    //?---
-    //# --- ENUM MAPS ---
 
-    //################# WOODEN STUFF
-    public static final LinkedHashMap<LogType, WNBlock> LOGS = register(LogType.values(), (value) -> {
+    //#-------------- #\\
+    //# - ENUM MAPS - #\\
+    //#-------------- #\\
+    //# WOODEN STUFF #\\
+    public static final Map<LogType, Block> LOGS = register(LogType.values(), (value) -> {
         //todo different strength for logs
         return new WNLogBlock(
                 location(value.getIdBase() + "_log"),
@@ -924,8 +930,7 @@ public class WNBlocks {
                     .strength(1.8F, 4F)
                     .sound(SoundType.STONE)
                     .requiresCorrectToolForDrops(),
-            new Item.Properties()
-                    .tab(WNTabs.TAB_CAVES)
+            new Item.Properties().tab(WNTabs.TAB_CAVES)
     ));
     public static final LinkedHashMap<RockType, WNBlock> ROCK_SLABS = register(RockType.values(), (value) -> {
         return new WNRockSlabBlock(
@@ -1134,68 +1139,48 @@ public class WNBlocks {
                 value, () -> ROCKS_BRICKS_MOSSY.get(value)
         );
     });
-    public static final LinkedHashMap<RockType, WNBlock> ROCK_BRICK_MOSSY_STAIRS = register(RockType.values(), (value) -> {
+    public static final LinkedHashMap<RockType, RegistryObject<Block>> ROCK_BRICK_MOSSY_STAIRS = linkEnumAndRegister(RockType.values(), rockType -> rockType.getIdBase() + "brick_mossy_stairs", (value) -> {
         if (value.isPoor()) {
             return null;
         }
-        return new WNRockStairBlock(
-                location(value.getIdBase() + "_brick_mossy_stairs"),
+        return new StairBlock(ROCKS_BRICKS_MOSSY.get(value),
                 BlockBehaviour.Properties.of(Material.STONE, value.getColor())
                         .strength(value.isHard() ? HARD_ROCK_HARDNESS : 2F, 6F)
                         .sound(value.isHard() ? SoundType.DEEPSLATE : SoundType.STONE)
                         .requiresCorrectToolForDrops(),
-                new Item.Properties()
-                        .tab(WNTabs.TAB_ROCK_BUILDING),
-                value, () -> ROCKS_BRICKS_MOSSY.get(value)
         );
     });
-    public static final LinkedHashMap<RockType, WNBlock> ROCK_BRICK_MOSSY_WALL = register(RockType.values(), (value) -> {
+    public static final Map<RockType, RegistryObject<Block>> ROCK_BRICK_MOSSY_WALL = linkEnumAndRegister(RockType.values(), rockType -> rockType.getIdBase() + "brick_mossy_wall", (value) -> {
         if (value.isPoor()) {
             return null;
         }
         return new WNRockWallBlock(
-                location(value.getIdBase() + "_brick_mossy_wall"),
                 BlockBehaviour.Properties.of(Material.STONE, value.getColor())
                         .strength(value.isHard() ? HARD_ROCK_HARDNESS : 2F, 6F)
                         .sound(value.isHard() ? SoundType.DEEPSLATE : SoundType.STONE)
                         .requiresCorrectToolForDrops(),
-                new Item.Properties()
-                        .tab(WNTabs.TAB_ROCK_BUILDING),
-                value, () -> ROCKS_BRICKS_MOSSY.get(value)
+                value, ROCKS_BRICKS_MOSSY.get(value)
         );
     });
-    public static final LinkedHashMap<RockType, WNBlock> ROCKS_BRICKS_SMALL = register(RockType.values(), (value) -> {
+    public static final Map<RockType, RegistryObject<Block>> ROCKS_BRICKS_SMALL = linkEnumAndRegister(RockType.values(), rockType -> rockType.getIdBase() + "bricks_small", (value) -> {
         if (value.isPoor()) {
             return null;
         }
-        return new WNRockBlock(
-                location(value.getIdBase() + "_bricks_small"),
-                BlockBehaviour.Properties.of(Material.STONE, value.getColor())
+        return new WNRockBlock(BlockBehaviour.Properties.of(Material.STONE, value.getColor())
                         .strength(value.isHard() ? HARD_ROCK_HARDNESS : 2F, 6F)
                         .sound(value.isHard() ? SoundType.DEEPSLATE : SoundType.STONE)
-                        .requiresCorrectToolForDrops(),
-                new Item.Properties()
-                        .tab(WNTabs.TAB_ROCK_BUILDING),
-                value
-        );
-    });
-    //################# ORES
-    public static final LinkedHashMap<Ore, WNBlock> ORES = register(Ore.values(), (value) -> {
-        if(value.getType() == OreType.BLOCK || value.getType() == OreType.BLOCK_DEEPSLATE) {
+                        .requiresCorrectToolForDrops(), value);
+    }, DEFAULT_PROPERTIES);
+
+    //# ORES #\\
+    public static final Map<Ore, RegistryObject<Block>> ORES = linkEnumAndRegister(Ore.values(), Ore::getId, (value) -> {
+        if (value.getType() == OreType.BLOCK || value.getType() == OreType.BLOCK_DEEPSLATE) {
             BlockBehaviour.Properties prop = BlockBehaviour.Properties.of(Material.STONE, value.getType() == OreType.BLOCK ? MaterialColor.STONE : MaterialColor.DEEPSLATE)
                     .sound(value.getType() == OreType.BLOCK ? SoundType.STONE : SoundType.DEEPSLATE)
                     .requiresCorrectToolForDrops();
-
             prop = value.getPropertiesSupplier().getProperties(prop);
-
-            return new WNOreBlock(
-                    location(value.getId()),
-                    prop,
-                    new Item.Properties()
-                            .tab(WNTabs.TAB_CAVES),
-                    value
-            );
-        }else{
+            return new WNOreBlock(prop, value);
+        } else{
             BlockBehaviour.Properties prop = BlockBehaviour.Properties.of(Material.STONE, MaterialColor.STONE)
                     .sound(SoundType.AMETHYST)
                     .requiresCorrectToolForDrops()
@@ -1203,96 +1188,65 @@ public class WNBlocks {
 
             prop = value.getPropertiesSupplier().getProperties(prop);
 
-            if(value.getType() == OreType.FORMATION){
-                return new WNOreFormationBlock(
-                        location(value.getId()),
-                        prop,
-                        new Item.Properties()
-                                .tab(WNTabs.TAB_CAVES),
-                        value
-                );
-            }else{
-                return new WNOreDoubleFormationBlock(
-                        location(value.getId()),
-                        prop,
-                        new Item.Properties()
-                                .tab(WNTabs.TAB_CAVES),
-                        value
-                );
+            if (value.getType() == OreType.FORMATION){
+                return new WNOreFormationBlock(prop, value);
+            } else {
+                return new WNOreDoubleFormationBlock(prop, value);
             }
         }
-    });
-    public static final LinkedHashMap<GemBlock, WNBlock> GEM_BLOCKS = register(GemBlock.values(), (value) -> {
+    }, DEFAULT_PROPERTIES);
+    public static final Map<GemBlock, RegistryObject<Block>> GEM_BLOCKS = linkEnumAndRegister(GemBlock.values(), GemBlock::getId, (value) -> {
         BlockBehaviour.Properties prop = BlockBehaviour.Properties.of(Material.METAL)
                 .sound(SoundType.METAL);
-
         prop = value.getPropertiesSupplier().getProperties(prop);
 
         return new WNGemBlock(
-                location(value.getId()),
                 prop,
-                new Item.Properties()
-                        .tab(WNTabs.TAB_CAVES),
                 value
         );
-    });
+    }, DEFAULT_PROPERTIES);
+    public static final Map<Lantern, RegistryObject<Block>> LANTERNS = linkEnumAndRegister(Lantern.values(), Lantern::getId, (value) ->
+            new WNLanternBlock(
+            BlockBehaviour.Properties.of(Material.METAL)
+                    .strength(3.5F)
+                    .sound(SoundType.LANTERN)
+                    .noOcclusion()
+                    .requiresCorrectToolForDrops()
+                    .lightLevel((a) -> value.getLight()),
+                    value), DEFAULT_PROPERTIES);
 
-    public static final LinkedHashMap<Lantern, WNBlock> LANTERNS = register(Lantern.values(), (value) -> {
-        return new WNLanternBlock(
-                location(value.getId()),
-                BlockBehaviour.Properties.of(Material.METAL)
-                        .strength(3.5F)
-                        .sound(SoundType.LANTERN)
-                        .noOcclusion()
-                        .requiresCorrectToolForDrops()
-                        .lightLevel((a) -> value.getLight()),
-                new Item.Properties()
-                        .tab(WNTabs.TAB_FURNITURE),
-                value
-        );
-    });
-
-
-    //#------------------
-    //?---
-
-
-    public static final WNDevBlock DEV_STRUCTURE_CENTER = register(new WNDevBlock(
-            location("dev_structure_center"),
+    //# DEV BLOCKS #\\
+    public static final RegistryObject<Block> DEV_STRUCTURE_CENTER = registerStandaloneWithItem("dev_structure_center", () -> new WNDevBlock(
             BlockBehaviour.Properties.of(Material.AMETHYST, MaterialColor.DIAMOND)
                     .strength(999F)
-                    .sound(SoundType.AMETHYST),
-            new Item.Properties()
-                    .rarity(Rarity.EPIC)
-    ));
+                    .sound(SoundType.AMETHYST)),
+            new Item.Properties().rarity(Rarity.EPIC));
 
-    //!------------------
-    public static ResourceLocation location(String name) {
-        return new ResourceLocation(WildNature.modid, name);
+    //# UTILITY METHODS #\\
+    private static <T extends Block> RegistryObject<T> registerStandaloneWithItem(String name, Supplier<T> block, Item.Properties properties) {
+        RegistryObject<T> registered = REGISTRY.register(name, block);
+        WNItems.REGISTRY.register(name, () -> new BlockItem(registered.get(), properties));
+        return registered;
     }
 
-    private static <T extends WNBlock> T register(T block) {
-        if (!WildNature.instance.initializer.isInitialized(InitStage.REG_BLOCKS)) {
-            return null;
+    private static <T, U extends Block> Map<T, RegistryObject<U>> linkEnumAndRegister(T[] enumList, Function<T, String> nameGetter, BlockFactory<T, U> factory) {
+        Map<T, RegistryObject<U>> map = new LinkedHashMap<>();
+        for (T element : enumList) {
+            String name = nameGetter.apply(element);
+            RegistryObject<U> registered = REGISTRY.register(name, () -> factory.register(element));
+            map.put(element, registered);
         }
-        block.construct();
-        BLOCKS.put(block.getRegistryName(), block);
-        return block;
+        return map;
     }
 
-    private static <T, U extends WNBlock> LinkedHashMap<T, U> register(T[] list, BlockRegisterCallback<T, U> register) {
-        if (!WildNature.instance.initializer.isInitialized(InitStage.REG_BLOCKS)) {
-            return null;
+    private static <T, U extends Block> Map<T, RegistryObject<U>> linkEnumAndRegister(T[] enumList, Function<T, String> nameGetter, BlockFactory<T, U> factory, Supplier<Item.Properties> propertyGetter) {
+        Map<T, RegistryObject<U>> map = new LinkedHashMap<>();
+        for (T element : enumList) {
+            String name = nameGetter.apply(element);
+            RegistryObject<U> registered = REGISTRY.register(name, () -> factory.register(element));
+            map.put(element, registered);
+            WNItems.REGISTRY.register(name, () -> new BlockItem(registered.get(), propertyGetter.get()));
         }
-        LinkedHashMap<T, U> map = new LinkedHashMap<>();
-        for (T element : list) {
-            U result = register.register(element);
-            if (result != null) {
-                register(result);
-                map.put(element, result);
-            }
-        }
-
         return map;
     }
 

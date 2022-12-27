@@ -9,8 +9,6 @@ package net.matez.wildnature.core.registry;
 import net.matez.wildnature.api.util.log.SimpleLogger;
 import net.matez.wildnature.common.block.crops.CropType;
 import net.matez.wildnature.common.item.ItemRegisterCallback;
-import net.matez.wildnature.common.objects.initializer.InitStage;
-import net.matez.wildnature.common.objects.initializer.Initialize;
 import net.matez.wildnature.common.item.backpacks.Backpack;
 import net.matez.wildnature.common.item.backpacks.WNBackpackItem;
 import net.matez.wildnature.common.item.cotton.WNCottonItem;
@@ -34,15 +32,16 @@ import net.matez.wildnature.setup.WildNature;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.LinkedHashMap;
 
-@Initialize(InitStage.REG_ITEMS)
 public class WNItems {
     private static final SimpleLogger log = WildNature.getLogger();
 
     //# --- ALL ITEMS ---
-    public static final LinkedHashMap<ResourceLocation, IWNItem> ITEMS = new LinkedHashMap<>();
+    public static final DeferredRegister<Item> REGISTRY = DeferredRegister.create(ForgeRegistries.ITEMS, WildNature.modid);
     //#------------------
 
     public static final WNItem COTTON = register(new WNCottonItem(location("cotton"),new Item.Properties().tab(WNTabs.TAB_SURFACE_PLANTS)));
@@ -84,8 +83,7 @@ public class WNItems {
     public static final LinkedHashMap<OreItem, IWNItem> ORE_ITEMS = register(OreItem.values(), (value) -> {
         return new WNOreItem(
                 location(value.getId()),
-                new Item.Properties()
-                        .tab(WNTabs.TAB_EQUIPMENT),
+                new Item.Properties(),
                 value
         );
     });
@@ -96,7 +94,6 @@ public class WNItems {
                 if (toolItem.getType() == ToolType.SWORD) {
                     if (toolItem.getFamily() == value) {
                         WNSwordItem item = new WNSwordItem(value.getTier(), new Item.Properties().tab(WNTabs.TAB_EQUIPMENT), toolItem);
-                        item.setRegistryName(location(toolItem.getId()));
                         return item;
                     }
                 }
@@ -110,7 +107,6 @@ public class WNItems {
                 if (toolItem.getType() == ToolType.PICKAXE) {
                     if (toolItem.getFamily() == value) {
                         WNPickaxeItem item = new WNPickaxeItem(value.getTier(), new Item.Properties().tab(WNTabs.TAB_EQUIPMENT), toolItem);
-                        item.setRegistryName(location(toolItem.getId()));
                         return item;
                     }
                 }
@@ -124,7 +120,6 @@ public class WNItems {
                 if (toolItem.getType() == ToolType.AXE) {
                     if (toolItem.getFamily() == value) {
                         WNAxeItem item = new WNAxeItem(value.getTier(), new Item.Properties().tab(WNTabs.TAB_EQUIPMENT), toolItem);
-                        item.setRegistryName(location(toolItem.getId()));
                         return item;
                     }
                 }
@@ -138,7 +133,6 @@ public class WNItems {
                 if (toolItem.getType() == ToolType.SHOVEL) {
                     if (toolItem.getFamily() == value) {
                         WNShovelItem item = new WNShovelItem(value.getTier(), new Item.Properties().tab(WNTabs.TAB_EQUIPMENT), toolItem);
-                        item.setRegistryName(location(toolItem.getId()));
                         return item;
                     }
                 }
@@ -152,7 +146,6 @@ public class WNItems {
                 if (toolItem.getType() == ToolType.HOE) {
                     if (toolItem.getFamily() == value) {
                         WNHoeItem item = new WNHoeItem(value.getTier(), new Item.Properties().tab(WNTabs.TAB_EQUIPMENT), toolItem);
-                        item.setRegistryName(location(toolItem.getId()));
                         return item;
                     }
                 }
@@ -171,7 +164,6 @@ public class WNItems {
                         }else{
                             item = new WNCrossbowItem(new Item.Properties().tab(WNTabs.TAB_EQUIPMENT).stacksTo(1).durability(500), toolItem);
                         }
-                        item.setRegistryName(location(toolItem.getId()));
                         return item;
                     }
                 }

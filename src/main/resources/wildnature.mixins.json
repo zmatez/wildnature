@@ -1,18 +1,14 @@
 {
   "required": true,
-  "package": "net.matez.wildnature.mixin",
+  "package": "net.matez.wildnature.core.mixin",
   "compatibilityLevel": "JAVA_17",
   "refmap": "wildnature.refmap.json",
   "mixins": [
-    "BiomeMixin",
-    "ItemStackMixin"
   ],
   "injectors": {
     "defaultRequire": 1
   },
   "minVersion": "0.8",
   "client": [
-    "ParticleEngineMixin",
-    "ParticleEngineMixinAccessor"
   ]
 }

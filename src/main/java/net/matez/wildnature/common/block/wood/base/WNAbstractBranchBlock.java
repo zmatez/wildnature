@@ -6,6 +6,7 @@
 
 package net.matez.wildnature.common.block.wood.base;
 
+import net.matez.wildnature.common.WNBlock;
 import net.matez.wildnature.common.tags.WNTags;
 import net.matez.wildnature.api.util.ExtraMath;
 import net.matez.wildnature.data.setup.base.WNResource;
@@ -38,7 +39,7 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 
-public abstract class WNAbstractBranchBlock extends WNBlock implements SimpleWaterloggedBlock {
+public abstract class WNAbstractBranchBlock extends Block implements SimpleWaterloggedBlock, WNBlock {
     public static final BooleanProperty UP = BlockStateProperties.UP;
     public static final BooleanProperty DOWN = BlockStateProperties.DOWN;
     public static final BooleanProperty NORTH = BlockStateProperties.NORTH;
@@ -53,11 +54,7 @@ public abstract class WNAbstractBranchBlock extends WNBlock implements SimpleWat
 
 
     public WNAbstractBranchBlock(ResourceLocation location, Properties properties) {
-        super(location, properties);
-    }
-
-    public WNAbstractBranchBlock(ResourceLocation location, Properties properties, Item.Properties itemProperties) {
-        super(location, properties, itemProperties);
+        super(properties);
     }
 
     @Override

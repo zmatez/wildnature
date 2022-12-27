@@ -6,7 +6,7 @@
 
 package net.matez.wildnature.common.block.ores;
 
-import net.matez.wildnature.common.block.BlockPropertiesSupplier;
+import net.matez.wildnature.common.block.BlockBehaviourConsumer;
 import net.matez.wildnature.common.item.ores.OreItem;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.material.MaterialColor;
@@ -50,16 +50,16 @@ public enum GemBlock {
     private final String id;
     private final String folder;
     private final OreItem item;
-    private final BlockPropertiesSupplier propertiesSupplier;
+    private final BlockBehaviourConsumer propertiesSupplier;
 
-    GemBlock(String id, String folder, OreItem item, BlockPropertiesSupplier propertiesSupplier) {
+    GemBlock(String id, String folder, OreItem item, BlockBehaviourConsumer propertiesSupplier) {
         this.id = id;
         this.folder = folder;
         this.item = item;
         this.propertiesSupplier = propertiesSupplier;
     }
 
-    public BlockPropertiesSupplier getPropertiesSupplier() {
+    public BlockBehaviourConsumer getPropertiesSupplier() {
         return propertiesSupplier;
     }
 

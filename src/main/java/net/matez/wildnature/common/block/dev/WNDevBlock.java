@@ -6,22 +6,11 @@
 
 package net.matez.wildnature.common.block.dev;
 
-import net.matez.wildnature.data.block_models.WNBlockModel_CubeAll;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.Item;
+import net.matez.wildnature.common.WNBlock;
+import net.minecraft.world.level.block.Block;
 
-public class WNDevBlock extends WNBlock {
-    public WNDevBlock(ResourceLocation location, Properties properties) {
-        super(location, properties);
-    }
-
-    public WNDevBlock(ResourceLocation location, Properties properties, Item.Properties itemProperties) {
-        super(location, properties, itemProperties);
-    }
-
-    @Override
-    public ModelList getBlockModels() {
-        return new ModelList()
-                .with(new WNBlockModel_CubeAll(this.getRegName()).with("texture", this.getTextureName("misc/dev")));
+public class WNDevBlock extends Block implements WNBlock {
+    public WNDevBlock(Properties properties) {
+        super(properties);
     }
 }

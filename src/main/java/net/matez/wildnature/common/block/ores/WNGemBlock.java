@@ -6,27 +6,14 @@
 
 package net.matez.wildnature.common.block.ores;
 
-import net.matez.wildnature.data.block_models.WNBlockModel_CubeAll;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.Item;
+import net.matez.wildnature.common.WNBlock;
+import net.minecraft.world.level.block.Block;
 
-public class WNGemBlock extends WNBlock {
+public class WNGemBlock extends Block implements WNBlock {
     protected final GemBlock gem;
 
-    public WNGemBlock(ResourceLocation location, Properties properties, GemBlock ore) {
-        super(location, properties);
+    public WNGemBlock(Properties properties, GemBlock ore) {
+        super(properties);
         this.gem = ore;
-    }
-
-    public WNGemBlock(ResourceLocation location, Properties properties, Item.Properties itemProperties, GemBlock ore) {
-        super(location, properties, itemProperties);
-        this.gem = ore;
-    }
-
-    @Override
-    public ModelList getBlockModels() {
-        return new ModelList().with(
-                new WNBlockModel_CubeAll(this.getRegName()).with("texture",this.getTextureName("ores/" + this.gem.getFolder()))
-        );
     }
 }

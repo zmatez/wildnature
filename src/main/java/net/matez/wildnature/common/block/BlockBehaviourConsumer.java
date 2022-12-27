@@ -8,6 +8,7 @@ package net.matez.wildnature.common.block;
 
 import net.minecraft.world.level.block.state.BlockBehaviour;
 
-public interface BlockPropertiesSupplier {
+@FunctionalInterface
+public interface BlockBehaviourConsumer {
     BlockBehaviour.Properties getProperties(BlockBehaviour.Properties properties);
 }

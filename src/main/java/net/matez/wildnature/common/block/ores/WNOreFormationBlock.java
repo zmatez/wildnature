@@ -7,15 +7,8 @@
 package net.matez.wildnature.common.block.ores;
 
 import net.matez.wildnature.common.block.plant.plants.WNVerticalBushBlock;
-import net.matez.wildnature.common.block.ModelSupplier;
-import net.matez.wildnature.common.tags.WNTags;
-import net.matez.wildnature.data.blockstates.WNBlockstate_FacedCube;
-import net.matez.wildnature.data.item_models.WNItemModel_Generated;
-import net.matez.wildnature.data.setup.base.WNResource;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelAccessor;
@@ -38,12 +31,8 @@ public class WNOreFormationBlock extends WNOreBlock{
     public static final DirectionProperty FACING = BlockStateProperties.FACING;
     private static Map<Direction,VoxelShape> SHAPES = WNVerticalBushBlock.createFacingShape(10,2);
 
-    public WNOreFormationBlock(ResourceLocation location, Properties properties, Ore ore) {
-        super(location, properties, ore);
-    }
-
-    public WNOreFormationBlock(ResourceLocation location, Properties properties, Item.Properties itemProperties, Ore ore) {
-        super(location, properties, itemProperties, ore);
+    public WNOreFormationBlock(Properties properties, Ore ore) {
+        super(properties, ore);
     }
 
     @Override
@@ -52,42 +41,22 @@ public class WNOreFormationBlock extends WNOreBlock{
         def.add(FACING);
     }
 
+    @Override
     public boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
         return level.getBlockState(pos.relative(state.getValue(FACING).getOpposite())).isCollisionShapeFullBlock(level, pos.relative(state.getValue(FACING).getOpposite()));
     }
 
+    @Override
     public VoxelShape getShape(BlockState state, BlockGetter p_58093_, BlockPos p_58094_, CollisionContext p_58095_) {
         return SHAPES.get(state.getValue(FACING));
     }
 
     @Override
-    public WNResource getBlockstate() {
-        return new WNBlockstate_FacedCube(this.getRegistryName());
-    }
-
-    @Override
-    public ModelList getBlockModels() {
-        if(this.ore.getModels() == null){
-            return null;
-        }
-        ModelList list = new ModelList();
-        for (ModelSupplier model : this.ore.getModels()) {
-            list.with(model.getModel(this).with("texture",this.getTextureName("ores/" + this.ore.getFolder())));
-        }
-
-        return list;
-    }
-
-    @Nullable
-    @Override
-    public WNResource getItemModel() {
-        return new WNItemModel_Generated(this.getRegName()).with("texture",this.getTextureName("ores/" + this.ore.getFolder()) + "_item");
-    }
-
     public BlockState rotate(BlockState p_154354_, Rotation p_154355_) {
         return p_154354_.setValue(FACING, p_154355_.rotate(p_154354_.getValue(FACING)));
     }
 
+    @Override
     public BlockState mirror(BlockState p_154351_, Mirror p_154352_) {
         return p_154351_.setValue(FACING, p_154352_.mirror(p_154351_.getValue(FACING)));
     }
@@ -115,14 +84,5 @@ public class WNOreFormationBlock extends WNOreBlock{
 
     public boolean isDirectionAllowed(BlockPlaceContext context, Direction direction){
         return true;
-    }
-
-    @Nullable
-    @Override
-    public WNTags.TagList getWNTags() {
-        if(this.ore == Ore.DARK_AMETHYST_FORMATION || this.ore == Ore.TOPAZ_FORMATION){
-            return super.getWNTags().with(WNTags.NEEDS_DIAMOND_TOOL);
-        }
-        return super.getWNTags().with(WNTags.NEEDS_IRON_TOOL);
     }
 }

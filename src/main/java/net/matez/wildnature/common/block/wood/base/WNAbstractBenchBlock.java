@@ -22,6 +22,7 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.Rotation;
@@ -37,17 +38,13 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 
-public abstract class WNAbstractBenchBlock extends WNBaseEntityBlock {
+public abstract class WNAbstractBenchBlock extends BaseEntityBlock {
     public static final EnumProperty<BenchPart> BENCH_PART = WNBlockProperties.BENCH_PART;
     public static DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
     public static final VoxelShape SHAPE = Block.box(0, 0, 0, 16, 11, 16);
 
     public WNAbstractBenchBlock(ResourceLocation location, Properties properties) {
-        super(location, properties);
-    }
-
-    public WNAbstractBenchBlock(ResourceLocation location, Properties properties, Item.Properties itemProperties) {
-        super(location, properties, itemProperties);
+        super(properties);
     }
 
     @Override
@@ -98,26 +95,13 @@ public abstract class WNAbstractBenchBlock extends WNBaseEntityBlock {
         return false;
     }
 
-    @Override
-    public WNResource getBlockstate() {
-        return new WNBlockstate_Bench(this.getRegistryName());
-    }
-
-    @Nullable
-    @Override
-    public WNResource getItemModel() {
-        return new WNItemModel_BlockParent(getRegName()).with("parent", this.getRegName() + "_single");
-    }
-
-    @Override
-    public abstract ModelList getBlockModels();
-
     @Nullable
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
         return new WNSeatBlockEntity(pos, state);
     }
 
+    @Override
     public RenderShape getRenderShape(BlockState p_54296_) {
         return RenderShape.MODEL;
     }

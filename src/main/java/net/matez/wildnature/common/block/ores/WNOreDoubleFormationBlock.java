@@ -6,12 +6,8 @@
 
 package net.matez.wildnature.common.block.ores;
 
-import net.matez.wildnature.common.block.WNBlockProperties;
 import net.matez.wildnature.api.util.ExtraMath;
-import net.matez.wildnature.data.blockstates.WNBlockstate_SizedFormation;
-import net.matez.wildnature.data.setup.base.WNResource;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.Item;
+import net.matez.wildnature.common.block.WNBlockProperties;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
@@ -23,17 +19,8 @@ public class WNOreDoubleFormationBlock extends WNOreFormationBlock{
 
     public static final EnumProperty<BigSmallBlock> SIZE = WNBlockProperties.SIZE;
 
-    public WNOreDoubleFormationBlock(ResourceLocation location, Properties properties, Ore ore) {
-        super(location, properties, ore);
-    }
-
-    public WNOreDoubleFormationBlock(ResourceLocation location, Properties properties, Item.Properties itemProperties, Ore ore) {
-        super(location, properties, itemProperties, ore);
-    }
-
-    @Override
-    public void construct() {
-        super.construct();
+    public WNOreDoubleFormationBlock(Properties properties, Ore ore) {
+        super(properties, ore);
         this.registerDefaultState(this.defaultBlockState().setValue(SIZE,BigSmallBlock.SMALL));
     }
 
@@ -41,11 +28,6 @@ public class WNOreDoubleFormationBlock extends WNOreFormationBlock{
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> def) {
         super.createBlockStateDefinition(def);
         def.add(SIZE);
-    }
-
-    @Override
-    public WNResource getBlockstate() {
-        return new WNBlockstate_SizedFormation(this.getRegistryName());
     }
 
     @Override

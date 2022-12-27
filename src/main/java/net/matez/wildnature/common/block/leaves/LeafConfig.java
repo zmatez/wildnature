@@ -6,7 +6,6 @@
 
 package net.matez.wildnature.common.block.leaves;
 
-import net.matez.wildnature.common.block.ModelSupplier;
 import net.minecraft.world.item.Item;
 
 import javax.annotation.Nullable;
