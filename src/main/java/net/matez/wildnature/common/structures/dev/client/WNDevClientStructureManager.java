@@ -4,9 +4,9 @@
  * Consider supporting this project on Patreon: https://patreon.com/wildnaturemod
  */
 
-package net.matez.wildnature.common.structure.client;
+package net.matez.wildnature.common.structures.dev.client;
 
-import net.matez.wildnature.common.structure.WNDevStructureSelection;
+import net.matez.wildnature.common.structures.dev.WNDevStructureSelection;
 import net.minecraft.world.entity.player.Player;
 
 import java.util.LinkedHashMap;

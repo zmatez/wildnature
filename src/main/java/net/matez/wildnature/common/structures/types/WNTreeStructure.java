@@ -7,7 +7,6 @@
 package net.matez.wildnature.common.structures.types;
 
 import net.matez.wildnature.common.block.entity.soil.WNSoilBlockEntity;
-import net.matez.wildnature.common.block.basic.WNBaseEntityBlock;
 import net.matez.wildnature.common.structures.WNStructure;
 import net.matez.wildnature.common.structures.WNStructureConfig;
 import net.matez.wildnature.core.registry.WNBlocks;

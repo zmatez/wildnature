@@ -8,17 +8,12 @@ package net.matez.wildnature.common.block.plant;
 
 import net.matez.wildnature.common.block.plant.plants.TripleBlockHalf;
 import net.matez.wildnature.common.block.WNBlockProperties;
-import net.matez.wildnature.data.block_models.plants.WNBlockModel_TintedCross;
-import net.matez.wildnature.data.blockstates.plants.WNBlockstate_TripleBush;
-import net.matez.wildnature.data.item_models.WNItemModel_Generated;
-import net.matez.wildnature.data.setup.base.WNResource;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
@@ -45,19 +40,11 @@ public class WNTriplePlantBlock extends WNBushConfiguredBlock {
    public static final EnumProperty<TripleBlockHalf> HALF = WNBlockProperties.TRIPLE_BLOCK_HALF;
 
    public WNTriplePlantBlock(ResourceLocation location, Properties properties, BushType type) {
-      super(location, properties, type);
-   }
-
-   public WNTriplePlantBlock(ResourceLocation location, Properties properties, Item.Properties itemProperties, BushType type) {
-      super(location, properties, itemProperties, type);
+      super(properties, type);
+       this.registerDefaultState(this.stateDefinition.any().setValue(HALF, TripleBlockHalf.LOWER));
    }
 
    @Override
-   public void construct() {
-      super.construct();
-      this.registerDefaultState(this.stateDefinition.any().setValue(HALF, TripleBlockHalf.LOWER));
-   }
-
    public BlockState updateShape(BlockState state, Direction direction, BlockState state2, LevelAccessor level, BlockPos pos, BlockPos pos2) {
       TripleBlockHalf tripleBlockHalf = state.getValue(HALF);
       if (direction.getAxis() != Direction.Axis.Y || tripleBlockHalf == TripleBlockHalf.LOWER != (direction == Direction.UP) || state2.is(this) && state2.getValue(HALF) != tripleBlockHalf) {
@@ -80,21 +67,17 @@ public class WNTriplePlantBlock extends WNBushConfiguredBlock {
       level.setBlock(pos.above(2), copyWaterloggedFrom(level, pos.above(2), this.defaultBlockState().setValue(HALF, TripleBlockHalf.UPPER)), 3);
    }
 
-    public boolean canSurvive(BlockState state, LevelReader reader, BlockPos pos) {
-        if (state.getValue(HALF) == TripleBlockHalf.LOWER) {
-            return super.canSurvive(state, reader, pos);
-        } else {
-            BlockState blockstate = reader.getBlockState(pos.below());
-            if (state.getBlock() != this)
-                return super.canSurvive(state, reader, pos); //Forge: This function is called during world gen and placement, before this block is set, so if we are not 'here' then assume it's the pre-check.
-            return blockstate.is(this) && (blockstate.getValue(HALF) == TripleBlockHalf.LOWER || blockstate.getValue(HALF) == TripleBlockHalf.MIDDLE);
-        }
-    }
-
-    @Override
-    public void place(BlockState state, LevelAccessor reader, BlockPos pos, int data) {
-        placeAt(reader, state, pos, data);
-    }
+   @Override
+   public boolean canSurvive(BlockState state, LevelReader reader, BlockPos pos) {
+       if (state.getValue(HALF) == TripleBlockHalf.LOWER) {
+           return super.canSurvive(state, reader, pos);
+       } else {
+           BlockState blockstate = reader.getBlockState(pos.below());
+           if (state.getBlock() != this)
+               return super.canSurvive(state, reader, pos); //Forge: This function is called during world gen and placement, before this block is set, so if we are not 'here' then assume it's the pre-check.
+           return blockstate.is(this) && (blockstate.getValue(HALF) == TripleBlockHalf.LOWER || blockstate.getValue(HALF) == TripleBlockHalf.MIDDLE);
+       }
+   }
 
     public static void placeAt(LevelAccessor level, BlockState state, BlockPos pos, int arg) {
         level.setBlock(pos, copyWaterloggedFrom(level, pos, state.setValue(HALF, TripleBlockHalf.LOWER)), arg);
@@ -103,7 +86,7 @@ public class WNTriplePlantBlock extends WNBushConfiguredBlock {
     }
 
     public static BlockState copyWaterloggedFrom(LevelReader level, BlockPos pos, BlockState state) {
-        return state.hasProperty(BlockStateProperties.WATERLOGGED) ? state.setValue(BlockStateProperties.WATERLOGGED, Boolean.valueOf(level.isWaterAt(pos))) : state;
+        return state.hasProperty(BlockStateProperties.WATERLOGGED) ? state.setValue(BlockStateProperties.WATERLOGGED, level.isWaterAt(pos)) : state;
     }
 
    public void playerWillDestroy(Level level, BlockPos p_52879_, BlockState p_52880_, Player p_52881_) {
@@ -151,28 +134,5 @@ public class WNTriplePlantBlock extends WNBushConfiguredBlock {
    public VoxelShape getShape(BlockState state, BlockGetter getter, BlockPos pos, CollisionContext context) {
       Vec3 vec3 = state.getOffset(getter, pos);
       return SHAPE.move(vec3.x, vec3.y, vec3.z);
-   }
-
-
-   @Override
-   public WNResource getBlockstate() {
-      return new WNBlockstate_TripleBush(this.getRegistryName());
-   }
-
-   @Override
-   public ModelList getBlockModels() {
-      return new ModelList().with(
-              new WNBlockModel_TintedCross(this.getRegName() + "_bottom").with("texture",this.getTextureName(this.getType().getVariant().getPath()) + "_bottom"),
-              new WNBlockModel_TintedCross(this.getRegName() + "_middle").with("texture",this.getTextureName(this.getType().getVariant().getPath()) + "_middle"),
-              new WNBlockModel_TintedCross(this.getRegName() + "_top").with("texture",this.getTextureName(this.getType().getVariant().getPath()) + "_top")
-      );
-   }
-
-   @Nullable
-   public WNResource getItemModel() {
-      if(getType().hasConfig() && getType().getConfig().isItemAsSelf()){
-         return new WNItemModel_Generated(getRegName()).with("texture", this.getTextureName(getType().getVariant().getPath()) + "_top");
-      }
-      return super.getItemModel();
    }
 }

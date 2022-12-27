@@ -12,7 +12,7 @@ import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.context.CommandContext;
-import net.matez.wildnature.common.structure.server.WNDevServerStructureManager;
+import net.matez.wildnature.common.structures.dev.server.WNDevServerStructureManager;
 import net.matez.wildnature.common.command.IWNCommand;
 import net.matez.wildnature.api.client.chat.ChatHelper;
 import net.minecraft.commands.CommandSourceStack;

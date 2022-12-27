@@ -7,8 +7,8 @@
 package net.matez.wildnature.api.networking.packets;
 
 import net.matez.wildnature.api.util.log.SimpleLogger;
-import net.matez.wildnature.common.structure.client.WNDevClientStructureManager;
-import net.matez.wildnature.common.structure.client.WNDevClientStructureSelection;
+import net.matez.wildnature.common.structures.dev.client.WNDevClientStructureManager;
+import net.matez.wildnature.common.structures.dev.client.WNDevClientStructureSelection;
 import net.matez.wildnature.api.networking.WNPacket;
 import net.matez.wildnature.setup.WildNature;
 import net.minecraft.client.Minecraft;

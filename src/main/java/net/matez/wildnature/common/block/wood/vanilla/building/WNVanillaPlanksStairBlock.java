@@ -6,7 +6,6 @@
 
 package net.matez.wildnature.common.block.wood.vanilla.building;
 
-import net.matez.wildnature.common.block.basic.WNStairBlock;
 import net.matez.wildnature.common.block.wood.vanilla.VanillaLogType;
 import net.matez.wildnature.common.tags.WNTags;
 import net.matez.wildnature.core.registry.WNBlocks;

@@ -6,7 +6,6 @@
 
 package net.matez.wildnature.common.feature.flower;
 
-import net.matez.wildnature.common.block.plant.WNBushBlock;
 import net.matez.wildnature.common.feature.WNFeature;
 import net.matez.wildnature.api.util.WeightedList;
 import net.minecraft.core.BlockPos;

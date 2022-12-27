@@ -7,7 +7,6 @@
 package net.matez.wildnature.common.block.grass;
 
 import net.matez.wildnature.common.block.entity.soil.WNSoilBlockEntity;
-import net.matez.wildnature.common.block.basic.WNBaseEntityBlock;
 import net.matez.wildnature.common.tags.WNTags;
 import net.matez.wildnature.data.block_models.WNBlockModel_CubeAll;
 import net.minecraft.core.BlockPos;

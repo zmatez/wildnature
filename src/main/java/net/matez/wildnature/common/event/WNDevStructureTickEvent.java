@@ -6,8 +6,8 @@
 
 package net.matez.wildnature.common.event;
 
-import net.matez.wildnature.common.structure.client.WNDevClientStructureManager;
-import net.matez.wildnature.common.structure.server.WNDevServerStructureManager;
+import net.matez.wildnature.common.structures.dev.client.WNDevClientStructureManager;
+import net.matez.wildnature.common.structures.dev.server.WNDevServerStructureManager;
 import net.matez.wildnature.setup.WildNature;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;

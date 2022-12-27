@@ -7,8 +7,9 @@
 package net.matez.wildnature.common.block.plant;
 
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 
 public interface BushConstructor<T> {
-    WNBlock get(T type, BlockBehaviour.Properties blockProperties, Item.Properties itemProperties);
+    Block get(T type, BlockBehaviour.Properties blockProperties, Item.Properties itemProperties);
 }

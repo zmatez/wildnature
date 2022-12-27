@@ -6,7 +6,7 @@
 
 package net.matez.wildnature.common.item.dev;
 
-import net.matez.wildnature.common.structure.server.WNDevServerStructureManager;
+import net.matez.wildnature.common.structures.dev.server.WNDevServerStructureManager;
 import net.matez.wildnature.core.registry.WNParticles;
 import net.matez.wildnature.data.item_models.WNItemModel_Generated;
 import net.matez.wildnature.data.setup.base.WNResource;

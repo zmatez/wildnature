@@ -6,7 +6,6 @@
 
 package net.matez.wildnature.common.block.rocks;
 
-import net.matez.wildnature.common.block.basic.WNStairBlock;
 import net.matez.wildnature.common.tags.WNTags;
 import net.matez.wildnature.data.block_models.WNBlockModel_Stairs;
 import net.matez.wildnature.data.block_models.WNBlockModel_StairsInner;

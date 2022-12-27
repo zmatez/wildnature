@@ -87,8 +87,9 @@ public class WNTreeFungusBlock extends WNMushroomBlock{
         return mayPlaceOn(state, reader.getBlockState(pos.relative(state.getValue(FACING).getOpposite())), reader, pos);
     }
 
+    @Override
     protected boolean mayPlaceOn(BlockState state, BlockState stateOn, BlockGetter getter, BlockPos pos) {
-        return BushPlacement.LOGS.getSupplier().canPlace(state, stateOn, getter, pos);
+        return BushPlacement.LOGS.getSupplier().canPlace( stateOn, getter, pos);
     }
 
     public VoxelShape getShape(BlockState p_58092_, BlockGetter p_58093_, BlockPos p_58094_, CollisionContext p_58095_) {

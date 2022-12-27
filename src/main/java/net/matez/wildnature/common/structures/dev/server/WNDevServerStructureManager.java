@@ -4,9 +4,9 @@
  * Consider supporting this project on Patreon: https://patreon.com/wildnaturemod
  */
 
-package net.matez.wildnature.common.structure.server;
+package net.matez.wildnature.common.structures.dev.server;
 
-import net.matez.wildnature.common.structure.WNDevStructureSelection;
+import net.matez.wildnature.common.structures.dev.WNDevStructureSelection;
 import net.matez.wildnature.api.client.chat.ChatHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;

@@ -4,11 +4,11 @@
  * Consider supporting this project on Patreon: https://patreon.com/wildnaturemod
  */
 
-package net.matez.wildnature.common.structure.client;
+package net.matez.wildnature.common.structures.dev.client;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.*;
-import net.matez.wildnature.common.structure.WNDevStructureSelection;
+import net.matez.wildnature.common.structures.dev.WNDevStructureSelection;
 import net.matez.wildnature.api.client.RenderHelper;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.renderer.GameRenderer;

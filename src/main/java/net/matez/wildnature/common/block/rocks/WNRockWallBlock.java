@@ -6,7 +6,6 @@
 
 package net.matez.wildnature.common.block.rocks;
 
-import net.matez.wildnature.common.block.basic.WNAbstractWallBlock;
 import net.matez.wildnature.common.tags.WNTags;
 import net.matez.wildnature.data.block_models.WNBlockModel_WallInventory;
 import net.matez.wildnature.data.block_models.WNBlockModel_WallPost;

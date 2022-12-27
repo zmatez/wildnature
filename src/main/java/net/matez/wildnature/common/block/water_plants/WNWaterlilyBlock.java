@@ -6,7 +6,6 @@
 
 package net.matez.wildnature.common.block.water_plants;
 
-import net.matez.wildnature.common.block.plant.WNBushBlock;
 import net.matez.wildnature.common.block.plant.config.BushConfig;
 import net.matez.wildnature.common.item.waterlilies.WNWaterLilyBlockItem;
 import net.matez.wildnature.core.registry.WNBlocks;

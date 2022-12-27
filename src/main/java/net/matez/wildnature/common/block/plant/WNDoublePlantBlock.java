@@ -6,17 +6,12 @@
 
 package net.matez.wildnature.common.block.plant;
 
-import net.matez.wildnature.data.block_models.plants.WNBlockModel_TintedCross;
-import net.matez.wildnature.data.blockstates.plants.WNBlockstate_DoubleBush;
-import net.matez.wildnature.data.item_models.WNItemModel_Generated;
-import net.matez.wildnature.data.setup.base.WNResource;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
@@ -45,19 +40,11 @@ public class WNDoublePlantBlock extends WNBushConfiguredBlock {
    public static final EnumProperty<DoubleBlockHalf> HALF = BlockStateProperties.DOUBLE_BLOCK_HALF;
 
    public WNDoublePlantBlock(ResourceLocation location, Properties properties, BushType type) {
-      super(location, properties, type);
-   }
-
-   public WNDoublePlantBlock(ResourceLocation location, Properties properties, Item.Properties itemProperties, BushType type) {
-      super(location, properties, itemProperties, type);
-   }
-
-   @Override
-   public void construct() {
-      super.construct();
+      super(properties, type);
       this.registerDefaultState(this.stateDefinition.any().setValue(HALF, DoubleBlockHalf.LOWER));
    }
 
+   @Override
    public BlockState updateShape(BlockState p_52894_, Direction p_52895_, BlockState p_52896_, LevelAccessor p_52897_, BlockPos p_52898_, BlockPos p_52899_) {
       DoubleBlockHalf doubleblockhalf = p_52894_.getValue(HALF);
       if (p_52895_.getAxis() != Direction.Axis.Y || doubleblockhalf == DoubleBlockHalf.LOWER != (p_52895_ == Direction.UP) || p_52896_.is(this) && p_52896_.getValue(HALF) != doubleblockhalf) {
@@ -74,11 +61,13 @@ public class WNDoublePlantBlock extends WNBushConfiguredBlock {
       return blockpos.getY() < level.getMaxBuildHeight() - 1 && level.getBlockState(blockpos.above()).canBeReplaced(p_52863_) ? super.getStateForPlacement(p_52863_) : null;
    }
 
+   @Override
    public void setPlacedBy(Level p_52872_, BlockPos p_52873_, BlockState p_52874_, LivingEntity p_52875_, ItemStack p_52876_) {
       BlockPos blockpos = p_52873_.above();
       p_52872_.setBlock(blockpos, copyWaterloggedFrom(p_52872_, blockpos, this.defaultBlockState().setValue(HALF, DoubleBlockHalf.UPPER)), 3);
    }
 
+   @Override
    public boolean canSurvive(BlockState p_52887_, LevelReader reader, BlockPos p_52889_) {
       if (p_52887_.getValue(HALF) != DoubleBlockHalf.UPPER) {
          return super.canSurvive(p_52887_, reader, p_52889_);
@@ -88,11 +77,6 @@ public class WNDoublePlantBlock extends WNBushConfiguredBlock {
             return super.canSurvive(p_52887_, reader, p_52889_); //Forge: This function is called during world gen and placement, before this block is set, so if we are not 'here' then assume it's the pre-check.
          return blockstate.is(this) && blockstate.getValue(HALF) == DoubleBlockHalf.LOWER;
       }
-   }
-
-   @Override
-   public void place(BlockState state, LevelAccessor reader, BlockPos pos, int data) {
-      placeAt(reader, state, pos, data);
    }
 
    public static void placeAt(LevelAccessor level, BlockState state, BlockPos pos, int arg) {
@@ -105,6 +89,7 @@ public class WNDoublePlantBlock extends WNBushConfiguredBlock {
       return p_182456_.hasProperty(BlockStateProperties.WATERLOGGED) ? p_182456_.setValue(BlockStateProperties.WATERLOGGED, Boolean.valueOf(p_182454_.isWaterAt(p_182455_))) : p_182456_;
    }
 
+   @Override
    public void playerWillDestroy(Level p_52878_, BlockPos p_52879_, BlockState p_52880_, Player p_52881_) {
       if (!p_52878_.isClientSide) {
          if (p_52881_.isCreative()) {
@@ -117,6 +102,7 @@ public class WNDoublePlantBlock extends WNBushConfiguredBlock {
       super.playerWillDestroy(p_52878_, p_52879_, p_52880_, p_52881_);
    }
 
+   @Override
    public void playerDestroy(Level p_52865_, Player p_52866_, BlockPos p_52867_, BlockState p_52868_, @Nullable BlockEntity p_52869_, ItemStack p_52870_) {
       super.playerDestroy(p_52865_, p_52866_, p_52867_, Blocks.AIR.defaultBlockState(), p_52869_, p_52870_);
    }
@@ -135,42 +121,24 @@ public class WNDoublePlantBlock extends WNBushConfiguredBlock {
 
    }
 
+   @Override
    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> state) {
       state.add(HALF);
    }
 
+   @Override
    public BlockBehaviour.OffsetType getOffsetType() {
       return BlockBehaviour.OffsetType.XZ;
    }
 
+   @Override
    public long getSeed(BlockState p_52891_, BlockPos p_52892_) {
       return Mth.getSeed(p_52892_.getX(), p_52892_.below(p_52891_.getValue(HALF) == DoubleBlockHalf.LOWER ? 0 : 1).getY(), p_52892_.getZ());
    }
 
+   @Override
    public VoxelShape getShape(BlockState state, BlockGetter getter, BlockPos pos, CollisionContext context) {
       Vec3 vec3 = state.getOffset(getter, pos);
       return SHAPE.move(vec3.x, vec3.y, vec3.z);
-   }
-
-
-   @Override
-   public WNResource getBlockstate() {
-      return new WNBlockstate_DoubleBush(this.getRegistryName());
-   }
-
-   @Override
-   public ModelList getBlockModels() {
-      return new ModelList().with(
-              new WNBlockModel_TintedCross(this.getRegName() + "_bottom").with("texture",this.getTextureName(this.getType().getVariant().getPath()) + "_bottom"),
-              new WNBlockModel_TintedCross(this.getRegName() + "_top").with("texture",this.getTextureName(this.getType().getVariant().getPath()) + "_top")
-      );
-   }
-
-   @javax.annotation.Nullable
-   public WNResource getItemModel() {
-      if(getType().hasConfig() && getType().getConfig().isItemAsSelf()){
-         return new WNItemModel_Generated(getRegName()).with("texture", this.getTextureName(getType().getVariant().getPath()) + "_bottom");
-      }
-      return super.getItemModel();
    }
 }

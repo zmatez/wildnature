@@ -6,7 +6,6 @@
 
 package net.matez.wildnature.common.block.grass;
 
-import net.matez.wildnature.common.block.basic.WNAbstractGrassBlock;
 import net.matez.wildnature.common.tags.WNTags;
 import net.matez.wildnature.data.block_models.WNBlockModel_CubeBottomTop;
 import net.matez.wildnature.data.blockstates.WNBlockstate_GrassBlock;

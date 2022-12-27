@@ -6,7 +6,7 @@
 
 package net.matez.wildnature.common.event;
 
-import net.matez.wildnature.common.structure.client.WNDevClientStructureManager;
+import net.matez.wildnature.common.structures.dev.client.WNDevClientStructureManager;
 import net.matez.wildnature.setup.WildNature;
 import net.minecraft.client.Camera;
 import net.minecraft.client.Minecraft;

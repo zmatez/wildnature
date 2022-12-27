@@ -8,7 +8,6 @@ package net.matez.wildnature.common.block.fruit_bush.plants;
 
 import net.matez.wildnature.common.block.fruit_bush.plants.stages.*;
 import net.matez.wildnature.common.block.leaves.LeafConfig;
-import net.matez.wildnature.common.block.plant.WNBushBlock;
 import net.matez.wildnature.api.util.ExtraMath;
 import net.matez.wildnature.data.block_models.plants.WNBlockModel_FloweringBush;
 import net.matez.wildnature.data.block_models.plants.WNBlockModel_TintedCross;

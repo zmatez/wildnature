@@ -6,13 +6,11 @@
 
 package net.matez.wildnature.common.block.cave_plants;
 
-import net.matez.wildnature.common.block.plant.WNBushBlock;
 import net.matez.wildnature.data.block_models.plants.WNBlockModel_TintedCross;
 import net.matez.wildnature.data.item_models.WNItemModel_Generated;
 import net.matez.wildnature.data.setup.base.WNResource;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
-import org.jetbrains.annotations.Nullable;
 
 public class WNCaveBushBlock extends WNBushBlock {
     protected final CavePlantType cavePlantType;
@@ -28,21 +26,5 @@ public class WNCaveBushBlock extends WNBushBlock {
 
     public CavePlantType getCavePlantType() {
         return cavePlantType;
-    }
-
-    @Nullable
-    @Override
-    public WNResource getItemModel() {
-        if(this.getConfig() != null && this.getConfig().isItemAsSelf()){
-            return new WNItemModel_Generated(this.getRegName()).with("texture",this.getTextureName("plants/cave/" + this.cavePlantType.getFolder()));
-        }
-        return new WNItemModel_Generated(this.getRegName()).with("texture",this.getTextureName("plants/cave/" + this.cavePlantType.getFolder()) + "_item");
-    }
-
-    @Override
-    public ModelList getBlockModels() {
-        return new ModelList().with(
-                new WNBlockModel_TintedCross(this.getRegName()).with("texture",this.getTextureName("plants/cave/" + this.cavePlantType.getFolder()))
-        );
     }
 }

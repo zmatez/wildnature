@@ -8,7 +8,6 @@ package net.matez.wildnature.common.block.geyser;
 
 import net.matez.wildnature.api.util.log.SimpleLogger;
 import net.matez.wildnature.common.block.entity.geyser.WNGeyserBlockEntity;
-import net.matez.wildnature.common.block.basic.WNBaseEntityBlock;
 import net.matez.wildnature.common.block.WNBlockProperties;
 import net.matez.wildnature.common.tags.WNTags;
 import net.matez.wildnature.core.registry.WNBlockEntities;

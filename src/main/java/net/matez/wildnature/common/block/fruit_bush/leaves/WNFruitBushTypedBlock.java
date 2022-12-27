@@ -6,7 +6,6 @@
 
 package net.matez.wildnature.common.block.fruit_bush.leaves;
 
-import net.matez.wildnature.common.block.basic.WNLeavesBlock;
 import net.matez.wildnature.common.block.fruit_bush.leaves.stages.WNFruitBushBlock_Stage0;
 import net.matez.wildnature.common.block.fruit_bush.leaves.stages.WNFruitBushBlock_Stage1;
 import net.matez.wildnature.common.block.fruit_bush.leaves.stages.WNFruitBushBlock_Stage2;
@@ -100,47 +99,6 @@ public abstract class WNFruitBushTypedBlock extends WNLeavesBlock {
             BlockState blockstate = ((BlockItem)stack.getItem()).getBlock().defaultBlockState();
             return colors.getColor(blockstate, null, null, num);
         };
-    }
-
-    @Override
-    public WNResource getBlockstate() {
-        return new WNBlockstate_TypedLeaves(this.getRegistryName(),this.leafType.getConfig());
-    }
-
-    @Override
-    public ModelList getBlockModels() {
-        ModelList list = new ModelList();
-        list.with(
-                new WNBlockModel_Leaves(this.getRegName())
-                        .with("texture",this.getTextureName("fruit_bushes/" + leafType.getFolder()))
-        );
-        if(this.LEAF_STAGE != null){
-            if(leafType.getConfig().isFlowering()){
-                list.with(
-                        new WNBlockModel_Leaves(this.getRegName() + "_flowering")
-                                .with("texture",this.getTextureName("fruit_bushes/" + leafType.getFolder()) + "_flowering")
-                );
-            }
-
-            int ordinal = 1;
-            for(int i = leafType.getConfig().isFlowering() ? 2 : 1; i <= leafType.getConfig().getStages(); i++, ordinal++){
-                list.with(
-                        new WNBlockModel_Leaves(this.getRegName() + "_fruit_" + ordinal)
-                                .with("texture",this.getTextureName("fruit_bushes/" + leafType.getFolder()) + "_fruit_" + ordinal)
-                );
-            }
-        }
-        return list;
-    }
-
-    @Nullable
-    @Override
-    public DropList getDrops(BlockState state, ServerLevel level, float luck) {
-        ItemStack fruit = getFruit(state);
-        if(fruit != null){
-            return new DropList().with(fruit);
-        }
-        return super.getDrops(state, level, luck);
     }
 
     @Override

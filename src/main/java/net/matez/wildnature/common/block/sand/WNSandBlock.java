@@ -1,6 +1,5 @@
 package net.matez.wildnature.common.block.sand;
 
-import net.matez.wildnature.common.block.basic.WNFallingBlock;
 import net.matez.wildnature.common.tags.WNTags;
 import net.matez.wildnature.data.block_models.WNBlockModel_CubeAll;
 import net.matez.wildnature.data.blockstates.WNBlockstate_RandomlyRotatedCube;

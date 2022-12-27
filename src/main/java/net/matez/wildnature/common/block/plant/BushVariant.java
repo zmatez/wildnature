@@ -10,10 +10,10 @@ import net.matez.wildnature.common.block.plant.config.BushConfig;
 import net.matez.wildnature.common.block.plant.config.FloweringBushConfig;
 
 public enum BushVariant {
-    ANEMONE("anemone",BushSetup.ANEMONE, FloweringBushConfig.NO_COLORS.get()),
-    ANTHURIUM("anthurium",BushSetup.FLOWERING_BUSH),
-    AZALEA("azalea",BushSetup.FLOWERING_BUSH),
-    BIRD_OF_PARADISE("bird_of_paradise",BushSetup.DOUBLE_FLOWERING_BUSH, FloweringBushConfig.NO_COLORS.get()),
+    ANEMONE("anemone", BushSetup.ANEMONE, FloweringBushConfig.NO_COLORS.get()),
+    ANTHURIUM("anthurium", BushSetup.FLOWERING_BUSH),
+    AZALEA("azalea", BushSetup.FLOWERING_BUSH),
+    BIRD_OF_PARADISE("bird_of_paradise", BushSetup.DOUBLE_FLOWERING_BUSH, FloweringBushConfig.NO_COLORS.get()),
     BLUEBELL("bluebell",BushSetup.FLOWERING_BUSH, FloweringBushConfig.NO_COLORS.get()),
     BOXWOOD("boxwood",BushSetup.BUSH,"plants/surface/shrub", FloweringBushConfig.NO_COLORS.get().makeTintAsFoliage()),
     BUTTERCUP("buttercup",BushSetup.FLOWERING_BUSH),

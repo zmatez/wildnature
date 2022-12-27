@@ -7,7 +7,6 @@
 package net.matez.wildnature.common.block.wood.base;
 
 import net.matez.wildnature.common.block.entity.seat.WNSeatBlockEntity;
-import net.matez.wildnature.common.block.basic.WNBaseEntityBlock;
 import net.matez.wildnature.common.block.WNBlockProperties;
 import net.matez.wildnature.data.blockstates.WNBlockstate_Bench;
 import net.matez.wildnature.data.item_models.WNItemModel_BlockParent;

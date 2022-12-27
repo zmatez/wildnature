@@ -7,7 +7,6 @@
 package net.matez.wildnature.common.block.underwater_plants;
 
 import net.matez.wildnature.common.block.plant.BushPlacement;
-import net.matez.wildnature.common.block.plant.WNBushBlock;
 import net.matez.wildnature.common.block.plant.config.BushConfig;
 import net.matez.wildnature.data.block_models.plants.WNBlockModel_TintedCross;
 import net.matez.wildnature.data.item_models.WNItemModel_Generated;

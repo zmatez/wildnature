@@ -6,7 +6,6 @@
 
 package net.matez.wildnature.common.block.wood.furniture;
 
-import net.matez.wildnature.common.block.basic.WNDoorBlock;
 import net.matez.wildnature.common.block.wood.ILog;
 import net.matez.wildnature.common.block.wood.LogType;
 import net.matez.wildnature.common.tags.WNTags;

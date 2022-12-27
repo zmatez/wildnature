@@ -4,7 +4,7 @@
  * Consider supporting this project on Patreon: https://patreon.com/wildnaturemod
  */
 
-package net.matez.wildnature.common.structure;
+package net.matez.wildnature.common.structures.dev;
 
 import net.matez.wildnature.core.registry.WNBlocks;
 import net.minecraft.core.BlockPos;

@@ -47,7 +47,7 @@ public enum CavePlantType {
     GLOWING_SHADOW_SHROOM("glowing_shadow_shroom",MaterialColor.PLANT,(type, blockProp, itemProp) -> new WNCaveBushBlock(type.getLoc(),blockProp,itemProp,type) {
         @Override
         public void animateTick(BlockState state, Level level, BlockPos pos, Random random) {
-            super.animateTick(state, level, pos, random);
+            super.tick(state, level, pos, random);
             if(ExtraMath.rint(0,1) == 0) {
                 Vec3 offset = state.getOffset(level, pos);
                 for (int i = 0; i < ExtraMath.rint(1, 3); i++) {

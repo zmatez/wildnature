@@ -7,7 +7,6 @@
 package net.matez.wildnature.common.block.saplings;
 
 import net.matez.wildnature.common.block.plant.BushPlacement;
-import net.matez.wildnature.common.block.plant.WNBushBlock;
 import net.matez.wildnature.common.block.plant.config.BushConfig;
 import net.matez.wildnature.common.block.WNBlockProperties;
 import net.matez.wildnature.common.structures.WNStructure;
