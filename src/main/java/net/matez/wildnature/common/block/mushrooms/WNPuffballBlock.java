@@ -15,6 +15,7 @@ import net.matez.wildnature.data.setup.base.WNResource;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
@@ -29,37 +30,14 @@ import java.util.Random;
 public class WNPuffballBlock extends WNMushroomBlock{
     public static final BooleanProperty BROKEN = WNBlockProperties.BROKEN;
 
-    public WNPuffballBlock(ResourceLocation location, Properties properties, Mushroom mushroom) {
-        super(location, properties, mushroom);
-    }
-
-    public WNPuffballBlock(ResourceLocation location, Properties properties, Item.Properties itemProperties, Mushroom mushroom) {
-        super(location, properties, itemProperties, mushroom);
+    public WNPuffballBlock(Properties properties, Mushroom mushroom) {
+        super(properties, mushroom);
     }
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> def) {
         super.createBlockStateDefinition(def);
         def.add(BROKEN);
-    }
-
-    @Override
-    public void construct() {
-        super.construct();
-        this.registerDefaultState(this.defaultBlockState().setValue(BROKEN,false));
-    }
-
-    @Override
-    public WNResource getBlockstate() {
-        return new WNBlockstate_Puffball(this.getRegistryName());
-    }
-
-    @Override
-    public ModelList getBlockModels() {
-        return new ModelList().with(
-                new WNBlockModel_TintedCross(this.getRegName()).with("texture",this.getTextureName("plants/surface/mushrooms")),
-                new WNBlockModel_TintedCross(this.getRegName() + "_broken").with("texture",this.getTextureName("plants/surface/mushrooms") + "_broken")
-        );
     }
 
     @Override
@@ -75,7 +53,7 @@ public class WNPuffballBlock extends WNMushroomBlock{
     }
 
     @Override
-    public void randomTick(BlockState state, ServerLevel level, BlockPos pos, Random random) {
+    public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
         super.randomTick(state, level, pos, random);
         if(state.getValue(BROKEN) && ExtraMath.rint(0,5) == 0){
             level.setBlock(pos,state.setValue(BROKEN,false),2);

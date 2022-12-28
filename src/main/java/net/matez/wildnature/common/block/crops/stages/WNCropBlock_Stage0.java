@@ -12,8 +12,8 @@ import net.minecraft.world.level.block.state.properties.IntegerProperty;
 public class WNCropBlock_Stage0 extends WNCropTypedBlock {
     public static IntegerProperty STAGE_ = null;
 
-    public WNCropBlock_Stage0(ResourceLocation location, Properties properties, CropType cropType) {
-        super(location, properties, cropType);
+    public WNCropBlock_Stage0(Properties properties, CropType cropType) {
+        super(properties, cropType);
         this.STAGE = STAGE_;
     }
 

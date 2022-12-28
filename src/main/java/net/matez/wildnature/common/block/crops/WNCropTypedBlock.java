@@ -6,41 +6,26 @@
 
 package net.matez.wildnature.common.block.crops;
 
-import net.matez.wildnature.common.WNBlock;
+import net.matez.wildnature.api.util.ExtraMath;
 import net.matez.wildnature.common.block.crops.stages.*;
 import net.matez.wildnature.common.block.plant.WNBushBlock;
-import net.matez.wildnature.common.item.vegetables.WNVeggieBlockItem;
-import net.matez.wildnature.common.tags.WNTags;
-import net.matez.wildnature.core.registry.WNBlocks;
 import net.matez.wildnature.core.registry.WNItems;
-import net.matez.wildnature.api.util.ExtraMath;
-import net.matez.wildnature.data.block_models.plants.WNBlockModel_Crop;
-import net.matez.wildnature.data.blockstates.plants.WNBlockstate_TypedCropBush;
-import net.matez.wildnature.data.setup.base.WNResource;
 import net.minecraft.client.color.block.BlockColor;
 import net.minecraft.client.color.block.BlockColors;
 import net.minecraft.client.color.item.ItemColor;
 import net.minecraft.core.BlockPos;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.block.BushBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
-
-import java.util.Random;
 
 public abstract class WNCropTypedBlock extends WNBushBlock {
     public IntegerProperty STAGE;
     protected final CropType cropType;
 
-    public WNCropTypedBlock(ResourceLocation location, Properties properties, CropType cropType) {
+    public WNCropTypedBlock(Properties properties, CropType cropType) {
         super(properties, cropType.getConfig());
         this.cropType = cropType;
         this.registerDefaultState(this.defaultBlockState().setValue(this.STAGE, 0));
@@ -110,45 +95,37 @@ public abstract class WNCropTypedBlock extends WNBushBlock {
         return null;
     }
 
-    public static WNCropTypedBlock create(ResourceLocation location, Properties properties, Item.Properties itemProperties, CropType cropType) {
+    public static WNCropTypedBlock create(Properties properties, CropType cropType) {
         switch (cropType.getStages()-1) {
             case 0 -> {
-                return new WNCropBlock_Stage0(location, properties, itemProperties, cropType);
+                return new WNCropBlock_Stage0(properties, cropType);
             }
             case 1 -> {
-                return new WNCropBlock_Stage1(location, properties, itemProperties, cropType);
+                return new WNCropBlock_Stage1(properties, cropType);
             }
             case 2 -> {
-                return new WNCropBlock_Stage2(location, properties, itemProperties, cropType);
+                return new WNCropBlock_Stage2(properties, cropType);
             }
             case 3 -> {
-                return new WNCropBlock_Stage3(location, properties, itemProperties, cropType);
+                return new WNCropBlock_Stage3(properties, cropType);
             }
             case 4 -> {
-                return new WNCropBlock_Stage4(location, properties, itemProperties, cropType);
+                return new WNCropBlock_Stage4(properties, cropType);
             }
             case 5 -> {
-                return new WNCropBlock_Stage5(location, properties, itemProperties, cropType);
+                return new WNCropBlock_Stage5(properties, cropType);
             }
             case 6 -> {
-                return new WNCropBlock_Stage6(location, properties, itemProperties, cropType);
+                return new WNCropBlock_Stage6(properties, cropType);
             }
             case 7 -> {
-                return new WNCropBlock_Stage7(location, properties, itemProperties, cropType);
+                return new WNCropBlock_Stage7(properties, cropType);
             }
             case 8 -> {
-                return new WNCropBlock_Stage8(location, properties, itemProperties, cropType);
+                return new WNCropBlock_Stage8(properties, cropType);
             }
         }
 
         return null;
-    }
-
-    @Nullable
-    @Override
-    public WNTags.TagList getWNTags() {
-        return new WNTags.TagList(
-                WNTags.CROPS
-        );
     }
 }

@@ -20,13 +20,8 @@ public class WNCropBlock_Stage1 extends WNCropTypedBlock {
             Block.box(0.0D, 0.0D, 0.0D, 16.0D, 8.0D, 16.0D)
     };
 
-    public WNCropBlock_Stage1(ResourceLocation location, Properties properties, CropType cropType) {
-        super(location, properties, cropType);
-        this.STAGE = STAGE_;
-    }
-
-    public WNCropBlock_Stage1(ResourceLocation location, Properties properties, Item.Properties itemProperties, CropType cropType) {
-        super(location, properties, itemProperties, cropType);
+    public WNCropBlock_Stage1(Properties properties, CropType cropType) {
+        super(properties, cropType);
         this.STAGE = STAGE_;
     }
 

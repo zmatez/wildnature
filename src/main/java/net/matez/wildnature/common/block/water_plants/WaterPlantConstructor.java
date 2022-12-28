@@ -8,8 +8,9 @@ package net.matez.wildnature.common.block.water_plants;
 
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 
 public interface WaterPlantConstructor<T> {
-    WNBlock get(T type, ResourceLocation location, BlockBehaviour.Properties blockProperties, Item.Properties itemProperties);
+    Block get(T type, BlockBehaviour.Properties blockProperties);
 }

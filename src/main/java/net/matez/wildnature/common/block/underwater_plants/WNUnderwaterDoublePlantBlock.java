@@ -6,16 +6,11 @@
 
 package net.matez.wildnature.common.block.underwater_plants;
 
-import net.matez.wildnature.data.block_models.plants.WNBlockModel_TintedCross;
-import net.matez.wildnature.data.blockstates.plants.WNBlockstate_DoubleBush;
-import net.matez.wildnature.data.setup.base.WNResource;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
@@ -43,21 +38,11 @@ public class WNUnderwaterDoublePlantBlock extends WNUnderwaterBushBlock {
 
    public static final EnumProperty<DoubleBlockHalf> HALF = BlockStateProperties.DOUBLE_BLOCK_HALF;
 
-   public WNUnderwaterDoublePlantBlock(ResourceLocation location, Properties properties, UnderwaterPlant underwaterPlant) {
-      super(location, properties, underwaterPlant);
+   public WNUnderwaterDoublePlantBlock(Properties properties, UnderwaterPlant underwaterPlant) {
+      super(properties, underwaterPlant);
    }
-
-   public WNUnderwaterDoublePlantBlock(ResourceLocation location, Properties properties, Item.Properties itemProperties, UnderwaterPlant underwaterPlant) {
-      super(location, properties, itemProperties, underwaterPlant);
-   }
-
 
    @Override
-   public void construct() {
-      super.construct();
-      this.registerDefaultState(this.stateDefinition.any().setValue(HALF, DoubleBlockHalf.LOWER));
-   }
-
    public BlockState updateShape(BlockState p_52894_, Direction p_52895_, BlockState p_52896_, LevelAccessor p_52897_, BlockPos p_52898_, BlockPos p_52899_) {
       DoubleBlockHalf doubleblockhalf = p_52894_.getValue(HALF);
       if (p_52895_.getAxis() != Direction.Axis.Y || doubleblockhalf == DoubleBlockHalf.LOWER != (p_52895_ == Direction.UP) || p_52896_.is(this) && p_52896_.getValue(HALF) != doubleblockhalf) {
@@ -74,11 +59,13 @@ public class WNUnderwaterDoublePlantBlock extends WNUnderwaterBushBlock {
       return blockpos.getY() < level.getMaxBuildHeight() - 1 && level.getBlockState(blockpos.above()).canBeReplaced(context) ? super.getStateForPlacement(context) : null;
    }
 
+   @Override
    public void setPlacedBy(Level p_52872_, BlockPos p_52873_, BlockState p_52874_, LivingEntity p_52875_, ItemStack p_52876_) {
       BlockPos blockpos = p_52873_.above();
       p_52872_.setBlock(blockpos, copyWaterloggedFrom(p_52872_, blockpos, this.defaultBlockState().setValue(HALF, DoubleBlockHalf.UPPER)), 3);
    }
 
+   @Override
    public boolean canSurvive(BlockState p_52887_, LevelReader reader, BlockPos p_52889_) {
        if (p_52887_.getValue(HALF) != DoubleBlockHalf.UPPER) {
            return super.canSurvive(p_52887_, reader, p_52889_);
@@ -90,10 +77,10 @@ public class WNUnderwaterDoublePlantBlock extends WNUnderwaterBushBlock {
        }
    }
 
-   protected boolean mayPlaceOn(BlockState state, BlockState stateOn, BlockGetter getter, BlockPos pos) {
-      if(super.mayPlaceOn(state,stateOn,getter,pos) || stateOn.is(this)){
+   protected boolean mayPlaceOn(BlockState stateOn, BlockGetter getter, BlockPos pos) {
+      if(super.mayPlaceOn(stateOn,getter,pos) || stateOn.is(this)){
          BlockPos waterPos = null;
-         if(state.getValue(HALF) == DoubleBlockHalf.LOWER){
+         if(stateOn.getValue(HALF) == DoubleBlockHalf.LOWER){
             waterPos = pos.above();
          }else{
             waterPos = pos;
@@ -159,19 +146,5 @@ public class WNUnderwaterDoublePlantBlock extends WNUnderwaterBushBlock {
    public VoxelShape getShape(BlockState state, BlockGetter getter, BlockPos pos, CollisionContext context) {
       Vec3 vec3 = state.getOffset(getter, pos);
       return SHAPE.move(vec3.x, vec3.y, vec3.z);
-   }
-
-
-   @Override
-   public WNResource getBlockstate() {
-      return new WNBlockstate_DoubleBush(this.getRegistryName());
-   }
-
-   @Override
-   public ModelList getBlockModels() {
-      return new ModelList().with(
-              new WNBlockModel_TintedCross(this.getRegName() + "_bottom").with("texture",this.getTextureName("plants/water/" + underwaterPlant.getFolder()) + "_bottom"),
-              new WNBlockModel_TintedCross(this.getRegName() + "_top").with("texture",this.getTextureName("plants/water/" + underwaterPlant.getFolder()) + "_top")
-      );
    }
 }

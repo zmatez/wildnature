@@ -6,16 +6,11 @@
 
 package net.matez.wildnature.common.block.cave_plants;
 
-import net.matez.wildnature.data.block_models.plants.WNBlockModel_TintedCross;
-import net.matez.wildnature.data.blockstates.plants.WNBlockstate_DoubleBush;
-import net.matez.wildnature.data.setup.base.WNResource;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
@@ -42,21 +37,13 @@ public class WNCaveHangingDoubleBushBlock extends WNCaveBushBlock {
 
    public static final EnumProperty<DoubleBlockHalf> HALF = BlockStateProperties.DOUBLE_BLOCK_HALF;
 
-   public WNCaveHangingDoubleBushBlock(ResourceLocation location, Properties properties, CavePlantType type) {
-      super(location, properties, type);
-   }
+   public WNCaveHangingDoubleBushBlock(Properties properties, CavePlantType type) {
+      super(properties, type);
+      this.registerDefaultState(this.stateDefinition.any().setValue(HALF, DoubleBlockHalf.UPPER));
 
-   public WNCaveHangingDoubleBushBlock(ResourceLocation location, Properties properties, Item.Properties itemProperties, CavePlantType type) {
-      super(location, properties, itemProperties, type);
    }
-
 
    @Override
-   public void construct() {
-      super.construct();
-      this.registerDefaultState(this.stateDefinition.any().setValue(HALF, DoubleBlockHalf.UPPER));
-   }
-
    public BlockState updateShape(BlockState state, Direction direction, BlockState state2, LevelAccessor level, BlockPos pos, BlockPos pos2) {
       DoubleBlockHalf doubleblockhalf = state.getValue(HALF);
       System.out.println(direction + "/ " + doubleblockhalf);
@@ -74,18 +61,20 @@ public class WNCaveHangingDoubleBushBlock extends WNCaveBushBlock {
       return blockpos.getY() < level.getMaxBuildHeight() - 1 && level.getBlockState(blockpos.below()).canBeReplaced(context) ? super.getStateForPlacement(context) : null;
    }
 
+   @Override
    public void setPlacedBy(Level p_52872_, BlockPos p_52873_, BlockState p_52874_, LivingEntity p_52875_, ItemStack p_52876_) {
       BlockPos blockpos = p_52873_.below();
       p_52872_.setBlock(blockpos, copyWaterloggedFrom(p_52872_, blockpos, this.defaultBlockState().setValue(HALF, DoubleBlockHalf.LOWER)), 3);
    }
 
+   @Override
    public boolean canSurvive(BlockState blockState, LevelReader reader, BlockPos pos) {
        if (blockState.getValue(HALF) == DoubleBlockHalf.UPPER) {
            BlockPos blockpos = pos.above();
            if (blockState.getBlock() == this) //Forge: This function is called during world gen and placement, before this block is set, so if we are not 'here' then assume it's the pre-check.
-               return (reader.getBlockState(blockpos).canSustainPlant(reader, blockpos, Direction.DOWN, this) && this.mayPlaceOn(blockState, reader.getBlockState(blockpos), reader, blockpos))
-                       || this.mayPlaceOn(blockState, reader.getBlockState(blockpos), reader, blockpos);
-           return this.mayPlaceOn(blockState, reader.getBlockState(blockpos), reader, blockpos);
+               return (reader.getBlockState(blockpos).canSustainPlant(reader, blockpos, Direction.DOWN, this) && this.mayPlaceOn(reader.getBlockState(blockpos), reader, blockpos))
+                       || this.mayPlaceOn(reader.getBlockState(blockpos), reader, blockpos);
+           return this.mayPlaceOn(reader.getBlockState(blockpos), reader, blockpos);
        } else {
            BlockState blockstate = reader.getBlockState(pos.above());
            if (blockState.getBlock() != this)
@@ -94,8 +83,8 @@ public class WNCaveHangingDoubleBushBlock extends WNCaveBushBlock {
        }
    }
 
-   protected boolean mayPlaceOn(BlockState state, BlockState stateOn, BlockGetter getter, BlockPos pos) {
-      return super.mayPlaceOn(state,stateOn,getter,pos) || stateOn.is(this);
+   protected boolean mayPlaceOn(BlockState stateOn, BlockGetter getter, BlockPos pos) {
+      return super.mayPlaceOn(stateOn,getter,pos) || stateOn.is(this);
    }
 
    public static void placeAt(LevelAccessor level, BlockState state, BlockPos pos, int arg) {
@@ -153,19 +142,5 @@ public class WNCaveHangingDoubleBushBlock extends WNCaveBushBlock {
    public VoxelShape getShape(BlockState state, BlockGetter getter, BlockPos pos, CollisionContext context) {
       Vec3 vec3 = state.getOffset(getter, pos);
       return SHAPE.move(vec3.x, vec3.y, vec3.z);
-   }
-
-
-   @Override
-   public WNResource getBlockstate() {
-      return new WNBlockstate_DoubleBush(this.getRegistryName());
-   }
-
-   @Override
-   public ModelList getBlockModels() {
-      return new ModelList().with(
-              new WNBlockModel_TintedCross(this.getRegName() + "_bottom").with("texture",this.getTextureName("plants/cave/" + cavePlantType.getFolder()) + "_bottom"),
-              new WNBlockModel_TintedCross(this.getRegName() + "_top").with("texture",this.getTextureName("plants/cave/" + cavePlantType.getFolder()) + "_top")
-      );
    }
 }

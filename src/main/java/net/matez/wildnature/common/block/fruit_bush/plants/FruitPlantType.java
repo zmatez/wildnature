@@ -112,7 +112,6 @@ public enum FruitPlantType {
     private final MaterialColor color;
     private final boolean tinted;
     private final FruitBushConfig config;
-    private CreativeModeTab tab = WNTabs.TAB_SURFACE_PLANTS;
 
     FruitPlantType(String idBase, String folder, MaterialColor color, boolean tinted, FruitBushConfig config){
         this.idBase = idBase;
@@ -142,7 +141,4 @@ public enum FruitPlantType {
         return tinted;
     }
 
-    public CreativeModeTab getTab() {
-        return tab;
-    }
 }

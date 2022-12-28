@@ -7,11 +7,13 @@
 package net.matez.wildnature.common.block.plant.vines;
 
 import com.google.common.collect.ImmutableMap;
+import net.matez.wildnature.common.WNBlock;
 import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
@@ -31,7 +33,7 @@ import java.util.Random;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-public abstract class WNAbstractVineBlock extends WNBlock implements net.minecraftforge.common.IForgeShearable {
+public abstract class WNAbstractVineBlock extends Block implements net.minecraftforge.common.IForgeShearable, WNBlock {
     public static final BooleanProperty UP = PipeBlock.UP;
     public static final BooleanProperty NORTH = PipeBlock.NORTH;
     public static final BooleanProperty EAST = PipeBlock.EAST;
@@ -48,22 +50,9 @@ public abstract class WNAbstractVineBlock extends WNBlock implements net.minecra
     private static final VoxelShape SOUTH_AABB = Block.box(0.0D, 0.0D, 15.0D, 16.0D, 16.0D, 16.0D);
     private Map<BlockState, VoxelShape> shapesCache;
 
-    public WNAbstractVineBlock(ResourceLocation location, Properties properties) {
-        super(location, properties);
-    }
-
-    public WNAbstractVineBlock(ResourceLocation location, Properties properties, Item.Properties itemProperties) {
-        super(location, properties, itemProperties);
-    }
-
-    public WNAbstractVineBlock(ResourceLocation location, Properties properties, WNBlockItem item) {
-        super(location, properties, item);
-    }
-
-    @Override
-    public void construct() {
-        super.construct();
-        this.registerDefaultState(this.stateDefinition.any().setValue(UP, Boolean.valueOf(false)).setValue(NORTH, Boolean.valueOf(false)).setValue(EAST, Boolean.valueOf(false)).setValue(SOUTH, Boolean.valueOf(false)).setValue(WEST, Boolean.valueOf(false)));
+    public WNAbstractVineBlock(Properties properties) {
+        super(properties);
+        this.registerDefaultState(this.stateDefinition.any().setValue(UP, false).setValue(NORTH, false).setValue(EAST, false).setValue(SOUTH, false).setValue(WEST, false));
         this.shapesCache = ImmutableMap.copyOf(this.stateDefinition.getPossibleStates().stream().collect(Collectors.toMap(Function.identity(), WNAbstractVineBlock::calculateShape)));
     }
 
@@ -169,6 +158,7 @@ public abstract class WNAbstractVineBlock extends WNBlock implements net.minecra
         return p_57902_;
     }
 
+    @Override
     public BlockState updateShape(BlockState p_57875_, Direction p_57876_, BlockState p_57877_, LevelAccessor p_57878_, BlockPos p_57879_, BlockPos p_57880_) {
         if (p_57876_ == Direction.DOWN) {
             return super.updateShape(p_57875_, p_57876_, p_57877_, p_57878_, p_57879_, p_57880_);
@@ -178,7 +168,8 @@ public abstract class WNAbstractVineBlock extends WNBlock implements net.minecra
         }
     }
 
-    public void randomTick(BlockState p_57892_, ServerLevel p_57893_, BlockPos p_57894_, Random p_57895_) {
+    @Override
+    public void randomTick(BlockState p_57892_, ServerLevel p_57893_, BlockPos p_57894_, RandomSource p_57895_) {
         if (p_57893_.random.nextInt(4) == 0 && p_57893_.isAreaLoaded(p_57894_, 4)) { // Forge: check area to prevent loading unloaded chunks
             Direction direction = Direction.getRandom(p_57895_);
             BlockPos blockpos = p_57894_.above();
@@ -256,7 +247,7 @@ public abstract class WNAbstractVineBlock extends WNBlock implements net.minecra
         }
     }
 
-    private BlockState copyRandomFaces(BlockState p_57871_, BlockState p_57872_, Random p_57873_) {
+    private BlockState copyRandomFaces(BlockState p_57871_, BlockState p_57872_, RandomSource p_57873_) {
         for(Direction direction : Direction.Plane.HORIZONTAL) {
             if (p_57873_.nextBoolean()) {
                 BooleanProperty booleanproperty = getPropertyForFace(direction);

@@ -6,14 +6,10 @@
 
 package net.matez.wildnature.common.block.fruit_bush.plants;
 
+import net.matez.wildnature.api.util.ExtraMath;
 import net.matez.wildnature.common.block.fruit_bush.plants.stages.*;
 import net.matez.wildnature.common.block.leaves.LeafConfig;
-import net.matez.wildnature.api.util.ExtraMath;
-import net.matez.wildnature.data.block_models.plants.WNBlockModel_FloweringBush;
-import net.matez.wildnature.data.block_models.plants.WNBlockModel_TintedCross;
-import net.matez.wildnature.data.blockstates.plants.WNBlockstate_TypedFruitBush;
-import net.matez.wildnature.data.item_models.WNItemModel_Generated;
-import net.matez.wildnature.data.setup.base.WNResource;
+import net.matez.wildnature.common.block.plant.WNBushBlock;
 import net.minecraft.client.color.block.BlockColor;
 import net.minecraft.client.color.block.BlockColors;
 import net.minecraft.client.color.item.ItemColor;
@@ -21,6 +17,7 @@ import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -36,41 +33,31 @@ import net.minecraft.world.phys.BlockHitResult;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 public abstract class WNFruitBushPlantTypedBlock extends WNBushBlock {
-    public IntegerProperty LEAF_STAGE;
     protected final FruitPlantType fruitType;
 
-    public WNFruitBushPlantTypedBlock(ResourceLocation location, Properties properties, FruitPlantType fruitType) {
-        super(location, properties, fruitType.getConfig());
+    public WNFruitBushPlantTypedBlock(Properties properties, FruitPlantType fruitType) {
+        super(properties, fruitType.getConfig());
         this.fruitType = fruitType;
+        if (this.getLeafStageProperty() != null)
+            this.registerDefaultState(this.defaultBlockState().setValue(this.getLeafStageProperty(), 0));
     }
 
-    public WNFruitBushPlantTypedBlock(ResourceLocation location, Properties properties, Item.Properties itemProperties, FruitPlantType fruitType) {
-        super(location, properties, itemProperties, fruitType.getConfig());
-        this.fruitType = fruitType;
-    }
+    @Nullable
+    public abstract IntegerProperty getLeafStageProperty();
 
-
-    @Override
-    public void construct() {
-        super.construct();
-        if (this.LEAF_STAGE != null) {
-            this.registerDefaultState(this.defaultBlockState().setValue(this.LEAF_STAGE, 0));
-        }
-    }
 
     @Override
     public boolean isRandomlyTicking(BlockState state) {
-        return this.LEAF_STAGE != null && state.getValue(this.LEAF_STAGE) != this.fruitType.getConfig().getStages()-1;
+        return this.getLeafStageProperty() != null && state.getValue(this.getLeafStageProperty()) != this.fruitType.getConfig().getStages()-1;
     }
 
     @Override
-    public void randomTick(BlockState state, ServerLevel level, BlockPos pos, Random random) {
+    public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
         super.randomTick(state, level, pos, random);
-        if (this.LEAF_STAGE != null && state.getValue(this.LEAF_STAGE) != this.fruitType.getConfig().getStages()-1) {
-            level.setBlock(pos, state.setValue(this.LEAF_STAGE, state.getValue(LEAF_STAGE) + 1), 2);
+        if (this.getConfig() != null && state.getValue(this.getLeafStageProperty()) != this.fruitType.getConfig().getStages()-1) {
+            level.setBlock(pos, state.setValue(this.getLeafStageProperty(), state.getValue(getLeafStageProperty()) + 1), 2);
         }
     }
 
@@ -92,66 +79,8 @@ public abstract class WNFruitBushPlantTypedBlock extends WNBushBlock {
     }
 
     @Override
-    public WNResource getBlockstate() {
-        return new WNBlockstate_TypedFruitBush(this.getRegistryName(), this.fruitType.getConfig());
-    }
-
-    @Override
-    public ModelList getBlockModels() {
-        ModelList list = new ModelList();
-        for (int i = 0; i < this.fruitType.getConfig().getStages(); i++) {
-            FruitBushConfig.StageConfig config = this.fruitType.getConfig().getStageConfigs().get(i);
-            WNResource model = null;
-            
-            String path = config == null || config.isPathRelativeToBlock() ? this.getTextureName("fruit_bushes/" + fruitType.getFolder()) : (this.getRegistryName().getNamespace() + ":blocks/fruit_bushes/" + fruitType.getFolder() + "/");
-
-            int j = i + 1;
-            if (config == null) {
-                model = new WNBlockModel_TintedCross(this.getRegName() + "_stage_" + j)
-                        .with("texture", path + "_stage_" + j);
-            } else if (config.getCross() == null) {
-                if (config.getOverlay() == null) {
-                    model = new WNBlockModel_TintedCross(this.getRegName() + "_stage_" + j)
-                            .with("texture", path + "_stage_" + j);
-                } else {
-                    model = new WNBlockModel_FloweringBush(this.getRegName() + "_stage_" + j)
-                            .with("stalk", path + "_stage_" + j)
-                            .with("texture", path + config.getOverlay());
-                }
-            } else {
-                if (config.getOverlay() == null) {
-                    model = new WNBlockModel_TintedCross(this.getRegName() + "_stage_" + j)
-                            .with("texture", path + config.getCross());
-                } else {
-                    model = new WNBlockModel_FloweringBush(this.getRegName() + "_stage_" + j)
-                            .with("stalk", path + config.getCross())
-                            .with("texture", path + config.getOverlay());
-                }
-            }
-            list.with(model);
-        }
-
-        return list;
-    }
-
-    @javax.annotation.Nullable
-    public WNResource getItemModel() {
-        return new WNItemModel_Generated(getRegName()).with("texture", this.getRegistryName().getNamespace() + ":blocks/fruit_bushes/" + fruitType.getFolder() + "/" + this.getRegName() + "_item");
-    }
-
-    @Nullable
-    @Override
-    public DropList getDrops(BlockState state, ServerLevel level, float luck) {
-        ItemStack fruit = getFruit(state);
-        if (fruit != null) {
-            return new DropList().with(fruit);
-        }
-        return super.getDrops(state, level, luck);
-    }
-
-    @Override
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult result) {
-        if (this.LEAF_STAGE != null) {
+        if (this.getLeafStageProperty() != null) {
             ItemStack fruit = getFruit(state);
             {
                 if (fruit != null) {
@@ -164,7 +93,7 @@ public abstract class WNFruitBushPlantTypedBlock extends WNBushBlock {
 
                     int stage = available.isEmpty() ? 0 : (available.get(ExtraMath.rint(0,available.size()-1)));
 
-                    level.setBlock(pos, state.setValue(this.LEAF_STAGE, stage), 2);
+                    level.setBlock(pos, state.setValue(this.getLeafStageProperty(), stage), 2);
                     Block.popResourceFromFace(level, pos, result.getDirection(), fruit);
 
                     return InteractionResult.SUCCESS;
@@ -177,8 +106,8 @@ public abstract class WNFruitBushPlantTypedBlock extends WNBushBlock {
 
     @Nullable
     public ItemStack getFruit(BlockState state) {
-        if (this.LEAF_STAGE != null) {
-            int stage = state.getValue(this.LEAF_STAGE);
+        if (this.getLeafStageProperty() != null) {
+            int stage = state.getValue(this.getLeafStageProperty());
             if (fruitType.getConfig().getStageConfigs().containsKey(stage)) {
                 LeafConfig.ItemConfig config = fruitType.getConfig().getStageConfigs().containsKey(stage) ? fruitType.getConfig().getStageConfigs().get(stage).getItemConfig() : null;
                 if(config != null) {
@@ -220,10 +149,10 @@ public abstract class WNFruitBushPlantTypedBlock extends WNBushBlock {
     public static WNFruitBushPlantTypedBlock create(ResourceLocation location, Properties properties, Item.Properties itemProperties, FruitPlantType leafType) {
         switch (leafType.getConfig().getStages()-1) {
             case 0 -> {
-                return new WNFruitBushPlantBlock_Stage0(location, properties, itemProperties, leafType);
+                return new WNFruitBushPlantBlock_Stage0(properties, leafType);
             }
             case 1 -> {
-                return new WNFruitBushPlantBlock_Stage1(location, properties, itemProperties, leafType);
+                return new WNFruitBushPlantBlock_Stage1(properties, leafType);
             }
             case 2 -> {
                 return new WNFruitBushPlantBlock_Stage2(location, properties, itemProperties, leafType);

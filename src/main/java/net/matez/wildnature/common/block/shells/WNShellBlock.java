@@ -6,17 +6,12 @@
 
 package net.matez.wildnature.common.block.shells;
 
-import net.matez.wildnature.common.tags.WNTags;
-import net.matez.wildnature.data.blockstates.WNBlockstate_RandomlyRotatedCube;
-import net.matez.wildnature.data.item_models.WNItemModel_Generated;
-import net.matez.wildnature.data.setup.base.WNResource;
+import net.matez.wildnature.common.WNBlock;
 import net.minecraft.core.BlockPos;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
@@ -37,20 +32,15 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 
-public class WNShellBlock extends WNBlock implements SimpleWaterloggedBlock {
+public class WNShellBlock extends Block implements SimpleWaterloggedBlock, WNBlock {
     protected Shell shell;
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 
     private static final int offset = 2;
     private static final VoxelShape SHAPE = Block.box(offset,0,offset,16-offset,1,16-offset);
 
-    public WNShellBlock(ResourceLocation location, Properties properties, Shell shell) {
-        super(location, properties);
-        this.shell = shell;
-    }
-
-    public WNShellBlock(ResourceLocation location, Properties properties, Item.Properties itemProperties, Shell shell) {
-        super(location, properties, itemProperties);
+    public WNShellBlock(Properties properties, Shell shell) {
+        super(properties);
         this.shell = shell;
     }
 
@@ -61,42 +51,12 @@ public class WNShellBlock extends WNBlock implements SimpleWaterloggedBlock {
     }
 
     @Override
-    public WNResource getBlockstate() {
-        return new WNBlockstate_RandomlyRotatedCube(this.getRegistryName());
-    }
-
-    @Override
-    public ModelList getBlockModels() {
-        return new ModelList().with(
-                this.shell.getModelSupplier().getModel(this).with("texture",this.getTextureName("shells"))
-        );
-    }
-
-    @Nullable
-    @Override
-    public WNResource getItemModel() {
-        return new WNItemModel_Generated(this.getRegName()).with("texture",this.getTextureName("shells") + "_item");
-    }
-
-    @Override
-    public OffsetType getOffsetType() {
-        return OffsetType.XZ;
-    }
-
-    @Override
     public VoxelShape getShape(BlockState state, BlockGetter getter, BlockPos pos, CollisionContext context) {
         Vec3 vec3 = state.getOffset(getter, pos);
         return SHAPE.move(vec3.x, vec3.y, vec3.z);
     }
 
-    @Nullable
     @Override
-    public WNTags.TagList getWNTags() {
-        return new WNTags.TagList(
-                WNTags.WN_SHELLS, WNTags.MINEABLE_PICKAXE
-        );
-    }
-
     public FluidState getFluidState(BlockState state) {
         return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
     }
@@ -118,13 +78,13 @@ public class WNShellBlock extends WNBlock implements SimpleWaterloggedBlock {
     @Override
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult result) {
         ItemStack held = player.getItemInHand(hand);
-        if(held.isEmpty() || (held.is(this.getItem()) && held.getCount() < 64)){
+        if(held.isEmpty() || (held.is(this.asItem()) && held.getCount() < 64)){
             level.setBlockAndUpdate(pos, state.getValue(WATERLOGGED) ? Blocks.WATER.defaultBlockState() : Blocks.AIR.defaultBlockState());
             if(player.isCreative() && held.isEmpty()){
-                player.setItemInHand(hand,new ItemStack(this.getItem()));
+                player.setItemInHand(hand,new ItemStack(this.asItem()));
             }else if(!player.isCreative()){
                 if(held.isEmpty()) {
-                    player.setItemInHand(hand,new ItemStack(this.getItem()));
+                    player.setItemInHand(hand,new ItemStack(this.asItem()));
                 }else{
                     held.setCount(held.getCount() + 1);
                 }

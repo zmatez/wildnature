@@ -8,34 +8,20 @@ package net.matez.wildnature.common.block.mushrooms;
 
 import net.matez.wildnature.common.block.plant.WNBushBlock;
 import net.matez.wildnature.common.block.plant.config.BushConfig;
-import net.matez.wildnature.common.tags.WNTags;
-import net.matez.wildnature.data.block_models.plants.WNBlockModel_TintedCross;
-import net.matez.wildnature.data.item_models.WNItemModel_Generated;
-import net.matez.wildnature.data.setup.base.WNResource;
-import net.minecraft.client.color.block.BlockColor;
 import net.minecraft.core.BlockPos;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.world.item.Item;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.state.BlockState;
-import org.jetbrains.annotations.Nullable;
-
-import java.util.Random;
 
 public class WNMushroomBlock extends WNBushBlock {
     public static final BushConfig CONFIG = new BushConfig();
     protected final Mushroom mushroom;
 
-    public WNMushroomBlock(ResourceLocation location, Properties properties, Mushroom mushroom) {
-        super(location, properties, CONFIG);
-        this.mushroom = mushroom;
-    }
-
-    public WNMushroomBlock(ResourceLocation location, Properties properties, Item.Properties itemProperties, Mushroom mushroom) {
-        super(location, properties, itemProperties, CONFIG);
+    public WNMushroomBlock(Properties properties, Mushroom mushroom) {
+        super(properties, CONFIG);
         this.mushroom = mushroom;
     }
 
@@ -50,29 +36,8 @@ public class WNMushroomBlock extends WNBushBlock {
         }
     }
 
-    @Nullable
     @Override
-    public WNResource getItemModel() {
-        if(mushroom == Mushroom.PSILOCYBIN_MUSHROOM){
-            return new WNItemModel_Generated(this.getRegName()).with("texture",this.getRegistryName().getNamespace() + ":blocks/plants/surface/mushrooms/shrooms");
-        }
-        return new WNItemModel_Generated(this.getRegName()).with("texture",this.getTextureName("plants/surface/mushrooms"));
-    }
-
-    @Override
-    public ModelList getBlockModels() {
-        return new ModelList().with(
-                new WNBlockModel_TintedCross(this.getRegName()).with("texture",this.getTextureName("plants/surface/mushrooms"))
-        );
-    }
-
-    @Override
-    public @Nullable BlockColor getBlockColor() {
-        return null;
-    }
-
-    @Override
-    public void randomTick(BlockState state, ServerLevel level, BlockPos pos, Random random) {
+    public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
         if (random.nextInt(25) == 0) {
             int i = 5;
             int j = 4;
@@ -104,22 +69,7 @@ public class WNMushroomBlock extends WNBushBlock {
     }
 
     @Override
-    protected boolean mayPlaceOn(BlockState state, BlockState stateOn, BlockGetter getter, BlockPos pos) {
-        return state.isSolidRender(getter, pos);
-    }
-
-    @Override
-    public @Nullable WNTags.TagList getWNTags() {
-        WNTags.TagList list = new WNTags.TagList(
-            WNTags.MINEABLE_AXE
-        );
-
-        if(this.mushroom.isPoisonous()){
-            list.with(WNTags.RED_MUSHROOM);
-        }else{
-            list.with(WNTags.BROWN_MUSHROOM);
-        }
-
-        return list;
+    protected boolean mayPlaceOn(BlockState stateOn, BlockGetter getter, BlockPos pos) {
+        return stateOn.isSolidRender(getter, pos);
     }
 }

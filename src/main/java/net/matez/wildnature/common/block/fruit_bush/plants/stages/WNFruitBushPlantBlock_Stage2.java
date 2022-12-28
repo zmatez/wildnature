@@ -12,16 +12,12 @@ import net.minecraft.world.level.block.state.properties.IntegerProperty;
 public class WNFruitBushPlantBlock_Stage2 extends WNFruitBushPlantTypedBlock {
     public static IntegerProperty STAGE = IntegerProperty.create("stage", 0, 2);
 
-    public WNFruitBushPlantBlock_Stage2(ResourceLocation location, Properties properties, FruitPlantType fruitType) {
+    public WNFruitBushPlantBlock_Stage2(Properties properties, FruitPlantType fruitType) {
         super(location, properties, fruitType);
         this.LEAF_STAGE = STAGE;
     }
 
-    public WNFruitBushPlantBlock_Stage2(ResourceLocation location, Properties properties, Item.Properties itemProperties, FruitPlantType fruitType) {
-        super(location, properties, itemProperties, fruitType);
-        this.LEAF_STAGE = STAGE;
-    }
-
+    @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> state) {
         super.createBlockStateDefinition(state);
         if(STAGE != null){

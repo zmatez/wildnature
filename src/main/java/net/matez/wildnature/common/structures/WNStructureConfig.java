@@ -7,6 +7,7 @@
 package net.matez.wildnature.common.structures;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Rotation;
@@ -32,5 +33,5 @@ public interface WNStructureConfig {
         return newState;
     }
 
-    BlockState processState(LevelAccessor level, BlockState state, BlockPos pos, Random random, @Nullable Rotation rotation);
+    BlockState processState(LevelAccessor level, BlockState state, BlockPos pos, RandomSource random, @Nullable Rotation rotation);
 }

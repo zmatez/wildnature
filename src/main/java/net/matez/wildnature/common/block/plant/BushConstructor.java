@@ -11,5 +11,5 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 
 public interface BushConstructor<T> {
-    Block get(T type, BlockBehaviour.Properties blockProperties, Item.Properties itemProperties);
+    Block get(T type, BlockBehaviour.Properties blockProperties);
 }

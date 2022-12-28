@@ -1,7 +1,5 @@
 package net.matez.wildnature.common.block.rocks;
 
-import net.matez.wildnature.data.blockstates.WNBlockstate_RandomlyRotatedCube;
-import net.matez.wildnature.data.setup.base.WNResource;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
@@ -10,6 +8,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.FluidTags;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
@@ -26,14 +25,11 @@ import java.util.Random;
 public class WNRockMagmaBlock extends WNRockBlock {
     private static final int BUBBLE_COLUMN_CHECK_DELAY = 20;
 
-    public WNRockMagmaBlock(ResourceLocation location, Properties properties, RockType rockType) {
-        super(location, properties, rockType);
+    public WNRockMagmaBlock(Properties properties, RockType rockType) {
+        super(properties, rockType);
     }
 
-    public WNRockMagmaBlock(ResourceLocation location, Properties properties, Item.Properties itemProperties, RockType rockType) {
-        super(location, properties, itemProperties, rockType);
-    }
-
+    @Override
     public void stepOn(Level p_153777_, BlockPos p_153778_, BlockState p_153779_, Entity p_153780_) {
         if (!p_153780_.fireImmune() && p_153780_ instanceof LivingEntity && !EnchantmentHelper.hasFrostWalker((LivingEntity)p_153780_)) {
             p_153780_.hurt(DamageSource.HOT_FLOOR, 1.0F);
@@ -42,8 +38,9 @@ public class WNRockMagmaBlock extends WNRockBlock {
         super.stepOn(p_153777_, p_153778_, p_153779_, p_153780_);
     }
 
-    public void tick(BlockState p_54806_, ServerLevel p_54807_, BlockPos p_54808_, Random p_54809_) {
-        BubbleColumnBlock.updateColumn(p_54807_, p_54808_.above(), p_54806_);
+    @Override
+    public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource randomSource) {
+        BubbleColumnBlock.updateColumn(level, pos.above(), state);
     }
 
     public BlockState updateShape(BlockState p_54811_, Direction p_54812_, BlockState p_54813_, LevelAccessor p_54814_, BlockPos p_54815_, BlockPos p_54816_) {
@@ -65,10 +62,5 @@ public class WNRockMagmaBlock extends WNRockBlock {
 
     public void onPlace(BlockState p_54823_, Level p_54824_, BlockPos p_54825_, BlockState p_54826_, boolean p_54827_) {
         p_54824_.scheduleTick(p_54825_, this, 20);
-    }
-
-    @Override
-    public WNResource getBlockstate() {
-        return new WNBlockstate_RandomlyRotatedCube(this.getRegistryName());
     }
 }

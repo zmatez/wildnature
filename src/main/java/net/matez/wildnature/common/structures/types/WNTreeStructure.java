@@ -13,7 +13,9 @@ import net.matez.wildnature.core.registry.WNBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -105,7 +107,7 @@ public class WNTreeStructure extends WNStructure {
         if (iChunk instanceof LevelChunk chunk) {
             entity = chunk.getBlockEntity(pos, LevelChunk.EntityCreationType.IMMEDIATE);
         } else {
-            entity = ((WNBaseEntityBlock) WNBlocks.SOIL).newBlockEntity(pos, WNBlocks.SOIL.defaultBlockState());
+            entity = ((BaseEntityBlock) WNBlocks.SOIL).newBlockEntity(pos, WNBlocks.SOIL.defaultBlockState());
             assert entity != null;
             iChunk.setBlockEntity(entity);
             iChunk.setBlockEntityNbt(entity.serializeNBT());
@@ -116,7 +118,7 @@ public class WNTreeStructure extends WNStructure {
     }
 
     @Override
-    public BlockState processState(LevelAccessor level, BlockState state, BlockPos pos, Random random, @Nullable Rotation rotation) {
+    public BlockState processState(LevelAccessor level, BlockState state, BlockPos pos, RandomSource random, @Nullable Rotation rotation) {
         state = super.processState(level, state, pos, random, rotation);
         if (state.hasProperty(BlockStateProperties.PERSISTENT)) {
             state = state.setValue(BlockStateProperties.PERSISTENT, true);

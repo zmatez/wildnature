@@ -24,8 +24,8 @@ import java.util.Map;
 public class WNSaplingBlock extends WNAbstractSaplingBlock {
     private final WNSaplingType saplingType;
 
-    public WNSaplingBlock(ResourceLocation location, Properties properties, WNSaplingType type) {
-        super(location, properties, type.getPlacement(), type.getBigPlacement(), type.getBushPlacement());
+    public WNSaplingBlock(Properties properties, WNSaplingType type) {
+        super(properties, type.getPlacement(), type.getBigPlacement(), type.getBushPlacement());
         this.saplingType = type;
     }
 

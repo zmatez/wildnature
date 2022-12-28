@@ -26,16 +26,12 @@ public class WNCropBlock_Stage6 extends WNCropTypedBlock {
             Block.box(0.0D, 0.0D, 0.0D, 16.0D, 11.0D, 16.0D)
     };
 
-    public WNCropBlock_Stage6(ResourceLocation location, Properties properties, CropType cropType) {
-        super(location, properties, cropType);
+    public WNCropBlock_Stage6(Properties properties, CropType cropType) {
+        super(properties, cropType);
         this.STAGE = STAGE_;
     }
 
-    public WNCropBlock_Stage6(ResourceLocation location, Properties properties, Item.Properties itemProperties, CropType cropType) {
-        super(location, properties, itemProperties, cropType);
-        this.STAGE = STAGE_;
-    }
-
+    @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> state) {
         super.createBlockStateDefinition(state);
         if(STAGE_ != null){

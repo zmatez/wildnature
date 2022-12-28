@@ -6,6 +6,7 @@
 
 package net.matez.wildnature.common.block.water_plants;
 
+import net.matez.wildnature.common.block.plant.WNBushBlock;
 import net.matez.wildnature.common.block.plant.config.BushConfig;
 import net.matez.wildnature.common.item.waterlilies.WNWaterLilyBlockItem;
 import net.matez.wildnature.core.registry.WNBlocks;
@@ -29,21 +30,9 @@ public abstract class WNWaterlilyBlock extends WNBushBlock {
     private static final double OFFSET = 2D;
     protected static final VoxelShape SHAPE = Block.box(OFFSET, 0.0D, OFFSET, 16.0D - OFFSET, 1.0D, 16.0D - OFFSET);
 
-    public WNWaterlilyBlock(ResourceLocation location, Properties properties, WaterPlant waterPlant) {
-        super(location, properties, config);
+    public WNWaterlilyBlock(Properties properties, WaterPlant waterPlant) {
+        super(properties, config);
         this.waterPlant = waterPlant;
-    }
-
-    public WNWaterlilyBlock(ResourceLocation location, Properties properties, Item.Properties itemProperties, WaterPlant waterPlant) {
-        super(location, properties, itemProperties, config);
-        this.waterPlant = waterPlant;
-    }
-
-    @Override
-    public void createBlockItem(Item.Properties itemProperties) {
-        this.item = new WNWaterLilyBlockItem(this,itemProperties);
-        this.item.setRegistryName(this.getRegistryName());
-        WNBlocks.BLOCK_ITEMS.put(this.getRegistryName(), this.item);
     }
 
     @Override
@@ -57,9 +46,9 @@ public abstract class WNWaterlilyBlock extends WNBushBlock {
     }
 
     @Override
-    protected boolean mayPlaceOn(BlockState state, BlockState stateOn, BlockGetter getter, BlockPos pos) {
+    protected boolean mayPlaceOn(BlockState stateOn, BlockGetter getter, BlockPos pos) {
         FluidState fluidstate = getter.getFluidState(pos);
         FluidState fluidstate1 = getter.getFluidState(pos.above());
-        return (fluidstate.getType() == Fluids.WATER || state.getMaterial() == Material.ICE) && fluidstate1.getType() == Fluids.EMPTY;
+        return (fluidstate.getType() == Fluids.WATER || stateOn.getMaterial() == Material.ICE) && fluidstate1.getType() == Fluids.EMPTY;
     }
 }

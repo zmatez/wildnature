@@ -15,7 +15,7 @@ import java.util.function.Supplier;
 
 public enum OvergrownGrassType {
     OVERGROWN_STONE("overgrown_stone", false, () -> Blocks.STONE, () -> "minecraft:block/stone", () -> Blocks.COBBLESTONE),
-    OVERGROWN_MARBLE("overgrown_marble", false, () -> WNBlocks.ROCKS.get(RockType.MARBLE), () -> WNBlocks.ROCKS.get(RockType.MARBLE).getTextureName("rocks/marble"), () -> WNBlocks.ROCKS.get(RockType.MARBLE));
+    OVERGROWN_MARBLE("overgrown_marble", false, WNBlocks.ROCKS.get(RockType.MARBLE), () -> "wildnature:block/rocks/marble/marble", WNBlocks.ROCKS.get(RockType.MARBLE));
     private final String idBase;
     private final boolean tinted;
     private final Supplier<Block> baseBlock;

@@ -7,17 +7,10 @@
 package net.matez.wildnature.common.block.underwater_plants;
 
 import net.matez.wildnature.common.block.plant.vines.WNAbstractVineBlock;
-import net.matez.wildnature.common.tags.WNTags;
-import net.matez.wildnature.common.registry.setup.WNRenderType;
-import net.matez.wildnature.data.block_models.plants.WNBlockModel_Vine;
-import net.matez.wildnature.data.blockstates.plants.WNBlockstate_Vine;
-import net.matez.wildnature.data.item_models.WNItemModel_Generated;
-import net.matez.wildnature.data.setup.base.WNResource;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.FluidTags;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelAccessor;
@@ -32,21 +25,17 @@ import javax.annotation.Nullable;
 public class WNUnderwaterVineBlock extends WNAbstractVineBlock implements LiquidBlockContainer {
     protected final UnderwaterPlant underwaterPlant;
 
-    public WNUnderwaterVineBlock(ResourceLocation location, Properties properties, UnderwaterPlant underwaterPlant) {
-        super(location, properties);
-        this.underwaterPlant = underwaterPlant;
-    }
-
-    public WNUnderwaterVineBlock(ResourceLocation location, Properties properties, Item.Properties itemProperties, UnderwaterPlant underwaterPlant) {
-        super(location, properties, itemProperties);
+    public WNUnderwaterVineBlock(Properties properties, UnderwaterPlant underwaterPlant) {
+        super(properties);
         this.underwaterPlant = underwaterPlant;
     }
 
     @Override
-    public WNRenderType getRenderType() {
-        return WNRenderType.CUTOUT;
+    public RenderType getRenderType() {
+        return RenderType.cutout();
     }
 
+    @Override
     public FluidState getFluidState(BlockState p_154537_) {
         return Fluids.WATER.getSource(false);
     }
@@ -74,31 +63,5 @@ public class WNUnderwaterVineBlock extends WNAbstractVineBlock implements Liquid
     @Override
     public boolean placeLiquid(LevelAccessor p_54770_, BlockPos p_54771_, BlockState p_54772_, FluidState p_54773_) {
         return false;
-    }
-
-    @Override
-    public WNResource getBlockstate() {
-        return new WNBlockstate_Vine(this.getRegistryName());
-    }
-
-    @Override
-    public ModelList getBlockModels() {
-        return new WNBlock.ModelList().with(
-                new WNBlockModel_Vine(this.getRegName()).with("texture",this.getTextureName("plants/water/" + this.underwaterPlant.getFolder()))
-        );
-    }
-
-    @org.jetbrains.annotations.Nullable
-    @Override
-    public WNResource getItemModel() {
-        return new WNItemModel_Generated(this.getRegName()).with("texture",this.getTextureName("plants/water/" + underwaterPlant.getFolder()) + "_item");
-    }
-
-    @org.jetbrains.annotations.Nullable
-    @Override
-    public WNTags.TagList getWNTags() {
-        return new WNTags.TagList(
-                WNTags.CLIMBABLE
-        );
     }
 }

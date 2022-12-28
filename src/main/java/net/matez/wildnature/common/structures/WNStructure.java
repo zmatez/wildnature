@@ -13,16 +13,20 @@ import com.google.gson.JsonParser;
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import net.matez.wildnature.api.util.log.SimpleLogger;
+import net.matez.wildnature.common.WNBlock;
 import net.matez.wildnature.setup.WildNature;
 import net.minecraft.commands.arguments.blocks.BlockStateParser;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.material.Fluids;
+import net.minecraftforge.registries.ForgeRegistries;
 import org.apache.commons.lang3.ArrayUtils;
 
 import javax.annotation.Nullable;
@@ -152,9 +156,7 @@ public class WNStructure {
             BlockPos pos = BlockPos.of(obj.get("pos").getAsLong());
 
             try {
-                BlockStateParser parser = new BlockStateParser(new StringReader(obj.get("block").getAsString()), false).parse(true);
-                BlockState state = parser.getState();
-
+                BlockState state = BlockStateParser.parseForBlock(BuiltInRegistries.BLOCK.asLookup(), new StringReader(obj.get("block").getAsString()), true).blockState()6;
                 if (state == null) {
                     if (!missingStates.contains(obj.get("block").getAsString())) {
                         missingStates.add(obj.get("block").getAsString());
@@ -189,11 +191,11 @@ public class WNStructure {
         loadMax();
     }
 
-    public void place(LevelAccessor level, BlockPos pos, @Nullable Rotation rotation, Random random, int placeData) {
+    public void place(LevelAccessor level, BlockPos pos, @Nullable Rotation rotation, RandomSource random, int placeData) {
         place(level, pos, rotation, null, random, placeData);
     }
 
-    public void place(LevelAccessor level, BlockPos pos, @Nullable Rotation rotation, @Nullable WNStructureConfig config, Random random, int placeData) {
+    public void place(LevelAccessor level, BlockPos pos, @Nullable Rotation rotation, @Nullable WNStructureConfig config, RandomSource random, int placeData) {
         LinkedHashMap<BlockPos, BlockState> secondary = new LinkedHashMap<>();
         this.blocks.forEach((blockPos, blockState) -> {
             BlockPos newPos = null;
@@ -230,7 +232,7 @@ public class WNStructure {
         });
     }
 
-    public BlockState processState(LevelAccessor level, BlockState state, BlockPos pos, Random random, @Nullable Rotation rotation) {
+    public BlockState processState(LevelAccessor level, BlockState state, BlockPos pos, RandomSource random, @Nullable Rotation rotation) {
         return state.getBlock() instanceof WNBlock wnBlock ? wnBlock.processStateOnPlace(level, state, pos, this, random, rotation) : state;
     }
 

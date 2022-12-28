@@ -42,18 +42,8 @@ public class WNCaveDoubleBushBlock extends WNCaveBushBlock {
 
    public static final EnumProperty<DoubleBlockHalf> HALF = BlockStateProperties.DOUBLE_BLOCK_HALF;
 
-   public WNCaveDoubleBushBlock(ResourceLocation location, Properties properties, CavePlantType type) {
-      super(location, properties, type);
-   }
-
-   public WNCaveDoubleBushBlock(ResourceLocation location, Properties properties, Item.Properties itemProperties, CavePlantType type) {
-      super(location, properties, itemProperties, type);
-   }
-
-
-   @Override
-   public void construct() {
-      super.construct();
+   public WNCaveDoubleBushBlock(Properties properties, CavePlantType type) {
+      super(properties, type);
       this.registerDefaultState(this.stateDefinition.any().setValue(HALF, DoubleBlockHalf.LOWER));
    }
 
@@ -89,8 +79,9 @@ public class WNCaveDoubleBushBlock extends WNCaveBushBlock {
        }
    }
 
-   protected boolean mayPlaceOn(BlockState state, BlockState stateOn, BlockGetter getter, BlockPos pos) {
-      return super.mayPlaceOn(state,stateOn,getter,pos) || stateOn.is(this);
+   @Override
+   protected boolean mayPlaceOn(BlockState stateOn, BlockGetter getter, BlockPos pos) {
+      return super.mayPlaceOn(stateOn,getter,pos) || stateOn.is(this);
    }
 
    public static void placeAt(LevelAccessor level, BlockState state, BlockPos pos, int arg) {
@@ -148,19 +139,5 @@ public class WNCaveDoubleBushBlock extends WNCaveBushBlock {
    public VoxelShape getShape(BlockState state, BlockGetter getter, BlockPos pos, CollisionContext context) {
       Vec3 vec3 = state.getOffset(getter, pos);
       return SHAPE.move(vec3.x, vec3.y, vec3.z);
-   }
-
-
-   @Override
-   public WNResource getBlockstate() {
-      return new WNBlockstate_DoubleBush(this.getRegistryName());
-   }
-
-   @Override
-   public ModelList getBlockModels() {
-      return new ModelList().with(
-              new WNBlockModel_TintedCross(this.getRegName() + "_bottom").with("texture",this.getTextureName("plants/cave/" + cavePlantType.getFolder()) + "_bottom"),
-              new WNBlockModel_TintedCross(this.getRegName() + "_top").with("texture",this.getTextureName("plants/cave/" + cavePlantType.getFolder()) + "_top")
-      );
    }
 }

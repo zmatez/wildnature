@@ -9,14 +9,11 @@ package net.matez.wildnature.common.block.cave_plants.specific;
 import net.matez.wildnature.common.block.cave_plants.CavePlantType;
 import net.matez.wildnature.common.block.WNBlockProperties;
 import net.matez.wildnature.common.block.water_plants.WNWaterlilyBlock;
-import net.matez.wildnature.data.block_models.plants.WNBlockModel_Lilypad;
-import net.matez.wildnature.data.blockstates.plants.WNBlockstate_LilyPad;
-import net.matez.wildnature.data.item_models.WNItemModel_Generated;
-import net.matez.wildnature.data.setup.base.WNResource;
 import net.minecraft.client.color.block.BlockColor;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
@@ -42,14 +39,10 @@ public class WNMagmaPadBlock extends WNWaterlilyBlock {
     protected final CavePlantType cavePlantType;
     public static BooleanProperty CRACK = WNBlockProperties.CRACK;
 
-    public WNMagmaPadBlock(ResourceLocation location, Properties properties, CavePlantType cavePlantType) {
-        super(location, properties, null);
+    public WNMagmaPadBlock(Properties properties, CavePlantType cavePlantType) {
+        super(properties, null);
         this.cavePlantType = cavePlantType;
-    }
-
-    public WNMagmaPadBlock(ResourceLocation location, Properties properties, Item.Properties itemProperties, CavePlantType cavePlantType) {
-        super(location, properties, itemProperties, null);
-        this.cavePlantType = cavePlantType;
+        this.registerDefaultState(this.defaultBlockState().setValue(CRACK, false));
     }
 
     @Override
@@ -59,34 +52,7 @@ public class WNMagmaPadBlock extends WNWaterlilyBlock {
     }
 
     @Override
-    public void construct() {
-        super.construct();
-        this.registerDefaultState(this.defaultBlockState().setValue(CRACK, false));
-    }
-
-    @Override
-    public WNResource getBlockstate() {
-        return new WNBlockstate_LilyPad(this.getRegistryName());
-    }
-
-    @Nullable
-    @Override
-    public WNResource getItemModel() {
-        return new WNItemModel_Generated(this.getRegName()).with("texture", this.getTextureName("plants/cave/" + this.cavePlantType.getFolder()) + "_item");
-    }
-
-    @Override
-    public ModelList getBlockModels() {
-        return new ModelList().with(
-                new WNBlockModel_Lilypad(this.getRegName() + "_1").with("texture", this.getTextureName("plants/cave/" + this.cavePlantType.getFolder()) + "_1"),
-                new WNBlockModel_Lilypad(this.getRegName() + "_2").with("texture", this.getTextureName("plants/cave/" + this.cavePlantType.getFolder()) + "_2"),
-                new WNBlockModel_Lilypad(this.getRegName() + "_3").with("texture", this.getTextureName("plants/cave/" + this.cavePlantType.getFolder()) + "_3"),
-                new WNBlockModel_Lilypad(this.getRegName() + "_4").with("texture", this.getTextureName("plants/cave/" + this.cavePlantType.getFolder()) + "_4")
-        );
-    }
-
-    @Override
-    protected boolean mayPlaceOn(BlockState state, BlockState stateOn, BlockGetter getter, BlockPos pos) {
+    protected boolean mayPlaceOn(BlockState stateOn, BlockGetter getter, BlockPos pos) {
         FluidState fluidstate = getter.getFluidState(pos);
         return (fluidstate.getType() == Fluids.LAVA);
     }
@@ -111,7 +77,7 @@ public class WNMagmaPadBlock extends WNWaterlilyBlock {
     }
 
     @Override
-    public void tick(BlockState state, ServerLevel level, BlockPos pos, Random random) {
+    public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
         super.tick(state, level, pos, random);
         if (level.getBlockState(pos).getValue(CRACK)) {
             Predicate<LivingEntity> predicate = new Predicate<LivingEntity>() {

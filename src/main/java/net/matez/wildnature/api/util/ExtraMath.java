@@ -68,6 +68,16 @@ public final class ExtraMath {
         return min + (max - min) * rand.nextDouble();
     }
 
+    public static double rdoub(double min, double max, RandomSource rand) {
+        if (min == max) {
+            return min;
+        }
+        if (min >= max) {
+            return max;
+        }
+        return min + (max - min) * rand.nextDouble();
+    }
+
     public static boolean iBetween(int rangeMin, int rangeMax, int number) {
         return number > rangeMin && number < rangeMax;
     }

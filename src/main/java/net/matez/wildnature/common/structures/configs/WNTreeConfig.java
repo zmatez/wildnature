@@ -13,6 +13,7 @@ import net.matez.wildnature.common.structures.WNStructureConfig;
 import net.matez.wildnature.core.registry.WNBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Rotation;
@@ -23,7 +24,7 @@ import java.util.Random;
 import java.util.function.Supplier;
 
 public class WNTreeConfig implements WNStructureConfig {
-    public static final WNTreeConfig PURPLE_BEECH = new WNTreeConfig(() -> WNBlocks.LEAVES.get(LeafType.PURPLE_BEECH));
+    public static final WNTreeConfig PURPLE_BEECH = new WNTreeConfig(WNBlocks.LEAVES.get(LeafType.PURPLE_BEECH));
     public static final WNTreeConfig CHERRY = new WNTreeConfig(() -> WNBlocks.LEAVES.get(LeafType.CHERRY));
     public static final WNTreeConfig CHERRY_PINK = new WNTreeConfig(() -> WNBlocks.LEAVES.get(LeafType.CHERRY_PINK));
     public static final WNTreeConfig CHERRY_WHITE = new WNTreeConfig(() -> WNBlocks.LEAVES.get(LeafType.CHERRY_WHITE));
@@ -56,7 +57,7 @@ public class WNTreeConfig implements WNStructureConfig {
     }
 
     @Override
-    public BlockState processState(LevelAccessor level, BlockState state, BlockPos pos, Random random, @Nullable Rotation rotation) {
+    public BlockState processState(LevelAccessor level, BlockState state, BlockPos pos, RandomSource random, @Nullable Rotation rotation) {
         BlockState newState = state;
         if (newState.is(BlockTags.LOGS)) {
             if (log != null) {

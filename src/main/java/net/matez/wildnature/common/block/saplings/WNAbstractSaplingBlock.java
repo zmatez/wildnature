@@ -7,6 +7,7 @@
 package net.matez.wildnature.common.block.saplings;
 
 import net.matez.wildnature.common.block.plant.BushPlacement;
+import net.matez.wildnature.common.block.plant.WNBushBlock;
 import net.matez.wildnature.common.block.plant.config.BushConfig;
 import net.matez.wildnature.common.block.WNBlockProperties;
 import net.matez.wildnature.common.structures.WNStructure;
@@ -18,6 +19,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -25,8 +27,10 @@ import net.minecraft.world.item.BoneMealItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.BonemealableBlock;
+import net.minecraft.world.level.block.BushBlock;
 import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -50,6 +54,7 @@ public abstract class WNAbstractSaplingBlock extends WNBushBlock implements Bone
 
     public WNAbstractSaplingBlock(ResourceLocation location, Properties properties, Item.Properties itemProperties, WNStructurePlacement placement, WNStructurePlacement bigPlacement, BushPlacement bushPlacement) {
         super(location, properties, itemProperties, new BushConfig().withPlacement(bushPlacement));
+        registerDefaultState(defaultBlockState().setValue(FERTILIZED, false));
         this.placement = placement;
         this.bigPlacement = bigPlacement;
     }
@@ -57,7 +62,6 @@ public abstract class WNAbstractSaplingBlock extends WNBushBlock implements Bone
     @Override
     public void construct() {
         super.construct();
-        registerDefaultState(defaultBlockState().setValue(FERTILIZED, false));
     }
 
     @Override
@@ -72,7 +76,7 @@ public abstract class WNAbstractSaplingBlock extends WNBushBlock implements Bone
     }
 
     @Override
-    public void randomTick(BlockState state, ServerLevel level, BlockPos pos, Random random) {
+    public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
         if (level.getMaxLocalRawBrightness(pos.above()) >= 9 && random.nextInt(7) == 0) {
             if (!level.isAreaLoaded(pos, 1))
                 return; // Forge: prevent loading unloaded chunks when checking neighbor's light
@@ -80,7 +84,7 @@ public abstract class WNAbstractSaplingBlock extends WNBushBlock implements Bone
         }
     }
 
-    public void place(ServerLevel level, BlockPos pos, BlockState state, Random random) {
+    public void place(ServerLevel level, BlockPos pos, BlockState state, RandomSource random) {
         if (state.getValue(STAGE) == 0) {
             level.setBlock(pos, state.cycle(STAGE), 3);
         } else {
@@ -119,17 +123,17 @@ public abstract class WNAbstractSaplingBlock extends WNBushBlock implements Bone
     }
 
     @Override
-    public boolean isValidBonemealTarget(BlockGetter p_55991_, BlockPos p_55992_, BlockState p_55993_, boolean p_55994_) {
+    public boolean isValidBonemealTarget(LevelReader p_256559_, BlockPos p_50898_, BlockState p_50899_, boolean p_50900_) {
         return true;
     }
 
     @Override
-    public boolean isBonemealSuccess(Level p_55996_, Random p_55997_, BlockPos p_55998_, BlockState p_55999_) {
+    public boolean isBonemealSuccess(Level p_55996_, RandomSource p_55997_, BlockPos p_55998_, BlockState p_55999_) {
         return (double) p_55996_.random.nextFloat() < 0.45D;
     }
 
     @Override
-    public void performBonemeal(ServerLevel p_55986_, Random p_55987_, BlockPos p_55988_, BlockState p_55989_) {
+    public void performBonemeal(ServerLevel p_55986_, RandomSource p_55987_, BlockPos p_55988_, BlockState p_55989_) {
         this.place(p_55986_, p_55988_, p_55989_, p_55987_);
     }
 
