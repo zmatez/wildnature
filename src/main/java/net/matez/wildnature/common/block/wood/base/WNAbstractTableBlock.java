@@ -6,20 +6,15 @@
 
 package net.matez.wildnature.common.block.wood.base;
 
+import net.matez.wildnature.common.WNBlock;
 import net.matez.wildnature.common.block.entity.table.WNTableBlockEntity;
-import net.matez.wildnature.common.tags.WNTags;
-import net.matez.wildnature.data.blockstates.WNBlockstate_Table;
-import net.matez.wildnature.data.item_models.WNItemModel_BlockParent;
-import net.matez.wildnature.data.setup.base.WNResource;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
@@ -43,8 +38,9 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.function.Supplier;
 
-public abstract class WNAbstractTableBlock extends WNBaseEntityBlock implements SimpleWaterloggedBlock {
+public abstract class WNAbstractTableBlock extends BaseEntityBlock implements SimpleWaterloggedBlock, WNBlock {
     public static final BooleanProperty NORTH = BlockStateProperties.NORTH;
     public static final BooleanProperty SOUTH = BlockStateProperties.SOUTH;
     public static final BooleanProperty EAST = BlockStateProperties.EAST;
@@ -53,22 +49,8 @@ public abstract class WNAbstractTableBlock extends WNBaseEntityBlock implements 
 
     private static final int size = 2;
 
-    public WNAbstractTableBlock(ResourceLocation location, Properties properties) {
-        super(location, properties);
-    }
-
-    public WNAbstractTableBlock(ResourceLocation location, Properties properties, Item.Properties itemProperties) {
-        super(location, properties, itemProperties);
-    }
-
-    @Override
-    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(NORTH, SOUTH, EAST, WEST, WATERLOGGED);
-    }
-
-    @Override
-    public void construct() {
-        super.construct();
+    public WNAbstractTableBlock(Properties properties) {
+        super(properties);
         this.registerDefaultState(this.stateDefinition.any()
                 .setValue(NORTH, true)
                 .setValue(SOUTH, true)
@@ -78,29 +60,12 @@ public abstract class WNAbstractTableBlock extends WNBaseEntityBlock implements 
         );
     }
 
-    public abstract Block getLog();
-
     @Override
-    public WNResource getBlockstate() {
-        return new WNBlockstate_Table(this.getRegistryName());
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+        builder.add(NORTH, SOUTH, EAST, WEST, WATERLOGGED);
     }
 
-    @Override
-    public abstract ModelList getBlockModels();
-
-    @Nullable
-    @Override
-    public WNResource getItemModel() {
-        return new WNItemModel_BlockParent(getRegName()).with("parent", this.getRegName() + "_inventory");
-    }
-
-    @Nullable
-    @Override
-    public WNTags.TagList getWNTags() {
-        return new WNTags.TagList(
-                WNTags.WN_TABLES, WNTags.MINEABLE_AXE
-        );
-    }
+    public abstract Supplier<Block> getLog();
 
     @Override
     public int getFireSpreadSpeed(BlockState state, BlockGetter world, BlockPos pos, Direction face) {

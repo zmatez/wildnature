@@ -25,19 +25,19 @@ import java.util.function.Supplier;
 
 public class WNTreeConfig implements WNStructureConfig {
     public static final WNTreeConfig PURPLE_BEECH = new WNTreeConfig(WNBlocks.LEAVES.get(LeafType.PURPLE_BEECH));
-    public static final WNTreeConfig CHERRY = new WNTreeConfig(() -> WNBlocks.LEAVES.get(LeafType.CHERRY));
-    public static final WNTreeConfig CHERRY_PINK = new WNTreeConfig(() -> WNBlocks.LEAVES.get(LeafType.CHERRY_PINK));
-    public static final WNTreeConfig CHERRY_WHITE = new WNTreeConfig(() -> WNBlocks.LEAVES.get(LeafType.CHERRY_WHITE));
+    public static final WNTreeConfig CHERRY = new WNTreeConfig(WNBlocks.LEAVES.get(LeafType.CHERRY));
+    public static final WNTreeConfig CHERRY_PINK = new WNTreeConfig(WNBlocks.LEAVES.get(LeafType.CHERRY_PINK));
+    public static final WNTreeConfig CHERRY_WHITE = new WNTreeConfig(WNBlocks.LEAVES.get(LeafType.CHERRY_WHITE));
     public static final WNTreeConfig RAINBOW_EUCALYPTUS = new WNTreeConfig(null, () -> WNBlocks.LOGS.get(LogType.RAINBOW_EUCALYPTUS), () -> WNBlocks.BRANCHES.get(LogType.RAINBOW_EUCALYPTUS));
-    public static final WNTreeConfig MAPLE_RED = new WNTreeConfig(() -> WNBlocks.LEAVES.get(LeafType.MAPLE_RED));
-    public static final WNTreeConfig MAPLE_ORANGE = new WNTreeConfig(() -> WNBlocks.LEAVES.get(LeafType.MAPLE_ORANGE));
-    public static final WNTreeConfig MAPLE_YELLOW = new WNTreeConfig(() -> WNBlocks.LEAVES.get(LeafType.MAPLE_YELLOW));
-    public static final WNTreeConfig MAPLE_BROWN = new WNTreeConfig(() -> WNBlocks.LEAVES.get(LeafType.MAPLE_BROWN));
-    public static final WNTreeConfig METASEQUOIA_GREEN = new WNTreeConfig(() -> WNBlocks.LEAVES.get(LeafType.METASEQUOIA_GREEN), () -> WNBlocks.LOGS.get(LogType.REDWOOD), () -> WNBlocks.BRANCHES.get(LogType.REDWOOD));
-    public static final WNTreeConfig METASEQUOIA_ORANGE = new WNTreeConfig(() -> WNBlocks.LEAVES.get(LeafType.METASEQUOIA_ORANGE), () -> WNBlocks.LOGS.get(LogType.REDWOOD), () -> WNBlocks.BRANCHES.get(LogType.REDWOOD));
-    public static final WNTreeConfig METASEQUOIA_YELLOW = new WNTreeConfig(() -> WNBlocks.LEAVES.get(LeafType.METASEQUOIA_YELLOW), () -> WNBlocks.LOGS.get(LogType.REDWOOD), () -> WNBlocks.BRANCHES.get(LogType.REDWOOD));
-    public static final WNTreeConfig METASEQUOIA_BROWN = new WNTreeConfig(() -> WNBlocks.LEAVES.get(LeafType.METASEQUOIA_BROWN), () -> WNBlocks.LOGS.get(LogType.REDWOOD), () -> WNBlocks.BRANCHES.get(LogType.REDWOOD));
-    public static final WNTreeConfig METASEQUOIA_RED = new WNTreeConfig(() -> WNBlocks.LEAVES.get(LeafType.METASEQUOIA_RED), () -> WNBlocks.LOGS.get(LogType.REDWOOD), () -> WNBlocks.BRANCHES.get(LogType.REDWOOD));
+    public static final WNTreeConfig MAPLE_RED = new WNTreeConfig(WNBlocks.LEAVES.get(LeafType.MAPLE_RED));
+    public static final WNTreeConfig MAPLE_ORANGE = new WNTreeConfig(WNBlocks.LEAVES.get(LeafType.MAPLE_ORANGE));
+    public static final WNTreeConfig MAPLE_YELLOW = new WNTreeConfig(WNBlocks.LEAVES.get(LeafType.MAPLE_YELLOW));
+    public static final WNTreeConfig MAPLE_BROWN = new WNTreeConfig(WNBlocks.LEAVES.get(LeafType.MAPLE_BROWN));
+    public static final WNTreeConfig METASEQUOIA_GREEN = new WNTreeConfig(WNBlocks.LEAVES.get(LeafType.METASEQUOIA_GREEN), WNBlocks.LOGS.get(LogType.REDWOOD), WNBlocks.BRANCHES.get(LogType.REDWOOD));
+    public static final WNTreeConfig METASEQUOIA_ORANGE = new WNTreeConfig(WNBlocks.LEAVES.get(LeafType.METASEQUOIA_ORANGE), () -> WNBlocks.LOGS.get(LogType.REDWOOD), () -> WNBlocks.BRANCHES.get(LogType.REDWOOD));
+    public static final WNTreeConfig METASEQUOIA_YELLOW = new WNTreeConfig(WNBlocks.LEAVES.get(LeafType.METASEQUOIA_YELLOW), () -> WNBlocks.LOGS.get(LogType.REDWOOD), () -> WNBlocks.BRANCHES.get(LogType.REDWOOD));
+    public static final WNTreeConfig METASEQUOIA_BROWN = new WNTreeConfig(WNBlocks.LEAVES.get(LeafType.METASEQUOIA_BROWN), () -> WNBlocks.LOGS.get(LogType.REDWOOD), () -> WNBlocks.BRANCHES.get(LogType.REDWOOD));
+    public static final WNTreeConfig METASEQUOIA_RED = new WNTreeConfig(WNBlocks.LEAVES.get(LeafType.METASEQUOIA_RED), () -> WNBlocks.LOGS.get(LogType.REDWOOD), () -> WNBlocks.BRANCHES.get(LogType.REDWOOD));
 
 
     //# ---------------------------------------------

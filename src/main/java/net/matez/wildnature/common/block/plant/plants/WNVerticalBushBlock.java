@@ -45,23 +45,14 @@ public abstract class WNVerticalBushBlock extends WNBushConfiguredBlock {
 
     public static final DirectionProperty FACING = BlockStateProperties.FACING;
 
-    public WNVerticalBushBlock(ResourceLocation location, Properties properties, BushType type) {
-        super(location, properties, type);
-    }
-
-    public WNVerticalBushBlock(ResourceLocation location, Properties properties, Item.Properties itemProperties, BushType type) {
-        super(location, properties, itemProperties, type);
+    public WNVerticalBushBlock(Properties properties, BushType type) {
+        super(properties, type);
+        this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));
     }
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> def) {
         def.add(FACING);
-    }
-
-    @Override
-    public void construct() {
-        super.construct();
-        this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));
     }
 
     @Nullable
@@ -82,7 +73,7 @@ public abstract class WNVerticalBushBlock extends WNBushConfiguredBlock {
     }
 
     public boolean canSurvive(BlockState state, LevelReader reader, BlockPos pos) {
-        return mayPlaceOn(state, reader.getBlockState(pos.relative(state.getValue(FACING).getOpposite())), reader, pos);
+        return mayPlaceOn(reader.getBlockState(pos.relative(state.getValue(FACING).getOpposite())), reader, pos);
     }
 
     public VoxelShape getShape(BlockState p_58092_, BlockGetter p_58093_, BlockPos p_58094_, CollisionContext p_58095_) {

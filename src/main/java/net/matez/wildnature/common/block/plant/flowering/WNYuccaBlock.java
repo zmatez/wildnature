@@ -7,15 +7,9 @@
 package net.matez.wildnature.common.block.plant.flowering;
 
 import net.matez.wildnature.common.block.plant.BushType;
-import net.matez.wildnature.data.block_models.plants.WNBlockModel_FloweringBush;
-import net.matez.wildnature.data.block_models.plants.WNBlockModel_TintedCross;
-import net.matez.wildnature.data.blockstates.plants.WNBlockstate_Yucca;
-import net.matez.wildnature.data.setup.base.WNResource;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
@@ -35,35 +29,13 @@ public class WNYuccaBlock extends WNDoubleFloweringBushBlock{
     private static final double OFFSET = 3D;
     protected static final VoxelShape FULL_SHAPE = Block.box(OFFSET, 0.0D, OFFSET, 16.0D - OFFSET, 16.0D, 16.0D - OFFSET);
 
-    public WNYuccaBlock(ResourceLocation location, Properties properties, BushType type) {
-        super(location, properties, type);
-    }
-
-    public WNYuccaBlock(ResourceLocation location, Properties properties, Item.Properties itemProperties, BushType type) {
-        super(location, properties, itemProperties, type);
-    }
-
-    @Override
-    public WNResource getBlockstate() {
-        return new WNBlockstate_Yucca(this.getRegistryName());
+    public WNYuccaBlock(Properties properties, BushType type) {
+        super(properties, type);
     }
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> state) {
         super.createBlockStateDefinition(state);
-    }
-
-    @Override
-    public ModelList getBlockModels() {
-        String bush = this.getRegistryName().getNamespace() + ":blocks/" + getType().getVariant().getPath() + "/" + getType().getVariant().getBaseName() + "_bush";
-        return new WNBlock.ModelList().with(
-                new WNBlockModel_TintedCross(this.getRegName() + "_bush_bottom").with("texture",bush),
-                new WNBlockModel_FloweringBush(this.getRegName() + "_bottom")
-                        .with("texture",this.getTextureName(getType().getVariant().getPath()) + "_bottom")
-                        .with("stalk",bush),
-                new WNBlockModel_TintedCross(this.getRegName() + "_top")
-                        .with("texture",this.getTextureName(getType().getVariant().getPath()) + "_top")
-        );
     }
 
     @Override

@@ -12,14 +12,13 @@ import net.minecraft.world.level.block.state.properties.IntegerProperty;
 public class WNLeavesTypedBlock_Stage8 extends WNLeavesTypedBlock {
     public static IntegerProperty STAGE = IntegerProperty.create("stage", 0, 8);
 
-    public WNLeavesTypedBlock_Stage8(ResourceLocation location, Properties properties, LeafType leafType) {
-        super(location, properties, leafType);
-        this.LEAF_STAGE = STAGE;
+    public WNLeavesTypedBlock_Stage8(Properties properties, LeafType leafType) {
+        super(properties, leafType);
     }
 
-    public WNLeavesTypedBlock_Stage8(ResourceLocation location, Properties properties, Item.Properties itemProperties, LeafType leafType) {
-        super(location, properties, itemProperties, leafType);
-        this.LEAF_STAGE = STAGE;
+    @Override
+    public IntegerProperty getLeafStageProperty() {
+        return STAGE;
     }
 
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> state) {

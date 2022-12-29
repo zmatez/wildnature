@@ -19,12 +19,8 @@ import org.jetbrains.annotations.Nullable;
 public class WNReedsBlock extends WNTriplePlantBlock implements SimpleWaterloggedBlock {
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 
-    public WNReedsBlock(ResourceLocation location, Properties properties, BushType type) {
-        super(location, properties, type);
-    }
-
-    public WNReedsBlock(ResourceLocation location, Properties properties, Item.Properties itemProperties, BushType type) {
-        super(location, properties, itemProperties, type);
+    public WNReedsBlock(Properties properties, BushType type) {
+        super(properties, type);
     }
 
     @Override

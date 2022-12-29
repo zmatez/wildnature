@@ -6,52 +6,34 @@
 
 package net.matez.wildnature.common.block.wood.furniture;
 
+import com.mojang.datafixers.util.Either;
 import net.matez.wildnature.common.block.wood.ILog;
 import net.matez.wildnature.common.block.wood.LogType;
 import net.matez.wildnature.common.block.wood.base.WNAbstractBenchBlock;
+import net.matez.wildnature.common.block.wood.vanilla.VanillaLogType;
 import net.matez.wildnature.core.registry.WNBlocks;
-import net.matez.wildnature.data.block_models.WNBlockModel_Bench;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
+import net.minecraftforge.registries.RegistryObject;
+
+import java.util.function.Supplier;
 
 public class WNBenchBlock extends WNAbstractBenchBlock implements ILog{
-    private final LogType logType;
+    private final Either<LogType, VanillaLogType> logType;
 
-    public WNBenchBlock(ResourceLocation location, Properties properties, LogType logType) {
-        super(location, properties);
+    public WNBenchBlock(Properties properties, Either<LogType, VanillaLogType> logType) {
+        super(properties);
         this.logType = logType;
     }
 
-    public WNBenchBlock(ResourceLocation location, Properties properties, Item.Properties itemProperties, LogType logType) {
-        super(location, properties, itemProperties);
-        this.logType = logType;
+    public Supplier<Block> getLog() {
+        if (logType.left().isPresent())
+            return WNBlocks.STRIPPED_LOGS.get(this.logType.left().get());
+        else
+            return this.logType.right().get().getStrippedLogBlock();
     }
-
-    public WNBlock getLog() {
-        return WNBlocks.STRIPPED_LOGS.get(this.logType);
-    }
-    public WNBlock getPlanks() {
+    public Supplier<Block> getPlanks() {
         return WNBlocks.PLANKS.get(this.logType);
-    }
-
-    @Override
-    public ModelList getBlockModels() {
-        String log = getLog().getTextureName("trees/" + this.logType.getBaseOrParent());
-        String planks = getPlanks().getTextureName("trees/" + this.logType.getBaseOrParent());
-
-        return new ModelList().with(
-                new WNBlockModel_Bench(this.getRegName() + "_single")
-                        .with("beam",log)
-                        .with("texture",planks)
-                        .with("side","single"),
-                new WNBlockModel_Bench(this.getRegName() + "_middle")
-                        .with("beam",log)
-                        .with("texture",planks)
-                        .with("side","middle"),
-                new WNBlockModel_Bench(this.getRegName() + "_side")
-                        .with("beam",log)
-                        .with("texture",planks)
-                        .with("side","side")
-        );
     }
 }

@@ -6,31 +6,27 @@
 
 package net.matez.wildnature.common.block.geyser;
 
+import net.matez.wildnature.api.util.ExtraMath;
 import net.matez.wildnature.api.util.log.SimpleLogger;
-import net.matez.wildnature.common.block.entity.geyser.WNGeyserBlockEntity;
+import net.matez.wildnature.common.WNBlock;
 import net.matez.wildnature.common.block.WNBlockProperties;
-import net.matez.wildnature.common.tags.WNTags;
+import net.matez.wildnature.common.block.entity.geyser.WNGeyserBlockEntity;
 import net.matez.wildnature.core.registry.WNBlockEntities;
 import net.matez.wildnature.core.registry.WNParticles;
-import net.matez.wildnature.api.util.ExtraMath;
-import net.matez.wildnature.data.block_models.WNBlockModel_Geyser;
-import net.matez.wildnature.data.block_models.WNBlockModel_GeyserSingle;
-import net.matez.wildnature.data.blockstates.WNBlockstate_Geyser;
-import net.matez.wildnature.data.setup.base.WNResource;
 import net.matez.wildnature.setup.WildNature;
 import net.minecraft.client.color.block.BlockColor;
 import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.item.Item;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.RenderShape;
@@ -43,46 +39,22 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.Random;
-
-public class WNGeyserBlock extends WNBaseEntityBlock {
+public class WNGeyserBlock extends BaseEntityBlock implements WNBlock {
     public static final IntegerProperty LOAD = WNBlockProperties.LOAD;
 
     public static final BooleanProperty SINGLE = WNBlockProperties.SINGLE;
     public static final BooleanProperty HYDROTHERMAL = WNBlockProperties.HYDROTHERMAL;
     private static final SimpleLogger log = WildNature.getLogger();
 
-    public WNGeyserBlock(ResourceLocation location, Properties properties) {
-        super(location, properties);
-    }
-
-    public WNGeyserBlock(ResourceLocation location, Properties properties, Item.Properties itemProperties) {
-        super(location, properties, itemProperties);
+    public WNGeyserBlock(Properties properties) {
+        super(properties);
+        this.registerDefaultState(this.defaultBlockState().setValue(SINGLE, true).setValue(HYDROTHERMAL, false).setValue(LOAD, 0));
     }
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> def) {
         super.createBlockStateDefinition(def);
         def.add(SINGLE, HYDROTHERMAL, LOAD);
-    }
-
-    @Override
-    public void construct() {
-        super.construct();
-        this.registerDefaultState(this.defaultBlockState().setValue(SINGLE, true).setValue(HYDROTHERMAL, false).setValue(LOAD, 0));
-    }
-
-    @Override
-    public WNResource getBlockstate() {
-        return new WNBlockstate_Geyser(this.getRegistryName());
-    }
-
-    @Override
-    public ModelList getBlockModels() {
-        return new WNBlock.ModelList().with(
-                new WNBlockModel_GeyserSingle(this.getRegName() + "_single").with("texture",this.getTextureName("misc/geyser")),
-                new WNBlockModel_Geyser(this.getRegName()).with("texture",this.getTextureName("misc/geyser"))
-        );
     }
 
     @Nullable
@@ -129,14 +101,6 @@ public class WNGeyserBlock extends WNBaseEntityBlock {
 
     @Nullable
     @Override
-    public WNTags.TagList getWNTags() {
-        return new WNTags.TagList(
-                WNTags.MINEABLE_PICKAXE
-        );
-    }
-
-    @Nullable
-    @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
         return new WNGeyserBlockEntity(pos, state);
     }
@@ -147,7 +111,7 @@ public class WNGeyserBlock extends WNBaseEntityBlock {
     }
 
     @Override
-    public void randomTick(BlockState state, ServerLevel level, BlockPos pos, Random random) {
+    public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
         super.randomTick(state, level, pos, random);
         if (isValid(state, level, pos)) {
             BlockEntity blockEntity = level.getBlockEntity(pos);
@@ -168,7 +132,7 @@ public class WNGeyserBlock extends WNBaseEntityBlock {
     }
 
     @Override
-    public void animateTick(BlockState state, Level level, BlockPos pos, Random random) {
+    public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
         super.animateTick(state, level, pos, random);
         if (isValid(state, level, pos)) {
             int load = state.getValue(LOAD);

@@ -10,12 +10,8 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 
 public class WNSpiderGrassBlock extends WNFloweringBushBlock {
-    public WNSpiderGrassBlock(ResourceLocation location, Properties properties, BushType type) {
-        super(location, properties, type);
-    }
-
-    public WNSpiderGrassBlock(ResourceLocation location, Properties properties, Item.Properties itemProperties, BushType type) {
-        super(location, properties, itemProperties, type);
+    public WNSpiderGrassBlock(Properties properties, BushType type) {
+        super(properties, type);
     }
 
     @Override

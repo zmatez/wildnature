@@ -6,12 +6,10 @@
 
 package net.matez.wildnature.common.block.leaves;
 
+import net.matez.wildnature.api.util.ExtraMath;
+import net.matez.wildnature.common.WNBlock;
 import net.matez.wildnature.common.block.leaves.stages.*;
 import net.matez.wildnature.common.structures.WNStructure;
-import net.matez.wildnature.api.util.ExtraMath;
-import net.matez.wildnature.data.block_models.WNBlockModel_Leaves;
-import net.matez.wildnature.data.blockstates.WNBlockstate_TypedLeaves;
-import net.matez.wildnature.data.setup.base.WNResource;
 import net.minecraft.client.color.block.BlockColor;
 import net.minecraft.client.color.block.BlockColors;
 import net.minecraft.client.color.item.ItemColor;
@@ -19,9 +17,9 @@ import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -31,28 +29,24 @@ import net.minecraft.world.level.FoliageColor;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.LeavesBlock;
 import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.Random;
+public abstract class WNLeavesTypedBlock extends LeavesBlock implements WNBlock {
 
-public abstract class WNLeavesTypedBlock extends WNLeavesBlock {
-    public IntegerProperty LEAF_STAGE;
     private final LeafType leafType;
 
-    public WNLeavesTypedBlock(ResourceLocation location, Properties properties, LeafType leafType) {
-        super(location, properties);
+    public WNLeavesTypedBlock(Properties properties, LeafType leafType) {
+        super(properties);
         this.leafType = leafType;
+        if (this.getLeafStageProperty() != null) {
+            this.registerDefaultState(this.defaultBlockState().setValue(this.getLeafStageProperty(), 0));
+        }
     }
-
-    public WNLeavesTypedBlock(ResourceLocation location, Properties properties, Item.Properties itemProperties, LeafType leafType) {
-        super(location, properties, itemProperties);
-        this.leafType = leafType;
-    }
-
 
     public static IntegerProperty getStage(BlockState state) {
         if (state.getBlock() instanceof WNLeavesTypedBlock block) {
@@ -81,62 +75,56 @@ public abstract class WNLeavesTypedBlock extends WNLeavesBlock {
         return null;
     }
 
-    public static WNLeavesTypedBlock create(ResourceLocation location, Properties properties, Item.Properties itemProperties, LeafType leafType) {
+    public static WNLeavesTypedBlock create(Properties properties, LeafType leafType) {
         switch (leafType.getConfig().getStages()) {
             case 0 -> {
-                return new WNLeavesTypedBlock_Stage0(location, properties, itemProperties, leafType);
+                return new WNLeavesTypedBlock_Stage0(properties, leafType);
             }
             case 1 -> {
-                return new WNLeavesTypedBlock_Stage1(location, properties, itemProperties, leafType);
+                return new WNLeavesTypedBlock_Stage1(properties, leafType);
             }
             case 2 -> {
-                return new WNLeavesTypedBlock_Stage2(location, properties, itemProperties, leafType);
+                return new WNLeavesTypedBlock_Stage2(properties, leafType);
             }
             case 3 -> {
-                return new WNLeavesTypedBlock_Stage3(location, properties, itemProperties, leafType);
+                return new WNLeavesTypedBlock_Stage3(properties, leafType);
             }
             case 4 -> {
-                return new WNLeavesTypedBlock_Stage4(location, properties, itemProperties, leafType);
+                return new WNLeavesTypedBlock_Stage4(properties, leafType);
             }
             case 5 -> {
-                return new WNLeavesTypedBlock_Stage5(location, properties, itemProperties, leafType);
+                return new WNLeavesTypedBlock_Stage5(properties, leafType);
             }
             case 6 -> {
-                return new WNLeavesTypedBlock_Stage6(location, properties, itemProperties, leafType);
+                return new WNLeavesTypedBlock_Stage6(properties, leafType);
             }
             case 7 -> {
-                return new WNLeavesTypedBlock_Stage7(location, properties, itemProperties, leafType);
+                return new WNLeavesTypedBlock_Stage7(properties, leafType);
             }
             case 8 -> {
-                return new WNLeavesTypedBlock_Stage8(location, properties, itemProperties, leafType);
+                return new WNLeavesTypedBlock_Stage8(properties, leafType);
             }
             case 9 -> {
-                return new WNLeavesTypedBlock_Stage9(location, properties, itemProperties, leafType);
+                return new WNLeavesTypedBlock_Stage9(properties, leafType);
             }
         }
 
         return null;
     }
 
-    @Override
-    public void construct() {
-        super.construct();
-        if (this.LEAF_STAGE != null) {
-            this.registerDefaultState(this.defaultBlockState().setValue(this.LEAF_STAGE, 0));
-        }
-    }
+    public abstract IntegerProperty getLeafStageProperty();
 
     @Override
     public boolean isRandomlyTicking(BlockState state) {
-        return !state.getValue(PERSISTENT) || (this.LEAF_STAGE != null && this.leafType.getConfig().isFlowering() && state.getValue(this.LEAF_STAGE) == 1);
+        return !state.getValue(PERSISTENT) || (this.getLeafStageProperty() != null && this.leafType.getConfig().isFlowering() && state.getValue(this.getLeafStageProperty()) == 1);
     }
 
     @Override
-    public void randomTick(BlockState state, ServerLevel level, BlockPos pos, Random random) {
+    public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
         super.randomTick(state, level, pos, random);
         if (state.getValue(PERSISTENT)) {
-            if (this.LEAF_STAGE != null && this.leafType.getConfig().isFlowering() && state.getValue(this.LEAF_STAGE) == 1) {
-                level.setBlock(pos, state.setValue(this.LEAF_STAGE, ExtraMath.rint(2, leafType.getConfig().getStages())), 2);
+            if (this.getLeafStageProperty() != null && this.leafType.getConfig().isFlowering() && state.getValue(this.getLeafStageProperty()) == 1) {
+                level.setBlock(pos, state.setValue(this.getLeafStageProperty(), ExtraMath.rint(2, leafType.getConfig().getStages())), 2);
             }
         }
     }
@@ -165,67 +153,11 @@ public abstract class WNLeavesTypedBlock extends WNLeavesBlock {
     }
 
     @Override
-    public WNResource getBlockstate() {
-        return new WNBlockstate_TypedLeaves(this.getRegistryName(), this.leafType.getConfig());
-    }
-
-    @Override
-    public ModelList getBlockModels() {
-        ModelList list = new ModelList();
-        if (this.leafType.getConfig().getCustomModels().isEmpty()) {
-            list.with(
-                    new WNBlockModel_Leaves(this.getRegName())
-                            .with("texture", this.getTextureName("trees/" + leafType.getFolder()))
-            );
-            if (this.LEAF_STAGE != null) {
-                if (leafType.getConfig().isFlowering()) {
-                    list.with(
-                            new WNBlockModel_Leaves(this.getRegName() + "_flowering")
-                                    .with("texture", this.getTextureName("trees/" + leafType.getFolder()) + "_flowering")
-                    );
-                }
-
-                int ordinal = 1;
-                for (int i = leafType.getConfig().isFlowering() ? 2 : 1; i <= leafType.getConfig().getStages(); i++, ordinal++) {
-                    list.with(
-                            new WNBlockModel_Leaves(this.getRegName() + "_fruit_" + ordinal)
-                                    .with("texture", this.getTextureName("trees/" + leafType.getFolder()) + "_fruit_" + ordinal)
-                    );
-                }
-            }
-        } else {
-            for (ModelSupplier customModel : this.leafType.getConfig().getCustomModels()) {
-                list.with(customModel.getModel(this));
-            }
-        }
-        return list;
-    }
-
-    @Nullable
-    @Override
-    public WNResource getItemModel() {
-        if (this.leafType.getConfig().getItemModel() != null) {
-            return this.leafType.getConfig().getItemModel().getModel(this);
-        }
-        return super.getItemModel();
-    }
-
-    @Override
-    public @Nullable DropList getDrops(BlockState state, ServerLevel level, float luck, int fortune, boolean silkTouch, @Nullable LivingEntity entity, ItemStack brokenBy) {
-        var list = super.getDrops(state, level, luck, fortune, silkTouch, entity, brokenBy);
-        ItemStack fruit = getFruit(state);
-        if (fruit != null && list != null) {
-            return list.with(fruit, 0);
-        }
-        return list;
-    }
-
-    @Override
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult result) {
-        if (this.LEAF_STAGE != null) {
+        if (this.getLeafStageProperty() != null) {
             ItemStack fruit = getFruit(state);
             if (fruit != null) {
-                level.setBlock(pos, state.setValue(this.LEAF_STAGE, 0), 2);
+                level.setBlock(pos, state.setValue(this.getLeafStageProperty(), 0), 2);
                 Block.popResourceFromFace(level, pos, result.getDirection(), fruit);
 
                 return InteractionResult.SUCCESS;
@@ -237,8 +169,8 @@ public abstract class WNLeavesTypedBlock extends WNLeavesBlock {
 
     @Nullable
     public ItemStack getFruit(BlockState state) {
-        if (this.LEAF_STAGE != null) {
-            int stage = state.getValue(this.LEAF_STAGE);
+        if (this.getLeafStageProperty() != null) {
+            int stage = state.getValue(this.getLeafStageProperty());
             if (leafType.getConfig().getStageDrops().containsKey(stage)) {
                 LeafConfig.ItemConfig config = leafType.getConfig().getStageDrops().get(stage);
                 Item item = config.getItem().get();
@@ -255,27 +187,27 @@ public abstract class WNLeavesTypedBlock extends WNLeavesBlock {
     }
 
     @Override
-    public BlockState processStateOnPlace(LevelAccessor accessor, BlockState state, BlockPos pos, WNStructure structure, Random random, @Nullable Rotation rotation) {
+    public BlockState processStateOnPlace(LevelAccessor accessor, BlockState state, BlockPos pos, WNStructure structure, RandomSource random, @Nullable Rotation rotation) {
         var config = this.getLeafType().getConfig();
         if (config == null || (!config.isFlowering() && config.getStages() < 1)) {
-            return super.processStateOnPlace(accessor, state, pos, structure, random, rotation);
+            return state;
         }
 
         if (ExtraMath.rint(0, 8, random) == 0) {
             if (config.isFlowering()) {
                 if (config.getStages() > 1) {
                     if (ExtraMath.rint(0, 3, random) == 0) {
-                        return state.setValue(LEAF_STAGE, ExtraMath.rint(2, config.getStages(), random));
+                        return state.setValue(getLeafStageProperty(), ExtraMath.rint(2, config.getStages(), random));
                     } else {
-                        return state.setValue(LEAF_STAGE, 1);
+                        return state.setValue(getLeafStageProperty(), 1);
                     }
                 } else {
-                    return state.setValue(LEAF_STAGE, 1);
+                    return state.setValue(getLeafStageProperty(), 1);
                 }
             } else {
                 if (config.getStages() >= 1) {
                     if (ExtraMath.rint(0, 3, random) == 0) {
-                        return state.setValue(LEAF_STAGE, ExtraMath.rint(1, config.getStages(), random));
+                        return state.setValue(getLeafStageProperty(), ExtraMath.rint(1, config.getStages(), random));
                     }
                 }
             }

@@ -14,24 +14,25 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
+import org.jetbrains.annotations.Nullable;
 
 public class WNFruitBushBlock_Stage0 extends WNFruitBushTypedBlock {
     public static IntegerProperty STAGE = null;
 
-    public WNFruitBushBlock_Stage0(ResourceLocation location, Properties properties, FruitBushType leafType) {
-        super(location, properties, leafType);
-        this.LEAF_STAGE = STAGE;
+    public WNFruitBushBlock_Stage0(Properties properties, FruitBushType leafType) {
+        super(properties, leafType);
     }
 
-    public WNFruitBushBlock_Stage0(ResourceLocation location, Properties properties, Item.Properties itemProperties, FruitBushType leafType) {
-        super(location, properties, itemProperties, leafType);
-        this.LEAF_STAGE = STAGE;
-    }
-
+    @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> state) {
         super.createBlockStateDefinition(state);
         if(STAGE != null){
             state.add(STAGE);
         }
+    }
+
+    @Override
+    public @Nullable IntegerProperty getLeafStageProperty() {
+        return STAGE;
     }
 }

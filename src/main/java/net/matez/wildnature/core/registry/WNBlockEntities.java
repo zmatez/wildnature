@@ -18,6 +18,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraftforge.registries.RegistryObject;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -38,14 +39,14 @@ public class WNBlockEntities {
         return BlockEntityType.Builder.of(WNTableBlockEntity::new, list.toArray(new Block[0]));
     });
     public static final BlockEntityType<WNGeyserBlockEntity> GEYSER = register(location("geyser"), () -> {
-        return BlockEntityType.Builder.of(WNGeyserBlockEntity::new, WNBlocks.GEYSER);
+        return BlockEntityType.Builder.of(WNGeyserBlockEntity::new, WNBlocks.GEYSER.get());
     });
     public static final BlockEntityType<WNSeatBlockEntity> SEAT = register(location("seat"), () -> {
         ArrayList<Block> list = new ArrayList<>();
-        list.addAll(WNBlocks.CHAIRS.values());
-        list.addAll(WNBlocks.VANILLA_CHAIRS.values());
-        list.addAll(WNBlocks.BENCHES.values());
-        list.addAll(WNBlocks.VANILLA_BENCHES.values());
+        list.addAll(WNBlocks.CHAIRS.values().stream().map(RegistryObject::get).toList());
+        list.addAll(WNBlocks.VANILLA_CHAIRS.values().stream().map(RegistryObject::get).toList());
+        list.addAll(WNBlocks.BENCHES.values().stream().map(RegistryObject::get).toList());
+        list.addAll(WNBlocks.VANILLA_BENCHES.values().stream().map(RegistryObject::get).toList());
         return BlockEntityType.Builder.of(WNSeatBlockEntity::new, list.toArray(new Block[0]));
     });
     public static final BlockEntityType<WNSoilBlockEntity> SOIL = register(location("soil"), () -> {

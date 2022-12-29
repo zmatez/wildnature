@@ -21,12 +21,9 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 
 public class WNCottonBlock extends WNFloweringBushBlock{
-    public WNCottonBlock(ResourceLocation location, Properties properties, BushType type) {
-        super(location, properties, type);
-    }
 
-    public WNCottonBlock(ResourceLocation location, Properties properties, Item.Properties itemProperties, BushType type) {
-        super(location, properties, itemProperties, type);
+    public WNCottonBlock(Properties properties, BushType type) {
+        super(properties, type);
     }
 
     @Override

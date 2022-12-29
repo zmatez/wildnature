@@ -1,21 +1,14 @@
 package net.matez.wildnature.common.block.leaves;
 
-import net.matez.wildnature.common.tags.WNTags;
-import net.matez.wildnature.common.registry.setup.WNRenderType;
-import net.matez.wildnature.api.util.ExtraMath;
-import net.matez.wildnature.data.block_models.WNBlockModel_BushLeaves;
+import net.matez.wildnature.common.WNBlock;
 import net.minecraft.client.color.block.BlockColor;
 import net.minecraft.client.color.block.BlockColors;
 import net.minecraft.client.color.item.ItemColor;
 import net.minecraft.client.renderer.BiomeColors;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.BlockPos;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.FoliageColor;
 import net.minecraft.world.level.Level;
@@ -28,20 +21,14 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.common.IForgeShearable;
 import org.jetbrains.annotations.Nullable;
 
-public class WNBushLeafBlock extends WNBlock implements IForgeShearable {
+public class WNBushLeafBlock extends Block implements IForgeShearable, WNBlock {
     private final LeafBushType leafBushType;
     protected static final VoxelShape SHAPE = Block.box(0.0D, 12.0D, 0.0D, 16.0D, 16.0D, 16.0D);
 
-    public WNBushLeafBlock(ResourceLocation location, Properties properties, LeafBushType leafBushType) {
-        super(location, properties);
+    public WNBushLeafBlock(Properties properties, LeafBushType leafBushType) {
+        super(properties);
         this.leafBushType = leafBushType;
     }
-
-    public WNBushLeafBlock(ResourceLocation location, Properties properties, Item.Properties itemProperties, LeafBushType leafBushType) {
-        super(location, properties, itemProperties);
-        this.leafBushType = leafBushType;
-    }
-
 
     @Nullable
     @Override
@@ -61,30 +48,8 @@ public class WNBushLeafBlock extends WNBlock implements IForgeShearable {
     }
 
     @Override
-    public WNRenderType getRenderType() {
-        return WNRenderType.CUTOUT;
-    }
-
-    @Nullable
-    @Override
-    public DropList getDrops(BlockState state, ServerLevel level, float luck) {
-        //todo shears
-        return new DropList().with(new ItemStack(Items.STICK, ExtraMath.rint(1,3))).with(ItemStack.EMPTY,4);
-    }
-
-    @Override
-    public ModelList getBlockModels() {
-        return new ModelList().with(
-                new WNBlockModel_BushLeaves(this.getRegName()).with("texture",this.getTextureName("trees/other")).with("branch","wildnature:blocks/trees/other/branch_leaves")
-        );
-    }
-
-    @Nullable
-    @Override
-    public WNTags.TagList getWNTags() {
-        return new WNTags.TagList(
-                WNTags.MINEABLE_HOE, WNTags.PARROTS_SPAWNABLE_ON, WNTags.LAVA_POOL_STONE_CANNOT_REPLACE
-        );
+    public RenderType getRenderType() {
+        return RenderType.cutout();
     }
 
     @Override
@@ -95,14 +60,17 @@ public class WNBushLeafBlock extends WNBlock implements IForgeShearable {
         return SHAPE;
     }
 
+    @Override
     public VoxelShape getBlockSupportShape(BlockState p_56707_, BlockGetter p_56708_, BlockPos p_56709_) {
         return Shapes.block();
     }
 
+    @Override
     public VoxelShape getVisualShape(BlockState p_56684_, BlockGetter p_56685_, BlockPos p_56686_, CollisionContext p_56687_) {
         return Shapes.block();
     }
 
+    @Override
     public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
         entity.makeStuckInBlock(state, new Vec3(0.9D, (double)0.8F, 0.9D));
     }

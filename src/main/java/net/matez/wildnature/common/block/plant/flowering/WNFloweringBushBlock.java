@@ -6,19 +6,15 @@
 
 package net.matez.wildnature.common.block.plant.flowering;
 
+import net.matez.wildnature.api.util.ExtraMath;
+import net.matez.wildnature.common.block.WNBlockProperties;
 import net.matez.wildnature.common.block.plant.BushType;
 import net.matez.wildnature.common.block.plant.WNBushConfiguredBlock;
-import net.matez.wildnature.common.block.WNBlockProperties;
-import net.matez.wildnature.common.tags.WNTags;
-import net.matez.wildnature.api.util.ExtraMath;
-import net.matez.wildnature.data.block_models.plants.WNBlockModel_FloweringBush;
-import net.matez.wildnature.data.block_models.plants.WNBlockModel_TintedCross;
-import net.matez.wildnature.data.blockstates.plants.WNBlockstate_FloweringBush;
-import net.matez.wildnature.data.setup.base.WNResource;
 import net.minecraft.client.color.block.BlockColor;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.block.Block;
@@ -27,23 +23,13 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.Random;
-
 public class WNFloweringBushBlock extends WNBushConfiguredBlock {
     public static final BooleanProperty FLOWERING = WNBlockProperties.FLOWERING;
 
-    public WNFloweringBushBlock(ResourceLocation location, Properties properties, BushType type) {
-        super(location, properties,type);
-    }
-
-    public WNFloweringBushBlock(ResourceLocation location, Properties properties, Item.Properties itemProperties, BushType type) {
-        super(location, properties, itemProperties,type);
-    }
-
-    @Override
-    public void construct() {
-        super.construct();
+    public WNFloweringBushBlock(Properties properties, BushType type) {
+        super(properties, type);
         registerDefaultState(this.stateDefinition.any().setValue(FLOWERING,false));
+
     }
 
     @Nullable
@@ -62,8 +48,8 @@ public class WNFloweringBushBlock extends WNBushConfiguredBlock {
     }
 
     @Override
-    public void randomTick(BlockState state, ServerLevel level, BlockPos pos, Random random) {
-        if(ExtraMath.rint(0,5) == 0){
+    public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+        if(ExtraMath.rint(0,5, random) == 0){
             level.setBlock(pos,state.setValue(FLOWERING,true),2);
         }
     }
@@ -71,30 +57,6 @@ public class WNFloweringBushBlock extends WNBushConfiguredBlock {
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> definition) {
         definition.add(FLOWERING);
-    }
-
-    @Override
-    public WNResource getBlockstate() {
-        return new WNBlockstate_FloweringBush(this.getRegistryName());
-    }
-
-    @Override
-    public ModelList getBlockModels() {
-        String stalk = this.getRegistryName().getNamespace() + ":blocks/" + getType().getVariant().getPath() + "/" + getType().getVariant().getBaseName() + "_stalk";
-        return new WNBlock.ModelList().with(
-                new WNBlockModel_TintedCross(this.getRegName()).with("texture",stalk),
-                new WNBlockModel_FloweringBush(this.getRegName() + "_flowering")
-                        .with("texture",this.getTextureName(getType().getVariant().getPath()))
-                        .with("stalk",stalk)
-        );
-    }
-
-    @Nullable
-    @Override
-    public WNTags.TagList getWNTags() {
-        return new WNTags.TagList(
-                WNTags.FLOWERS, WNTags.SMALL_FLOWERS, WNTags.ENDERMAN_HOLDABLE, WNTags.WN_FLOWERING_PLANTS
-        );
     }
 
     @Override

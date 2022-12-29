@@ -39,7 +39,7 @@ public class WNTriplePlantBlock extends WNBushConfiguredBlock {
 
    public static final EnumProperty<TripleBlockHalf> HALF = WNBlockProperties.TRIPLE_BLOCK_HALF;
 
-   public WNTriplePlantBlock(ResourceLocation location, Properties properties, BushType type) {
+   public WNTriplePlantBlock(Properties properties, BushType type) {
       super(properties, type);
        this.registerDefaultState(this.stateDefinition.any().setValue(HALF, TripleBlockHalf.LOWER));
    }

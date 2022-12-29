@@ -10,12 +10,8 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class WNThistleBlock extends WNFloweringBushBlock{
-    public WNThistleBlock(ResourceLocation location, Properties properties, BushType type) {
-        super(location, properties, type);
-    }
-
-    public WNThistleBlock(ResourceLocation location, Properties properties, Item.Properties itemProperties, BushType type) {
-        super(location, properties, itemProperties, type);
+    public WNThistleBlock(Properties properties, BushType type) {
+        super(properties, type);
     }
 
     @Override

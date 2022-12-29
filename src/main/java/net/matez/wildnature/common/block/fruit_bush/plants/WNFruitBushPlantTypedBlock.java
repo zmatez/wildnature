@@ -146,7 +146,7 @@ public abstract class WNFruitBushPlantTypedBlock extends WNBushBlock {
         return null;
     }
 
-    public static WNFruitBushPlantTypedBlock create(ResourceLocation location, Properties properties, Item.Properties itemProperties, FruitPlantType leafType) {
+    public static WNFruitBushPlantTypedBlock create(Properties properties, FruitPlantType leafType) {
         switch (leafType.getConfig().getStages()-1) {
             case 0 -> {
                 return new WNFruitBushPlantBlock_Stage0(properties, leafType);
@@ -155,28 +155,27 @@ public abstract class WNFruitBushPlantTypedBlock extends WNBushBlock {
                 return new WNFruitBushPlantBlock_Stage1(properties, leafType);
             }
             case 2 -> {
-                return new WNFruitBushPlantBlock_Stage2(location, properties, itemProperties, leafType);
+                return new WNFruitBushPlantBlock_Stage2(properties, leafType);
             }
             case 3 -> {
-                return new WNFruitBushPlantBlock_Stage3(location, properties, itemProperties, leafType);
+                return new WNFruitBushPlantBlock_Stage3(properties, leafType);
             }
             case 4 -> {
-                return new WNFruitBushPlantBlock_Stage4(location, properties, itemProperties, leafType);
+                return new WNFruitBushPlantBlock_Stage4(properties, leafType);
             }
             case 5 -> {
-                return new WNFruitBushPlantBlock_Stage5(location, properties, itemProperties, leafType);
+                return new WNFruitBushPlantBlock_Stage5(properties, leafType);
             }
             case 6 -> {
-                return new WNFruitBushPlantBlock_Stage6(location, properties, itemProperties, leafType);
+                return new WNFruitBushPlantBlock_Stage6(properties, leafType);
             }
             case 7 -> {
-                return new WNFruitBushPlantBlock_Stage7(location, properties, itemProperties, leafType);
+                return new WNFruitBushPlantBlock_Stage7(properties, leafType);
             }
             case 8 -> {
-                return new WNFruitBushPlantBlock_Stage8(location, properties, itemProperties, leafType);
+                return new WNFruitBushPlantBlock_Stage8(properties, leafType);
             }
         }
-
         return null;
     }
 }

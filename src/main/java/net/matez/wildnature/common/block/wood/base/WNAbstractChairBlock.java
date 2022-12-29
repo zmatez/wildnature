@@ -6,17 +6,14 @@
 
 package net.matez.wildnature.common.block.wood.base;
 
-import net.matez.wildnature.common.block.entity.seat.WNSeatBlockEntity;
+import net.matez.wildnature.common.WNBlock;
 import net.matez.wildnature.common.block.WNBlockProperties;
-import net.matez.wildnature.data.blockstates.WNBlockstate_FacedHorizCubeUvLock;
-import net.matez.wildnature.data.setup.base.WNResource;
+import net.matez.wildnature.common.block.entity.seat.WNSeatBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -37,7 +34,9 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 
-public abstract class WNAbstractChairBlock extends WNBaseEntityBlock implements SimpleWaterloggedBlock {
+import java.util.function.Supplier;
+
+public abstract class WNAbstractChairBlock extends BaseEntityBlock implements SimpleWaterloggedBlock, WNBlock {
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
 
@@ -55,17 +54,8 @@ public abstract class WNAbstractChairBlock extends WNBaseEntityBlock implements 
     public static final VoxelShape SHAPE_EAST = Shapes.or(SHAPE_BASE,SHAPE_LEGS_NS);
     public static final VoxelShape SHAPE_WEST = Shapes.or(SHAPE_BASE,SHAPE_LEGS_NS);
 
-    public WNAbstractChairBlock(ResourceLocation location, Properties properties) {
-        super(location, properties);
-    }
-
-    public WNAbstractChairBlock(ResourceLocation location, Properties properties, Item.Properties itemProperties) {
-        super(location, properties, itemProperties);
-    }
-
-    @Override
-    public void construct() {
-        super.construct();
+    public WNAbstractChairBlock(Properties properties) {
+        super(properties);
         this.registerDefaultState(this.defaultBlockState().setValue(WATERLOGGED,false).setValue(FACING, Direction.NORTH));
     }
 
@@ -123,17 +113,11 @@ public abstract class WNAbstractChairBlock extends WNBaseEntityBlock implements 
         };
     }
 
-    @Override
-    public WNResource getBlockstate() {
-        return new WNBlockstate_FacedHorizCubeUvLock(this.getRegistryName());
-    }
 
-    public abstract Block getLog();
 
-    public abstract Block getPlanks();
+    public abstract Supplier<Block> getLog();
 
-    @Override
-    public abstract ModelList getBlockModels();
+    public abstract Supplier<Block> getPlanks();
 
     @Nullable
     @Override

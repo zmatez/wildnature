@@ -6,20 +6,13 @@
 
 package net.matez.wildnature.common.block.plant.flowering;
 
+import net.matez.wildnature.api.util.ExtraMath;
+import net.matez.wildnature.common.block.WNBlockProperties;
 import net.matez.wildnature.common.block.plant.BushType;
 import net.matez.wildnature.common.block.plant.WNBushConfiguredBlock;
-import net.matez.wildnature.common.block.WNBlockProperties;
-import net.matez.wildnature.api.util.ExtraMath;
-import net.matez.wildnature.data.block_models.plants.WNBlockModel_CloverMedium;
-import net.matez.wildnature.data.block_models.plants.WNBlockModel_CloverShort;
-import net.matez.wildnature.data.block_models.plants.WNBlockModel_CloverTall;
-import net.matez.wildnature.data.blockstates.WNBlockstate_Clover;
-import net.matez.wildnature.data.item_models.WNItemModel_Generated;
-import net.matez.wildnature.data.setup.base.WNResource;
 import net.minecraft.core.BlockPos;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.item.Item;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
@@ -30,8 +23,6 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-import java.util.Random;
-
 public class WNCloverBlock extends WNBushConfiguredBlock {
     public static final IntegerProperty CLOVER_STAGE = WNBlockProperties.CLOVER_STAGE;
     private static final double OFFSET = 1.5D;
@@ -39,15 +30,10 @@ public class WNCloverBlock extends WNBushConfiguredBlock {
     protected static final VoxelShape SHAPE_STAGE_1 = Block.box(OFFSET, 0.0D, OFFSET, 16.0D - OFFSET, 6.0D, 16.0D - OFFSET);
     protected static final VoxelShape SHAPE_STAGE_2 = Block.box(OFFSET, 0.0D, OFFSET, 16.0D - OFFSET, 9.0D, 16.0D - OFFSET);
 
-    public WNCloverBlock(ResourceLocation location, Properties properties, BushType type) {
-        super(location, properties, type);
+    public WNCloverBlock(Properties properties, BushType type) {
+        super(properties, type);
     }
 
-    public WNCloverBlock(ResourceLocation location, Properties properties, Item.Properties itemProperties, BushType type) {
-        super(location, properties, itemProperties, type);
-    }
-
-    @Override
     public void place(BlockState state, LevelAccessor reader, BlockPos pos, int data) {
         reader.setBlock(pos, state.setValue(CLOVER_STAGE, ExtraMath.rint(0, 2, reader.getRandom())), data);
     }
@@ -58,7 +44,7 @@ public class WNCloverBlock extends WNBushConfiguredBlock {
     }
 
     @Override
-    public void randomTick(BlockState state, ServerLevel level, BlockPos pos, Random random) {
+    public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
         super.randomTick(state, level, pos, random);
 
         int stage = state.getValue(CLOVER_STAGE);
@@ -70,59 +56,6 @@ public class WNCloverBlock extends WNBushConfiguredBlock {
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> def) {
         def.add(CLOVER_STAGE);
-    }
-
-    @Override
-    public WNResource getBlockstate() {
-        return new WNBlockstate_Clover(this.getRegistryName());
-    }
-
-    @Override
-    public ModelList getBlockModels() {
-        String texture = this.getTextureName("plants/surface/clover");
-        return new ModelList().with(
-                new WNBlockModel_CloverShort(getRegName() + "_short_purple")
-                    .with("texture",texture)
-                    .with("color","purple"),
-                new WNBlockModel_CloverShort(getRegName() + "_short_pink")
-                    .with("texture",texture)
-                    .with("color","pink"),
-                new WNBlockModel_CloverShort(getRegName() + "_short_white")
-                    .with("texture",texture)
-                    .with("color","white"),
-                new WNBlockModel_CloverShort(getRegName() + "_short_empty")
-                    .with("texture",texture)
-                    .with("color","empty"),
-                new WNBlockModel_CloverMedium(getRegName() + "_medium_purple")
-                    .with("texture",texture)
-                    .with("color","purple"),
-                new WNBlockModel_CloverMedium(getRegName() + "_medium_pink")
-                    .with("texture",texture)
-                    .with("color","pink"),
-                new WNBlockModel_CloverMedium(getRegName() + "_medium_white")
-                    .with("texture",texture)
-                    .with("color","white"),
-                new WNBlockModel_CloverMedium(getRegName() + "_medium_empty")
-                    .with("texture",texture)
-                    .with("color","empty"),
-                new WNBlockModel_CloverTall(getRegName() + "_tall_purple")
-                    .with("texture",texture)
-                    .with("color","purple"),
-                new WNBlockModel_CloverTall(getRegName() + "_tall_pink")
-                    .with("texture",texture)
-                    .with("color","pink"),
-                new WNBlockModel_CloverTall(getRegName() + "_tall_white")
-                    .with("texture",texture)
-                    .with("color","white"),
-                new WNBlockModel_CloverTall(getRegName() + "_tall_empty")
-                    .with("texture",texture)
-                    .with("color","empty")
-        );
-    }
-
-    @javax.annotation.Nullable
-    public WNResource getItemModel(){
-        return new WNItemModel_Generated(getRegName()).with("texture", this.getTextureName("plants/surface/clover") + "_item");
     }
 
     @Override

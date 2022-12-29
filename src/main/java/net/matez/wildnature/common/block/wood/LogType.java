@@ -1,7 +1,5 @@
 package net.matez.wildnature.common.block.wood;
 
-import net.matez.wildnature.core.other.WNTabs;
-import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.level.material.MaterialColor;
 
 import javax.annotation.Nullable;
@@ -25,7 +23,7 @@ public enum LogType {
     PLUM("plum",MaterialColor.COLOR_PURPLE),
     REDWOOD("redwood",MaterialColor.TERRACOTTA_RED),
     WILLOW("willow",MaterialColor.TERRACOTTA_GREEN),
-    GLOWING_CAVE_OAK("glowing_cave_oak",MaterialColor.WARPED_WART_BLOCK, WNTabs.TAB_CAVES)
+    GLOWING_CAVE_OAK("glowing_cave_oak",MaterialColor.WARPED_WART_BLOCK)
     ;
     //?------------------------------
 
@@ -33,17 +31,10 @@ public enum LogType {
     @Nullable
     private LogType parent = null;
     private final MaterialColor color;
-    private CreativeModeTab tab = WNTabs.TAB_SURFACE;
 
     LogType(String idBase, MaterialColor color){
         this.idBase = idBase;
         this.color = color;
-    }
-
-    LogType(String idBase, MaterialColor color, CreativeModeTab tab){
-        this.idBase = idBase;
-        this.color = color;
-        this.tab = tab;
     }
 
     LogType(String idBase, MaterialColor color, LogType parent){
@@ -69,9 +60,5 @@ public enum LogType {
 
     public MaterialColor getColor() {
         return color;
-    }
-
-    public CreativeModeTab getTab() {
-        return tab;
     }
 }

@@ -16,188 +16,167 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
 
+import java.util.function.Function;
+
 public enum BushSetup {
-    BUSH((variant, blockProp, itemProp) -> {
-        String name = variant.getVariant().getBaseName() + ((variant.getVariantName() != null && !variant.getVariantName().equals("")) ? "_" + variant.getVariantName() : "");
-        return new WNBushConfiguredBlock(
-                WNBlocks.location(name), blockProp, itemProp,
-                variant
-        );
-    }),
-    FLOWERING_BUSH((variant, blockProp, itemProp) -> {
-        String name = variant.getVariant().getBaseName() + "_" + variant.getColorName();
-        if(variant.hasConfig() && variant.getConfig() instanceof FloweringBushConfig flowerConfig){
-            if(!flowerConfig.hasColorVariants()){
-                name = variant.getVariant().getBaseName();
-            }
-        }
-        return new WNFloweringBushBlock(
-                WNBlocks.location(name), blockProp, itemProp,
-                variant
-        );
-    }),
-    FLOWERING_LEAFED_BUSH((variant, blockProp, itemProp) -> {
-        String name = variant.getVariant().getBaseName() + "_" + variant.getColorName();
-        if(variant.hasConfig() && variant.getConfig() instanceof FloweringBushConfig flowerConfig){
-            if(!flowerConfig.hasColorVariants()){
-                name = variant.getVariant().getBaseName();
-            }
-        }
-        return new WNFloweringLeafedBushBlock(
-                WNBlocks.location(name), blockProp, itemProp,
-                variant
-        );
-    }),
-    BIG_BUSH((variant, blockProp, itemProp) -> {
-        String name = variant.getVariant().getBaseName() + "_" + variant.getColorName();
-        if(variant.hasConfig() && variant.getConfig() instanceof FloweringBushConfig flowerConfig){
-            if(!flowerConfig.hasColorVariants()){
-                name = variant.getVariant().getBaseName();
-            }
-        }
-        return new WNBigBushBlock(
-                WNBlocks.location(name), blockProp, itemProp,
-                variant
-        );
-    }),
-    DOUBLE_FLOWERING_BUSH((variant, blockProp, itemProp) -> {
-        BlockBehaviour.Properties blockPropNew = BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT, MaterialColor.PLANT)
-                .sound(SoundType.GRASS)
-                .instabreak()
-                .noOcclusion()
-                .noCollission()
-                .randomTicks();
-        String name = variant.getVariant().getBaseName() + "_" + variant.getColorName();
-        if(variant.hasConfig() && variant.getConfig() instanceof FloweringBushConfig flowerConfig){
-            if(!flowerConfig.hasColorVariants()){
-                name = variant.getVariant().getBaseName();
-            }
-        }
-        return new WNDoubleFloweringBushBlock(
-                WNBlocks.location(name), blockPropNew, itemProp,
-                variant
-        );
-    }),
-    DOUBLE_BUSH((variant, blockProp, itemProp) -> {
-        BlockBehaviour.Properties blockPropNew = BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT, MaterialColor.PLANT)
-                .sound(SoundType.GRASS)
-                .instabreak()
-                .noOcclusion()
-                .noCollission()
-                .randomTicks();
-        String name = variant.getVariant().getBaseName() + ((variant.getVariantName() != null && !variant.getVariantName().equals("")) ? "_" + variant.getVariantName() : "");
 
-        return new WNDoublePlantBlock(
-                WNBlocks.location(name), blockPropNew, itemProp,
-                variant
-        );
+    BUSH(variant -> variant.getVariant().getBaseName() + ((variant.getVariantName() != null && !variant.getVariantName().equals("")) ? "_" + variant.getVariantName() : ""),(variant, blockProp) -> {
+        return new WNBushConfiguredBlock(blockProp, variant);
     }),
-    DOUBLE_FLOWERING_LEAFED_BUSH((variant, blockProp, itemProp) -> {
-        BlockBehaviour.Properties blockPropNew = BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT, MaterialColor.PLANT)
-                .sound(SoundType.GRASS)
-                .instabreak()
-                .noOcclusion()
-                .noCollission()
-                .randomTicks();
+    FLOWERING_BUSH(variant -> {
         String name = variant.getVariant().getBaseName() + "_" + variant.getColorName();
         if(variant.hasConfig() && variant.getConfig() instanceof FloweringBushConfig flowerConfig){
             if(!flowerConfig.hasColorVariants()){
                 name = variant.getVariant().getBaseName();
             }
         }
-        return new WNDoubleFloweringLeafedBushBlock(
-                WNBlocks.location(name), blockPropNew, itemProp,
-                variant
-        );
+        return name;
+    }, (variant, blockProp) -> {
+        return new WNFloweringBushBlock(blockProp, variant);
     }),
-    CLOVER((variant, blockProp, itemProp) -> {
-        return new WNCloverBlock(WNBlocks.location(variant.getVariant().getBaseName()),blockProp,itemProp,variant);
-    }),
-    MOSS((variant, blockProp, itemProp) -> {
-        return new WNMossBlock(WNBlocks.location(variant.getVariant().getBaseName()),blockProp,itemProp,variant);
-    }),
-    ANEMONE((variant, blockProp, itemProp) -> {
-        return new WNAnemoneFlowerBlock(WNBlocks.location(variant.getVariant().getBaseName()),blockProp,itemProp,variant);
-    }),
-    THISTLE((variant, blockProp, itemProp) -> {
-        return new WNThistleBlock(WNBlocks.location(variant.getVariant().getBaseName()),blockProp,itemProp,variant);
-    }),
-    SHRUB((variant, blockProp, itemProp) -> {
-        return new WNShrubBlock(WNBlocks.location(variant.getVariant().getBaseName()),blockProp,itemProp,variant);
-    }),
-    SPIDERGRASS((variant, blockProp, itemProp) -> {
-        return new WNSpiderGrassBlock(WNBlocks.location(variant.getVariant().getBaseName()),blockProp,itemProp,variant);
-    }),
-    SMALL_CACTI((variant, blockProp, itemProp) -> {
-        return new WNSmallCactiBlock(WNBlocks.location(variant.getVariant().getBaseName()),blockProp,itemProp,variant);
-    }),
-    NETTLE((variant, blockProp, itemProp) -> {
-        return new WNNettleBlock(WNBlocks.location(variant.getVariant().getBaseName()),blockProp,itemProp,variant);
-    }),
-    POISON_IVY((variant, blockProp, itemProp) -> {
-        return new WNPoisonIvyBlock(WNBlocks.location(variant.getVariant().getBaseName()),blockProp,itemProp,variant);
-    }),
-    SUCCULENT((variant, blockProp, itemProp) -> {
-        return new WNSucculentBlock(WNBlocks.location(variant.getVariant().getBaseName()),blockProp,itemProp,variant);
-    }),
-    PRICKLY_PEAR((variant, blockProp, itemProp) -> {
-        return new WNPricklyPearCactus(WNBlocks.location(variant.getVariant().getBaseName()),blockProp,itemProp,variant);
-    }),
-    FLY_TRAP((variant, blockProp, itemProp) -> {
-        return new WNFlytrapBlock(WNBlocks.location(variant.getVariant().getBaseName()),blockProp,itemProp,variant);
-    }),
-    CHINESE_LANTERN_FLOWER((variant, blockProp, itemProp) -> {
-        return new WNChineseLanternFlowerBlock(WNBlocks.location(variant.getVariant().getBaseName()),blockProp,itemProp,variant);
-    }),
-    LICHEN((variant, blockProp, itemProp) -> {
-        return new WNLichenBlock(WNBlocks.location(variant.getVariant().getBaseName()),blockProp,itemProp,variant);
-    }),
-    REEDS((variant, blockProp, itemProp) -> {
-        return new WNReedsBlock(WNBlocks.location(variant.getVariant().getBaseName()),blockProp,itemProp,variant);
-    }),
-    RIVER_CANE((variant, blockProp, itemProp) -> {
-        return new WNRiverCaneBlock(WNBlocks.location(variant.getVariant().getBaseName()),blockProp,itemProp,variant);
-    }),
-    WISTERIA((variant, blockProp, itemProp) -> {
+    FLOWERING_LEAFED_BUSH(variant -> {
         String name = variant.getVariant().getBaseName() + "_" + variant.getColorName();
         if(variant.hasConfig() && variant.getConfig() instanceof FloweringBushConfig flowerConfig){
             if(!flowerConfig.hasColorVariants()){
                 name = variant.getVariant().getBaseName();
             }
         }
-        return new WNWisteriaBlock(
-                WNBlocks.location(name), blockProp, itemProp,
-                variant
-        );    }),
-    YUCCA((variant, blockProp, itemProp) -> {
-        return new WNYuccaBlock(WNBlocks.location(variant.getVariant().getBaseName()),blockProp,itemProp,variant);
+        return name;
+    }, (variant, blockProp) -> {
+        return new WNFloweringBushBlock(blockProp, variant);
     }),
-    STRANGLING_VINE((variant, blockProp, itemProp) -> {
-        return new WNStranglingVineBlock(WNBlocks.location(variant.getVariant().getBaseName()),blockProp.strength(0.3F),itemProp,variant);
-    }),
-    FLOWERING_VINE((variant, blockProp, itemProp) -> {
+    BIG_BUSH(variant -> {
         String name = variant.getVariant().getBaseName() + "_" + variant.getColorName();
         if(variant.hasConfig() && variant.getConfig() instanceof FloweringBushConfig flowerConfig){
             if(!flowerConfig.hasColorVariants()){
                 name = variant.getVariant().getBaseName();
             }
         }
-        return new WNFloweringVineBlock(
-                WNBlocks.location(name), BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().randomTicks().strength(0.2F).sound(SoundType.VINE), itemProp,
-                variant
-        );    }),
+        return name;
+    }, (variant, blockProp) -> {
 
-    COTTON((variant, blockProp, itemProp) -> {
-        return new WNCottonBlock(WNBlocks.location(variant.getVariant().getBaseName()),blockProp,itemProp,variant);
-    })
-    ;
+        return new WNFloweringBushBlock(blockProp, variant);
+    }),
+    DOUBLE_FLOWERING_BUSH(variant -> {
+        String name = variant.getVariant().getBaseName() + "_" + variant.getColorName();
+        if(variant.hasConfig() && variant.getConfig() instanceof FloweringBushConfig flowerConfig){
+            if(!flowerConfig.hasColorVariants()){
+                name = variant.getVariant().getBaseName();
+            }
+        }
+        return name;
+    }, (variant, blockProp) -> {
+        BlockBehaviour.Properties blockPropNew = BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT, MaterialColor.PLANT).sound(SoundType.GRASS).instabreak().noOcclusion().noCollission().randomTicks();
+        return new WNDoubleFloweringBushBlock(blockPropNew, variant);
+    }),
+    DOUBLE_BUSH(variant -> variant.getVariant().getBaseName() + ((variant.getVariantName() != null && !variant.getVariantName().equals("")) ? "_" + variant.getVariantName() : ""), (variant, blockProp) -> {
+        BlockBehaviour.Properties blockPropNew = BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT, MaterialColor.PLANT).sound(SoundType.GRASS).instabreak().noOcclusion().noCollission().randomTicks();
+        return new WNDoublePlantBlock(blockPropNew, variant);
+    }),
+    DOUBLE_FLOWERING_LEAFED_BUSH(variant -> {
+        String name = variant.getVariant().getBaseName() + "_" + variant.getColorName();
+        if(variant.hasConfig() && variant.getConfig() instanceof FloweringBushConfig flowerConfig){
+            if(!flowerConfig.hasColorVariants()){
+                name = variant.getVariant().getBaseName();
+            }
+        }
+        return name;
+    }, (variant, blockProp) -> {
+        BlockBehaviour.Properties blockPropNew = BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT, MaterialColor.PLANT).sound(SoundType.GRASS).instabreak().noOcclusion().noCollission().randomTicks();
+        return new WNDoubleFloweringBushBlock(blockPropNew, variant);
+    }),
+    CLOVER(simpleId(), (variant, blockProp) -> {
+        return new WNCloverBlock(blockProp,variant);
+    }),
+    ANEMONE(simpleId(), (variant, blockProp) -> {
+        return new WNAnemoneFlowerBlock(blockProp,variant);
+    }),
+    THISTLE(simpleId(), (variant, blockProp) -> {
+        return new WNThistleBlock(blockProp,variant);
+    }),
+    SHRUB(simpleId(), (variant, blockProp) -> {
+        return new WNBushConfiguredBlock(blockProp,variant);
+    }),
+    SPIDERGRASS(simpleId(), (variant, blockProp) -> {
+        return new WNSpiderGrassBlock(blockProp,variant);
+    }),
+    SMALL_CACTI(simpleId(), (variant, blockProp) -> {
+        return new WNSmallCactiBlock(blockProp,variant);
+    }),
+    NETTLE(simpleId(), (variant, blockProp) -> {
+        return new WNNettleBlock(blockProp,variant);
+    }),
+    POISON_IVY(simpleId(), (variant, blockProp) -> {
+        return new WNPoisonIvyBlock(blockProp,variant);
+    }),
+    SUCCULENT(simpleId(), (variant, blockProp) -> {
+        return new WNBushConfiguredBlock(blockProp,variant);
+    }),
+    PRICKLY_PEAR(simpleId(), (variant, blockProp) -> {
+        return new WNPricklyPearCactus(blockProp,variant);
+    }),
+    FLY_TRAP(simpleId(), (variant, blockProp) -> {
+        return new WNBushConfiguredBlock(blockProp,variant);
+    }),
+    CHINESE_LANTERN_FLOWER(simpleId(), (variant, blockProp) -> {
+        return new WNChineseLanternFlowerBlock(blockProp,variant);
+    }),
+    LICHEN(simpleId(), (variant, blockProp) -> {
+        return new WNLichenBlock(blockProp,variant);
+    }),
+    REEDS(simpleId(), (variant, blockProp) -> {
+        return new WNReedsBlock(blockProp,variant);
+    }),
+    RIVER_CANE(simpleId(), (variant, blockProp) -> {
+        return new WNRiverCaneBlock(blockProp,variant);
+    }),
+    WISTERIA(variant -> {
+        String name = variant.getVariant().getBaseName() + "_" + variant.getColorName();
+        if(variant.hasConfig() && variant.getConfig() instanceof FloweringBushConfig flowerConfig){
+            if(!flowerConfig.hasColorVariants()){
+                name = variant.getVariant().getBaseName();
+            }
+        }
+        return name;
+    },(variant, blockProp) -> {
+        return new WNWisteriaBlock(blockProp, variant);
+    }),
+    YUCCA(simpleId(), (variant, blockProp) -> {
+        return new WNYuccaBlock(blockProp,variant);
+    }),
+    STRANGLING_VINE(simpleId(), (variant, blockProp) -> {
+        return new WNStranglingVineBlock(blockProp.strength(0.3F),variant);
+    }),
+    FLOWERING_VINE(variant -> {
+        String name = variant.getVariant().getBaseName() + "_" + variant.getColorName();
+        if(variant.hasConfig() && variant.getConfig() instanceof FloweringBushConfig flowerConfig){
+            if(!flowerConfig.hasColorVariants()){
+                name = variant.getVariant().getBaseName();
+            }
+        }
+        return name;
+    }, (variant, blockProp) -> {
+        return new WNFloweringVineBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().randomTicks().strength(0.2F).sound(SoundType.VINE), variant);
+    }),
+    COTTON(simpleId(), (variant, blockProp) -> {
+        return new WNCottonBlock(blockProp,variant);
+    });
     private BushConstructor<BushType> constructor;
+    private Function<BushType, String> nameGetter;
 
-    BushSetup(BushConstructor<BushType> constructor) {
+    BushSetup(Function<BushType, String> nameGetter, BushConstructor<BushType> constructor) {
         this.constructor = constructor;
+        this.nameGetter = nameGetter;
     }
 
+    public String createId(BushType type) {
+        return nameGetter.apply(type);
+    }
     public BushConstructor<BushType> getConstructor() {
         return constructor;
+    }
+
+    public static Function<BushType, String> simpleId() {
+        return variant -> variant.getVariant().getBaseName();
     }
 }

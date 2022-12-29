@@ -6,18 +6,13 @@
 
 package net.matez.wildnature.common.block.wood.base;
 
-import net.matez.wildnature.common.block.entity.seat.WNSeatBlockEntity;
 import net.matez.wildnature.common.block.WNBlockProperties;
-import net.matez.wildnature.data.blockstates.WNBlockstate_Bench;
-import net.matez.wildnature.data.item_models.WNItemModel_BlockParent;
-import net.matez.wildnature.data.setup.base.WNResource;
+import net.matez.wildnature.common.block.entity.seat.WNSeatBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -43,7 +38,7 @@ public abstract class WNAbstractBenchBlock extends BaseEntityBlock {
     public static DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
     public static final VoxelShape SHAPE = Block.box(0, 0, 0, 16, 11, 16);
 
-    public WNAbstractBenchBlock(ResourceLocation location, Properties properties) {
+    public WNAbstractBenchBlock(Properties properties) {
         super(properties);
     }
 

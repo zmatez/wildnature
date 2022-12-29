@@ -39,7 +39,7 @@ public class WNDoublePlantBlock extends WNBushConfiguredBlock {
 
    public static final EnumProperty<DoubleBlockHalf> HALF = BlockStateProperties.DOUBLE_BLOCK_HALF;
 
-   public WNDoublePlantBlock(ResourceLocation location, Properties properties, BushType type) {
+   public WNDoublePlantBlock(Properties properties, BushType type) {
       super(properties, type);
       this.registerDefaultState(this.stateDefinition.any().setValue(HALF, DoubleBlockHalf.LOWER));
    }

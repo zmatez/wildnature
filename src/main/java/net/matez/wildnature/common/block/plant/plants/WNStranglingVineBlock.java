@@ -6,18 +6,14 @@
 
 package net.matez.wildnature.common.block.plant.plants;
 
+import net.matez.wildnature.api.util.ExtraMath;
 import net.matez.wildnature.common.block.plant.BushType;
 import net.matez.wildnature.common.block.plant.WNBushConfiguredBlock;
-import net.matez.wildnature.common.tags.WNTags;
-import net.matez.wildnature.api.util.ExtraMath;
-import net.matez.wildnature.data.block_models.plants.WNBlockModel_FloweringBushRetinted;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
@@ -28,7 +24,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.Random;
 
@@ -36,17 +31,13 @@ public class WNStranglingVineBlock extends WNBushConfiguredBlock {
     private static final double OFFSET = 3D;
     protected static final VoxelShape SHAPE = Block.box(OFFSET, 0.0D, OFFSET, 16.0D - OFFSET, 16.0D, 16.0D - OFFSET);
 
-    public WNStranglingVineBlock(ResourceLocation location, Properties properties, BushType type) {
-        super(location, properties, type);
-    }
-
-    public WNStranglingVineBlock(ResourceLocation location, Properties properties, Item.Properties itemProperties, BushType type) {
-        super(location, properties, itemProperties, type);
+    public WNStranglingVineBlock(Properties properties, BushType type) {
+        super(properties, type);
     }
 
     @Override
-    protected boolean mayPlaceOn(BlockState state, BlockState stateOn, BlockGetter getter, BlockPos pos) {
-        return super.mayPlaceOn(state, stateOn, getter, pos) || stateOn.is(this);
+    protected boolean mayPlaceOn(BlockState stateOn, BlockGetter getter, BlockPos pos) {
+        return super.mayPlaceOn(stateOn, getter, pos) || stateOn.is(this);
     }
 
     public boolean canSurvive(BlockState state, LevelReader reader, BlockPos pos) {
@@ -56,7 +47,7 @@ public class WNStranglingVineBlock extends WNBushConfiguredBlock {
         if (blockstate.is(this)) {
             return true;
         } else {
-            if (mayPlaceOn(state,blockstate,reader,pos)) {
+            if (mayPlaceOn(blockstate,reader,pos)) {
                 if(reader.isWaterAt(pos) && reader.isEmptyBlock(pos.above(5))){
                     return true;
                 }
@@ -107,15 +98,6 @@ public class WNStranglingVineBlock extends WNBushConfiguredBlock {
     }
 
     @Override
-    public ModelList getBlockModels() {
-        return new ModelList().with(
-                new WNBlockModel_FloweringBushRetinted(this.getRegName())
-                        .with("texture",this.getTextureName(this.getType().getVariant().getPath()) + "_overlay")
-                        .with("stalk",this.getTextureName(this.getType().getVariant().getPath()) + "_stem")
-        );
-    }
-
-    @Override
     public OffsetType getOffsetType() {
         return OffsetType.NONE;
     }
@@ -131,13 +113,5 @@ public class WNStranglingVineBlock extends WNBushConfiguredBlock {
         if(ExtraMath.rint(0,20) == 0) {
             entity.setDeltaMovement(entity.getDeltaMovement().x, 1F, entity.getDeltaMovement().z);
         }
-    }
-
-    @Nullable
-    @Override
-    public WNTags.TagList getWNTags() {
-        return new WNTags.TagList(
-                WNTags.CLIMBABLE, WNTags.MINEABLE_AXE
-        );
     }
 }

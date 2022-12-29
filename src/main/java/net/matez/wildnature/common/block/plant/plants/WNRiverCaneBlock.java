@@ -31,12 +31,8 @@ public class WNRiverCaneBlock extends WNBushConfiguredBlock {
     private static final double OFFSET = 3D;
     protected static final VoxelShape SHAPE = Block.box(OFFSET, 0.0D, OFFSET, 16.0D - OFFSET, 16.0D, 16.0D - OFFSET);
 
-    public WNRiverCaneBlock(ResourceLocation location, Properties properties, BushType type) {
-        super(location, properties, type);
-    }
-
-    public WNRiverCaneBlock(ResourceLocation location, Properties properties, Item.Properties itemProperties, BushType type) {
-        super(location, properties, itemProperties, type);
+    public WNRiverCaneBlock(Properties properties, BushType type) {
+        super(properties, type);
     }
 
     @Override
@@ -50,8 +46,8 @@ public class WNRiverCaneBlock extends WNBushConfiguredBlock {
     }
 
     @Override
-    protected boolean mayPlaceOn(BlockState state, BlockState stateOn, BlockGetter getter, BlockPos pos) {
-        return super.mayPlaceOn(state, stateOn, getter, pos) || stateOn.is(this);
+    protected boolean mayPlaceOn(BlockState stateOn, BlockGetter getter, BlockPos pos) {
+        return super.mayPlaceOn(stateOn, getter, pos) || stateOn.is(this);
     }
 
     public boolean canSurvive(BlockState state, LevelReader reader, BlockPos pos) {
@@ -61,7 +57,7 @@ public class WNRiverCaneBlock extends WNBushConfiguredBlock {
         if (blockstate.is(this)) {
             return true;
         } else {
-            if (mayPlaceOn(state,blockstate,reader,pos)) {
+            if (mayPlaceOn(blockstate,reader,pos)) {
                 if(reader.isWaterAt(pos) && reader.isEmptyBlock(pos.above(5))){
                     return true;
                 }

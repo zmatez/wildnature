@@ -6,6 +6,7 @@
 
 package net.matez.wildnature.core.registry;
 
+import com.mojang.datafixers.util.Either;
 import net.matez.wildnature.api.util.log.SimpleLogger;
 import net.matez.wildnature.common.block.BlockFactory;
 import net.matez.wildnature.common.block.cave_plants.CavePlantType;
@@ -19,7 +20,10 @@ import net.matez.wildnature.common.block.fruit_bush.plants.WNFruitBushPlantTyped
 import net.matez.wildnature.common.block.fruit_bush.vines.FruitVineType;
 import net.matez.wildnature.common.block.fruit_bush.vines.WNFruitVineBlock;
 import net.matez.wildnature.common.block.geyser.WNGeyserBlock;
-import net.matez.wildnature.common.block.grass.*;
+import net.matez.wildnature.common.block.grass.GrassType;
+import net.matez.wildnature.common.block.grass.OvergrownGrassType;
+import net.matez.wildnature.common.block.grass.WNOvergrownStoneBlock;
+import net.matez.wildnature.common.block.grass.WNSoilBlock;
 import net.matez.wildnature.common.block.lanterns.Lantern;
 import net.matez.wildnature.common.block.lanterns.WNLanternBlock;
 import net.matez.wildnature.common.block.leaves.LeafBushType;
@@ -31,7 +35,6 @@ import net.matez.wildnature.common.block.ores.*;
 import net.matez.wildnature.common.block.plant.BushType;
 import net.matez.wildnature.common.block.rocks.*;
 import net.matez.wildnature.common.block.sand.SandType;
-import net.matez.wildnature.common.block.sand.WNMudBlock;
 import net.matez.wildnature.common.block.sand.WNQuicksandBlock;
 import net.matez.wildnature.common.block.sand.WNSandBlock;
 import net.matez.wildnature.common.block.saplings.WNSaplingBlock;
@@ -48,22 +51,17 @@ import net.matez.wildnature.common.block.wood.vanilla.building.WNVanillaBranchBl
 import net.matez.wildnature.common.block.wood.vanilla.building.WNVanillaPlanksBlock;
 import net.matez.wildnature.common.block.wood.vanilla.building.WNVanillaPlanksSlabBlock;
 import net.matez.wildnature.common.block.wood.vanilla.building.WNVanillaPlanksStairBlock;
-import net.matez.wildnature.common.block.wood.vanilla.furniture.WNVanillaBenchBlock;
 import net.matez.wildnature.common.block.wood.vanilla.furniture.WNVanillaChairBlock;
 import net.matez.wildnature.common.block.wood.vanilla.furniture.WNVanillaTableBlock;
-import net.matez.wildnature.common.item.vegetables.Veggie;
 import net.matez.wildnature.core.other.WNTabs;
 import net.matez.wildnature.setup.WildNature;
 import net.minecraft.core.BlockPos;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.SoundType;
-import net.minecraft.world.level.block.StairBlock;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Material;
@@ -72,6 +70,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
+import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.function.BiFunction;
@@ -380,308 +379,53 @@ public class WNBlocks {
                 value
         );
     });
-    public static final LinkedHashMap<LogType, WNBlock> TABLES = register(LogType.values(), (value) -> {
-        //todo different strength for logs
-        if (value.getParent() != null) {
-            return null;
-        }
-        return new WNTableBlock(
-                location(value.getIdBase() + "_table"),
-                BlockBehaviour.Properties.of(Material.WOOD, value.getColor())
-                        .strength(2.0F, 3.0F)
-                        .sound(SoundType.WOOD)
-                        .noOcclusion(),
-                new Item.Properties()
-                        .tab(WNTabs.TAB_FURNITURE),
-                value
-        );
-    });
-    public static final LinkedHashMap<VanillaLogType, WNBlock> VANILLA_TABLES = register(VanillaLogType.values(), (value) -> {
-        return new WNVanillaTableBlock(
-                location(value.getName() + "_table"),
-                BlockBehaviour.Properties.of(Material.WOOD, value.getColor())
-                        .strength(2.0F, 3.0F)
-                        .sound(SoundType.WOOD)
-                        .noOcclusion(),
-                new Item.Properties()
-                        .tab(WNTabs.TAB_FURNITURE),
-                value
-        );
-    });
+    public static final Map<LogType, RegistryObject<Block>> TABLES = linkEnumAndRegister(Arrays.stream(LogType.values()).filter(t -> t.getParent() == null).toArray(LogType[]::new), t -> t.getIdBase() + "_table", (value) -> new WNTableBlock(BlockBehaviour.Properties.of(Material.WOOD, value.getColor()).strength(2.0F, 3.0F).sound(SoundType.WOOD).noOcclusion(), value));
+    public static final Map<VanillaLogType, RegistryObject<Block>> VANILLA_TABLES = linkEnumAndRegister(VanillaLogType.values(), t -> t.getName() + "_table", (value) -> new WNVanillaTableBlock(BlockBehaviour.Properties.of(Material.WOOD, value.getColor()).strength(2.0F, 3.0F).sound(SoundType.WOOD).noOcclusion(), value), DEFAULT_PROPERTIES);
+    public static final Map<LogType, RegistryObject<Block>> CHAIRS = linkEnumAndRegister(Arrays.stream(LogType.values()).filter(l -> l.getParent() == null).toArray(LogType[]::new), logType -> logType.getIdBase() + "_chair", (value) -> new WNChairBlock(BlockBehaviour.Properties.of(Material.WOOD, value.getColor()).strength(2.0F, 3.0F).sound(SoundType.WOOD).noOcclusion(), value), DEFAULT_PROPERTIES);
+    public static final Map<VanillaLogType, RegistryObject<Block>> VANILLA_CHAIRS = linkEnumAndRegister(VanillaLogType.values(), t -> t.getName() + "_chair", (value) -> new WNVanillaChairBlock(BlockBehaviour.Properties.of(Material.WOOD, value.getColor()).strength(2.0F, 3.0F).sound(SoundType.WOOD).noOcclusion(), value), DEFAULT_PROPERTIES);
+    public static final Map<LogType, RegistryObject<Block>> BENCHES = linkEnumAndRegister(Arrays.stream(LogType.values()).filter(logType -> logType.getParent() == null).toArray(LogType[]::new), type -> type.getIdBase() + "_bench", (value) -> new WNBenchBlock(BlockBehaviour.Properties.of(Material.WOOD, value.getColor()).strength(2.0F, 3.0F).sound(SoundType.WOOD).noOcclusion(), Either.left(value)), DEFAULT_PROPERTIES);
+    public static final Map<VanillaLogType, RegistryObject<Block>> VANILLA_BENCHES = linkEnumAndRegister(VanillaLogType.values(), type -> type.getName() + "_bench", (value) -> new WNBenchBlock(BlockBehaviour.Properties.of(Material.WOOD, value.getColor()).strength(2.0F, 3.0F).sound(SoundType.WOOD).noOcclusion(), Either.right(value)), DEFAULT_PROPERTIES);
 
-    public static final LinkedHashMap<LogType, WNBlock> CHAIRS = register(LogType.values(), (value) -> {
-        //todo different strength for logs
-        if (value.getParent() != null) {
-            return null;
-        }
-        return new WNChairBlock(
-                location(value.getIdBase() + "_chair"),
-                BlockBehaviour.Properties.of(Material.WOOD, value.getColor())
-                        .strength(2.0F, 3.0F)
-                        .sound(SoundType.WOOD)
-                        .noOcclusion(),
-                new Item.Properties()
-                        .tab(WNTabs.TAB_FURNITURE),
-                value
-        );
-    });
-    public static final LinkedHashMap<VanillaLogType, WNBlock> VANILLA_CHAIRS = register(VanillaLogType.values(), (value) -> {
-        return new WNVanillaChairBlock(
-                location(value.getName() + "_chair"),
-                BlockBehaviour.Properties.of(Material.WOOD, value.getColor())
-                        .strength(2.0F, 3.0F)
-                        .sound(SoundType.WOOD)
-                        .noOcclusion(),
-                new Item.Properties()
-                        .tab(WNTabs.TAB_FURNITURE),
-                value
-        );
-    });
-
-    public static final LinkedHashMap<LogType, WNBlock> BENCHES = register(LogType.values(), (value) -> {
-        //todo different strength for logs
-        if (value.getParent() != null) {
-            return null;
-        }
-        return new WNBenchBlock(
-                location(value.getIdBase() + "_bench"),
-                BlockBehaviour.Properties.of(Material.WOOD, value.getColor())
-                        .strength(2.0F, 3.0F)
-                        .sound(SoundType.WOOD)
-                        .noOcclusion(),
-                new Item.Properties()
-                        .tab(WNTabs.TAB_FURNITURE),
-                value
-        );
-    });
-    public static final LinkedHashMap<VanillaLogType, WNBlock> VANILLA_BENCHES = register(VanillaLogType.values(), (value) -> {
-        return new WNVanillaBenchBlock(
-                location(value.getName() + "_bench"),
-                BlockBehaviour.Properties.of(Material.WOOD, value.getColor())
-                        .strength(2.0F, 3.0F)
-                        .sound(SoundType.WOOD)
-                        .noOcclusion(),
-                new Item.Properties()
-                        .tab(WNTabs.TAB_FURNITURE),
-                value
-        );
-    });
-
-    //################# GRASS
-    public static final LinkedHashMap<GrassType, WNBlock> GRASSES = register(GrassType.values(), (value) -> {
-        return new WNGrassBlock(
-                location(value.getIdBase() + "_grass_block"),
-                BlockBehaviour.Properties.of(Material.GRASS, MaterialColor.GRASS)
-                        .strength(0.6F)
-                        .sound(SoundType.GRASS)
-                        .randomTicks(),
-                new Item.Properties()
-                        .tab(WNTabs.TAB_SURFACE),
-                value
-        );
-    });
-    public static final WNBlock ALGAE_BLOCK = register(new WNAlgaeBlock(
-            location("algae_block"),
+    //# GRASS #\\
+    public static final Map<GrassType, RegistryObject<Block>> GRASSES = linkEnumAndRegister(GrassType.values(), type -> type.getIdBase() + "_grass_block", (value) -> new GrassBlock(
             BlockBehaviour.Properties.of(Material.GRASS, MaterialColor.GRASS)
-                    .strength(0.4F)
-                    .sound(SoundType.WET_GRASS)
-                    .randomTicks(),
-            new Item.Properties()
-                    .tab(WNTabs.TAB_UNDERWATER)
-    ));
-    public static final LinkedHashMap<GrassType, WNBlock> DIRTS = register(GrassType.values(), (value) -> {
-        return new WNDirtBlock(
-                location(value.getIdBase() + "_dirt"),
-                BlockBehaviour.Properties.of(Material.DIRT, MaterialColor.DIRT)
-                        .strength(0.5F)
-                        .sound(SoundType.GRAVEL),
-                new Item.Properties()
-                        .tab(WNTabs.TAB_SURFACE),
-                value, value.getIdBase()
-        );
-    });
-    public static final WNBlock DRIED_SOIL = register(new WNDirtBlock(
-            location("dried_soil"),
-            BlockBehaviour.Properties.of(Material.DIRT, MaterialColor.DIRT)
-                    .strength(0.4F)
-                    .sound(SoundType.GRAVEL),
-            new Item.Properties()
-                    .tab(WNTabs.TAB_SURFACE), null, "misc"
-    ));
-    public static final LinkedHashMap<GrassType, WNBlock> PODZOLS = register(GrassType.values(), (value) -> {
-        return new WNPodzolBlock(
-                location(value.getIdBase() + "_podzol"),
-                BlockBehaviour.Properties.of(Material.DIRT, MaterialColor.PODZOL)
-                        .strength(0.5F)
-                        .sound(SoundType.GRAVEL),
-                new Item.Properties()
-                        .tab(WNTabs.TAB_SURFACE),
-                value
-        );
-    });
-    public static final WNBlock BARREN_MYCELIUM = register(new WNMyceliumBlock(
-            location("barren_mycelium"),
-            BlockBehaviour.Properties.of(Material.DIRT, MaterialColor.PODZOL)
-                    .strength(0.5F)
-                    .sound(SoundType.GRAVEL),
-            new Item.Properties()
-                    .tab(WNTabs.TAB_SURFACE), GrassType.BARREN
-    ));
-    public static final LinkedHashMap<GrassType, WNBlock> COARSE_DIRTS = register(GrassType.values(), (value) -> {
-        return new WNDirtBlock(
-                location(value.getIdBase() + "_coarse_dirt"),
-                BlockBehaviour.Properties.of(Material.DIRT, MaterialColor.DIRT)
-                        .strength(0.5F)
-                        .sound(SoundType.GRAVEL),
-                new Item.Properties()
-                        .tab(WNTabs.TAB_SURFACE),
-                value, value.getIdBase()
-        );
-    });
-    public static final LinkedHashMap<GrassType, WNBlock> DIRT_PATHS = register(GrassType.values(), (value) -> {
-        return new WNDirtPathBlock(
-                location(value.getIdBase() + "_dirt_path"),
-                BlockBehaviour.Properties.of(Material.DIRT, MaterialColor.COLOR_PURPLE)
-                        .strength(0.65F)
-                        .sound(SoundType.GRASS)
-                        .isViewBlocking(WNBlocks::always)
-                        .isSuffocating(WNBlocks::always),
-                new Item.Properties()
-                        .tab(WNTabs.TAB_SURFACE),
-                value
-        );
-    });
-    public static final LinkedHashMap<GrassType, WNBlock> FARMS = register(GrassType.values(), (value) -> {
-        return new WNFarmBlock(
-                location(value.getIdBase() + "_farmland"),
-                BlockBehaviour.Properties.of(Material.DIRT, MaterialColor.COLOR_PURPLE)
-                        .strength(0.6F)
-                        .randomTicks()
-                        .sound(SoundType.GRASS)
-                        .isViewBlocking(WNBlocks::always)
-                        .isSuffocating(WNBlocks::always),
-                new Item.Properties()
-                        .tab(WNTabs.TAB_SURFACE),
-                value
-        );
-    });
-    public static final LinkedHashMap<OvergrownGrassType, WNBlock> OVERGROWN_STONES = register(OvergrownGrassType.values(), (value) -> {
-        return new WNOvergrownStoneBlock(
-                location(value.getIdBase()),
-                BlockBehaviour.Properties.of(Material.GRASS, MaterialColor.GRASS)
-                        .strength(1.5F, 3F)
-                        .randomTicks()
-                        .sound(SoundType.STONE)
-                        .isViewBlocking(WNBlocks::always)
-                        .isSuffocating(WNBlocks::always),
-                new Item.Properties()
-                        .tab(WNTabs.TAB_SURFACE),
-                value
-        );
-    });
-    public static final WNBlock MOSSY_STONE = register(new WNMossyStone(
-            location("mossy_stone"),
-            BlockBehaviour.Properties.of(Material.STONE, MaterialColor.STONE)
-                    .strength(1.5F, 3F)
-                    .sound(SoundType.STONE),
-            new Item.Properties()
-                    .tab(WNTabs.TAB_SURFACE), null
-    ));
-    public static final WNBlock SOIL = register(new WNSoilBlock(
-            location("soil"),
-            BlockBehaviour.Properties.of(Material.DIRT, MaterialColor.DIRT)
                     .strength(0.6F)
-                    .sound(SoundType.GRAVEL),
-            new Item.Properties()
-                    .tab(WNTabs.TAB_SURFACE)
-    ));
-    public static final WNBlock GEYSER = register(new WNGeyserBlock(
-            location("geyser"),
-            BlockBehaviour.Properties.of(Material.GRASS, MaterialColor.GRASS)
-                    .strength(5F)
-                    .sound(SoundType.DRIPSTONE_BLOCK)
-                    .randomTicks(),
-            new Item.Properties()
-                    .tab(WNTabs.TAB_SURFACE)
-    ));
-    //################# LEAVES
-    public static final LinkedHashMap<LeafType, WNBlock> LEAVES = register(LeafType.values(), (value) -> {
-        return WNLeavesTypedBlock.create(
-                location(value.getIdBase() + "_leaves"),
-                BlockBehaviour.Properties.of(Material.LEAVES, value.getColor())
-                        .strength(0.2F)
-                        .sound(SoundType.GRASS)
-                        .randomTicks()
-                        .noOcclusion()
-                        .isValidSpawn(WNBlocks::ocelotOrParrot)
-                        .isSuffocating(WNBlocks::never)
-                        .isViewBlocking(WNBlocks::never),
-                new Item.Properties()
-                        .tab(value.getTab()),
-                value
-        );
-    });
-    public static final LinkedHashMap<LeafBushType, WNBlock> BUSH_LEAVES = register(LeafBushType.values(), (value) -> {
-        return new WNBushLeafBlock(
-                location(value.getIdBase() + "_bush"),
-                BlockBehaviour.Properties.of(Material.LEAVES, value.getColor())
-                        .strength(0.2F)
-                        .sound(SoundType.GRASS)
-                        .noOcclusion()
-                        .isValidSpawn(WNBlocks::ocelotOrParrot)
-                        .isSuffocating(WNBlocks::never)
-                        .isViewBlocking(WNBlocks::never),
-                new Item.Properties()
-                        .tab(WNTabs.TAB_SURFACE_PLANTS),
-                value
-        );
-    });
-    //################# FLOWERS
-    public static final LinkedHashMap<BushType, WNBlock> BUSHES = register(BushType.values(), (value) -> {
-        BlockBehaviour.Properties blockProp = BlockBehaviour.Properties.of(Material.PLANT, MaterialColor.PLANT)
-                .sound(SoundType.GRASS)
-                .instabreak()
-                .noOcclusion()
-                .noCollission()
-                .dynamicShape()
-                .randomTicks();
-        Item.Properties itemProp = new Item.Properties()
-                .tab(WNTabs.TAB_SURFACE_PLANTS);
+                    .sound(SoundType.GRASS)
+                    .randomTicks()
+    ), DEFAULT_PROPERTIES);
+    public static final RegistryObject<Block> ALGAE_BLOCK = registerStandaloneWithItem("algae_block", () -> new GrassBlock(BlockBehaviour.Properties.of(Material.GRASS, MaterialColor.GRASS).strength(0.4F).sound(SoundType.WET_GRASS).randomTicks()), DEFAULT_PROPERTIES.get());
+    public static final Map<GrassType, RegistryObject<Block>> DIRTS = linkEnumAndRegister(GrassType.values(), type -> type.getIdBase() + "_dirt", (value) -> new Block(BlockBehaviour.Properties.of(Material.DIRT, MaterialColor.DIRT).strength(0.5F).sound(SoundType.GRAVEL)), DEFAULT_PROPERTIES);
+    public static final RegistryObject<Block> DRIED_SOIL = registerStandaloneWithItem("dried_soil", () -> new Block(BlockBehaviour.Properties.of(Material.DIRT, MaterialColor.DIRT).strength(0.4F).sound(SoundType.GRAVEL)), DEFAULT_PROPERTIES.get());
+    public static final Map<GrassType, RegistryObject<Block>> PODZOLS = linkEnumAndRegister(GrassType.values(), type -> type.getIdBase() + "_podzol", (value) -> new SnowyDirtBlock(BlockBehaviour.Properties.of(Material.DIRT, MaterialColor.PODZOL).strength(0.5F).sound(SoundType.GRAVEL)), DEFAULT_PROPERTIES);
+    public static final RegistryObject<Block> BARREN_MYCELIUM = registerStandaloneWithItem("barren_mycelium", () -> new MyceliumBlock(BlockBehaviour.Properties.of(Material.DIRT, MaterialColor.PODZOL).strength(0.5F).sound(SoundType.GRAVEL)), DEFAULT_PROPERTIES.get());
+    public static final Map<GrassType, RegistryObject<Block>> COARSE_DIRTS = linkEnumAndRegister(GrassType.values(), grassType -> grassType.getIdBase() + "_coarse_dirt", (value) -> new Block(BlockBehaviour.Properties.of(Material.DIRT, MaterialColor.DIRT).strength(0.5F).sound(SoundType.GRAVEL)), DEFAULT_PROPERTIES);
+    public static final Map<GrassType, RegistryObject<Block>> DIRT_PATHS = linkEnumAndRegister(GrassType.values(), type -> type.getIdBase() + "_dirt_path", (value) -> new DirtPathBlock(BlockBehaviour.Properties.of(Material.DIRT, MaterialColor.COLOR_PURPLE).strength(0.65F).sound(SoundType.GRASS).isViewBlocking(WNBlocks::always).isSuffocating(WNBlocks::always)), DEFAULT_PROPERTIES);
+    public static final Map<GrassType, RegistryObject<Block>> FARMS = linkEnumAndRegister(GrassType.values(), grassType -> grassType.getIdBase() + "_farmland", (value) -> new FarmBlock(BlockBehaviour.Properties.of(Material.DIRT, MaterialColor.COLOR_PURPLE).strength(0.6F).randomTicks().sound(SoundType.GRASS).isViewBlocking(WNBlocks::always).isSuffocating(WNBlocks::always)), DEFAULT_PROPERTIES);
+    public static final Map<OvergrownGrassType, RegistryObject<Block>> OVERGROWN_STONES = linkEnumAndRegister(OvergrownGrassType.values(), OvergrownGrassType::getIdBase, (value) -> new WNOvergrownStoneBlock(BlockBehaviour.Properties.of(Material.GRASS, MaterialColor.GRASS).strength(1.5F, 3F).randomTicks().sound(SoundType.STONE).isViewBlocking(WNBlocks::always).isSuffocating(WNBlocks::always), value), DEFAULT_PROPERTIES);
+    public static final RegistryObject<Block> MOSSY_STONE = registerStandaloneWithItem("mossy_stone", () -> new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.STONE).strength(1.5F, 3F).sound(SoundType.STONE)), DEFAULT_PROPERTIES.get());
+    public static final RegistryObject<Block> SOIL = registerStandaloneWithItem("soil", () -> new WNSoilBlock(BlockBehaviour.Properties.of(Material.DIRT, MaterialColor.DIRT).strength(0.6F).sound(SoundType.ROOTED_DIRT)), DEFAULT_PROPERTIES.get());
+    public static final RegistryObject<Block> GEYSER = registerStandaloneWithItem("geyser", () -> new WNGeyserBlock(BlockBehaviour.Properties.of(Material.GRASS, MaterialColor.GRASS).strength(5F).sound(SoundType.DRIPSTONE_BLOCK).randomTicks()), DEFAULT_PROPERTIES.get());
 
-        return value.getVariant().getSetup().getConstructor().get(value, blockProp, itemProp);
-    });
+    //# LEAVES #\\
+    public static final Map<LeafType, RegistryObject<Block>> LEAVES = linkEnumAndRegister(LeafType.values(), leafType -> leafType.getIdBase() + "_leaves", (value) -> WNLeavesTypedBlock.create(BlockBehaviour.Properties.of(Material.LEAVES, value.getColor()).strength(0.2F).sound(SoundType.GRASS).randomTicks().noOcclusion().isValidSpawn(WNBlocks::ocelotOrParrot).isSuffocating(WNBlocks::never).isViewBlocking(WNBlocks::never), value));
+    public static final Map<LeafBushType, RegistryObject<Block>> BUSH_LEAVES = linkEnumAndRegister(LeafBushType.values(), leafBushType -> leafBushType.getIdBase() + "_bush", (value) -> new WNBushLeafBlock(BlockBehaviour.Properties.of(Material.LEAVES, value.getColor()).strength(0.2F).sound(SoundType.GRASS).noOcclusion().isValidSpawn(WNBlocks::ocelotOrParrot).isSuffocating(WNBlocks::never).isViewBlocking(WNBlocks::never), value));
 
-    //################# FRUIT_BUSHES
-    public static final LinkedHashMap<FruitBushType, WNBlock> FRUIT_BUSH_LEAVES = register(FruitBushType.values(), (value) -> {
-        return WNFruitBushTypedBlock.create(
-                location(value.getIdBase() + "_bush"),
-                BlockBehaviour.Properties.of(Material.LEAVES, value.getColor())
-                        .strength(0.2F)
-                        .sound(SoundType.GRASS)
-                        .randomTicks()
-                        .noOcclusion()
-                        .isSuffocating(WNBlocks::never)
-                        .isViewBlocking(WNBlocks::never),
-                new Item.Properties()
-                        .tab(value.getTab()),
-                value
-        );
-    });
+    //# FLOWERS #\\
+    public static final Map<BushType, RegistryObject<Block>> BUSHES = linkEnumAndRegister(BushType.values(), bushType -> bushType.getVariant().getSetup().createId(bushType),  (value) -> {
+        BlockBehaviour.Properties blockProp = BlockBehaviour.Properties.of(Material.PLANT, MaterialColor.PLANT).sound(SoundType.GRASS).instabreak().noOcclusion().noCollission().dynamicShape().randomTicks();
+        return value.getVariant().getSetup().getConstructor().get(value, blockProp);
+    }, DEFAULT_PROPERTIES);
 
+    //# FRUIT BUSHES #\\
+    public static final Map<FruitBushType, RegistryObject<Block>> FRUIT_BUSH_LEAVES = linkEnumAndRegister(FruitBushType.values(), fruitBushType -> fruitBushType.getIdBase() + "_bush", (value) -> WNFruitBushTypedBlock.create(BlockBehaviour.Properties.of(Material.LEAVES, value.getColor()).strength(0.2F).sound(SoundType.GRASS).randomTicks().noOcclusion().isSuffocating(WNBlocks::never).isViewBlocking(WNBlocks::never), value), DEFAULT_PROPERTIES);
     public static final Map<FruitPlantType, RegistryObject<Block>> FRUIT_BUSH_PLANTS = linkEnumAndRegister(FruitPlantType.values(), fruitPlantType -> fruitPlantType.getIdBase() + "_bush", (value) -> {
         BlockBehaviour.Properties blockProp = BlockBehaviour.Properties.of(Material.PLANT, value.getColor()).strength(0.2F).sound(SoundType.SWEET_BERRY_BUSH).noOcclusion().noCollission().dynamicShape().randomTicks();
         if(value.getConfig().getConstructor() != null){
             return value.getConfig().getConstructor().get(value,blockProp);
         }
-        return WNFruitBushPlantTypedBlock.create(
-                location(value.getIdBase() + "_bush"),
-                blockProp,
-                itemProp,
-                value
-        );
-    });
-
-    public static final Map<FruitVineType, RegistryObject<Block>> FRUIT_VINES = linkEnumAndRegister(FruitVineType.values(), FruitVineType::getIdBase, (value) -> new WNFruitVineBlock(BlockBehaviour.Properties.of(Material.EGG, value.getColor()).noOcclusion().strength(0.2f).randomTicks(), value));
+        return WNFruitBushPlantTypedBlock.create(blockProp, value);
+    }, DEFAULT_PROPERTIES);
+    public static final Map<FruitVineType, RegistryObject<Block>> FRUIT_VINES = linkEnumAndRegister(FruitVineType.values(), FruitVineType::getIdBase, (value) -> new WNFruitVineBlock(BlockBehaviour.Properties.of(Material.EGG, value.getColor()).noOcclusion().strength(0.2f).randomTicks(), value), DEFAULT_PROPERTIES);
     public static final Map<CropType, RegistryObject<Block>> CROPS = linkEnumAndRegister(CropType.values(), CropType::getId, (value) -> {
         BlockBehaviour.Properties blockProp = BlockBehaviour.Properties.of(Material.PLANT, MaterialColor.PLANT).instabreak().sound(SoundType.CROP).noOcclusion().noCollission().dynamicShape().randomTicks();
         if(value.getBlockConstructor() != null)
@@ -814,13 +558,17 @@ public class WNBlocks {
     private static <T, U extends Block> Map<T, RegistryObject<U>> linkEnumAndRegister(T[] enumList, Function<T, String> nameGetter, BlockFactory<T, U> factory, Supplier<Item.Properties> propertyGetter) {
         Map<T, RegistryObject<U>> map = new LinkedHashMap<>();
         for (T element : enumList) {
-            String name = nameGetter.apply(element);
-            RegistryObject<U> registered = REGISTRY.register(name, () -> factory.register(element));
-            map.put(element, registered);
-            WNItems.REGISTRY.register(name, () -> new BlockItem(registered.get(), propertyGetter.get()));
+            if (factory.register(element) == null) {
+                String name = nameGetter.apply(element);
+                RegistryObject<U> registered = REGISTRY.register(name, () -> factory.register(element));
+                map.put(element, registered);
+                WNItems.REGISTRY.register(name, () -> new BlockItem(registered.get(), propertyGetter.get()));
+            }
+
         }
         return map;
     }
+
     private static <T, U extends Block> Map<T, RegistryObject<U>> linkEnumAndRegister(T[] enumList, Function<T, String> nameGetter, BlockFactory<T, U> factory, BiFunction<T, U, BlockItem> customItemFactory) {
         Map<T, RegistryObject<U>> map = new LinkedHashMap<>();
         for (T element : enumList) {

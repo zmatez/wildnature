@@ -156,7 +156,7 @@ public class WNStructure {
             BlockPos pos = BlockPos.of(obj.get("pos").getAsLong());
 
             try {
-                BlockState state = BlockStateParser.parseForBlock(BuiltInRegistries.BLOCK.asLookup(), new StringReader(obj.get("block").getAsString()), true).blockState()6;
+                BlockState state = BlockStateParser.parseForBlock(BuiltInRegistries.BLOCK.asLookup(), new StringReader(obj.get("block").getAsString()), true).blockState();
                 if (state == null) {
                     if (!missingStates.contains(obj.get("block").getAsString())) {
                         missingStates.add(obj.get("block").getAsString());

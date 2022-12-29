@@ -6,17 +6,13 @@
 
 package net.matez.wildnature.common.block.plant.plants;
 
+import net.matez.wildnature.api.util.ExtraMath;
 import net.matez.wildnature.common.block.plant.BushType;
 import net.matez.wildnature.core.registry.WNParticles;
-import net.matez.wildnature.api.util.ExtraMath;
-import net.matez.wildnature.data.block_models.plants.wisteria.WNBlockModel_WisteriaBottom;
-import net.matez.wildnature.data.block_models.plants.wisteria.WNBlockModel_WisteriaSide;
-import net.matez.wildnature.data.blockstates.plants.WNBlockstate_Wisteria;
-import net.matez.wildnature.data.setup.base.WNResource;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.Item;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
@@ -28,12 +24,8 @@ import java.util.Random;
 public class WNWisteriaBlock extends WNVerticalBushBlock{
     public static Map<Direction, VoxelShape> SHAPE = createFacingShape(16,3);
 
-    public WNWisteriaBlock(ResourceLocation location, Properties properties, BushType type) {
-        super(location, properties, type);
-    }
-
-    public WNWisteriaBlock(ResourceLocation location, Properties properties, Item.Properties itemProperties, BushType type) {
-        super(location, properties, itemProperties, type);
+    public WNWisteriaBlock(Properties properties, BushType type) {
+        super(properties, type);
     }
 
     @Override
@@ -42,27 +34,12 @@ public class WNWisteriaBlock extends WNVerticalBushBlock{
     }
 
     @Override
-    public WNResource getBlockstate() {
-        return new WNBlockstate_Wisteria(this.getRegistryName());
-    }
-
-    @Override
-    public ModelList getBlockModels() {
-        return new ModelList().with(
-                new WNBlockModel_WisteriaBottom(this.getRegName() + "_bottom")
-                    .with("texture",this.getTextureName(this.getType().getVariant().getPath())),
-                new WNBlockModel_WisteriaSide(this.getRegName() + "_side")
-                    .with("texture",this.getTextureName(this.getType().getVariant().getPath()))
-        );
-    }
-
-    @Override
     public OffsetType getOffsetType() {
         return OffsetType.NONE;
     }
 
     @Override
-    public void animateTick(BlockState state, Level level, BlockPos pos, Random random) {
+    public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
         super.animateTick(state, level, pos, random);
         if(ExtraMath.rint(0,6,random) == 0){
             double delta = 0.05;

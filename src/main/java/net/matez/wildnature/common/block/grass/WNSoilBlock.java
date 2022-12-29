@@ -6,15 +6,16 @@
 
 package net.matez.wildnature.common.block.grass;
 
+import net.matez.wildnature.common.WNBlock;
 import net.matez.wildnature.common.block.entity.soil.WNSoilBlockEntity;
-import net.matez.wildnature.common.tags.WNTags;
-import net.matez.wildnature.data.block_models.WNBlockModel_CubeAll;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -22,17 +23,14 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.Random;
 
-public class WNSoilBlock extends WNBaseEntityBlock {
-    public WNSoilBlock(ResourceLocation location, Properties properties) {
-        super(location, properties);
-    }
+public class WNSoilBlock extends BaseEntityBlock implements WNBlock {
 
-    public WNSoilBlock(ResourceLocation location, Properties properties, Item.Properties itemProperties) {
-        super(location, properties, itemProperties);
+    public WNSoilBlock(Properties properties) {
+        super(properties);
     }
 
     @Override
-    public void randomTick(BlockState state, ServerLevel level, BlockPos pos, Random random) {
+    public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
         BlockState up = level.getBlockState(pos.above());
         if (!up.isAir()) {
             if (up.is(BlockTags.FLOWERS) || up.is(BlockTags.SAPLINGS) || up.is(BlockTags.BEE_GROWABLES)) {
@@ -47,21 +45,6 @@ public class WNSoilBlock extends WNBaseEntityBlock {
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
         return new WNSoilBlockEntity(pos, state);
-    }
-
-    public ModelList getBlockModels() {
-        return new ModelList()
-                .with(new WNBlockModel_CubeAll(this.getRegName()).with("texture", this.getTextureName("grass/misc")));
-    }
-
-    @Nullable
-    @Override
-    public WNTags.TagList getWNTags() {
-        return new WNTags.TagList(
-                WNTags.ENDERMAN_HOLDABLE, WNTags.MOSS_REPLACEABLE, WNTags.AZALEA_GROWS_ON, WNTags.FORGE_DIRT,
-                WNTags.BAMBOO_PLANTABLE_ON, WNTags.AZALEA_ROOT_REPLACEABLE,
-                WNTags.BIG_DRIPLEAF_REPLACEABLE, WNTags.DRIPSTONE_REPLACEABLE_BLOCKS, WNTags.LUSH_GROUND_REPLACEABLE, WNTags.MINEABLE_SHOVEL, WNTags.DIRT
-        );
     }
 
     @Override
